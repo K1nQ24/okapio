@@ -159,7 +159,7 @@ Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile: **Cybersecurity Böbl
 | Grafik | Beschreibung |
 |---|---|
 | Logo | okapio (Wortmarke). Link zur Startseite. |
-| Hero-Graph | Netzwerkgraph aus Servern, Cloud und Endgeräten. Ein Angriffspfad (Terrakotta) führt von außen auf ein Ziel und wird von einem Schutzschild gestoppt. |
+| Hero-Graph | Netzwerkgraph aus Servern, Cloud und Endgeräten. Ein Angriffspfad (blau hervorgehoben) führt von außen auf ein Ziel und wird von einem Schutzschild gestoppt. |
 | Beratung | Roadmap mit vier Meilensteinen und einer Weggabelung, die den nächsten Schritt festlegt. |
 | Infrastruktur | Topologie aus Firewall, Switch, Servern und Arbeitsplätzen in getrennten Netzsegmenten. |
 | Cloud/SaaS | Cloud mit verbundenen Diensten. Zwei Dienste tragen Konfigurations-Findings, eines davon mit hoher Priorität. |

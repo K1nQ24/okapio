@@ -65,7 +65,7 @@ Das Okapi ist scheu, gut getarnt und aufmerksam. Genau diese drei Eigenschaften 
 
 ## 4. Bildsprache
 
-- **Illustrationen:** eigene, technische Linienillustrationen (Graphen, Topologien, kleine UI-Ausschnitte). Eine Strichstärke, abgerundete Enden, begrenzte Palette. Terrakotta = Risiko/Angriff. Teal = erkannt/geschützt. Alles andere neutral.
+- **Illustrationen:** eigene, technische Linienillustrationen (Graphen, Topologien, kleine UI-Ausschnitte). Eine Strichstärke, abgerundete Enden, begrenzte Palette. Blau = Risiko/Angriff. Cyan = erkannt/geschützt. Alles andere neutral.
 - **Fotos:** natürliche Situationen, gutes Licht, echte Arbeitsumgebung. Keine Stock-Handshakes, keine Hacker in Kapuze, keine Schlösser vor Binärcode. Bis zur Lieferung echter Fotos: Platzhalterfläche mit Art-Direction-Hinweis.
 - **Kein Okapi-Cartoon.** Das Tier erscheint nie figürlich.
 
@@ -85,8 +85,8 @@ Regeln:
 ## 6. Logo-Regeln
 
 - **Wortmarke:** "okapio", durchgehend klein, in Bricolage Grotesque Bold. Als Pfade gezeichnet, nicht als Text (die Schriftdatei liegt dafür in `tools/fonts/`, die Website lädt sie nicht).
-- **Detail:** Der i-Punkt ist Terrakotta. Zusätzlich gibt es ein **Symbol**: ein Kreis (das "o"), dessen untere Hälfte in Streifen unterschiedlicher Stärke übergeht.
-- **Farbvarianten:** Wortmarke in `currentColor` (auf Hell: Nachtblau, auf Dunkel: Off-White). Der i-Punkt bleibt Terrakotta. Einfarbig ist erlaubt (dann i-Punkt in Textfarbe).
+- **Detail:** Der i-Punkt ist Logo-Cyan (`#00DAF2`). Zusätzlich gibt es ein **Symbol**: ein Kreis (das "o"), dessen untere Hälfte in Streifen unterschiedlicher Stärke übergeht.
+- **Farbvarianten:** Wortmarke in `currentColor` (auf Hell: Nachtblau, auf Dunkel: Off-White). Der i-Punkt bleibt Cyan. Einfarbig ist erlaubt (dann i-Punkt in Textfarbe).
 - **Schutzraum:** Mindestens die Höhe des "o" (x-Höhe) rundum frei.
 - **Mindestgröße:** Wortmarke 88 px Breite (digital), Symbol 20 px.
 - **Nicht erlaubt:** Verzerren, Drehen, Schatten, Verläufe, Großschreibung ("OKAPIO"), Streifen hinter der Wortmarke.
@@ -94,14 +94,14 @@ Regeln:
 ## 7. Farbe & Typografie (Kurzfassung, Details in `design-tokens.md`)
 
 - Basis: Tiefblau (dunkel, für Header, Hero, Werkzeuge, Kontakt, Footer), kühles Off-White „Frost" (hell, für Inhalte).
-- Hauptakzent: Okapi-Terrakotta. Funktionsakzent: gedämpftes Teal ausschließlich für "erkannt/geschützt".
+- Logo-Farben: Tiefblau `#001842`, Blau `#0A6CFF`, Cyan `#00DAF2`. Hauptakzent: Blau (Handlung, Risiko). Funktionsakzent: Cyan für „erkannt/geschützt“. Kein Orange.
 - Überschriften: Space Grotesk (technisch, mit Charakter). Text: Inter. Technische Labels: JetBrains Mono. Alle self-hosted, keine Anfragen an Google (DSGVO).
 
 ## 8. Umgang mit Inhalten, die fehlen
 
 | Was | Regel |
 |---|---|
-| Firmendaten, Adresse, Telefon, E-Mail | `[PLATZHALTER: …]`, sichtbar, gelb-terrakotta markiert |
+| Firmendaten, Adresse, Telefon, E-Mail | `[PLATZHALTER: …]`, sichtbar, hellcyan markiert |
 | Referenzen, Kundenlogos, Zitate | nicht erfinden. Platzhalter oder weglassen |
 | Zahlen | nur strukturelle Zahlen, die die Seite selbst belegt (z. B. "5 Leistungsbereiche") |
 | Erfahrung der Personen | Platzhalter |

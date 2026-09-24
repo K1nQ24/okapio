@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="ill-hero-graph" viewBox="0 0 640 560" role="img" aria-labelledby="ill-hero-graph-title ill-hero-graph-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <title id="ill-hero-graph-title">Angriffspfad wird an der Schutzschicht gestoppt</title>
-  <desc id="ill-hero-graph-desc">Netzwerkgraph aus Servern, Cloud und Endgeräten. Ein Angriffspfad (Terrakotta) führt von außen über Web und API auf die Kundendaten und wird von einem Schutzschild gestoppt.</desc>
+  <desc id="ill-hero-graph-desc">Netzwerkgraph aus Servern, Cloud und Endgeräten. Ein Angriffspfad (blau hervorgehoben) führt von außen über Web und API auf die Kundendaten und wird von einem Schutzschild gestoppt.</desc>
 
   <!-- Tarnschicht: Streifen, die sich hinter dem Ziel verdichten -->
   <g id="hg-stripes" data-stagger="grow" fill="var(--ill-ink)" stroke="none" opacity="0.12">
