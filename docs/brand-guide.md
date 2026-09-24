@@ -93,9 +93,9 @@ Regeln:
 
 ## 7. Farbe & Typografie (Kurzfassung, Details in `design-tokens.md`)
 
-- Basis: Nachtblau (dunkel), warmes Off-White (hell).
+- Basis: Tiefblau (dunkel, für Header, Hero, Werkzeuge, Kontakt, Footer), kühles Off-White „Frost" (hell, für Inhalte).
 - Hauptakzent: Okapi-Terrakotta. Funktionsakzent: gedämpftes Teal ausschließlich für "erkannt/geschützt".
-- Überschriften: Newsreader (Serif, ruhig, beratend); Akzentwort kursiv in Terrakotta. Text: Hanken Grotesk. Technische Labels: Geist Mono. Alle self-hosted.
+- Überschriften: Space Grotesk (technisch, mit Charakter). Text: Inter. Technische Labels: JetBrains Mono. Alle self-hosted, keine Anfragen an Google (DSGVO).
 
 ## 8. Umgang mit Inhalten, die fehlen
 
