@@ -23,12 +23,11 @@
     var toggle = document.querySelector('[data-nav-toggle]');
     var nav = document.querySelector('[data-nav]');
     if (!toggle || !nav) { return; }
-    var label = toggle.querySelector('[data-nav-toggle-label]') || toggle;
 
     function setOpen(open, returnFocus) {
       nav.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      label.textContent = open ? 'Menü schließen' : 'Menü öffnen';
+      /* Beschriftung bleibt „Menü"; der Zustand steckt in aria-expanded und im Icon (☰ → ×). */
       if (!open && returnFocus) { toggle.focus(); }
     }
     toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
