@@ -84,7 +84,7 @@ Regeln:
 
 ## 6. Logo-Regeln
 
-- **Wortmarke:** "okapio", durchgehend klein, in Bricolage Grotesque Bold. Als Pfade gezeichnet, nicht als Text.
+- **Wortmarke:** "okapio", durchgehend klein, in Bricolage Grotesque Bold. Als Pfade gezeichnet, nicht als Text (die Schriftdatei liegt dafür in `tools/fonts/`, die Website lädt sie nicht).
 - **Detail:** Der i-Punkt ist Terrakotta. Zusätzlich gibt es ein **Symbol**: ein Kreis (das "o"), dessen untere Hälfte in Streifen unterschiedlicher Stärke übergeht.
 - **Farbvarianten:** Wortmarke in `currentColor` (auf Hell: Nachtblau, auf Dunkel: Off-White). Der i-Punkt bleibt Terrakotta. Einfarbig ist erlaubt (dann i-Punkt in Textfarbe).
 - **Schutzraum:** Mindestens die Höhe des "o" (x-Höhe) rundum frei.
@@ -95,7 +95,7 @@ Regeln:
 
 - Basis: Nachtblau (dunkel), warmes Off-White (hell).
 - Hauptakzent: Okapi-Terrakotta. Funktionsakzent: gedämpftes Teal ausschließlich für "erkannt/geschützt".
-- Display: Bricolage Grotesque. Text: Manrope. Beide self-hosted.
+- Überschriften: Newsreader (Serif, ruhig, beratend); Akzentwort kursiv in Terrakotta. Text: Hanken Grotesk. Technische Labels: Geist Mono. Alle self-hosted.
 
 ## 8. Umgang mit Inhalten, die fehlen
 

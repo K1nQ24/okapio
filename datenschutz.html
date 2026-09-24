@@ -9,8 +9,8 @@
   <meta name="description" content="Datenschutzerklärung von okapio.">
   <meta name="robots" content="noindex, follow">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -23,12 +23,13 @@
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
   <header class="site-header" data-theme="dark" data-header>
     <div class="site-header__bar" aria-hidden="true" data-header-bar></div>
+    <div class="site-header__progress" aria-hidden="true" data-progress></div>
     <div class="container site-header__inner" data-header-inner>
       <a class="brand" href="index.html" aria-label="okapio, zur Startseite"><svg viewBox="-20 -765 3305 1070" role="img" aria-label="okapio" fill="currentColor">
   <g><path d="M304 13.7Q225.7 13.7 165.4 -17.7Q105.2 -49 71 -110.8Q36.8 -172.5 36.8 -264Q36.8 -356.3 71.4 -417.3Q106 -478.3 166.6 -508.7Q227.2 -539 304.5 -539Q382.2 -539 442.8 -507.9Q503.5 -476.8 538 -415.5Q572.5 -354.2 572.5 -262.2Q572.5 -168.7 537.3 -107.2Q502.2 -45.7 441.2 -16Q380.2 13.7 304 13.7ZM308.7 -92.8Q347.7 -92.8 374.3 -111Q400.8 -129.2 414.5 -165.5Q428.2 -201.8 428.2 -254Q428.2 -309 413.6 -347.5Q399 -386 370.8 -406.8Q342.7 -427.5 300 -427.5Q263 -427.5 235.9 -409.6Q208.8 -391.7 195.1 -355.6Q181.3 -319.5 181.3 -266Q181.3 -181 215.2 -136.9Q249 -92.8 308.7 -92.8Z M665.2 0V-716H806.3V-317.5Q837.8 -338.5 866 -363.3Q894.2 -388.2 918 -415.2Q941.8 -442.2 960.8 -470Q979.7 -497.8 992.5 -525.3H1157Q1142.5 -486.7 1117.9 -448.4Q1093.3 -410.2 1059.6 -377.7Q1025.8 -345.3 981.7 -322.2Q937.5 -299.2 885 -290.8V-274.3Q951.2 -285.8 995.6 -271.7Q1040 -257.5 1068.4 -227.6Q1096.8 -197.7 1114.3 -157.9Q1131.8 -118.2 1145 -78.2L1168.5 0H1011.7L998.7 -49Q984.3 -98.7 967.1 -135.2Q949.8 -171.7 922.1 -192.3Q894.3 -213 846.5 -213H806.3V0Z M1372.2 13.7Q1328.5 13.7 1294.5 -3.5Q1260.5 -20.7 1241.3 -54Q1222.2 -87.3 1222.2 -135.7Q1222.2 -178.7 1238.6 -207.8Q1255 -237 1287.2 -255.1Q1319.5 -273.2 1366.1 -285.2Q1412.7 -297.2 1473.8 -306Q1504.7 -311 1525.1 -315.7Q1545.5 -320.3 1555.8 -330.7Q1566 -341 1566 -361.2Q1566 -389.2 1546.1 -409.3Q1526.2 -429.3 1482.2 -429.3Q1453.8 -429.3 1429.6 -419.3Q1405.3 -409.3 1387.7 -389.2Q1370.2 -369 1362.5 -338.3L1235.2 -376.8Q1246.7 -417.3 1268.9 -447.7Q1291.2 -478.2 1323.1 -498.7Q1355 -519.3 1396.7 -529.2Q1438.3 -539 1485.8 -539Q1562.3 -539 1611 -514.4Q1659.7 -489.8 1683.4 -438.3Q1707.2 -386.8 1707.2 -306V-216.7Q1707.2 -181.8 1708.7 -145.3Q1710.2 -108.8 1712.7 -72.2Q1715.3 -35.7 1719.2 0H1591.7Q1587.8 -25.2 1584.3 -57.6Q1580.7 -90 1578.8 -123.7H1561.5Q1547.3 -85.8 1521.2 -54.1Q1495 -22.3 1457.6 -4.3Q1420.2 13.7 1372.2 13.7ZM1433.7 -90.2Q1452.5 -90.2 1472.1 -96.8Q1491.7 -103.5 1510.1 -116.1Q1528.5 -128.7 1544 -147.7Q1559.5 -166.8 1568.7 -190.5L1567 -274.8L1590.5 -269.8Q1572.2 -256.8 1548.3 -249.5Q1524.3 -242.2 1498.8 -238Q1473.2 -233.8 1448.2 -229Q1423.3 -224.2 1403.6 -216.3Q1383.8 -208.5 1372.3 -194.7Q1360.8 -181 1360.8 -157Q1360.8 -126 1381.2 -108.1Q1401.5 -90.2 1433.7 -90.2Z M1831.2 167.2V-258V-525.3H1950.7L1951 -379.7L1968.2 -378Q1977.8 -431 2000.5 -466.9Q2023.2 -502.8 2059 -520.9Q2094.8 -539 2142.2 -539Q2212.5 -539 2262.2 -504.6Q2312 -470.2 2338.2 -407.5Q2364.3 -344.8 2364.3 -259.5Q2364.3 -181.7 2340.7 -119.8Q2317.2 -58 2270 -22.2Q2222.8 13.7 2151.2 13.7Q2100.8 13.7 2066.5 -5.1Q2032.2 -23.8 2009.3 -58.4Q1986.5 -93 1971.5 -141.7H1953.2Q1959.2 -114.5 1963.7 -86.2Q1968.3 -57.8 1971.6 -31.3Q1974.8 -4.7 1974.8 19.8V167.2ZM2101.2 -101.3Q2137 -101.3 2162.2 -121.2Q2187.3 -141 2201.1 -176.7Q2214.8 -212.3 2214.8 -259.3Q2214.8 -309.2 2200.6 -344.8Q2186.3 -380.5 2160 -400.3Q2133.7 -420 2098.2 -420Q2065.8 -420 2042.5 -405.8Q2019.2 -391.5 2004.1 -368.5Q1989 -345.5 1981.8 -319.4Q1974.7 -293.3 1974.7 -269.7V-250Q1974.7 -230.8 1979.9 -210.4Q1985.2 -190 1995.7 -170.7Q2006.3 -151.3 2021.4 -135.5Q2036.5 -119.7 2056.7 -110.5Q2076.8 -101.3 2101.2 -101.3Z M2461.3 0V-525.3H2604.8V0Z M2970 13.7Q2891.7 13.7 2831.4 -17.7Q2771.2 -49 2737 -110.8Q2702.8 -172.5 2702.8 -264Q2702.8 -356.3 2737.4 -417.3Q2772 -478.3 2832.6 -508.7Q2893.2 -539 2970.5 -539Q3048.2 -539 3108.8 -507.9Q3169.5 -476.8 3204 -415.5Q3238.5 -354.2 3238.5 -262.2Q3238.5 -168.7 3203.3 -107.2Q3168.2 -45.7 3107.2 -16Q3046.2 13.7 2970 13.7ZM2974.7 -92.8Q3013.7 -92.8 3040.3 -111Q3066.8 -129.2 3080.5 -165.5Q3094.2 -201.8 3094.2 -254Q3094.2 -309 3079.6 -347.5Q3065 -386 3036.8 -406.8Q3008.7 -427.5 2966 -427.5Q2929 -427.5 2901.9 -409.6Q2874.8 -391.7 2861.1 -355.6Q2847.3 -319.5 2847.3 -266Q2847.3 -181 2881.2 -136.9Q2915 -92.8 2974.7 -92.8Z"/></g>
   <path fill="var(--ill-risk)" d="M2533.4 -603.3Q2491.2 -603.3 2468.8 -621.2Q2446.3 -639.2 2446.3 -672.5Q2446.3 -707.5 2468.8 -725.4Q2491.2 -743.3 2533.5 -743.3Q2576.7 -743.3 2599.1 -725.4Q2621.5 -707.5 2621.5 -673.5Q2621.5 -639.2 2599 -621.2Q2576.5 -603.3 2533.4 -603.3Z"/>
 </svg></a>
-      <a class="btn btn--ghost btn--sm site-header__cta" href="index.html">Zur Startseite</a>
+      <a class="btn btn--ghost btn--sm site-header__cta" href="index.html"><span aria-hidden="true">&larr;</span> Zur Startseite</a>
     </div>
   </header>
   <main id="inhalt" tabindex="-1">
@@ -70,14 +71,18 @@
       </div>
     </div>
   </main>
-  <footer class="site-footer" data-theme="dark">
+  <footer class="site-footer site-footer--compact" data-theme="night">
     <div class="container">
-      <ul class="footer-list">
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
-      </ul>
-      <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+      <div class="site-footer__bottom">
+        <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+        <nav aria-label="Rechtliches und Kontakt">
+          <ul class="footer-list footer-list--inline">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </footer>
 

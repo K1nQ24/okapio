@@ -15,7 +15,7 @@ OUT = os.path.join(ROOT, 'assets', 'svg')
 fmt = lambda v: ('%.1f' % v).rstrip('0').rstrip('.')
 
 # ---------- Wortmarke ----------
-f = TTFont(os.path.join(ROOT, 'assets/fonts/bricolage-grotesque-latin-wght-normal.woff2'))
+f = TTFont(os.path.join(ROOT, 'tools/fonts/bricolage-grotesque-latin-wght-normal.woff2'))
 inst = instancer.instantiateVariableFont(f, {'wght': 700})
 gs, cmap, hm = inst.getGlyphSet(), inst.getBestCmap(), inst['hmtx']
 KERN = {'ok': -10, 'ka': -6, 'ap': -4, 'pi': -8, 'io': -6}  # dezente optische Korrektur (Font-Einheiten)

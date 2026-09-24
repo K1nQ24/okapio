@@ -27,8 +27,8 @@
   <meta property="og:description" content="Risiken sichtbar machen, bevor andere sie finden. Risiko Check, Infrastruktur, Cloud, Audits, Awareness sowie KI und Automatisierung.">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -72,6 +72,7 @@
   <!-- ===== 1 · HEADER ===== -->
   <header class="site-header" data-theme="dark" data-header>
     <div class="site-header__bar" aria-hidden="true" data-header-bar></div>
+    <div class="site-header__progress" aria-hidden="true" data-progress></div>
     <div class="container site-header__inner" data-header-inner>
       <a class="brand" href="#top" aria-label="okapio, zum Seitenanfang">
         <!-- @svg:logo-wordmark noid -->
@@ -107,7 +108,7 @@
           <li class="site-nav__cta"><a class="btn btn--primary" href="#kontakt">Erstgespräch vereinbaren</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menü öffnen</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="nav-toggle__icon" aria-hidden="true"><span></span><span></span></span><span data-nav-toggle-label>Menü öffnen</span></button>
       <a class="btn btn--primary btn--sm site-header__cta" href="#kontakt">Erstgespräch vereinbaren</a>
     </div>
   </header>
@@ -121,18 +122,20 @@
       </div>
       <div class="container hero__grid">
         <div class="hero__copy">
-          <h1 class="hero__title" id="hero-title" data-reveal>
-            <span class="hero__kicker">Cybersecurity Böblingen Stuttgart<span class="visually-hidden">:</span></span>
-            Risiken sichtbar machen, bevor andere sie finden.
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__kicker" data-reveal>Cybersecurity Böblingen Stuttgart<span class="visually-hidden">:</span></span>
+            <span class="hero__line" data-reveal data-reveal-delay="1">Risiken <span class="h-accent hero__camo">sichtbar</span></span>
+            <span class="hero__line" data-reveal data-reveal-delay="2">machen, bevor andere</span>
+            <span class="hero__line" data-reveal data-reveal-delay="3">sie finden.</span>
           </h1>
-          <p class="lead hero__lead" data-reveal data-reveal-delay="1">okapio berät Mittelständler, Automobilzulieferer und Software-Firmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. Aus Böblingen, mit festen Ansprechpartnern statt Ticketsystem.</p>
-          <div class="hero__actions" data-reveal data-reveal-delay="2">
-            <a class="btn btn--primary" href="#kontakt">Erstgespräch vereinbaren</a>
+          <p class="lead hero__lead" data-reveal data-reveal-delay="4">okapio berät Mittelständler, Automobilzulieferer und Software-Firmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. Aus Böblingen, mit festen Ansprechpartnern statt Ticketsystem.</p>
+          <div class="hero__actions" data-reveal data-reveal-delay="5">
+            <a class="btn btn--primary btn--arrow" href="#kontakt">Erstgespräch vereinbaren</a>
             <a class="btn btn--ghost" href="#leistungen">Leistungen ansehen</a>
           </div>
-          <p class="hero__micro" data-reveal data-reveal-delay="3">Antwort in der Regel innerhalb von 24 Stunden. Ein Gespräch, kein Vertriebsdruck.</p>
+          <p class="hero__micro" data-reveal data-reveal-delay="6"><span class="hero__micro-dot" aria-hidden="true"></span>Antwort in der Regel innerhalb von 24 Stunden. Ein Gespräch, kein Vertriebsdruck.</p>
         </div>
-        <figure class="hero__figure" data-illustration="hero">
+        <figure class="hero__figure" data-illustration="hero" data-tilt>
           <!-- @svg:hero-graph -->
         </figure>
       </div>
@@ -159,17 +162,19 @@
     <!-- ===== 4 · LEISTUNGEN ===== -->
     <section class="section" id="leistungen" data-theme="light" aria-labelledby="leistungen-title">
       <div class="container">
-        <div class="section-head">
-          <p class="kicker" data-reveal>Leistungen</p>
-          <h2 id="leistungen-title" data-reveal data-reveal-delay="1">Sieben Bereiche. Ein Ziel: weniger unbekannte Risiken.</h2>
+        <div class="section-head section-head--split">
+          <div class="section-head__main">
+            <p class="kicker" data-reveal>Leistungen</p>
+            <h2 id="leistungen-title" data-reveal data-reveal-delay="1">Sieben Bereiche. Ein Ziel: <span class="h-accent">weniger unbekannte Risiken.</span></h2>
+          </div>
           <p class="lead" data-reveal data-reveal-delay="2">Sie müssen nicht alles auf einmal angehen. Wir starten dort, wo Ihr Risiko am größten ist.</p>
         </div>
 
         <div class="bento">
           <!-- 01 Risiko Check -->
-          <article class="service service--1" id="leistung-risikocheck" aria-labelledby="l1-title" data-reveal>
+          <article data-spot class="service service--1" id="leistung-risikocheck" aria-labelledby="l1-title" data-reveal>
             <div class="service__head">
-              <span class="service__no" aria-hidden="true">01</span>
+              <span class="service__no" aria-hidden="true">01<span class="service__total">/07</span></span>
               <h3 id="l1-title">Ein klares Bild Ihrer Risiken, bevor Sie investieren.</h3>
             </div>
             <div class="service__body">
@@ -188,9 +193,9 @@
           </article>
 
           <!-- 02 Beratung -->
-          <article class="service service--2" id="leistung-beratung" aria-labelledby="l2-title" data-reveal data-reveal-delay="1">
+          <article data-spot class="service service--2" id="leistung-beratung" aria-labelledby="l2-title" data-reveal data-reveal-delay="1">
             <div class="service__head">
-              <span class="service__no" aria-hidden="true">02</span>
+              <span class="service__no" aria-hidden="true">02<span class="service__total">/07</span></span>
               <h3 id="l2-title">Eine Roadmap, die Sie umsetzen können.</h3>
             </div>
             <div class="service__body">
@@ -209,9 +214,9 @@
           </article>
 
           <!-- 03 IT Security / Infrastruktur -->
-          <article class="service service--3" id="leistung-infrastruktur" data-theme="dark" aria-labelledby="l3-title" data-reveal>
+          <article data-spot class="service service--3" id="leistung-infrastruktur" data-theme="dark" aria-labelledby="l3-title" data-reveal>
             <div class="service__head">
-              <span class="service__no" aria-hidden="true">03</span>
+              <span class="service__no" aria-hidden="true">03<span class="service__total">/07</span></span>
               <h3 id="l3-title">Netze und Server, die nicht überraschen.</h3>
             </div>
             <div class="service__body">
@@ -231,9 +236,9 @@
           </article>
 
           <!-- 04 Cloud & SaaS -->
-          <article class="service service--4" id="leistung-cloud" data-theme="sand" aria-labelledby="l4-title" data-reveal data-reveal-delay="1">
+          <article data-spot class="service service--4" id="leistung-cloud" data-theme="sand" aria-labelledby="l4-title" data-reveal data-reveal-delay="1">
             <div class="service__head">
-              <span class="service__no" aria-hidden="true">04</span>
+              <span class="service__no" aria-hidden="true">04<span class="service__total">/07</span></span>
               <h3 id="l4-title">Konfigurationsfehler finden, bevor sie ausgenutzt werden.</h3>
             </div>
             <div class="service__body">
@@ -252,9 +257,9 @@
           </article>
 
           <!-- 05 Audits -->
-          <article class="service service--5" id="leistung-audits" aria-labelledby="l5-title" data-reveal>
+          <article data-spot class="service service--5" id="leistung-audits" aria-labelledby="l5-title" data-reveal>
             <div class="service__head">
-              <span class="service__no" aria-hidden="true">05</span>
+              <span class="service__no" aria-hidden="true">05<span class="service__total">/07</span></span>
               <h3 id="l5-title">Prüfpfad statt Bauchgefühl.</h3>
             </div>
             <div class="service__body">
@@ -273,10 +278,10 @@
           </article>
 
           <!-- 06 Awareness -->
-          <article class="service service--6" id="leistung-awareness" data-theme="dark" aria-labelledby="l6-title" data-reveal data-reveal-delay="1">
+          <article data-spot class="service service--6" id="leistung-awareness" data-theme="dark" aria-labelledby="l6-title" data-reveal data-reveal-delay="1">
             <div class="service__text">
               <div class="service__head">
-                <span class="service__no" aria-hidden="true">06</span>
+                <span class="service__no" aria-hidden="true">06<span class="service__total">/07</span></span>
                 <h3 id="l6-title">Menschen erkennen, was Technik übersieht.</h3>
               </div>
               <div class="service__body">
@@ -296,13 +301,13 @@
           </article>
 
           <!-- 07 KI und Automatisierung -->
-          <article class="service service--7" id="leistung-ki" aria-labelledby="l7-title" data-reveal>
+          <article data-spot class="service service--7" id="leistung-ki" aria-labelledby="l7-title" data-reveal>
             <div class="service__art" data-illustration="ki">
               <!-- @svg:service-ki -->
             </div>
             <div class="service__text">
               <div class="service__head">
-                <span class="service__no" aria-hidden="true">07</span>
+                <span class="service__no" aria-hidden="true">07<span class="service__total">/07</span></span>
                 <h3 id="l7-title">Routine automatisieren, Kontrolle behalten.</h3>
               </div>
               <div class="service__body">
@@ -327,7 +332,7 @@
         <div class="why__grid">
           <div class="why__head section-head">
             <p class="kicker" data-reveal>Warum okapio</p>
-            <h2 id="warum-title" data-reveal data-reveal-delay="1">Nah dran. Konkret. Mit festen Ansprechpartnern.</h2>
+            <h2 id="warum-title" data-reveal data-reveal-delay="1">Nah dran. Konkret. <span class="h-accent">Mit festen Ansprechpartnern.</span></h2>
           </div>
           <ol class="why__list">
             <li class="why-item" data-reveal>
@@ -357,14 +362,17 @@
           <div class="fact" data-reveal>
             <dt class="fact__label">Leistungsbereiche</dt>
             <dd class="fact__num" data-count="7">7</dd>
+            <dd class="fact__bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></dd>
           </div>
           <div class="fact" data-reveal data-reveal-delay="1">
             <dt class="fact__label">Schritte im Vorgehen</dt>
             <dd class="fact__num" data-count="6">6</dd>
+            <dd class="fact__bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></dd>
           </div>
           <div class="fact" data-reveal data-reveal-delay="2">
             <dt class="fact__label">feste Ansprechperson pro Projekt</dt>
             <dd class="fact__num" data-count="1">1</dd>
+            <dd class="fact__bars" aria-hidden="true"><span></span></dd>
           </div>
         </dl>
       </div>
@@ -372,49 +380,58 @@
 
     <!-- ===== 6 · VORGEHEN ===== -->
     <section class="section" id="vorgehen" data-theme="light" aria-labelledby="vorgehen-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker" data-reveal>Vorgehen</p>
-          <h2 id="vorgehen-title" data-reveal data-reveal-delay="1">In sechs Schritten von der Frage zur Maßnahme.</h2>
+      <div class="container process">
+        <div class="process__aside">
+          <div class="section-head">
+            <p class="kicker" data-reveal>Vorgehen</p>
+            <h2 id="vorgehen-title" data-reveal data-reveal-delay="1">In sechs Schritten von der Frage <span class="h-accent">zur Maßnahme.</span></h2>
+            <p class="lead" data-reveal data-reveal-delay="2">Sie wissen in jedem Schritt, was passiert, wer es macht und was als Nächstes kommt.</p>
+          </div>
+          <div class="process__meter" aria-hidden="true" data-reveal data-reveal-delay="3">
+            <span class="process__meter-label">Schritt</span>
+            <span class="process__meter-now" data-step-now>01</span>
+            <span class="process__meter-total">/ 06</span>
+            <span class="process__meter-track"><span class="process__meter-fill" data-step-fill></span></span>
+          </div>
         </div>
         <ol class="timeline" data-timeline>
           <li class="timeline__step" data-reveal>
-            <span class="timeline__num" aria-hidden="true">1</span>
+            <span class="timeline__num" aria-hidden="true">01</span>
             <div class="timeline__body">
               <h3>Bestandsaufnahme</h3>
               <p>Nach dem Erstgespräch prüfen wir Netzwerk, Zugriffsrechte, Backups und bestehende Software. Auf Wunsch unterzeichnen wir vorher eine Geheimhaltungsvereinbarung.</p>
             </div>
           </li>
           <li class="timeline__step" data-reveal>
-            <span class="timeline__num" aria-hidden="true">2</span>
+            <span class="timeline__num" aria-hidden="true">02</span>
             <div class="timeline__body">
               <h3>Risiko Check und Bewertung</h3>
               <p>Aus der Bestandsaufnahme leiten wir die Risiken ab, die für Ihr Unternehmen wirklich zählen, und ordnen sie nach Dringlichkeit. Keine lange Liste ohne Reihenfolge.</p>
             </div>
           </li>
           <li class="timeline__step" data-reveal>
-            <span class="timeline__num" aria-hidden="true">3</span>
+            <span class="timeline__num" aria-hidden="true">03</span>
             <div class="timeline__body">
               <h3>Fahrplan</h3>
               <p>Ein umsetzbarer Maßnahmenplan mit Verantwortlichen und Aufwand, auf Wunsch mit Bezug auf NIS2 oder BSI IT-Grundschutz. Sie wissen, was wann passiert.</p>
             </div>
           </li>
           <li class="timeline__step" data-reveal>
-            <span class="timeline__num" aria-hidden="true">4</span>
+            <span class="timeline__num" aria-hidden="true">04</span>
             <div class="timeline__body">
               <h3>Umsetzung</h3>
               <p>Technische und organisatorische Maßnahmen führen wir gemeinsam ein, von Verschlüsselung und Zugriffskonzepten bis zur Backup-Strategie. Wir dokumentieren nachvollziehbar, was erledigt ist.</p>
             </div>
           </li>
           <li class="timeline__step" data-reveal>
-            <span class="timeline__num" aria-hidden="true">5</span>
+            <span class="timeline__num" aria-hidden="true">05</span>
             <div class="timeline__body">
               <h3>Schulung und Awareness</h3>
               <p>Wir schulen Ihr Team an echten Beispielen. Nach Abstimmung mit Datenschutz und Betriebsrat zeigen Phishing-Tests, ob das Gelernte im Alltag ankommt.</p>
             </div>
           </li>
           <li class="timeline__step" data-reveal>
-            <span class="timeline__num" aria-hidden="true">6</span>
+            <span class="timeline__num" aria-hidden="true">06</span>
             <div class="timeline__body">
               <h3>Begleitung</h3>
               <p>Sicherheit ist kein einmaliges Projekt. Ihre feste Ansprechperson prüft den Stand regelmäßig und passt die Maßnahmen an neue Bedrohungen an.</p>
@@ -425,24 +442,27 @@
     </section>
 
     <!-- ===== 6b · WERKZEUGE ===== -->
-    <section class="section" id="werkzeuge" data-theme="dark" aria-labelledby="werkzeuge-title">
+    <section class="section tools-section" id="werkzeuge" data-theme="night" aria-labelledby="werkzeuge-title">
+      <div class="tools-section__grid" aria-hidden="true"></div>
       <div class="container">
-        <div class="section-head">
-          <p class="kicker" data-reveal>Werkzeuge</p>
-          <h2 id="werkzeuge-title" data-reveal data-reveal-delay="1">Zwei eigene Werkzeuge, die unsere Beratung ergänzen.</h2>
+        <div class="section-head section-head--split">
+          <div class="section-head__main">
+            <p class="kicker" data-reveal>Werkzeuge</p>
+            <h2 id="werkzeuge-title" data-reveal data-reveal-delay="1">Zwei eigene Werkzeuge, <span class="h-accent">die unsere Beratung ergänzen.</span></h2>
+          </div>
           <p class="lead" data-reveal data-reveal-delay="2">Ein Überblick über Ihren Compliance-Stand und ein Blick auf Ihre von außen sichtbare Angriffsfläche. Beide Werkzeuge sind im Aufbau und noch nicht zugänglich.</p>
         </div>
 
         <div class="tools">
           <!-- Compliance Copilot -->
-          <article class="tool" aria-labelledby="tool-cc-title" data-reveal>
+          <article class="tool" aria-labelledby="tool-cc-title" data-reveal data-spot>
             <header class="tool__head">
               <h3 id="tool-cc-title">Compliance Copilot</h3>
               <span class="tool__status"><span class="tool__dot" aria-hidden="true"></span>Im Aufbau</span>
             </header>
             <p class="tool__text">Frameworks aktivieren, Controls abarbeiten und den Fortschritt über die Zeit verfolgen. Jederzeit einsehbar, ohne auf den nächsten Termin zu warten.</p>
             <div class="tool__panel" data-illustration="tool" role="group" aria-label="Vorschau des Compliance Copilot mit Beispieldaten">
-              <div class="tool__panel-head"><span>Vorschau</span><span class="tag">Beispieldaten</span></div>
+              <div class="tool__panel-head"><span class="tool__chrome" aria-hidden="true"><span></span><span></span><span></span></span><span class="tool__panel-title">Vorschau</span><span class="tag">Beispieldaten</span></div>
               <div class="gauge-row">
                 <div class="gauge">
                   <svg viewBox="0 0 92 92" aria-hidden="true" focusable="false"><circle class="gauge__track" cx="46" cy="46" r="39"/><circle class="gauge__fill" pathLength="1" cx="46" cy="46" r="39" transform="rotate(-90 46 46)"/></svg>
@@ -465,14 +485,15 @@
           </article>
 
           <!-- Attack Surface Monitor -->
-          <article class="tool" aria-labelledby="tool-asm-title" data-reveal data-reveal-delay="1">
+          <article class="tool" aria-labelledby="tool-asm-title" data-reveal data-reveal-delay="1" data-spot>
             <header class="tool__head">
               <h3 id="tool-asm-title">Attack Surface Monitor</h3>
               <span class="tool__status"><span class="tool__dot" aria-hidden="true"></span>Im Aufbau</span>
             </header>
             <p class="tool__text">Domains, Subdomains, IP-Adressen und Zertifikate werden erfasst, Findings nach Schweregrad geordnet. Damit Sie sehen, was von außen sichtbar ist, bevor andere es tun.</p>
-            <div class="tool__panel" data-illustration="tool" role="group" aria-label="Vorschau des Attack Surface Monitor mit Beispieldaten">
-              <div class="tool__panel-head"><span>Vorschau</span><span class="tag">Beispieldaten</span></div>
+            <div class="tool__panel tool__panel--scan" data-illustration="tool" role="group" aria-label="Vorschau des Attack Surface Monitor mit Beispieldaten">
+              <span class="tool__scan" aria-hidden="true"></span>
+              <div class="tool__panel-head"><span class="tool__chrome" aria-hidden="true"><span></span><span></span><span></span></span><span class="tool__panel-title">Vorschau</span><span class="tag">Beispieldaten</span></div>
               <dl class="stats">
                 <div class="stat"><dd data-count="24">24</dd><dt>Assets</dt></div>
                 <div class="stat stat--risk"><dd data-count="1">1</dd><dt>Kritisch</dt></div>
@@ -502,20 +523,20 @@
       <div class="container">
         <div class="section-head">
           <p class="kicker" data-reveal>Branchenfokus</p>
-          <h2 id="branchen-title" data-reveal data-reveal-delay="1">Drei Umfelder, die wir kennen.</h2>
-                  </div>
+          <h2 id="branchen-title" data-reveal data-reveal-delay="1">Drei Umfelder, <span class="h-accent">die wir kennen.</span></h2>
+        </div>
         <div class="industries">
-          <article class="industry" data-reveal>
+          <article class="industry" data-reveal data-spot>
             <div class="industry__icon" aria-hidden="true"><!-- @svg:icon-automotive noid --></div>
             <h3>Automotive</h3>
             <p>Zulieferer müssen Sicherheitsanforderungen ihrer Kunden nachweisen. Wir helfen bei Prüfpfaden für Kundenanforderungen, beim Schutz von Entwicklungsdaten und bei der Trennung von Büro- und Produktionsnetzen.</p>
           </article>
-          <article class="industry" data-reveal data-reveal-delay="1">
+          <article class="industry" data-reveal data-reveal-delay="1" data-spot>
             <div class="industry__icon" aria-hidden="true"><!-- @svg:icon-saas noid --></div>
             <h3>Software und SaaS</h3>
             <p>Enterprise-Kunden fragen nach Ihrer Sicherheit. Wir prüfen Ihre Cloud-Konfiguration und Ihre Entwicklungsprozesse und bereiten Sie auf Kundenfragebögen vor.</p>
           </article>
-          <article class="industry" data-reveal data-reveal-delay="2">
+          <article class="industry" data-reveal data-reveal-delay="2" data-spot>
             <div class="industry__icon" aria-hidden="true"><!-- @svg:icon-mittelstand noid --></div>
             <h3>Mittelstand</h3>
             <p>Kleine IT-Teams, viele Aufgaben, neue Pflichten wie NIS2. Wir priorisieren pragmatisch und arbeiten mit dem, was Sie haben.</p>
@@ -529,12 +550,12 @@
       <div class="container region__grid">
         <div class="region__copy">
           <p class="kicker" data-reveal>Region</p>
-          <h2 id="region-title" data-reveal data-reveal-delay="1">Aus Böblingen für die Region Stuttgart.</h2>
+          <h2 id="region-title" data-reveal data-reveal-delay="1">Aus Böblingen <span class="h-accent">für die Region Stuttgart.</span></h2>
           <p class="lead" data-reveal data-reveal-delay="2">Wir arbeiten vor Ort in Böblingen, Sindelfingen, Stuttgart, Leonberg, Herrenberg, Esslingen und Umgebung. Für Themen, die es zulassen, arbeiten wir auch remote in ganz Baden-Württemberg.</p>
           <ul class="places" aria-label="Orte" data-reveal data-reveal-delay="3">
             <li class="is-home">Böblingen</li><li>Sindelfingen</li><li>Stuttgart</li><li>Leonberg</li><li>Herrenberg</li><li>Esslingen</li>
           </ul>
-          <address class="muted" data-reveal data-reveal-delay="4">Brühlweg 22, 71111 Waldenbuch</address>
+          <address class="region__address" data-reveal data-reveal-delay="4"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Brühlweg 22, 71111 Waldenbuch</address>
         </div>
         <figure class="region__map" data-illustration="region" data-reveal>
           <!-- @svg:region-map -->
@@ -545,22 +566,25 @@
 
     <!-- ===== 9 · ÜBER UNS / TEAM ===== -->
     <section class="section" id="team" data-theme="light" aria-labelledby="team-title">
-      <div class="container">
-        <div class="section-head">
+      <div class="container team">
+        <figure class="team__photo" data-reveal>
+          <div class="photo-ph" role="img" aria-label="Platzhalter für ein Porträtfoto">
+            <p class="photo-ph__text"><mark class="ph">[Foto folgt: 4:5, mind. 1200 × 1500 px, WebP/AVIF]</mark><br>Art Direction: natürliches Tageslicht, am Arbeitsplatz, halbnah. Keine gestellten Handschläge.</p>
+          </div>
+        </figure>
+        <div class="team__copy">
           <p class="kicker" data-reveal>Team</p>
-          <h2 id="team-title" data-reveal data-reveal-delay="1">Der Mensch hinter okapio.</h2>
+          <h2 id="team-title" data-reveal data-reveal-delay="1">Der Mensch <span class="h-accent">hinter okapio.</span></h2>
           <p class="lead" data-reveal data-reveal-delay="2">Bei okapio sprechen Sie mit der Person, die Ihr Projekt auch umsetzt, schon im ersten Gespräch.</p>
-        </div>
-        <div class="team">
-          <figure class="team__person" data-reveal>
-            <div class="photo-ph" role="img" aria-label="Platzhalter für ein Porträtfoto">
-              <p class="photo-ph__text"><mark class="ph">[Foto folgt: 4:5, mind. 1200 × 1500 px, WebP/AVIF]</mark><br>Art Direction: natürliches Tageslicht, am Arbeitsplatz, halbnah. Keine gestellten Handschläge.</p>
-            </div>
-            <figcaption>
-              <h3>Taha Cevik</h3>
-              <p class="team__role">Inhaber · Cybersecurity und IT. Über 10 Jahre Erfahrung in der IT für kleine und mittelständische Unternehmen.</p>
-            </figcaption>
-          </figure>
+          <div class="person" data-reveal data-reveal-delay="3">
+            <h3 class="person__name">Taha Cevik</h3>
+            <p class="person__role">Inhaber · Cybersecurity und IT</p>
+            <p class="person__bio">Über 10 Jahre Erfahrung in der IT für kleine und mittelständische Unternehmen.</p>
+          </div>
+          <ul class="person__links" aria-label="Direkt Kontakt aufnehmen" data-reveal data-reveal-delay="4">
+            <li><a class="btn btn--ghost btn--sm btn--icon" href="tel:+491743292211"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3.5l1.8 4.4-2.2 1.4a11 11 0 0 0 6.1 6.1l1.4-2.2L20 15.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>Anrufen</a></li>
+            <li><a class="btn btn--ghost btn--sm btn--icon" href="mailto:info@plussec.de"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>E-Mail schreiben</a></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -570,7 +594,8 @@
       <div class="container faq__grid">
         <div class="faq__head section-head">
           <p class="kicker" data-reveal>FAQ</p>
-          <h2 id="faq-title" data-reveal data-reveal-delay="1">Häufige Fragen.</h2>
+          <h2 id="faq-title" data-reveal data-reveal-delay="1">Häufige <span class="h-accent">Fragen.</span></h2>
+          <p class="faq__more" data-reveal data-reveal-delay="2">Ihre Frage fehlt? <a href="#kontakt">Schreiben Sie uns</a>.</p>
         </div>
         <div class="faq-list" data-reveal>
           <details>
@@ -619,16 +644,14 @@
       <div class="container contact__grid">
         <div class="contact__copy">
           <p class="kicker" data-reveal>Kontakt</p>
-          <h2 id="kontakt-title" data-reveal data-reveal-delay="1">Sprechen wir über Ihr wichtigstes Risiko.</h2>
+          <h2 id="kontakt-title" data-reveal data-reveal-delay="1">Sprechen wir über Ihr <span class="h-accent">wichtigstes Risiko.</span></h2>
           <p class="lead" data-reveal data-reveal-delay="2">Beschreiben Sie kurz, worum es geht. Wir melden uns bei Ihnen persönlich.</p>
-          <dl class="contact__direct" data-reveal data-reveal-delay="3">
-            <dt>Lieber direkt? Telefon</dt>
-            <dd><a href="tel:+491743292211">+49 174 329 22 11</a></dd>
-            <dt>WhatsApp</dt>
-            <dd><a href="https://wa.me/491743292211" target="_blank" rel="noopener">Nachricht schreiben<span class="visually-hidden"> (öffnet WhatsApp in einem neuen Tab)</span></a></dd>
-            <dt>E-Mail</dt>
-            <dd><a href="mailto:info@plussec.de">info@plussec.de</a></dd>
-          </dl>
+          <p class="contact__direct-title" data-reveal data-reveal-delay="3">Lieber direkt?</p>
+          <ul class="contact__direct" data-reveal data-reveal-delay="3">
+            <li><a class="direct" href="tel:+491743292211"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3.5l1.8 4.4-2.2 1.4a11 11 0 0 0 6.1 6.1l1.4-2.2L20 15.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg><span class="direct__label">Telefon</span><span class="direct__value">+49 174 329 22 11</span></a></li>
+            <li><a class="direct" href="https://wa.me/491743292211" target="_blank" rel="noopener"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1.3-3.9A8.5 8.5 0 1 1 8 18.8z"/><path d="M9.2 9.3c.3 1.9 2.4 4.3 4.8 4.8l1.1-1.2 1.7.8c-.2 1-1 1.7-2 1.7-3.4-.2-6.6-3.4-6.8-6.8 0-1 .7-1.8 1.7-2l.8 1.7z"/></svg><span class="direct__label">WhatsApp</span><span class="direct__value">Nachricht schreiben<span class="visually-hidden"> (öffnet WhatsApp in einem neuen Tab)</span></span></a></li>
+            <li><a class="direct" href="mailto:info@plussec.de"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg><span class="direct__label">E-Mail</span><span class="direct__value">info@plussec.de</span></a></li>
+          </ul>
         </div>
 
         <div class="form-card" data-theme="light" data-reveal>
@@ -639,12 +662,12 @@
           <form class="form" action="assets/php/kontakt.php" method="post" novalidate data-form>
             <p class="error-summary" role="alert" tabindex="-1" hidden data-error-summary>Bitte prüfen Sie die markierten Felder.</p>
 
-            <div class="field">
+            <div class="field field--half">
               <label for="f-name">Name</label>
               <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="f-name-err">
               <p class="field__error" id="f-name-err" hidden>Bitte geben Sie Ihren Namen an.</p>
             </div>
-            <div class="field">
+            <div class="field field--half">
               <label for="f-firma">Firma</label>
               <input id="f-firma" name="firma" type="text" autocomplete="organization" required maxlength="160" aria-describedby="f-firma-err">
               <p class="field__error" id="f-firma-err" hidden>Bitte geben Sie Ihre Firma an.</p>
@@ -674,7 +697,7 @@
               <p class="field__error" id="f-datenschutz-err" hidden>Bitte bestätigen Sie den Hinweis zum Datenschutz.</p>
             </div>
 
-            <button class="btn btn--primary btn--block" type="submit">Anfrage senden</button>
+            <button class="btn btn--primary btn--block btn--arrow" type="submit">Anfrage senden</button>
             <p class="form__note">Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Keine Weitergabe, kein Newsletter.</p>
             <p class="form__fallback">Klappt das Formular nicht? <a href="mailto:info@plussec.de?subject=Anfrage%20%C3%BCber%20die%20Website">Per E-Mail schreiben</a></p>
           </form>
@@ -684,25 +707,14 @@
   </main>
 
   <!-- ===== 12 · FOOTER ===== -->
-  <div class="divider divider--flip" aria-hidden="true" data-theme="dark">
-    <!-- @svg:divider-stripes noid -->
-  </div>
-  <footer class="site-footer" data-theme="dark">
+  <footer class="site-footer" data-theme="night">
     <div class="container">
       <div class="site-footer__grid">
-        <div>
+        <div class="site-footer__brand">
           <a class="footer-brand brand" href="#top" aria-label="okapio, zum Seitenanfang"><!-- @svg:logo-wordmark noid --></a>
           <p class="muted">Cybersecurity-Beratung für die Region Stuttgart.</p>
           <address class="muted">Brühlweg 22, 71111 Waldenbuch</address>
         </div>
-        <nav aria-label="Rechtliches und Kontakt">
-          <h2 class="footer-title">Rechtliches</h2>
-          <ul class="footer-list">
-            <li><a href="impressum.html">Impressum</a></li>
-            <li><a href="datenschutz.html">Datenschutz</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-          </ul>
-        </nav>
         <nav aria-label="Seitenbereiche">
           <h2 class="footer-title">Auf dieser Seite</h2>
           <ul class="footer-list">
@@ -713,9 +725,28 @@
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </nav>
+        <div>
+          <h2 class="footer-title">Kontakt</h2>
+          <ul class="footer-list">
+            <li><a href="tel:+491743292211">+49 174 329 22 11</a></li>
+            <li><a href="mailto:info@plussec.de">info@plussec.de</a></li>
+            <li><a href="#kontakt">Kontaktformular</a></li>
+          </ul>
+        </div>
+        <nav aria-label="Rechtliches">
+          <h2 class="footer-title">Rechtliches</h2>
+          <ul class="footer-list">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </nav>
       </div>
-      <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+      <div class="site-footer__bottom">
+        <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+        <a class="site-footer__top" href="#top">Nach oben<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      </div>
     </div>
+    <div class="site-footer__mark" aria-hidden="true" data-reveal><!-- @svg:logo-wordmark noid --></div>
   </footer>
 
   <!-- ===== SCHWEBENDE BEDIENELEMENTE ===== -->

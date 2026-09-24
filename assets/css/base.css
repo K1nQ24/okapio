@@ -22,8 +22,10 @@ body {
   font-size: var(--fs-base);
   font-weight: var(--fw-regular);
   line-height: var(--lh-text);
+  font-kerning: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -33,21 +35,33 @@ ul, ol { padding: 0; list-style: none; }
 
 img, svg { display: block; max-width: 100%; height: auto; }
 
+/* ---------- Überschriften: Newsreader (Serif) ---------- */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: var(--fw-display);
+  font-weight: var(--fw-heading);
   line-height: var(--lh-heading);
   letter-spacing: var(--ls-heading);
   text-wrap: balance;
+  font-optical-sizing: auto;
 }
-h1 { font-size: var(--fs-h1); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
-h2 { font-size: var(--fs-h2); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
+h1 { font-size: var(--fs-h1); font-weight: var(--fw-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
+h2 { font-size: var(--fs-h2); font-weight: var(--fw-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
 h3 { font-size: var(--fs-h3); }
 h4 { font-size: var(--fs-h4); }
 
+/* Akzentwort in Überschriften: kursive Newsreader in Terrakotta.
+   Typografisches Leitmotiv: der zweite Teil jeder Sektionsüberschrift trägt die Aussage. */
+.h-accent {
+  font-style: italic;
+  font-weight: var(--fw-accent);
+  color: var(--c-accent-text);
+  letter-spacing: -0.01em;
+  padding-inline-end: 0.04em;   /* Überhang der Kursiven nicht abschneiden */
+}
+
 p { max-inline-size: var(--measure); text-wrap: pretty; }
 
-a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.2em; }
+a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.22em; }
 a:hover { text-decoration-thickness: 0.14em; }
 
 strong { font-weight: var(--fw-bold); }
@@ -89,15 +103,17 @@ button, input, textarea, select { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 
+/* Kicker: technische Marke in Geist Mono, mit Linie davor */
 .kicker {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  font-family: var(--font-text);
+  font-family: var(--font-mono);
   font-size: var(--fs-kicker);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   letter-spacing: var(--ls-kicker);
   text-transform: uppercase;
+  line-height: 1.4;
   color: var(--c-accent-text);
 }
 .kicker::before {
@@ -105,9 +121,11 @@ button, input, textarea, select { font: inherit; color: inherit; }
   inline-size: var(--space-6);
   block-size: var(--line-w-strong);
   background: currentColor;
+  transform-origin: left;
 }
 
-.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--c-text-muted); }
+.mono { font-family: var(--font-mono); letter-spacing: var(--ls-mono); }
+.lead { font-size: var(--fs-lead); line-height: 1.55; color: var(--c-text-muted); }
 .muted { color: var(--c-text-muted); }
 .small { font-size: var(--fs-sm); }
 
@@ -124,9 +142,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 /* Druck: Hintergründe neutral */
 @media print {
-  .site-header, .skip-link, .divider, .hero__stripes { display: none !important; }
+  .site-header, .skip-link, .divider, .hero__stripes, .site-footer__mark { display: none !important; }
   body { background: var(--bone-50); color: var(--ink-900); }
 }
-
-/* Hilfsklassen (Ersatz für Inline-Styles zwecks strikter CSP) */
-

@@ -11,6 +11,8 @@
   var reduceQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var reduce = !!(reduceQuery && reduceQuery.matches);
   var hasIO = 'IntersectionObserver' in window;
+  var fineQuery = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)') : null;
+  var finePointer = !!(fineQuery && fineQuery.matches);
 
   function $all(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
   function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
@@ -21,11 +23,12 @@
     var toggle = document.querySelector('[data-nav-toggle]');
     var nav = document.querySelector('[data-nav]');
     if (!toggle || !nav) { return; }
+    var label = toggle.querySelector('[data-nav-toggle-label]') || toggle;
 
     function setOpen(open, returnFocus) {
       nav.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.textContent = open ? 'Menü schließen' : 'Menü öffnen';
+      label.textContent = open ? 'Menü schließen' : 'Menü öffnen';
       if (!open && returnFocus) { toggle.focus(); }
     }
     toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
@@ -104,10 +107,25 @@
       var meta = document.querySelector('meta[name="theme-color"]');
       if (meta) { meta.setAttribute('content', isDark() ? '#111d27' : '#e5eef2'); }
     }
-    btn.addEventListener('click', function () {
+    function apply() {
       if (isDark()) { root.removeAttribute('data-mode'); } else { root.setAttribute('data-mode', 'dark'); }
       try { localStorage.setItem('okapio-mode', isDark() ? 'dark' : 'light'); } catch (e) { /* Speicher gesperrt */ }
       sync();
+    }
+    btn.addEventListener('click', function () {
+      /* View Transition: der neue Modus breitet sich als Kreis vom Schalter aus. Ohne Unterstützung oder bei
+         reduzierter Bewegung wechselt die Darstellung sofort. */
+      if (reduce || !document.startViewTransition || !root.animate) { apply(); return; }
+      var r = btn.getBoundingClientRect();
+      var x = r.left + r.width / 2, y = r.top + r.height / 2;
+      var radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      var transition = document.startViewTransition(apply);
+      transition.ready.then(function () {
+        root.animate(
+          { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+          { duration: 700, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' }
+        );
+      }).catch(function () { /* Übergang abgebrochen: Modus ist trotzdem gesetzt */ });
     });
     sync();
   }
@@ -186,7 +204,14 @@
   function initObservers() {
     var revealIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('is-in'); revealIO.unobserve(entry.target); }
+        if (!entry.isIntersecting) { return; }
+        var el = entry.target;
+        el.classList.add('is-in');
+        revealIO.unobserve(el);
+        /* Nach dem Einblenden die Staffel-Verzögerung entfernen, damit Hover-Übergänge sofort reagieren. */
+        el.addEventListener('transitionend', function done(ev) {
+          if (ev.target === el && ev.propertyName === 'opacity') { el.classList.add('is-done'); el.removeEventListener('transitionend', done); }
+        });
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     $all('[data-reveal]').forEach(function (el) { revealIO.observe(el); });
@@ -200,7 +225,7 @@
   }
 
   /* ---------- Zähler ----------
-     Zweck: strukturelle Zahlen (5 · 4 · 1) laufen einmal hoch. Nur bei echten Zahlen (data-count). */
+     Zweck: strukturelle Zahlen (7 · 6 · 1) laufen einmal hoch. Nur bei echten Zahlen (data-count). */
   function initCounters() {
     var els = $all('[data-count]');
     if (!els.length) { return; }
@@ -226,12 +251,55 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Zeiger-Effekte (nur echte Zeiger, nie bei reduzierter Bewegung) ----------
+     - Lichtkegel: Karten mit [data-spot] bekommen die Zeigerposition als --mx/--my (CSS zeichnet den Verlauf).
+     - Neigung: Der Hero-Graph ([data-tilt]) folgt dem Zeiger um wenige Pixel. Zweck: Tiefe, ohne abzulenken. */
+  function onPointerFrame(el, handler) {
+    var frame = 0, last = null;
+    el.addEventListener('pointermove', function (e) {
+      last = e;
+      if (!frame) { frame = requestAnimationFrame(function () { frame = 0; handler(last); }); }
+    }, { passive: true });
+  }
+  function initPointer() {
+    if (!finePointer || reduce) { return; }
+    $all('[data-spot]').forEach(function (card) {
+      onPointerFrame(card, function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left).toFixed(0) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top).toFixed(0) + 'px');
+      });
+    });
+    var tilt = document.querySelector('[data-tilt]');
+    var host = tilt ? tilt.closest('section') : null;
+    if (!tilt || !host) { return; }
+    onPointerFrame(host, function (e) {
+      var r = host.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      tilt.style.setProperty('--tx', (px * -16).toFixed(1) + 'px');
+      tilt.style.setProperty('--ty', (py * -12).toFixed(1) + 'px');
+    });
+    host.addEventListener('pointerleave', function () { tilt.style.setProperty('--tx', '0px'); tilt.style.setProperty('--ty', '0px'); });
+  }
+
   /* ---------- Scroll-gekoppelte Effekte (ein rAF-getakteter passiver Listener) ----------
-     - Header: schrumpft und bekommt Blur-Hintergrund, sobald gescrollt wird.
+     - Header: schrumpft und bekommt Blur-Hintergrund, sobald gescrollt wird; Lesefortschritt als Linie.
+     - Scrollspy: Der Navigationspunkt der aktuellen Sektion wird markiert (aria-current).
      - Parallax: Streifenmuster bewegt sich langsamer als der Inhalt (Tiefe).
-     - Timeline: Linie füllt sich, Schritte werden aktiv. */
+     - Timeline: Linie füllt sich, Schritte werden aktiv, die Schrittanzeige zählt mit. */
   function initScroll() {
     var header = document.querySelector('[data-header]');
+    var progressBar = document.querySelector('[data-progress]');
+    var stepNow = document.querySelector('[data-step-now]');
+    var stepFill = document.querySelector('[data-step-fill]');
+    var currentStep = -1, stepTimer = null;
+    /* Scrollspy: Sektion → Link der Hauptnavigation (direkt oder über die Gruppe, die den Link enthält) */
+    var spy = $all('main section[id]').map(function (section) {
+      var link = document.querySelector('.site-nav > ul > li > a[href="#' + section.id + '"]');
+      var inGroup = document.querySelector('.nav-group__list a[href="#' + section.id + '"]');
+      return { el: section, link: link, group: inGroup ? inGroup.closest('[data-nav-group]') : null };
+    }).filter(function (s) { return s.link || s.group; });
+    var activeSpy = null;
     var parallax = $all('[data-parallax]').map(function (el) {
       return { el: el, factor: parseFloat(el.getAttribute('data-parallax')) || 0.1, host: el.closest('section') || el.parentElement };
     });
@@ -246,21 +314,59 @@
 
       if (header) { header.classList.toggle('is-scrolled', y > 24); }
 
+      /* Lesefortschritt (auch bei reduzierter Bewegung: er folgt nur dem Scrollen, animiert nichts) */
+      if (progressBar) {
+        var max = Math.max(1, (root.scrollHeight || document.body.scrollHeight) - vh);
+        progressBar.style.setProperty('--progress', clamp(y / max, 0, 1).toFixed(4));
+      }
+
+      /* Scrollspy: letzte Sektion, deren Oberkante die gedachte Leselinie überschritten hat */
+      if (spy.length) {
+        var probe = vh * 0.35, found = null;
+        spy.forEach(function (s) { if (s.el.getBoundingClientRect().top <= probe) { found = s; } });
+        if (found && found.el.getBoundingClientRect().bottom < probe) { found = null; }
+        if (found !== activeSpy) {
+          if (activeSpy) {
+            if (activeSpy.link) { activeSpy.link.removeAttribute('aria-current'); }
+            if (activeSpy.group) { activeSpy.group.classList.remove('is-current'); }
+          }
+          if (found) {
+            if (found.link) { found.link.setAttribute('aria-current', 'true'); }
+            if (found.group) { found.group.classList.add('is-current'); }
+          }
+          activeSpy = found;
+        }
+      }
+
       if (!reduce) {
         parallax.forEach(function (p) {
           var r = p.host.getBoundingClientRect();
           if (r.bottom < 0 || r.top > vh) { return; }
           p.el.style.setProperty('--py', (-r.top * p.factor).toFixed(1) + 'px');
         });
+      }
 
-        if (timeline) {
-          var tr = timeline.getBoundingClientRect();
-          var line = vh * 0.6;                       /* gedachte Leselinie */
-          var progress = clamp((line - tr.top) / tr.height, 0, 1);
-          timeline.style.setProperty('--progress', progress.toFixed(3));
-          steps.forEach(function (step) {
-            step.classList.toggle('is-active', step.getBoundingClientRect().top < line);
-          });
+      if (timeline) {
+        var tr = timeline.getBoundingClientRect();
+        var line = vh * 0.6;                         /* gedachte Leselinie */
+        if (!reduce) { timeline.style.setProperty('--progress', clamp((line - tr.top) / tr.height, 0, 1).toFixed(3)); }
+        var idx = 0;
+        steps.forEach(function (step, i) {
+          var active = step.getBoundingClientRect().top < line;
+          step.classList.toggle('is-active', active);
+          if (active) { idx = i; }
+        });
+        steps.forEach(function (step, i) { step.classList.toggle('is-current', i === idx && step.classList.contains('is-active')); });
+        /* Schrittanzeige links: zählt mit (Zustand, keine Bewegung); mit Bewegung kurz ausgeblendet beim Wechsel. */
+        if (stepNow && idx !== currentStep) {
+          currentStep = idx;
+          var write = function () {
+            stepNow.textContent = (currentStep + 1 < 10 ? '0' : '') + (currentStep + 1);
+            stepNow.classList.remove('is-changing');
+          };
+          clearTimeout(stepTimer);
+          if (reduce) { write(); } else { stepNow.classList.add('is-changing'); stepTimer = setTimeout(write, 150); }
+          if (stepFill) { stepFill.style.setProperty('--step-progress', ((idx + 1) / steps.length).toFixed(3)); }
         }
       }
     }
@@ -283,6 +389,7 @@
     initStagger();
     initObservers();
     initCounters();
+    initPointer();
     initScroll();
   }
 
