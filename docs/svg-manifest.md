@@ -57,9 +57,6 @@ Sequenz: Kanten → Knoten → Angriffspfad → Schild + Ring → Etikett → da
 `#network-edges` (`#pe-…`) · `#phish` (`#phish-mail`, `#phish-path-main`, `#phish-path-1`, `#phish-path-2`) · `#people` (`#p-1` … `#p-5`, `#p-3-body`, `#signal-ring-1/2`) · `#recognized` (`#recognized-badge`, `#recognized-check`, `#report-path`, `#report-node`) · `#labels`.
 Sequenz: Netz → Mail läuft zu Personen → `#p-3` erkennt (Signal-Ringe expandieren, Häkchen) → Meldung läuft zur Meldestelle.
 
-### `icon-automotive.svg` / `icon-saas.svg` / `icon-mittelstand.svg` – `#ill-icon-…` (dekorativ)
-Gruppen `#body/#wheels/#accent`, `#window/#cloud/#accent`, `#buildings/#windows/#accent`. **Animation:** nur Hover (Anheben der Karte), keine Icon-Animation.
-
 ### `region-map.svg` – `#ill-region-map` (informativ, „nicht maßstäblich")
 `#contours` · `#river` (zeichnet sich) · `#service-area` · `#routes` (`#r-…`, zeichnen sich von Böblingen aus) · `#towns` (`#town-…`) · `#pin` (`#pin-pulse` pulsiert leicht) · `#labels`.
 

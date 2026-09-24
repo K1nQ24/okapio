@@ -282,15 +282,13 @@
     .site-nav a, .nav-group__btn { transition: color var(--dur-fast) linear; }
 
     /* Karten heben sich leicht, Lichtkegel folgt dem Zeiger. Zweck: zeigt, dass die Karte ein zusammenhängendes Angebot ist. */
-    .service, .industry, .tool, .fact, .direct { transition: translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-    .service:hover, .industry:hover, .tool:hover { translate: 0 var(--lift); }
-    .industry:hover, .tool:hover, .service--2:hover, .service--5:hover { border-color: var(--c-line-strong); }
+    .service, .tool, .fact, .direct { transition: translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+    .service:hover, .tool:hover { translate: 0 var(--lift); }
+    .tool:hover, .service--2:hover, .service--5:hover { border-color: var(--c-line-strong); }
     [data-spot]::before { transition: opacity var(--dur-slow) var(--ease-out); }
     [data-spot]:hover::before { opacity: 1; }
     .service__art svg { transition: transform var(--dur-slow) var(--ease-expo); }
     .service:hover .service__art svg { transform: scale(1.02); }
-    .industry__icon { transition: translate var(--dur-base) var(--ease-out); }
-    .industry:hover .industry__icon { translate: 0 var(--lift-sm); }
     .direct:hover { translate: var(--space-1) 0; }
     .timeline__step:hover { border-color: var(--c-line-strong); }
 

@@ -142,14 +142,13 @@ Raster: 12 Spalten ab 64 em, 4 ab 40 em, 1 darunter. Sektionen wechseln zwischen
 | 5 | Warum okapio | **dunkel** | 5 Sp. Überschrift (sticky) / 7 Sp. drei Punkte mit kursiven Nummern. Drei Fakten-Karten mit Strichliste | Überschrift sticky, Liste scrollt |
 | 6 | Vorgehen | hell | 5 Sp. Kopf mit Schrittanzeige (sticky) / 7 Sp. Timeline aus Karten, Linie links füllt sich per Scroll | Kopf bleibt stehen, Schritte scrollen |
 | 6b | Werkzeuge | **night** (immer dunkel) | Geteilter Kopf, zwei Karten mit Fenster-Vorschau, feines Raster im Hintergrund | rechte Karte tiefer versetzt |
-| 7 | Branchenfokus | sand | Drei Spalten mit unterschiedlicher Höhe (Versatz nach unten), je ein Icon | Versatz statt gleicher Höhe |
 | 8 | Region | **dunkel** | 6 Sp. Text / 6 Sp. Kartengrafik. Karte bricht rechts aus dem Raster | Grafik randlos |
 | 9 | Team | hell | 5 Sp. Fotofläche 4:5 / 7 Sp. Kicker, H2, Person mit Akzentlinie, direkte Kontaktwege | – |
 | 10 | FAQ | sand | Schmale Spalte (`--container-narrow`), Überschrift links davor ab 64 em | – |
 | 11 | Kontakt | **night** | 5 Sp. Text + Direktkontakt als Karten (sticky) / 7 Sp. Formular auf heller Karte, Name und Firma nebeneinander. Streifen lösen sich zum Formular hin auf | Heller Block in dunkler Sektion |
 | 12 | Footer | **night** (`night-950`) | Marke + 3 Spalten, Streifenkante oben, große angeschnittene Wortmarke als Abschluss | Wortmarke randlos |
 
-**Rhythmus (heller Modus):** night (Header, Hero) → hell (Vertrauen, Leistungen) → Tönung (Warum) → hell (Vorgehen) → night (Werkzeuge) → hell 2 (Branchen) → Tönung (Region) → hell (Team) → hell 2 (FAQ) → night (Kontakt, Footer). Im Dunkelmodus werden alle hellen Flächen zu Dämmerungs-Tönen.
+**Rhythmus (heller Modus):** night (Header, Hero) → hell (Vertrauen, Leistungen) → Tönung (Warum) → hell (Vorgehen) → night (Werkzeuge) → Tönung (Region) → hell (Team) → hell 2 (FAQ) → night (Kontakt, Footer). Im Dunkelmodus werden alle hellen Flächen zu Dämmerungs-Tönen.
 
 ## 8. Illustrations-Tokens
 
