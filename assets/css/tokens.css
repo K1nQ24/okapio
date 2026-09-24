@@ -441,6 +441,13 @@
   --shadow-header: 0 1px 0 rgb(0 24 66 / 0.08);
 }
 
+/* ---------- Header vom Hero abheben ----------
+   Header und Hero tragen beide „night". Damit sie sich trennen, liegt der Header einen Ton daneben:
+   heller Modus eine Stufe dunkler (Hero night-900), Dunkelmodus eine Stufe heller (Hero night-950).
+   Text auf night-950 19,5:1, gedämpft 8,9:1; auf night-900 siehe Kontrasttabelle. */
+.site-header[data-theme] { --c-bg: var(--night-950); --c-line: var(--night-700); }
+:root[data-mode="dark"] .site-header[data-theme] { --c-bg: var(--night-900); --c-line: var(--night-600); }
+
 /* ---------- DUNKELMODUS (Schalter): alle drei Themen werden dunkle Dämmerungs-Töne ----------
    Gemeinsame Basis für root, light, sand und dark; danach Abstufung je Thema. */
 :root[data-mode="dark"],
