@@ -305,6 +305,23 @@
     <rect x="448" y="196" width="88" height="26" rx="13" fill="var(--ill-surface)" stroke="var(--ill-safe)" stroke-width="1.75"/>
     <text x="492" y="213.5" fill="var(--ill-safe)" stroke="none" font-family="var(--font-text)" font-size="12.5" font-weight="700" text-anchor="middle">blockiert</text>
   </g>
+
+  <g id="hg-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.6s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-web-api"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.6s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="3.2s" begin="0.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-api-endpoint"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="3.4s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-api-data"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.4s" begin="1.6s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.9s" begin="0.4s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-cloud-data"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.9s" begin="0.4s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="3.1s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-web-cloud"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.1s" begin="1.2s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="2.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-cloud-server"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="2.0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.8s" begin="0.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-laptop-server"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.8s" begin="0.6s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.5s" begin="1.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-endpoint-data"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.5s" begin="1.8s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.7s" begin="2.4s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#hg-e-web-laptop"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.7s" begin="2.4s" repeatCount="indefinite"/></circle>
+  </g>
+  <g id="hg-flow-attack" class="flow">
+    <circle r="4.5" fill="var(--ill-risk)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-attack-seg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="4.5" fill="var(--ill-risk)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#hg-attack-seg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle>
+    <circle cx="425" cy="245" r="26" fill="none" stroke="var(--ill-safe)" stroke-width="2" opacity="0"><animate attributeName="r" values="26;40" dur="2.4s" begin="0.3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.4s" begin="0.3s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>
         </figure>
       </div>
@@ -401,6 +418,12 @@
     <text x="382" y="48">Reihenfolge</text>
     <text x="382" y="256">Zuerst das Kritische</text>
   </g>
+
+  <g id="rc-flow" class="flow">
+    <circle cx="228" cy="68" r="10" fill="none" stroke="var(--ill-risk)" stroke-width="2" opacity="0"><animate attributeName="r" values="10;26" dur="2.4s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.4s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle cx="204" cy="92" r="8" fill="none" stroke="var(--ill-risk)" stroke-width="2" opacity="0"><animate attributeName="r" values="8;22" dur="2.4s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-risk)" stroke="none" opacity="0"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rc-link"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.8s" begin="0s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>
             </div>
           </article>
@@ -449,6 +472,12 @@
     <text x="60" y="292">Ist-Stand</text>
     <text x="150" y="168">Entscheidung</text>
     <text x="440" y="108">Ziel</text>
+  </g>
+
+  <g id="rm-flow" class="flow">
+    <circle r="4" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="5s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rm-route"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="5s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="4" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rm-route"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="5s" begin="2.5s" repeatCount="indefinite"/></circle>
+    <circle cx="60" cy="250" r="14" fill="none" stroke="var(--ill-risk)" stroke-width="2" opacity="0"><animate attributeName="r" values="14;30" dur="2.8s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.8s" begin="0s" repeatCount="indefinite"/></circle>
   </g>
 </svg>
             </div>
@@ -518,6 +547,14 @@
     <text x="240" y="279">Server</text>
     <text x="389" y="279">Produktion</text>
   </g>
+
+  <g id="tp-flow" class="flow">
+    <circle r="3" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.4s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#tp-l-net-fw"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.4s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.2s" begin="0.7s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#tp-l-fw-sw"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.2s" begin="0.7s" repeatCount="indefinite"/></circle>
+    <circle r="3" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="0.3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#tp-l-sw-office"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="0.3s" repeatCount="indefinite"/></circle>
+    <circle r="3" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="1.6s" begin="1.1s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#tp-l-sw-server"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.6s" begin="1.1s" repeatCount="indefinite"/></circle>
+    <circle r="3" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="1.7s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#tp-l-sw-ot"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="1.7s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>
             </div>
           </article>
@@ -586,6 +623,15 @@
       <path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 226h48M357 238h28"/>
     </g>
   </g>
+
+  <g id="cg-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#cg-e-storage"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="0.6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#cg-e-iam"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.1s" begin="1.2s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#cg-e-db"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.1s" begin="1.2s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.5s" begin="1.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#cg-e-saas"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.5s" begin="1.8s" repeatCount="indefinite"/></circle>
+    <circle cx="80" cy="46" r="10" fill="none" stroke="var(--ill-risk)" stroke-width="2" opacity="0"><animate attributeName="r" values="10;22" dur="2.4s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.4s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle cx="272" cy="46" r="10" fill="none" stroke="var(--ill-risk)" stroke-width="2" opacity="0"><animate attributeName="r" values="10;22" dur="2.4s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>
             </div>
           </article>
@@ -642,6 +688,11 @@
     <circle cx="340" cy="212" r="5" fill="var(--ill-safe)" stroke="none"/><text x="354" y="216.5" fill="var(--ill-muted)" stroke="none">erledigt</text>
     <circle cx="340" cy="238" r="5" fill="var(--ill-risk)" stroke="none"/><text x="354" y="242.5" fill="var(--ill-muted)" stroke="none">in Prüfung</text>
     <circle cx="340" cy="264" r="5" fill="none" stroke="var(--ill-line)" stroke-width="2"/><text x="354" y="268.5" fill="var(--ill-muted)" stroke="none">offen</text>
+  </g>
+
+  <g id="au-flow" class="flow">
+    <circle r="4" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="4s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#au-audit-path"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="4s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle cx="50" cy="162" r="12" fill="none" stroke="var(--ill-risk)" stroke-width="2" opacity="0"><animate attributeName="r" values="12;24" dur="2.2s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle>
   </g>
 </svg>
             </div>
@@ -716,6 +767,17 @@
     <text x="320" y="204">erkennt &amp; meldet</text>
     <text x="575" y="200">Meldestelle</text>
   </g>
+
+  <g id="aw-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-pe-1-3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.6s" begin="1.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-pe-2-3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.6s" begin="1.0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.2s" begin="0.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-pe-3-4"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.2s" begin="0.5s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.3s" begin="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-pe-3-5"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.3s" begin="1.5s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.5s" begin="0.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-pe-4-r"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.5s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="1.9s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-pe-5-r"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="1.9s" repeatCount="indefinite"/></circle>
+    <circle r="4" fill="var(--ill-risk)" stroke="none" opacity="0"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-phish-path-main"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.2s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="4" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.4s" begin="1.1s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#aw-report-path"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="1.1s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>
             </div>
           </article>
@@ -765,6 +827,14 @@
     <text x="410" y="220">Mensch gibt frei</text>
     <text x="575" y="212">Zielsystem</text>
     <text x="325" y="50">Rückfrage bei Unsicherheit</text>
+  </g>
+
+  <g id="ki-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.6s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.6s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.5s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.5s" begin="1.6s" repeatCount="indefinite"/></circle>
+    <circle r="3" fill="var(--ill-risk)" stroke="none" opacity="0"><animateMotion dur="3.2s" begin="0.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-loop"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></circle>
+    <circle cx="438" cy="118" r="13" fill="none" stroke="var(--ill-safe)" stroke-width="2" opacity="0"><animate attributeName="r" values="13;26" dur="2.6s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.6s" begin="0s" repeatCount="indefinite"/></circle>
   </g>
 </svg>
             </div>
@@ -1041,6 +1111,15 @@
     <text x="118" y="410">Herrenberg</text>
     <text x="440" y="252">Esslingen</text>
     <text x="354" y="56">Ludwigsburg</text>
+  </g>
+
+  <g id="rg-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-stuttgart"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="1.4s" begin="0.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-sindelfingen"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.4s" begin="0.5s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.6s" begin="1.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-leonberg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.6s" begin="1.0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.8s" begin="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-herrenberg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.8s" begin="1.5s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="3.4s" begin="2.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-esslingen"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.4s" begin="2.0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.6s" begin="2.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-ludwigsburg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.6s" begin="2.5s" repeatCount="indefinite"/></circle>
   </g>
 </svg>
           <figcaption>Schematische Darstellung, nicht maßstäblich.</figcaption>

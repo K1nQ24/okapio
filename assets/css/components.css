@@ -700,3 +700,6 @@
 .site-footer--compact { padding-block: var(--space-8) var(--space-6); }
 .site-footer--compact .site-footer__bottom { margin-block-start: 0; padding-block-start: 0; border: 0; }
 .footer-list--inline { display: flex; flex-wrap: wrap; gap: 0 var(--space-5); }
+
+/* Dauerbewegung in Illustrationen (Pakete/Impulse, SMIL): standardmäßig aus; motion.css blendet sie ein. */
+.flow { display: none; }

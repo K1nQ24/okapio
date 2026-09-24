@@ -47,4 +47,13 @@
     <text x="575" y="212">Zielsystem</text>
     <text x="325" y="50">Rückfrage bei Unsicherheit</text>
   </g>
+
+  <!-- Dauerbewegung (SMIL): Datenpakete entlang der Linien, Impulse an Risiko-/Schutzpunkten. Sichtbar nur mit JS, ohne reduzierte Bewegung, nach dem Aufbau (motion.css). -->
+  <g id="ki-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.6s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.6s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-ink)" stroke="none" opacity="0"><animateMotion dur="1.5s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.5s" begin="1.6s" repeatCount="indefinite"/></circle>
+    <circle r="3" fill="var(--ill-risk)" stroke="none" opacity="0"><animateMotion dur="3.2s" begin="0.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#ki-e-loop"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></circle>
+    <circle cx="438" cy="118" r="13" fill="none" stroke="var(--ill-safe)" stroke-width="2" opacity="0"><animate attributeName="r" values="13;26" dur="2.6s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0" dur="2.6s" begin="0s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>

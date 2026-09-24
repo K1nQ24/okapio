@@ -218,6 +218,25 @@
   #rc-labels  { --d: 1.2s; }
   .js [data-illustration] :is(#rc-risk-1, #rc-risk-2) { transform-box: fill-box; transform-origin: center; }
 
+  /* --- Dauerbewegung: Datenpakete laufen entlang der Linien, Risiko- und Schutzpunkte senden Impulse.
+     Zweck: Die Grafiken zeigen laufende Systeme, nicht nur einen einmaligen Aufbau. Start nach dem Aufbau. */
+  .js [data-illustration].is-playing .flow { display: inline; animation: mo-fade var(--dur-slow) var(--ease-out) var(--flow-d, 2.5s) both; }
+  #hg-flow { --flow-d: 1.6s; }
+  #hg-flow-attack { --flow-d: 8.6s; }
+  #rm-flow { --flow-d: 2.6s; }
+  #tp-flow { --flow-d: 2.2s; }
+  #cg-flow { --flow-d: 2.6s; }
+  #au-flow { --flow-d: 2.4s; }
+  #aw-flow { --flow-d: 5.2s; }
+  #ki-flow { --flow-d: 3.6s; }
+  #rc-flow { --flow-d: 2.6s; }
+  #rg-flow { --flow-d: 3.2s; }
+  /* Gestrichelte Wege „fließen" dauerhaft (verworfener Zweig, gesperrte Verbindung, Phishing-Wege). */
+  @keyframes mo-march { to { stroke-dashoffset: -22; } }
+  .js [data-illustration].is-playing :is(#rm-branch-rejected, #tp-blocked-path, #aw-phish-path-1, #aw-phish-path-2) {
+    animation: mo-fade var(--dur-el) var(--ease-out) var(--d, 0s) both, mo-march 1.4s linear var(--d, 0s) infinite;
+  }
+
   /* --- Streifen-Trenner und Hero-Textur: Streifen wachsen aus der Kante ---
      Zweck: das Markenmotiv „baut sich auf", statt statisch zu liegen. */
   .js .divider [data-stagger="grow"] > * { transform: scaleY(0); transform-box: fill-box; transform-origin: top; }
