@@ -436,6 +436,23 @@
   --shadow-header: 0 1px 0 rgb(10 22 40 / 0.08);
 }
 
+/* ---------- HELLER MODUS: Header und Hero in hellerem Tiefblau ----------
+   Der Einstieg wirkt freundlicher als die übrigen night-Bänder. Kontraste auf #1d3456:
+   Text 12,3:1 · gedämpft 5,9:1 · Akzent-Text 6,0:1 · starke Linie (mist-400) 4,4:1. */
+:root:not([data-mode="dark"]) .site-header,
+:root:not([data-mode="dark"]) .hero {
+  --c-bg: #1d3456;
+  --c-bg-alt: #172b48;
+  --c-surface: #243d63;
+  --c-surface-2: #2c4870;
+  --c-line: #37527c;
+  --c-line-strong: var(--mist-400);
+  --ill-surface: #243d63;
+  --ill-surface-2: #2c4870;
+  --ill-line: var(--mist-400);
+  --ill-line-soft: #37527c;
+}
+
 /* ---------- DUNKELMODUS (Schalter): alle drei Themen werden dunkle Dämmerungs-Töne ----------
    Gemeinsame Basis für root, light, sand und dark; danach Abstufung je Thema. */
 :root[data-mode="dark"],
