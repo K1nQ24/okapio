@@ -105,7 +105,7 @@
     function sync() {
       btn.setAttribute('aria-pressed', isDark() ? 'true' : 'false');
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) { meta.setAttribute('content', isDark() ? '#111d27' : '#e5eef2'); }
+      if (meta) { meta.setAttribute('content', isDark() ? '#060e1a' : '#0a1628'); }
     }
     function apply() {
       if (isDark()) { root.removeAttribute('data-mode'); } else { root.setAttribute('data-mode', 'dark'); }

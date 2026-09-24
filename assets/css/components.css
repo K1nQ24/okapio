@@ -160,7 +160,7 @@
 /* Größe folgt der Spaltenbreite (Container-Query-Einheiten): die drei Zeilen passen immer, ohne Zufallsumbruch. */
 .hero__copy { container-type: inline-size; }
 .hero__title { display: grid; gap: var(--space-1); font-size: var(--fs-h1); }
-@supports (font-size: 1cqi) { .hero__title { font-size: clamp(2.6rem, 10.2cqi, 5.6rem); } }
+@supports (font-size: 1cqi) { .hero__title { font-size: clamp(2.4rem, 9.5cqi, 5.1rem); } }
 .hero__line { display: block; }
 .hero__kicker {
   display: inline-flex;
@@ -183,7 +183,7 @@
 
 /* „sichtbar": Tarnstreifen liegen über dem Wort und lösen sich auf (Kernmetapher der Marke).
    Endzustand (ohne JS / reduzierte Bewegung): Wort frei, Streifen eingefahren. */
-.hero__camo { position: relative; display: inline-block; }
+.hero__camo { position: relative; display: inline-block; color: var(--c-accent-text); }
 .hero__camo::before,
 .hero__camo::after {
   content: "";
@@ -324,7 +324,7 @@
 /* ---------- Warum okapio ---------- */
 .why-item { display: grid; grid-template-columns: var(--col-num) 1fr; gap: var(--space-5); align-items: start; padding-block: var(--space-6); border-block-start: var(--line-w) solid var(--c-line); }
 .why-item:last-child { border-block-end: var(--line-w) solid var(--c-line); }
-.why-item__num { font-family: var(--font-display); font-style: italic; font-weight: var(--fw-accent); font-size: var(--fs-h2); line-height: 0.9; letter-spacing: var(--ls-display); color: var(--c-accent-text); }
+.why-item__num { font-family: var(--font-mono); font-weight: var(--fw-medium); font-size: var(--fs-h3); line-height: 0.9; letter-spacing: var(--ls-display); color: var(--c-accent-text); }
 .why-item h3 { margin-block-end: var(--space-3); }
 .why-item p { color: var(--c-text-muted); }
 
@@ -363,7 +363,7 @@
   }
 }
 .process__meter-label { grid-column: 1 / -1; font-family: var(--font-mono); font-size: var(--fs-kicker); letter-spacing: var(--ls-kicker); text-transform: uppercase; color: var(--c-text-muted); }
-.process__meter-now { font-family: var(--font-display); font-style: italic; font-weight: var(--fw-accent); font-size: var(--fs-num); line-height: 0.85; color: var(--c-accent-text); font-variant-numeric: lining-nums tabular-nums; }
+.process__meter-now { font-family: var(--font-display); font-weight: var(--fw-display); font-size: var(--fs-num); letter-spacing: var(--ls-display); line-height: 0.85; color: var(--c-accent-text); font-variant-numeric: lining-nums tabular-nums; }
 .process__meter-total { font-family: var(--font-mono); font-size: var(--fs-lead); color: var(--c-text-muted); }
 .process__meter-track { grid-column: 1 / -1; display: block; block-size: var(--line-w-strong); background: var(--c-line); border-radius: var(--r-pill); overflow: hidden; }
 .process__meter-fill { display: block; block-size: 100%; background: var(--c-accent); transform-origin: left; transform: scaleX(var(--step-progress, 1)); }
@@ -689,7 +689,7 @@
 }
 .fab--mode { inset-inline-start: var(--space-5); background: var(--c-surface); color: var(--c-text); }
 .fab--mode:hover { border-color: var(--c-line-strong); }
-.fab--whatsapp { inset-inline-end: var(--space-5); background: var(--wa-green); color: var(--bone-50); border-color: var(--wa-green); }
+.fab--whatsapp { inset-inline-end: var(--space-5); background: var(--wa-green); color: var(--frost-50); border-color: var(--wa-green); }
 .fab--whatsapp:hover { background: var(--wa-green-hover); border-color: var(--wa-green-hover); }
 .fab__icon { grid-area: 1 / 1; inline-size: 1.4rem; block-size: 1.4rem; }
 .fab__icon--sun, .fab__icon--moon { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }

@@ -35,7 +35,7 @@ ul, ol { padding: 0; list-style: none; }
 
 img, svg { display: block; max-width: 100%; height: auto; }
 
-/* ---------- Überschriften: Newsreader (Serif) ---------- */
+/* ---------- Überschriften: Space Grotesk ---------- */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: var(--fw-heading);
@@ -49,15 +49,9 @@ h2 { font-size: var(--fs-h2); font-weight: var(--fw-display); line-height: var(-
 h3 { font-size: var(--fs-h3); }
 h4 { font-size: var(--fs-h4); }
 
-/* Akzentwort in Überschriften: kursive Newsreader in Terrakotta.
-   Typografisches Leitmotiv: der zweite Teil jeder Sektionsüberschrift trägt die Aussage. */
-.h-accent {
-  font-style: italic;
-  font-weight: var(--fw-accent);
-  color: var(--c-accent-text);
-  letter-spacing: -0.01em;
-  padding-inline-end: 0.04em;   /* Überhang der Kursiven nicht abschneiden */
-}
+/* Zweiter Teil einer Sektionsüberschrift: gedämpfte Textfarbe. Typografisches Leitmotiv:
+   Aussage in voller Farbe, Einordnung zurückgenommen. (Kontrast ≥ 7:1 auf allen Flächen.) */
+.h-accent { color: var(--c-text-muted); }
 
 p { max-inline-size: var(--measure); text-wrap: pretty; }
 
@@ -76,7 +70,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: var(--r-xs);
 }
 
-::selection { background: var(--clay-600); color: var(--bone-50); }
+::selection { background: var(--clay-600); color: var(--frost-50); }
 
 /* ---------- Skip-Link ---------- */
 .skip-link {
@@ -85,7 +79,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   inset-block-start: var(--space-3);
   z-index: var(--z-skip);
   padding: var(--space-3) var(--space-5);
-  background: var(--bone-50);
+  background: var(--frost-50);
   color: var(--ink-900);
   font-weight: var(--fw-bold);
   border-radius: var(--r-pill);
@@ -103,7 +97,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 
-/* Kicker: technische Marke in Geist Mono, mit Linie davor */
+/* Kicker: technische Marke in JetBrains Mono, mit Linie davor */
 .kicker {
   display: inline-flex;
   align-items: center;
@@ -143,5 +137,5 @@ button, input, textarea, select { font: inherit; color: inherit; }
 /* Druck: Hintergründe neutral */
 @media print {
   .site-header, .skip-link, .divider, .hero__stripes, .site-footer__mark { display: none !important; }
-  body { background: var(--bone-50); color: var(--ink-900); }
+  body { background: var(--frost-50); color: var(--ink-900); }
 }

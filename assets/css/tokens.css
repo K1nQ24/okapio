@@ -7,87 +7,81 @@
    ========================================================================== */
 
 /* ---------- Schriften (self-hosted, Latin-Subset, OFL) ----------
-   Newsreader: Überschriften (optische Größe mit fontTools auf 36 fixiert, wght 400–700; Kursiv 400–600 für Akzentwörter).
-   Hanken Grotesk: Fließtext und Bedienelemente (wght 400–700).
-   Geist Mono: technische Labels, Nummern, Kicker (wght 400–600).                                              */
+   Space Grotesk: Überschriften (wght 400–700) – technisch, mit eigenem Charakter.
+   Inter: Fließtext und Bedienelemente (wght 400–700).
+   JetBrains Mono: technische Labels, Nummern, Kicker (wght 400–600).
+   Alle Dateien liegen auf dem eigenen Server; es gibt keine Anfragen an Google oder andere Dritte. */
 @font-face {
-  font-family: "Newsreader";
-  src: url("../fonts/newsreader-latin-wght-normal.woff2") format("woff2");
+  font-family: "Space Grotesk";
+  src: url("../fonts/space-grotesk-latin-wght-normal.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Newsreader";
-  src: url("../fonts/newsreader-latin-wght-italic.woff2") format("woff2");
-  font-weight: 400 600;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Hanken Grotesk";
-  src: url("../fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Geist Mono";
-  src: url("../fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
   font-weight: 400 600;
   font-style: normal;
   font-display: swap;
 }
 
 /* Fallback-Schriften mit Metrik-Anpassung gegen Layoutsprung beim Schriftwechsel
-   (Zielwerte mit fontTools gemessen: hhea/OS2-Metriken und buchstabengewichtete Durchschnittsbreite). */
+   (Zielwerte mit fontTools gemessen: OS/2-Metriken und buchstabengewichtete Durchschnittsbreite). */
 @font-face {
-  font-family: "Newsreader Fallback";
-  src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Georgia");
-  size-adjust: 102.8%;
-  ascent-override: 71.5%;
-  descent-override: 25.8%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: "Hanken Fallback";
+  font-family: "Space Grotesk Fallback";
   src: local("Arial"), local("ArialMT"), local("Helvetica");
-  size-adjust: 100.2%;
-  ascent-override: 99.8%;
-  descent-override: 30.2%;
+  size-adjust: 109%;
+  ascent-override: 90.3%;
+  descent-override: 26.8%;
   line-gap-override: 0%;
 }
 @font-face {
-  font-family: "Geist Mono Fallback";
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("ArialMT"), local("Helvetica");
+  size-adjust: 106.3%;
+  ascent-override: 91.1%;
+  descent-override: 22.7%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "JetBrains Mono Fallback";
   src: local("Courier New"), local("CourierNewPSMT");
   size-adjust: 100%;
-  ascent-override: 100.5%;
-  descent-override: 29.5%;
+  ascent-override: 102%;
+  descent-override: 30%;
   line-gap-override: 0%;
 }
 
 :root {
   color-scheme: light;   /* Standard: hell. Dunkelmodus nur per Schalter (html[data-mode="dark"]), gespeichert im Browser. */
 
-  /* ---------- Primitive: Palette ---------- */
-  /* Nacht (dunkle Basis) */
-  --night-950: #0a1117;
-  --night-900: #0f1a23;
-  --night-800: #15232e;
-  --night-700: #1d303d;
-  --night-600: #2b4252;
-  /* Knochen (warmes Off-White) */
-  --bone-50: #fbf8f3;
-  --bone-100: #f5f0e7;
-  --bone-200: #ebe3d5;
-  --bone-300: #d8cdb9;
+  /* ---------- Primitive: Palette „Tiefblau & Frost" ---------- */
+  /* Nacht (Tiefblau, dunkle Basis) */
+  --night-950: #060e1a;
+  --night-900: #0a1628;
+  --night-800: #11213a;
+  --night-700: #1a2d4a;
+  --night-600: #2a4062;
+  /* Frost (kühles Off-White, helle Basis) */
+  --frost-50: #fcfdfe;
+  --frost-100: #f3f5f8;
+  --frost-200: #e7ebf1;
+  --frost-300: #d3dae4;
   /* Tinte (Text auf Hell) */
-  --ink-900: #0f1a23;
-  --ink-700: #3a4954;
-  --ink-600: #4b5a65;
+  --ink-900: #0a1628;
+  --ink-700: #3b4a5e;
+  --ink-600: #4b5b70;
   /* Nebel (Text/Linien auf Dunkel) */
-  --mist-300: #a9b7c0;
-  --mist-400: #8fa0ab;
+  --mist-300: #a6b4c7;
+  --mist-400: #8a9bb2;
   /* Okapi-Terrakotta (Hauptakzent: Risiko, Aktion) */
   --clay-300: #f0a07c;
   --clay-500: #d2603a;
@@ -98,19 +92,19 @@
   --sig-500: #3fb3a3;
   --sig-700: #1b6f65;
   /* Linien (Grafik, ≥ 3:1 gegen Fläche) */
-  --slate-400: #6b8595;
-  --slate-500: #6a7780;
-  /* Dunst (kühle helle Flächen; ersetzt im hellen Modus die früheren Nacht-Sektionen) */
-  --haze-50: #f3f7f9;
-  --haze-100: #e5eef2;
-  --haze-200: #d3e1e8;
-  --haze-300: #bccdd6;
-  /* Dämmerung (weichere, hellere Dunkelflächen für den Dunkelmodus) */
-  --dusk-950: #111d27;
-  --dusk-900: #16242f;
-  --dusk-800: #1d2f3c;
-  --dusk-700: #26404f;
-  --dusk-600: #37536a;
+  --slate-400: #6f86a0;
+  --slate-500: #66758a;
+  /* Dunst (kühle Tönung: „dark"-Sektionen im hellen Modus) */
+  --haze-50: #f7f9fc;
+  --haze-100: #e8eef6;
+  --haze-200: #d9e3ef;
+  --haze-300: #c2cfdf;
+  /* Dämmerung (Flächen im Dunkelmodus) */
+  --dusk-950: #07101e;
+  --dusk-900: #0c1a2e;
+  --dusk-800: #13243c;
+  --dusk-700: #1b3050;
+  --dusk-600: #2b4468;
   /* WhatsApp (Kontakt-Button): weißes Symbol auf dieser Fläche ≥ 4,5:1 */
   --wa-green: #14804a;
   --wa-green-hover: #0f6a3d;
@@ -124,13 +118,13 @@
   --placeholder-fg: var(--night-900);       /* 8.4:1 */
 
   /* ---------- Semantik: HELLES Thema (Standard) ---------- */
-  --c-bg: var(--bone-100);
-  --c-bg-alt: var(--bone-200);
-  --c-surface: var(--bone-50);
-  --c-surface-2: var(--bone-200);
+  --c-bg: var(--frost-100);
+  --c-bg-alt: var(--frost-200);
+  --c-surface: var(--frost-50);
+  --c-surface-2: var(--frost-200);
   --c-text: var(--ink-900);
   --c-text-muted: var(--ink-700);
-  --c-line: var(--bone-300);          /* dekorativ */
+  --c-line: var(--frost-300);          /* dekorativ */
   --c-line-strong: var(--slate-500);  /* Grafik/Bedienelemente ≥ 3:1 */
   --c-accent: var(--clay-600);        /* Fläche/Grafik */
   --c-accent-text: var(--clay-700);   /* Text-Akzent */
@@ -138,7 +132,7 @@
   --c-focus: var(--clay-600);
   --c-btn-bg: var(--clay-600);
   --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--bone-50);       /* 4.9:1 auf clay-600, 6.4:1 auf clay-700 */
+  --c-btn-text: var(--frost-50);       /* 4.9:1 auf clay-600, 6.4:1 auf clay-700 */
   --c-btn-ghost-border: var(--ink-900);
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
@@ -146,46 +140,45 @@
 
   /* Illustrationen (SVGs verwenden ausschließlich diese Variablen) */
   --ill-line: var(--slate-500);       /* Kanten, Konturen */
-  --ill-line-soft: var(--bone-300);   /* Raster, Hilfslinien */
+  --ill-line-soft: var(--frost-300);   /* Raster, Hilfslinien */
   --ill-ink: var(--ink-900);          /* Kontur-Akzent */
-  --ill-surface: var(--bone-50);      /* Knoten-/Kartenfüllung */
-  --ill-surface-2: var(--bone-200);
+  --ill-surface: var(--frost-50);      /* Knoten-/Kartenfüllung */
+  --ill-surface-2: var(--frost-200);
   --ill-risk: var(--clay-600);
   --ill-safe: var(--sig-700);
   --ill-muted: var(--ink-600);
 
   /* ---------- Typografie ---------- */
-  --font-display: "Newsreader", "Newsreader Fallback", Georgia, "Times New Roman", serif;
-  --font-text: "Hanken Grotesk", "Hanken Fallback", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-display: "Space Grotesk", "Space Grotesk Fallback", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Inter", "Inter Fallback", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-  --fw-display: 500;      /* H1/H2: ruhig, nicht laut */
-  --fw-heading: 600;      /* H3/H4: etwas kräftiger für kleinere Größen */
-  --fw-accent: 400;       /* kursives Akzentwort */
+  --fw-display: 600;      /* H1/H2 */
+  --fw-heading: 600;      /* H3/H4 */
 
   /* Fluide Skala (rem; min 12 px) */
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-base: 1.0625rem;
   --fs-lead: clamp(1.125rem, 0.5vw + 1rem, 1.375rem);
-  --fs-h4: 1.1875rem;
-  --fs-h3: clamp(1.45rem, 0.9vw + 1.1rem, 2rem);
-  --fs-h2: clamp(2.35rem, 2.9vw + 1.15rem, 4.35rem);
-  --fs-h1: clamp(2.8rem, 4.3vw + 1.05rem, 5.9rem);
-  --fs-num: clamp(3.25rem, 5vw + 1.25rem, 6.5rem);
+  --fs-h4: 1.125rem;
+  --fs-h3: clamp(1.3rem, 0.8vw + 1rem, 1.75rem);
+  --fs-h2: clamp(2.05rem, 2.5vw + 1rem, 3.75rem);
+  --fs-h1: clamp(2.5rem, 3.8vw + 1rem, 5.1rem);
+  --fs-num: clamp(3rem, 4.5vw + 1.1rem, 5.75rem);
   --fs-kicker: 0.75rem;
   --fs-mono: 0.8125rem;
 
-  --lh-display: 1.02;
-  --lh-heading: 1.12;
+  --lh-display: 1.04;
+  --lh-heading: 1.15;
   --lh-text: 1.65;
-  --ls-display: -0.028em;
-  --ls-heading: -0.012em;
-  --ls-kicker: 0.14em;
-  --ls-mono: 0.02em;
+  --ls-display: -0.035em;
+  --ls-heading: -0.018em;
+  --ls-kicker: 0.1em;
+  --ls-mono: 0;
   --measure: 62ch;
 
   /* ---------- Abstände (4-px-Basis, rem) ---------- */
@@ -215,9 +208,9 @@
   --r-pill: 999px;
 
   /* ---------- Schatten ---------- */
-  --shadow-1: 0 1px 2px rgb(10 17 23 / 0.06), 0 6px 16px -8px rgb(10 17 23 / 0.16);
-  --shadow-2: 0 2px 4px rgb(10 17 23 / 0.06), 0 22px 44px -20px rgb(10 17 23 / 0.28);
-  --shadow-header: 0 1px 0 rgb(251 248 243 / 0.08);
+  --shadow-1: 0 1px 2px rgb(10 22 40 / 0.06), 0 6px 16px -8px rgb(10 22 40 / 0.16);
+  --shadow-2: 0 2px 4px rgb(10 22 40 / 0.06), 0 22px 44px -20px rgb(10 22 40 / 0.28);
+  --shadow-header: 0 1px 0 rgb(252 253 254 / 0.08);
 
   /* ---------- Bewegung ---------- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -263,7 +256,7 @@
   --measure-card: 36rem;
   --measure-note: 60ch;
   --measure-label: 22ch;
-  --measure-h2: 18ch;
+  --measure-h2: 20ch;
   --measure-h1: 12em;
   --measure-section: 48rem;
   --w-hero-stripes: min(70vw, 56rem);
@@ -310,7 +303,7 @@
   --c-accent-glow: color-mix(in srgb, var(--c-accent) 9%, transparent);
   --c-text-tint: color-mix(in srgb, var(--c-text) 6%, transparent);
   --c-grid: color-mix(in srgb, var(--c-text) 7%, transparent);
-  --c-glass: color-mix(in srgb, var(--c-bg) 84%, transparent);
+  --c-glass: color-mix(in srgb, var(--c-bg) 93%, transparent);
   --stripe-color: var(--c-stripe);
   --stripes: repeating-linear-gradient(
     90deg,
@@ -334,13 +327,13 @@
 /* ---------- Semantik: HELLES Thema explizit (für helle Blöcke in dunklen Sektionen) ---------- */
 [data-theme="light"] {
   color-scheme: light;
-  --c-bg: var(--bone-100);
-  --c-bg-alt: var(--bone-200);
-  --c-surface: var(--bone-50);
-  --c-surface-2: var(--bone-200);
+  --c-bg: var(--frost-100);
+  --c-bg-alt: var(--frost-200);
+  --c-surface: var(--frost-50);
+  --c-surface-2: var(--frost-200);
   --c-text: var(--ink-900);
   --c-text-muted: var(--ink-700);
-  --c-line: var(--bone-300);
+  --c-line: var(--frost-300);
   --c-line-strong: var(--slate-500);
   --c-accent: var(--clay-600);
   --c-accent-text: var(--clay-700);
@@ -348,21 +341,21 @@
   --c-focus: var(--clay-600);
   --c-btn-bg: var(--clay-600);
   --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--bone-50);
+  --c-btn-text: var(--frost-50);
   --c-btn-ghost-border: var(--ink-900);
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
   --c-stripe: var(--ink-900);
   --ill-line: var(--slate-500);
-  --ill-line-soft: var(--bone-300);
+  --ill-line-soft: var(--frost-300);
   --ill-ink: var(--ink-900);
-  --ill-surface: var(--bone-50);
-  --ill-surface-2: var(--bone-200);
+  --ill-surface: var(--frost-50);
+  --ill-surface-2: var(--frost-200);
   --ill-risk: var(--clay-600);
   --ill-safe: var(--sig-700);
   --ill-muted: var(--ink-600);
-  --shadow-1: 0 1px 2px rgb(10 17 23 / 0.06), 0 6px 16px -8px rgb(10 17 23 / 0.16);
-  --shadow-2: 0 2px 4px rgb(10 17 23 / 0.06), 0 22px 44px -20px rgb(10 17 23 / 0.28);
+  --shadow-1: 0 1px 2px rgb(10 22 40 / 0.06), 0 6px 16px -8px rgb(10 22 40 / 0.16);
+  --shadow-2: 0 2px 4px rgb(10 22 40 / 0.06), 0 22px 44px -20px rgb(10 22 40 / 0.28);
 }
 
 /* ---------- Semantik: DUNKLES Thema ----------
@@ -375,7 +368,7 @@
   --c-bg-alt: var(--night-950);
   --c-surface: var(--night-800);
   --c-surface-2: var(--night-700);
-  --c-text: var(--bone-50);
+  --c-text: var(--frost-50);
   --c-text-muted: var(--mist-300);
   --c-line: var(--night-600);
   --c-line-strong: var(--slate-400);
@@ -385,15 +378,15 @@
   --c-focus: var(--sig-300);
   --c-btn-bg: var(--clay-600);
   --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--bone-50);
-  --c-btn-ghost-border: var(--bone-50);
+  --c-btn-text: var(--frost-50);
+  --c-btn-ghost-border: var(--frost-50);
   --c-error: var(--state-error-text-dark);
   --c-ok: var(--state-ok-text-dark);
-  --c-stripe: var(--bone-50);
+  --c-stripe: var(--frost-50);
 
   --ill-line: var(--slate-400);
   --ill-line-soft: var(--night-600);
-  --ill-ink: var(--bone-50);
+  --ill-ink: var(--frost-50);
   --ill-surface: var(--night-800);
   --ill-surface-2: var(--night-700);
   --ill-risk: var(--clay-500);
@@ -404,9 +397,9 @@
   --shadow-2: 0 2px 4px rgb(0 0 0 / 0.3), 0 22px 44px -20px rgb(0 0 0 / 0.7);
 }
 
-/* ---------- HELLER MODUS (Standard): „dark"-Sektionen werden zu hellen Dunst-Flächen ----------
-   Die Themen-Namen bleiben (dark | light | sand), damit das Markup unverändert bleibt.
-   „dark" bedeutet im hellen Modus: kühle Akzentfläche (Dunst). Höhere Spezifität als [data-theme="dark"]. */
+/* ---------- HELLER MODUS (Standard): „dark"-Sektionen werden zu kühl getönten Flächen ----------
+   Gemischter Grundton: Header, Hero, Werkzeuge, Kontakt und Footer tragen „night" und bleiben dunkel;
+   „dark" bedeutet im hellen Modus: kühle Tönung (Dunst). Höhere Spezifität als [data-theme="dark"]. */
 :root:not([data-mode="dark"]) [data-theme="dark"] {
   color-scheme: light;
   --c-bg: var(--haze-100);
@@ -423,7 +416,7 @@
   --c-focus: var(--clay-600);
   --c-btn-bg: var(--clay-600);
   --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--bone-50);
+  --c-btn-text: var(--frost-50);
   --c-btn-ghost-border: var(--ink-900);
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
@@ -438,9 +431,9 @@
   --ill-safe: var(--sig-700);
   --ill-muted: var(--ink-600);
 
-  --shadow-1: 0 1px 2px rgb(10 17 23 / 0.06), 0 6px 16px -8px rgb(10 17 23 / 0.16);
-  --shadow-2: 0 2px 4px rgb(10 17 23 / 0.06), 0 22px 44px -20px rgb(10 17 23 / 0.28);
-  --shadow-header: 0 1px 0 rgb(15 26 35 / 0.08);
+  --shadow-1: 0 1px 2px rgb(10 22 40 / 0.06), 0 6px 16px -8px rgb(10 22 40 / 0.16);
+  --shadow-2: 0 2px 4px rgb(10 22 40 / 0.06), 0 22px 44px -20px rgb(10 22 40 / 0.28);
+  --shadow-header: 0 1px 0 rgb(10 22 40 / 0.08);
 }
 
 /* ---------- DUNKELMODUS (Schalter): alle drei Themen werden dunkle Dämmerungs-Töne ----------
@@ -454,7 +447,7 @@
   --c-bg-alt: var(--dusk-950);
   --c-surface: var(--dusk-800);
   --c-surface-2: var(--dusk-700);
-  --c-text: var(--bone-50);
+  --c-text: var(--frost-50);
   --c-text-muted: var(--mist-300);
   --c-line: var(--dusk-600);
   --c-line-strong: var(--mist-400);   /* ≥ 4:1 auf dusk-700 … dusk-950 */
@@ -464,15 +457,15 @@
   --c-focus: var(--sig-300);
   --c-btn-bg: var(--clay-600);
   --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--bone-50);
-  --c-btn-ghost-border: var(--bone-50);
+  --c-btn-text: var(--frost-50);
+  --c-btn-ghost-border: var(--frost-50);
   --c-error: var(--state-error-text-dark);
   --c-ok: var(--state-ok-text-dark);
-  --c-stripe: var(--bone-50);
+  --c-stripe: var(--frost-50);
 
   --ill-line: var(--mist-400);
   --ill-line-soft: var(--dusk-600);
-  --ill-ink: var(--bone-50);
+  --ill-ink: var(--frost-50);
   --ill-surface: var(--dusk-800);
   --ill-surface-2: var(--dusk-700);
   --ill-risk: var(--clay-500);
@@ -481,7 +474,7 @@
 
   --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 16px -8px rgb(0 0 0 / 0.5);
   --shadow-2: 0 2px 4px rgb(0 0 0 / 0.3), 0 22px 44px -20px rgb(0 0 0 / 0.7);
-  --shadow-header: 0 1px 0 rgb(251 248 243 / 0.08);
+  --shadow-header: 0 1px 0 rgb(252 253 254 / 0.08);
 }
 :root[data-mode="dark"] [data-theme="sand"] {
   --c-bg: var(--dusk-800);
@@ -506,15 +499,15 @@
   --c-surface-2: var(--night-700);
 }
 
-/* Sand-Variante des hellen Themas (Sektionswechsel ohne Dunkel) */
+/* „sand": zweite helle Fläche (kühles Grau, Name aus historischen Gründen) für Sektionswechsel ohne Dunkel */
 [data-theme="sand"] {
-  --c-bg: var(--bone-200);
-  --c-bg-alt: var(--bone-100);
-  --c-surface: var(--bone-50);
-  --c-line: var(--bone-300);
+  --c-bg: var(--frost-200);
+  --c-bg-alt: var(--frost-100);
+  --c-surface: var(--frost-50);
+  --c-line: var(--frost-300);
   --c-line-strong: var(--slate-500);
   --c-text-muted: var(--ink-700);
-  --ill-surface: var(--bone-50);
-  --ill-surface-2: var(--bone-100);
-  --ill-line-soft: var(--bone-300);
+  --ill-surface: var(--frost-50);
+  --ill-surface-2: var(--frost-100);
+  --ill-line-soft: var(--frost-300);
 }

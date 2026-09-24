@@ -181,7 +181,7 @@ Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile: **Cybersecurity Böbl
 
 Neue, kurze Texte aus der Überarbeitung. Inhaltlich aus bestehenden Aussagen abgeleitet, keine neuen Fakten.
 
-- Überschriften: Der zweite Teil steht jeweils kursiv (z. B. „Sieben Bereiche. Ein Ziel: *weniger unbekannte Risiken.*"). Wortlaut unverändert.
+- Überschriften: Der zweite Teil steht jeweils in gedämpfter Textfarbe (z. B. „Sieben Bereiche. Ein Ziel: weniger unbekannte Risiken."). Wortlaut unverändert.
 - Vorgehen, Lead: „Sie wissen in jedem Schritt, was passiert, wer es macht und was als Nächstes kommt."
 - Vorgehen, Schrittanzeige (dekorativ, `aria-hidden`): „Schritt 01 / 06"
 - Team, Kontaktwege: „Anrufen" · „E-Mail schreiben"
