@@ -63,6 +63,10 @@ Sequenz: Netz → Mail läuft zu Personen → `#p-3` erkennt (Signal-Ringe expan
 ### `divider-stripes.svg` – `#ill-divider` (dekorativ)
 `#stripes` (113 Balken, hängen vom oberen Rand und lösen sich nach rechts auf). **Animation:** Aufbau per Reveal (`scaleY`, Origin oben) bei Sichtbarkeit. Wiederverwendung gespiegelt per CSS (`transform: scaleY(-1)`).
 
+## Dauerbewegung (`.flow`)
+
+Jede Illustration (außer Streifen, Icons, Logo) enthält am Ende eine Gruppe `class="flow"` mit ID `…-flow` (Hero zusätzlich `hg-flow-attack`). Darin laufen per SMIL (`animateMotion` + `mpath`) kleine Datenpakete entlang vorhandener Pfade (Referenz per `href="#pfad-id"`), und Impulsringe (`animate` auf `r`/`opacity`) markieren Risiko- oder Schutzpunkte. Farben nur `--ill-ink` (Verkehr), `--ill-risk` (Angriff/Finding), `--ill-safe` (geschützt). Die Gruppe ist per CSS standardmäßig ausgeblendet und erscheint erst mit JS, ohne reduzierte Bewegung und nach dem Aufbau (`--flow-d` in motion.css). main.js pausiert die SMIL-Zeit, solange die Grafik nicht sichtbar ist. **Pfad-IDs, auf die sich `.flow` bezieht, nicht umbenennen.**
+
 ## Vom Frontend gesetzte data-Attribute (Auszug)
 
 MOTION greift **nur** auf `data-*` und die obigen IDs zu. Für die Illustrationen setzt FRONTEND am umschließenden Element `data-illustration="<name>"` (`hero`, `roadmap`, `topology`, `cloud`, `audit`, `awareness`, `region`). MOTION startet die Sequenz, wenn das Element sichtbar wird, indem es `is-playing` setzt.

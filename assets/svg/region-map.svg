@@ -52,4 +52,14 @@
     <text x="440" y="252">Esslingen</text>
     <text x="354" y="56">Ludwigsburg</text>
   </g>
+
+  <!-- Dauerbewegung (SMIL): Datenpakete entlang der Linien, Impulse an Risiko-/Schutzpunkten. Sichtbar nur mit JS, ohne reduzierte Bewegung, nach dem Aufbau (motion.css). -->
+  <g id="rg-flow" class="flow">
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-stuttgart"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="1.4s" begin="0.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-sindelfingen"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="1.4s" begin="0.5s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.6s" begin="1.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-leonberg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.6s" begin="1.0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.8s" begin="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-herrenberg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.8s" begin="1.5s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="3.4s" begin="2.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-esslingen"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="3.4s" begin="2.0s" repeatCount="indefinite"/></circle>
+    <circle r="3.5" fill="var(--ill-safe)" stroke="none" opacity="0"><animateMotion dur="2.6s" begin="2.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#rg-r-ludwigsburg"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.6s" begin="2.5s" repeatCount="indefinite"/></circle>
+  </g>
 </svg>

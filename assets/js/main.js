@@ -230,12 +230,18 @@
         el.classList.remove('is-resetting');
       }, FADE);
     }
+    /* SMIL-Dauerbewegung (Pakete, Impulse) nur laufen lassen, solange die Grafik sichtbar ist. */
+    function smil(el, run) {
+      var svg = el.querySelector('svg');
+      if (svg && svg.pauseAnimations) { if (run) { svg.unpauseAnimations(); } else { svg.pauseAnimations(); } }
+    }
     function startLoop(el) {
+      smil(el, true);
       var cycle = CYCLE[el.getAttribute('data-illustration')];
       if (!cycle || el._loop) { return; }
       el._loop = setInterval(function () { if (!document.hidden) { restart(el); } }, cycle);
     }
-    function stopLoop(el) { clearInterval(el._loop); el._loop = null; }
+    function stopLoop(el) { clearInterval(el._loop); el._loop = null; smil(el, false); }
     var illuIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var el = entry.target;
