@@ -183,7 +183,7 @@
 
 /* „sichtbar": Tarnstreifen liegen über dem Wort und lösen sich auf (Kernmetapher der Marke).
    Endzustand (ohne JS / reduzierte Bewegung): Wort frei, Streifen eingefahren. */
-.hero__camo { position: relative; display: inline-block; color: var(--c-accent-text); }
+.hero__camo { position: relative; display: inline-block; color: var(--c-safe); }  /* „sichtbar" = erkannt: Logo-Cyan */
 .hero__camo::before,
 .hero__camo::after {
   content: "";

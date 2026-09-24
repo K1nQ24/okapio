@@ -65,32 +65,36 @@
 
   /* ---------- Primitive: Palette „Tiefblau & Frost" ---------- */
   /* Nacht (Tiefblau, dunkle Basis) */
-  --night-950: #060e1a;
-  --night-900: #0a1628;
-  --night-800: #11213a;
-  --night-700: #1a2d4a;
-  --night-600: #2a4062;
+  --night-950: #000f2b;
+  --night-900: #001842;   /* Logo-Tiefblau */
+  --night-800: #082453;
+  --night-700: #113065;
+  --night-600: #1d3f7a;
   /* Frost (kühles Off-White, helle Basis) */
+  --white: #ffffff;       /* Button-Schrift auf Logo-Blau (4,56:1) */
   --frost-50: #fcfdfe;
   --frost-100: #f3f5f8;
   --frost-200: #e7ebf1;
   --frost-300: #d3dae4;
   /* Tinte (Text auf Hell) */
-  --ink-900: #0a1628;
+  --ink-900: #001842;
   --ink-700: #3b4a5e;
   --ink-600: #4b5b70;
   /* Nebel (Text/Linien auf Dunkel) */
   --mist-300: #a6b4c7;
   --mist-400: #8a9bb2;
-  /* Okapi-Terrakotta (Hauptakzent: Risiko, Aktion) */
-  --clay-300: #f0a07c;
-  --clay-500: #d2603a;
-  --clay-600: #b84a26;
-  --clay-700: #9c3c1b;
-  /* Signal-Teal (Kontrastakzent, NUR für „erkannt / geschützt") */
-  --sig-300: #7fd6c8;
-  --sig-500: #3fb3a3;
-  --sig-700: #1b6f65;
+  /* Logo-Blau (Hauptakzent: Handlung, Risiko, Findings) – Basis #0A6CFF */
+  --blue-300: #6aa8ff;   /* Akzent-Text auf Dunkel */
+  --blue-400: #4d94ff;   /* Grafik auf Dunkel */
+  --blue-500: #0a6cff;   /* Logo-Blau: Buttons, Grafik auf Hell */
+  --blue-600: #005be6;   /* Akzent-Text auf Hell, Hover */
+  /* Logo-Cyan (NUR „erkannt / geschützt" und Hervorhebung auf Dunkel) – Basis #00DAF2 */
+  --cyan-100: #b3f4fb;   /* Platzhalter-Markierung */
+  --cyan-300: #00daf2;   /* Logo-Cyan: auf Dunkel */
+  --cyan-700: #006877;   /* auf Hell (Text/Grafik) */
+  /* Fehler (Formular): gedecktes Rot, klar vom Blau unterscheidbar */
+  --error-300: #ff9aa6;
+  --error-600: #c01f36;
   /* Linien (Grafik, ≥ 3:1 gegen Fläche) */
   --slate-400: #6f86a0;
   --slate-500: #66758a;
@@ -100,22 +104,23 @@
   --haze-200: #d9e3ef;
   --haze-300: #c2cfdf;
   /* Dämmerung (Flächen im Dunkelmodus) */
-  --dusk-950: #07101e;
-  --dusk-900: #0c1a2e;
-  --dusk-800: #13243c;
-  --dusk-700: #1b3050;
-  --dusk-600: #2b4468;
+  --dusk-950: #000c24;
+  --dusk-900: #04183d;
+  --dusk-800: #0b234d;
+  --dusk-700: #132f60;
+  --dusk-600: #234272;
   /* WhatsApp (Kontakt-Button): weißes Symbol auf dieser Fläche ≥ 4,5:1 */
   --wa-green: #14804a;
   --wa-green-hover: #0f6a3d;
 
   /* ---------- Zustände ---------- */
-  --state-error-text: var(--clay-700);      /* auf Hell 6.0:1 */
-  --state-error-text-dark: var(--clay-300); /* auf Dunkel 8.4:1 */
-  --state-ok-text: var(--sig-700);          /* auf Hell 5.3:1 */
-  --state-ok-text-dark: var(--sig-300);
-  --placeholder-bg: var(--clay-300);
-  --placeholder-fg: var(--night-900);       /* 8.4:1 */
+  --state-error-text: var(--error-600);     /* auf Hell ≥ 5,5:1 */
+  --state-error-text-dark: var(--error-300); /* auf Dunkel ≥ 7:1 */
+  --state-ok-text: var(--cyan-700);          /* auf Hell 5.3:1 */
+  --state-ok-text-dark: var(--cyan-300);
+  --placeholder-bg: var(--cyan-100);
+  --placeholder-fg: var(--night-900);       /* 14:1 */
+  --logo-dot: var(--cyan-300);              /* i-Punkt der Wortmarke (Logo steht immer auf Dunkel) */
 
   /* ---------- Semantik: HELLES Thema (Standard) ---------- */
   --c-bg: var(--frost-100);
@@ -126,13 +131,13 @@
   --c-text-muted: var(--ink-700);
   --c-line: var(--frost-300);          /* dekorativ */
   --c-line-strong: var(--slate-500);  /* Grafik/Bedienelemente ≥ 3:1 */
-  --c-accent: var(--clay-600);        /* Fläche/Grafik */
-  --c-accent-text: var(--clay-700);   /* Text-Akzent */
-  --c-safe: var(--sig-700);
-  --c-focus: var(--clay-600);
-  --c-btn-bg: var(--clay-600);
-  --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--frost-50);       /* 4.9:1 auf clay-600, 6.4:1 auf clay-700 */
+  --c-accent: var(--blue-500);        /* Fläche/Grafik */
+  --c-accent-text: var(--blue-600);   /* Text-Akzent */
+  --c-safe: var(--cyan-700);
+  --c-focus: var(--blue-500);
+  --c-btn-bg: var(--blue-500);
+  --c-btn-bg-hover: var(--blue-600);
+  --c-btn-text: var(--white);       /* 4,6:1 auf blue-500, 5,8:1 auf blue-600 */
   --c-btn-ghost-border: var(--ink-900);
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
@@ -144,8 +149,8 @@
   --ill-ink: var(--ink-900);          /* Kontur-Akzent */
   --ill-surface: var(--frost-50);      /* Knoten-/Kartenfüllung */
   --ill-surface-2: var(--frost-200);
-  --ill-risk: var(--clay-600);
-  --ill-safe: var(--sig-700);
+  --ill-risk: var(--blue-500);
+  --ill-safe: var(--cyan-700);
   --ill-muted: var(--ink-600);
 
   /* ---------- Typografie ---------- */
@@ -208,8 +213,8 @@
   --r-pill: 999px;
 
   /* ---------- Schatten ---------- */
-  --shadow-1: 0 1px 2px rgb(10 22 40 / 0.06), 0 6px 16px -8px rgb(10 22 40 / 0.16);
-  --shadow-2: 0 2px 4px rgb(10 22 40 / 0.06), 0 22px 44px -20px rgb(10 22 40 / 0.28);
+  --shadow-1: 0 1px 2px rgb(0 24 66 / 0.06), 0 6px 16px -8px rgb(0 24 66 / 0.16);
+  --shadow-2: 0 2px 4px rgb(0 24 66 / 0.06), 0 22px 44px -20px rgb(0 24 66 / 0.28);
   --shadow-header: 0 1px 0 rgb(252 253 254 / 0.08);
 
   /* ---------- Bewegung ---------- */
@@ -335,13 +340,13 @@
   --c-text-muted: var(--ink-700);
   --c-line: var(--frost-300);
   --c-line-strong: var(--slate-500);
-  --c-accent: var(--clay-600);
-  --c-accent-text: var(--clay-700);
-  --c-safe: var(--sig-700);
-  --c-focus: var(--clay-600);
-  --c-btn-bg: var(--clay-600);
-  --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--frost-50);
+  --c-accent: var(--blue-500);
+  --c-accent-text: var(--blue-600);
+  --c-safe: var(--cyan-700);
+  --c-focus: var(--blue-500);
+  --c-btn-bg: var(--blue-500);
+  --c-btn-bg-hover: var(--blue-600);
+  --c-btn-text: var(--white);
   --c-btn-ghost-border: var(--ink-900);
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
@@ -351,11 +356,11 @@
   --ill-ink: var(--ink-900);
   --ill-surface: var(--frost-50);
   --ill-surface-2: var(--frost-200);
-  --ill-risk: var(--clay-600);
-  --ill-safe: var(--sig-700);
+  --ill-risk: var(--blue-500);
+  --ill-safe: var(--cyan-700);
   --ill-muted: var(--ink-600);
-  --shadow-1: 0 1px 2px rgb(10 22 40 / 0.06), 0 6px 16px -8px rgb(10 22 40 / 0.16);
-  --shadow-2: 0 2px 4px rgb(10 22 40 / 0.06), 0 22px 44px -20px rgb(10 22 40 / 0.28);
+  --shadow-1: 0 1px 2px rgb(0 24 66 / 0.06), 0 6px 16px -8px rgb(0 24 66 / 0.16);
+  --shadow-2: 0 2px 4px rgb(0 24 66 / 0.06), 0 22px 44px -20px rgb(0 24 66 / 0.28);
 }
 
 /* ---------- Semantik: DUNKLES Thema ----------
@@ -372,13 +377,13 @@
   --c-text-muted: var(--mist-300);
   --c-line: var(--night-600);
   --c-line-strong: var(--slate-400);
-  --c-accent: var(--clay-500);
-  --c-accent-text: var(--clay-300);
-  --c-safe: var(--sig-300);
-  --c-focus: var(--sig-300);
-  --c-btn-bg: var(--clay-600);
-  --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--frost-50);
+  --c-accent: var(--blue-400);
+  --c-accent-text: var(--blue-300);
+  --c-safe: var(--cyan-300);
+  --c-focus: var(--cyan-300);
+  --c-btn-bg: var(--blue-500);
+  --c-btn-bg-hover: var(--blue-600);
+  --c-btn-text: var(--white);
   --c-btn-ghost-border: var(--frost-50);
   --c-error: var(--state-error-text-dark);
   --c-ok: var(--state-ok-text-dark);
@@ -389,8 +394,8 @@
   --ill-ink: var(--frost-50);
   --ill-surface: var(--night-800);
   --ill-surface-2: var(--night-700);
-  --ill-risk: var(--clay-500);
-  --ill-safe: var(--sig-300);
+  --ill-risk: var(--blue-400);
+  --ill-safe: var(--cyan-300);
   --ill-muted: var(--mist-300);
 
   --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 16px -8px rgb(0 0 0 / 0.5);
@@ -410,13 +415,13 @@
   --c-text-muted: var(--ink-700);
   --c-line: var(--haze-300);
   --c-line-strong: var(--slate-500);
-  --c-accent: var(--clay-600);
-  --c-accent-text: var(--clay-700);
-  --c-safe: var(--sig-700);
-  --c-focus: var(--clay-600);
-  --c-btn-bg: var(--clay-600);
-  --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--frost-50);
+  --c-accent: var(--blue-500);
+  --c-accent-text: var(--blue-600);
+  --c-safe: var(--cyan-700);
+  --c-focus: var(--blue-500);
+  --c-btn-bg: var(--blue-500);
+  --c-btn-bg-hover: var(--blue-600);
+  --c-btn-text: var(--white);
   --c-btn-ghost-border: var(--ink-900);
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
@@ -427,27 +432,13 @@
   --ill-ink: var(--ink-900);
   --ill-surface: var(--haze-50);
   --ill-surface-2: var(--haze-200);
-  --ill-risk: var(--clay-600);
-  --ill-safe: var(--sig-700);
+  --ill-risk: var(--blue-500);
+  --ill-safe: var(--cyan-700);
   --ill-muted: var(--ink-600);
 
-  --shadow-1: 0 1px 2px rgb(10 22 40 / 0.06), 0 6px 16px -8px rgb(10 22 40 / 0.16);
-  --shadow-2: 0 2px 4px rgb(10 22 40 / 0.06), 0 22px 44px -20px rgb(10 22 40 / 0.28);
-  --shadow-header: 0 1px 0 rgb(10 22 40 / 0.08);
-}
-
-/* ---------- HELLER MODUS: Header und Hero einen Tick heller als night-900 (gleicher Farbton) ----------
-   Kontraste auf #10203a: Text 16,0:1 · gedämpft 7,7:1 · Akzent-Text 7,8:1 · Grafiklinie (slate-400) 4,3:1 · Button-Fläche 3,1:1. */
-:root:not([data-mode="dark"]) .site-header,
-:root:not([data-mode="dark"]) .hero {
-  --c-bg: #10203a;
-  --c-bg-alt: #0c1a30;
-  --c-surface: #172a48;
-  --c-surface-2: #1f3456;
-  --c-line: #2d4568;
-  --ill-surface: #172a48;
-  --ill-surface-2: #1f3456;
-  --ill-line-soft: #2d4568;
+  --shadow-1: 0 1px 2px rgb(0 24 66 / 0.06), 0 6px 16px -8px rgb(0 24 66 / 0.16);
+  --shadow-2: 0 2px 4px rgb(0 24 66 / 0.06), 0 22px 44px -20px rgb(0 24 66 / 0.28);
+  --shadow-header: 0 1px 0 rgb(0 24 66 / 0.08);
 }
 
 /* ---------- DUNKELMODUS (Schalter): alle drei Themen werden dunkle Dämmerungs-Töne ----------
@@ -465,13 +456,13 @@
   --c-text-muted: var(--mist-300);
   --c-line: var(--dusk-600);
   --c-line-strong: var(--mist-400);   /* ≥ 4:1 auf dusk-700 … dusk-950 */
-  --c-accent: var(--clay-500);
-  --c-accent-text: var(--clay-300);
-  --c-safe: var(--sig-300);
-  --c-focus: var(--sig-300);
-  --c-btn-bg: var(--clay-600);
-  --c-btn-bg-hover: var(--clay-700);
-  --c-btn-text: var(--frost-50);
+  --c-accent: var(--blue-400);
+  --c-accent-text: var(--blue-300);
+  --c-safe: var(--cyan-300);
+  --c-focus: var(--cyan-300);
+  --c-btn-bg: var(--blue-500);
+  --c-btn-bg-hover: var(--blue-600);
+  --c-btn-text: var(--white);
   --c-btn-ghost-border: var(--frost-50);
   --c-error: var(--state-error-text-dark);
   --c-ok: var(--state-ok-text-dark);
@@ -482,8 +473,8 @@
   --ill-ink: var(--frost-50);
   --ill-surface: var(--dusk-800);
   --ill-surface-2: var(--dusk-700);
-  --ill-risk: var(--clay-500);
-  --ill-safe: var(--sig-300);
+  --ill-risk: var(--blue-400);
+  --ill-safe: var(--cyan-300);
   --ill-muted: var(--mist-300);
 
   --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 16px -8px rgb(0 0 0 / 0.5);

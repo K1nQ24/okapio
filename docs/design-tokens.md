@@ -4,32 +4,34 @@ Besitzer: Agent DESIGN-SYSTEM · Quelle der Wahrheit: `/assets/css/tokens.css`
 
 ## 1. Konzept in sechs Sätzen
 
-1. **Tiefblau und Frost.** Ein tiefes, kühles Blau (`--night-900`) trägt Header, Hero, Werkzeuge, Kontakt und Footer. Ein kühles Off-White (`--frost-100`) trägt die Inhaltsbereiche. Gemischter Grundton: dunkle Bänder geben Rhythmus, gelesen wird auf Hell.
-2. **Terrakotta = Risiko und Handlung.** `--clay-*` steht für Angriffspfade, Findings, Buttons. Es ist die Farbe des Okapi-Fells, kein Alarm-Rot, und auf dem kühlen Grund der einzige warme Ton.
-3. **Teal = erkannt / geschützt.** `--sig-*` erscheint ausschließlich dort, wo etwas geschützt oder erkannt wurde (Schild, Häkchen, bestandener Prüfpunkt). Dadurch ist die Farbe *bedeutungstragend* und wird sparsam.
+1. **Logo-Tiefblau und Frost.** Das Tiefblau des Logos (`--night-900` = `#001842`) trägt Header, Hero, Werkzeuge, Kontakt und Footer. Ein kühles Off-White (`--frost-100`) trägt die Inhaltsbereiche. Gemischter Grundton: dunkle Bänder geben Rhythmus, gelesen wird auf Hell.
+2. **Logo-Blau = Handlung und Risiko.** `--blue-*` (Basis `#0A6CFF`) steht für Buttons, Links, Angriffspfade und Findings. Orange/Terrakotta kommt nicht mehr vor.
+3. **Logo-Cyan = erkannt / geschützt.** `--cyan-*` (Basis `#00DAF2`) erscheint dort, wo etwas geschützt oder erkannt wurde (Schild, Häkchen, Fortschritt), sowie als Hervorhebung „sichtbar" im Hero und am i-Punkt des Logos.
 4. **Streifen als Tarnung.** Vertikale Streifen verdichten sich, wo etwas verborgen ist, und lösen sich per Maske auf, wo Klarheit entsteht.
 5. **Keine Lila-Blau-Verläufe, kein Neon, kein Glassmorphism.** Verläufe nur als weiche Tonwertübergänge innerhalb der Palette. Einzige Ausnahme: der Header bekommt beim Scrollen eine fast deckende Fläche mit leichter Unschärfe.
-6. **Technische Typografie.** Überschriften in Space Grotesk, Text in Inter, Labels und Nummern in JetBrains Mono. Der zweite Teil jeder Sektionsüberschrift steht in der gedämpften Textfarbe (`.h-accent`); nur „sichtbar" im Hero ist Terrakotta.
+6. **Technische Typografie.** Überschriften in Space Grotesk, Text in Inter, Labels und Nummern in JetBrains Mono. Der zweite Teil jeder Sektionsüberschrift steht in der gedämpften Textfarbe (`.h-accent`); nur „sichtbar" im Hero ist Logo-Cyan.
 
 ## 2. Palette
 
 | Token | Wert | Rolle |
 |---|---|---|
-| `--night-950` | `#060e1a` | tiefster Grund (Footer, „night" im Dunkelmodus) |
-| `--night-900` | `#0a1628` | dunkler Hintergrund (Header, Hero, Werkzeuge, Kontakt); Text auf Hell |
-| `--night-800` | `#11213a` | Karten auf Dunkel |
-| `--night-700` | `#1a2d4a` | erhöhte Flächen auf Dunkel |
-| `--night-600` | `#2a4062` | Linien auf Dunkel (dekorativ) |
+| `--night-950` | `#000f2b` | tiefster Grund (Footer, „night" im Dunkelmodus) |
+| `--night-900` | `#001842` (Logo) | dunkler Hintergrund (Header, Hero, Werkzeuge, Kontakt); Text auf Hell |
+| `--night-800` | `#082453` | Karten auf Dunkel |
+| `--night-700` | `#113065` | erhöhte Flächen auf Dunkel |
+| `--night-600` | `#1d3f7a` | Linien auf Dunkel (dekorativ) |
 | `--frost-50` | `#fcfdfe` | Karten auf Hell, Text auf Dunkel |
 | `--frost-100` | `#f3f5f8` | Standard heller Hintergrund |
 | `--frost-200` | `#e7ebf1` | zweite helle Fläche (Thema „sand") |
 | `--frost-300` | `#d3dae4` | Linien auf Hell (dekorativ) |
 | `--haze-50/100` | `#f7f9fc` / `#e8eef6` | kühle Tönung („dark" im hellen Modus) |
-| `--dusk-950 … 700` | `#07101e` … `#1b3050` | Flächen im Dunkelmodus |
+| `--dusk-950 … 700` | `#000c24` … `#132f60` | Flächen im Dunkelmodus |
 | `--ink-700/600` | `#3b4a5e` / `#4b5b70` | gedämpfter Text auf Hell |
 | `--mist-300/400` | `#a6b4c7` / `#8a9bb2` | gedämpfter Text / starke Linien auf Dunkel |
-| `--clay-300/500/600/700` | `#f0a07c` / `#d2603a` / `#b84a26` / `#9c3c1b` | Akzent, gestuft nach Einsatz |
-| `--sig-300/500/700` | `#7fd6c8` / `#3fb3a3` / `#1b6f65` | Schutz-Akzent |
+| `--blue-300/400/500/600` | `#6aa8ff` / `#4d94ff` / `#0a6cff` (Logo) / `#005be6` | Akzent: Text auf Dunkel / Grafik auf Dunkel / Buttons, Grafik auf Hell / Text auf Hell, Hover |
+| `--cyan-100/300/700` | `#b3f4fb` / `#00daf2` (Logo) / `#006877` | Platzhalter / Schutz-Akzent auf Dunkel / auf Hell |
+| `--error-300/600` | `#ff9aa6` / `#c01f36` | Formularfehler (auf Dunkel / Hell) |
+| `--white` | `#ffffff` | Button-Schrift auf Logo-Blau |
 | `--slate-400/500` | `#6f86a0` / `#66758a` | Grafiklinien mit ≥ 3:1 |
 
 Semantische Tokens (`--c-bg`, `--c-text`, `--c-accent` …) wechseln über `data-theme` am `<section>`: `light`, `sand`, `dark` und `night`. Illustrationen lesen **nur** `--ill-*`, dadurch passen sie sich der Sektion an.
@@ -44,52 +46,51 @@ Text: AA = 4,5:1 (normal), 3:1 (≥ 24 px oder ≥ 18,66 px fett). Grafik/UI: 3:
 
 | Paar | Farben | Verhältnis | Ergebnis |
 |---|---|---|---|
-| Text auf Hell | `#0a1628` auf `#f3f5f8` | 16,60 | AAA |
-| Text auf Sand | `#0a1628` auf `#e7ebf1` | 15,15 | AAA |
+| Text auf Hell | `#001842` auf `#f3f5f8` | 15,90 | AAA |
+| Text auf Hell 2 | `#001842` auf `#e7ebf1` | 14,51 | AAA |
 | Text gedämpft auf Hell | `#3b4a5e` auf `#f3f5f8` | 8,26 | AAA |
-| Text gedämpft2 auf Hell | `#4b5b70` auf `#f3f5f8` | 6,35 | AA |
-| Text gedämpft auf Sand | `#3b4a5e` auf `#e7ebf1` | 7,54 | AAA |
-| Text auf Dunkel | `#fcfdfe` auf `#0a1628` | 17,80 | AAA |
-| Text gedämpft auf Dunkel | `#a6b4c7` auf `#0a1628` | 8,61 | AAA |
-| gedämpft auf Dunkel-Fläche | `#a6b4c7` auf `#11213a` | 7,66 | AAA |
-| mist400 auf night900 | `#8a9bb2` auf `#0a1628` | 6,40 | AA |
-| Akzent-Text auf Hell | `#9c3c1b` auf `#f3f5f8` | 6,25 | AA |
-| clay600 auf Hell | `#b84a26` auf `#f3f5f8` | 4,75 | AA |
-| clay600 auf Sand | `#b84a26` auf `#e7ebf1` | 4,34 | AA-large/UI |
-| clay700 auf Sand | `#9c3c1b` auf `#e7ebf1` | 5,71 | AA |
-| clay500 auf Hell | `#d2603a` auf `#f3f5f8` | 3,51 | AA-large/UI |
-| Akzent-Text auf Dunkel | `#f0a07c` auf `#0a1628` | 8,65 | AAA |
-| clay500 auf Dunkel | `#d2603a` auf `#0a1628` | 4,73 | AA |
-| clay500 auf night800 | `#d2603a` auf `#11213a` | 4,20 | AA-large/UI |
-| Button-Text night900 auf clay500 | `#0a1628` auf `#d2603a` | 4,73 | AA |
-| frost50 auf clay500 | `#fcfdfe` auf `#d2603a` | 3,77 | AA-large/UI |
-| frost50 auf clay600 | `#fcfdfe` auf `#b84a26` | 5,10 | AA |
-| frost50 auf clay700 | `#fcfdfe` auf `#9c3c1b` | 6,70 | AA |
-| Teal-Text auf Hell | `#1b6f65` auf `#f3f5f8` | 5,48 | AA |
-| Teal-Text auf Dunkel | `#7fd6c8` auf `#0a1628` | 10,67 | AAA |
-| sig500 auf Dunkel (Grafik) | `#3fb3a3` auf `#0a1628` | 7,07 | AAA |
-| Grafik-Terrakotta auf Hell (3:1) | `#d2603a` auf `#f3f5f8` | 3,51 | AA-large/UI |
-| Grafik-Teal auf Hell (3:1) | `#3fb3a3` auf `#f3f5f8` | 2,35 | FAIL |
-| sig700 auf frost50 | `#1b6f65` auf `#fcfdfe` | 5,88 | AA |
-| Linie auf Dunkel (dekorativ) | `#2a4062` auf `#0a1628` | 1,73 | FAIL |
-| Linie auf Hell (dekorativ) | `#d3dae4` auf `#f3f5f8` | 1,29 | FAIL |
-| ink600 auf frost50 | `#4b5b70` auf `#fcfdfe` | 6,81 | AA |
-| ink900 auf frost50 | `#0a1628` auf `#fcfdfe` | 17,80 | AAA |
-| clay700 auf frost50 | `#9c3c1b` auf `#fcfdfe` | 6,70 | AA |
-| ink900 auf clay300 | `#0a1628` auf `#f0a07c` | 8,65 | AAA |
+| Text gedämpft auf Hell 2 | `#3b4a5e` auf `#e7ebf1` | 7,54 | AAA |
 | Text gedämpft auf Dunst | `#3b4a5e` auf `#e8eef6` | 7,73 | AAA |
-| Akzent-Text auf Dunst | `#9c3c1b` auf `#e8eef6` | 5,85 | AA |
+| Text gedämpft 2 auf Karte | `#4b5b70` auf `#fcfdfe` | 6,81 | AA |
+| Text auf Dunkel | `#fcfdfe` auf `#001842` | 17,05 | AAA |
+| Text gedämpft auf Dunkel | `#a6b4c7` auf `#001842` | 8,25 | AAA |
+| Text gedämpft auf Karte dunkel | `#a6b4c7` auf `#082453` | 7,19 | AAA |
+| Text gedämpft auf night-700 | `#a6b4c7` auf `#113065` | 6,10 | AA |
+| Text gedämpft auf dusk-700 | `#a6b4c7` auf `#132f60` | 6,22 | AA |
+| Akzent-Text auf Hell | `#005be6` auf `#f3f5f8` | 5,28 | AA |
+| Akzent-Text auf Hell 2 | `#005be6` auf `#e7ebf1` | 4,82 | AA |
+| Akzent-Text auf Dunst | `#005be6` auf `#e8eef6` | 4,94 | AA |
+| Akzent-Text auf Karte | `#005be6` auf `#fcfdfe` | 5,67 | AA |
+| Akzent-Text auf Dunkel | `#6aa8ff` auf `#001842` | 7,16 | AAA |
+| Akzent-Text auf Karte dunkel | `#6aa8ff` auf `#082453` | 6,24 | AA |
+| Akzent-Text auf dusk-700 | `#6aa8ff` auf `#132f60` | 5,40 | AA |
+| Akzent-Text auf dusk-800 | `#6aa8ff` auf `#0b234d` | 6,36 | AA |
+| Button-Text (Standard) | `#ffffff` auf `#0a6cff` | 4,56 | AA |
+| Button-Text Hover | `#ffffff` auf `#005be6` | 5,77 | AA |
+| Grafik/Fokus auf Hell | `#0a6cff` auf `#f3f5f8` | 4,18 | AA-large/UI |
+| Grafik auf Dunst | `#0a6cff` auf `#e8eef6` | 3,91 | AA-large/UI |
+| Grafik auf Dunkel | `#4d94ff` auf `#001842` | 5,78 | AA |
+| Grafik auf Karte dunkel | `#4d94ff` auf `#082453` | 5,04 | AA |
+| Grafik auf dusk-800 | `#4d94ff` auf `#0b234d` | 5,14 | AA |
+| Button-Fläche gegen Dunkel | `#0a6cff` auf `#001842` | 3,81 | AA-large/UI |
+| Geschützt auf Hell | `#006877` auf `#f3f5f8` | 5,92 | AA |
+| Geschützt auf Hell 2 | `#006877` auf `#e7ebf1` | 5,41 | AA |
+| Geschützt auf Dunst | `#006877` auf `#e8eef6` | 5,54 | AA |
+| Geschützt/Fokus auf Dunkel | `#00daf2` auf `#001842` | 10,18 | AAA |
+| Geschützt auf Karte dunkel | `#00daf2` auf `#082453` | 8,87 | AAA |
+| Geschützt auf dusk-700 | `#00daf2` auf `#132f60` | 7,68 | AAA |
+| Platzhalter-Markierung | `#001842` auf `#b3f4fb` | 14,26 | AAA |
+| Fehlertext auf Formular | `#c01f36` auf `#fcfdfe` | 5,91 | AA |
+| Fehlertext auf Hell | `#c01f36` auf `#f3f5f8` | 5,51 | AA |
+| Fehlertext auf Dunkel | `#ff9aa6` auf `#001842` | 8,62 | AAA |
+| Grafiklinie auf Hell | `#66758a` auf `#f3f5f8` | 4,30 | AA-large/UI |
+| Grafiklinie auf Hell 2 | `#66758a` auf `#e7ebf1` | 3,92 | AA-large/UI |
 | Grafiklinie auf Dunst | `#66758a` auf `#e8eef6` | 4,02 | AA-large/UI |
-| Text gedämpft auf night-950 | `#a6b4c7` auf `#060e1a` | 9,19 | AAA |
-| Text gedämpft auf dusk-700 | `#a6b4c7` auf `#1b3050` | 6,29 | AA |
-| Akzent-Text auf dusk-800 | `#f0a07c` auf `#13243c` | 7,45 | AAA |
-| Linie stark auf dusk-700 | `#8a9bb2` auf `#1b3050` | 4,68 | AA |
-| Grafiklinie auf night-800 | `#6f86a0` auf `#11213a` | 4,29 | AA-large/UI |
-| Grafiklinie auf frost-200 | `#66758a` auf `#e7ebf1` | 3,92 | AA-large/UI |
-| frost50 auf night700 | `#fcfdfe` auf `#1a2d4a` | 13,58 | AAA |
-| mist300 auf night700 | `#a6b4c7` auf `#1a2d4a` | 6,57 | AA |
+| Grafiklinie auf Dunkel | `#6f86a0` auf `#001842` | 4,63 | AA |
+| Grafiklinie auf Karte dunkel | `#6f86a0` auf `#082453` | 4,03 | AA-large/UI |
+| Linie stark auf dusk-700 | `#8a9bb2` auf `#132f60` | 4,62 | AA |
 
-**Bewusst verworfen bzw. nur dekorativ:** `sig-500` auf hellem Grund (fällt durch, deshalb `sig-700` in hellen Sektionen), `clay-500` als Text auf Hell, `frost-50` auf `clay-500`. Linien `--c-line` (`frost-300`, `night-600`) sind rein dekorativ (Trennlinien, Kartenränder) und tragen keine Information.
+**Bewusst verworfen bzw. nur dekorativ:** `#0a6cff` als kleiner Text auf Hell (4,2:1, deshalb `blue-600`), `#00daf2` auf Hell (zu hell, deshalb `cyan-700`), getöntes Weiß auf `#0a6cff` (4,48:1, deshalb reines Weiß). Linien `--c-line` (`frost-300`, `night-600`) sind rein dekorativ und tragen keine Information.
 
 ## 4. Typografie
 

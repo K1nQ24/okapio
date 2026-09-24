@@ -14,7 +14,7 @@ Flag `noid` am Marker (`<!-- @svg:logo-wordmark noid -->`) entfernt `id`-Attribu
 - Farben ausschließlich `currentColor` oder `var(--ill-…)`. Keine Hex-Werte, keine externen Referenzen, kein `<script>`, keine Event-Attribute, keine `<style>`.
 - Informative SVGs: `role="img"` + `<title>`/`<desc>`. Dekorative: `aria-hidden="true" focusable="false"`.
 - Zeichnende Pfade haben `pathLength="1"`. MOTION setzt `stroke-dasharray: 1; stroke-dashoffset: 1 → 0`.
-- Bedeutung: `--ill-risk` (Terrakotta) = Risiko/Angriff/Finding. `--ill-safe` (Teal) = erkannt/geschützt/erledigt.
+- Bedeutung: `--ill-risk` (Blau) = Risiko/Angriff/Finding. `--ill-safe` (Cyan) = erkannt/geschützt/erledigt.
 
 ## Dateien und IDs
 
@@ -42,7 +42,7 @@ Sequenz: Kanten → Knoten → Angriffspfad → Schild + Ring → Etikett → da
 `#stripes` mit `#hs-01` … `#hs-59`. **Animation:** Aufbau von unten (`scaleY`, `transform-origin: bottom`, Staffel), Parallax (`data-parallax`).
 
 ### `service-roadmap.svg` – `#ill-roadmap`
-`#stripes` · `#route` (zeichnet sich) · `#branch-rejected` (zeichnet sich, gestrichelt) · `#rejected-mark` · `#milestones` → `#m1`, `#decision`, `#m2`, `#m3`, `#m4` (poppen nacheinander auf) · `#m1-ring` (Terrakotta = „jetzt") · `#labels`.
+`#stripes` · `#route` (zeichnet sich) · `#branch-rejected` (zeichnet sich, gestrichelt) · `#rejected-mark` · `#milestones` → `#m1`, `#decision`, `#m2`, `#m3`, `#m4` (poppen nacheinander auf) · `#m1-ring` (Blau = „jetzt") · `#labels`.
 
 ### `service-topology.svg` – `#ill-topology`
 `#zones` (`#zone-office`, `#zone-server`, `#zone-ot`) · `#links` (`#l-…`, zeichnen sich von oben nach unten) · `#blocked-link` (`#blocked-path` zeichnet sich, `#blocked-mark` poppt auf) · `#devices` (`#firewall`, `#d-…`) · `#labels`.

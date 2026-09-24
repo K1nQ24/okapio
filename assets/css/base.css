@@ -70,7 +70,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: var(--r-xs);
 }
 
-::selection { background: var(--clay-600); color: var(--frost-50); }
+::selection { background: var(--blue-500); color: var(--frost-50); }
 
 /* ---------- Skip-Link ---------- */
 .skip-link {
@@ -86,7 +86,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   box-shadow: var(--shadow-2);
   transform: translateY(-200%);
 }
-.skip-link:focus { transform: none; outline: var(--focus-w) solid var(--clay-600); outline-offset: var(--line-w-strong); }
+.skip-link:focus { transform: none; outline: var(--focus-w) solid var(--blue-500); outline-offset: var(--line-w-strong); }
 
 /* ---------- Utilities ---------- */
 .visually-hidden {
