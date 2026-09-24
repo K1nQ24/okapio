@@ -147,7 +147,7 @@
 /* ---------- Vertrauensleiste ---------- */
 .trust { padding-block: var(--space-7); }
 .trust__inner { display: grid; gap: var(--space-5); }
-@media (min-width: 64em) { .trust__inner { grid-template-columns: var(--col-trust) 1fr; align-items: center; column-gap: var(--space-7); } }
+/* Überschrift über den Einträgen: so passen alle Regularien auf dem Desktop in eine Reihe */
 
 /* ---------- Leistungen (Bento, bewusst ungleich) ---------- */
 .bento { display: grid; gap: var(--space-5); }
