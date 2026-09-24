@@ -470,12 +470,6 @@
 .tools__note { margin-block-start: var(--space-7); font-size: var(--fs-sm); color: var(--c-text-muted); max-inline-size: var(--measure-note); }
 @media (max-width: 30em) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* ---------- Branchen ---------- */
-.industry { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-6); border: var(--line-w) solid var(--c-line); border-radius: var(--r-lg); background: var(--c-surface); overflow: hidden; }
-.industry__icon { display: grid; place-items: center; inline-size: calc(var(--size-icon) + var(--space-5)); block-size: calc(var(--size-icon) + var(--space-5)); padding: var(--space-3); margin-block-end: var(--space-3); border-radius: var(--r-md); background: var(--c-bg); color: var(--c-text); }
-.industry__icon svg { inline-size: 100%; block-size: auto; }
-.industry p { color: var(--c-text-muted); }
-
 /* ---------- Region ---------- */
 .places { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .places li { padding: var(--space-1) var(--space-4); border: var(--line-w) solid var(--c-line-strong); border-radius: var(--r-pill); font-size: var(--fs-sm); font-weight: var(--fw-medium); }

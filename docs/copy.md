@@ -189,3 +189,12 @@ Neue, kurze Texte aus der Überarbeitung. Inhaltlich aus bestehenden Aussagen ab
 - Kontakt, über den Direktkontakten: „Lieber direkt?" · Etiketten „Telefon", „WhatsApp", „E-Mail"
 - Footer: Spalte „Kontakt" (Telefon, E-Mail, Kontaktformular) · „Nach oben"
 - Rechtstexte, Header: „← Zur Startseite"
+
+## Ergänzung: keine Branchenausrichtung
+
+Auf Wunsch des Inhabers bleibt die Seite branchenneutral. Der Abschnitt „Branchenfokus" (Automotive, Software und SaaS, Mittelstand) ist entfernt; die Abschnitte 7 und 13 oben (Branchen-Texte, Automotive-Icon) sowie die branchenbezogene Meta-Description in Abschnitt 0 gelten nicht mehr. Neue Formulierungen:
+
+- Meta-Description: „Cybersecurity-Beratung in Böblingen und Stuttgart für Unternehmen jeder Branche. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen."
+- Hero-Lead: „okapio berät Unternehmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. …"
+- FAQ „Für welche Unternehmen arbeiten Sie?": „Für Unternehmen aus allen Branchen, vor Ort in der Region Stuttgart und remote in ganz Baden-Württemberg."
+- Praxis / Team: „Über 10 Jahre Erfahrung in der IT (für Unternehmen in der Region)."

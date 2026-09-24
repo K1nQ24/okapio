@@ -198,14 +198,6 @@
   pointer-events: none;
 }
 
-/* ---------- Branchen (versetzt) ---------- */
-.industries { display: grid; gap: var(--space-5); }
-@media (min-width: 64em) {
-  .industries { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); align-items: start; }
-  .industry:nth-child(2) { margin-block-start: var(--space-7); }
-  .industry:nth-child(3) { margin-block-start: var(--space-9); }
-}
-
 /* ---------- Region ---------- */
 .region__grid { display: grid; gap: var(--space-8); align-items: center; }
 .region__copy { display: grid; gap: var(--space-5); justify-items: start; }
