@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Strikte CSP als Meta-Tag (kein unsafe-inline, kein unsafe-eval, keine externen Quellen).
+    Hinweis: frame-ancestors, report-uri und sandbox wirken NICHT per Meta-Tag. Bitte zusätzlich als Server-Header setzen, z. B. (Apache, .htaccess):
+      Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+      Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+      Header always set X-Content-Type-Options "nosniff"
+      Header always set Referrer-Policy "strict-origin-when-cross-origin"
+      Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+      Header always set Cross-Origin-Opener-Policy "same-origin"
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
+
+  <title>Cybersecurity Böblingen &amp; Stuttgart | okapio Beratung</title>
+  <meta name="description" content="Cybersecurity-Beratung in Böblingen und Stuttgart für Mittelstand, Automotive und SaaS. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#e5eef2">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="okapio">
+  <meta property="og:title" content="okapio – Cybersecurity-Beratung Böblingen &amp; Stuttgart">
+  <meta property="og:description" content="Risiken sichtbar machen, bevor andere sie finden. Risiko Check, Infrastruktur, Cloud, Audits, Awareness sowie KI und Automatisierung.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
+  <script src="assets/js/init.js"></script>
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- JSON-LD: nur belegte Angaben -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "okapio",
+    "telephone": "+491743292211",
+    "email": "info@plussec.de",
+    "founder": { "@type": "Person", "name": "Taha Cevik" },
+    "description": "Cybersecurity-Beratung für Mittelstand, Automobilzulieferer und Software-/SaaS-Unternehmen: Infrastruktur-Security, Cloud- und SaaS-Security, Audits und Awareness-Trainings.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Brühlweg 22",
+      "postalCode": "71111",
+      "addressLocality": "Waldenbuch",
+      "addressRegion": "Baden-Württemberg",
+      "addressCountry": "DE"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Böblingen" },
+      { "@type": "City", "name": "Stuttgart" },
+      { "@type": "City", "name": "Sindelfingen" },
+      { "@type": "AdministrativeArea", "name": "Region Stuttgart" }
+    ],
+    "knowsAbout": ["Cybersecurity", "Informationssicherheit", "Risikoanalyse", "Cloud-Security", "Security-Audits", "Awareness-Training", "NIS2", "DSGVO", "BSI IT-Grundschutz", "KI und Automatisierung"],
+    "serviceType": ["Cybersecurity-Beratung", "Risiko Check", "Infrastruktur-Security", "Cloud- und SaaS-Security", "Security-Audits", "Awareness-Trainings", "KI und Automatisierung"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- ===== 1 · HEADER ===== -->
+  <header class="site-header" data-theme="dark" data-header>
+    <div class="site-header__bar" aria-hidden="true" data-header-bar></div>
+    <div class="container site-header__inner" data-header-inner>
+      <a class="brand" href="#top" aria-label="okapio, zum Seitenanfang">
+        <!-- @svg:logo-wordmark noid -->
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation" data-nav>
+        <ul>
+          <li class="nav-group" data-nav-group>
+            <button class="nav-group__btn" type="button" aria-expanded="false" aria-controls="nav-leistungen" data-nav-group-btn>Leistungen<svg class="nav-group__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
+            <ul class="nav-group__list" id="nav-leistungen">
+              <li><a href="#leistungen">Alle Leistungen</a></li>
+              <li><a href="#leistung-risikocheck">Risiko Check</a></li>
+              <li><a href="#leistung-beratung">Beratung und Compliance</a></li>
+              <li><a href="#leistung-infrastruktur">IT Security</a></li>
+              <li><a href="#leistung-cloud">Cloud und SaaS</a></li>
+              <li><a href="#leistung-audits">Audits</a></li>
+              <li><a href="#leistung-awareness">Awareness</a></li>
+              <li><a href="#leistung-ki">KI und Automatisierung</a></li>
+            </ul>
+          </li>
+          <li><a href="#vorgehen">Vorgehen</a></li>
+          <li><a href="#werkzeuge">Werkzeuge</a></li>
+          <li class="nav-group" data-nav-group>
+            <button class="nav-group__btn" type="button" aria-expanded="false" aria-controls="nav-ueber" data-nav-group-btn>Über okapio<svg class="nav-group__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
+            <ul class="nav-group__list" id="nav-ueber">
+              <li><a href="#warum-okapio">Warum okapio</a></li>
+              <li><a href="#branchen">Branchen</a></li>
+              <li><a href="#region">Region</a></li>
+              <li><a href="#team">Team</a></li>
+            </ul>
+          </li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li class="site-nav__cta"><a class="btn btn--primary" href="#kontakt">Erstgespräch vereinbaren</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menü öffnen</button>
+      <a class="btn btn--primary btn--sm site-header__cta" href="#kontakt">Erstgespräch vereinbaren</a>
+    </div>
+  </header>
+
+  <main id="inhalt" tabindex="-1">
+
+    <!-- ===== 2 · HERO ===== -->
+    <section class="section hero" id="top" data-theme="dark" aria-labelledby="hero-title">
+      <div class="hero__stripes" aria-hidden="true" data-illustration="stripes" data-parallax="0.12">
+        <!-- @svg:hero-stripes -->
+      </div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title" data-reveal>
+            <span class="hero__kicker">Cybersecurity Böblingen Stuttgart<span class="visually-hidden">:</span></span>
+            Risiken sichtbar machen, bevor andere sie finden.
+          </h1>
+          <p class="lead hero__lead" data-reveal data-reveal-delay="1">okapio berät Mittelständler, Automobilzulieferer und Software-Firmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. Aus Böblingen, mit festen Ansprechpartnern statt Ticketsystem.</p>
+          <div class="hero__actions" data-reveal data-reveal-delay="2">
+            <a class="btn btn--primary" href="#kontakt">Erstgespräch vereinbaren</a>
+            <a class="btn btn--ghost" href="#leistungen">Leistungen ansehen</a>
+          </div>
+          <p class="hero__micro" data-reveal data-reveal-delay="3">Antwort in der Regel innerhalb von 24 Stunden. Ein Gespräch, kein Vertriebsdruck.</p>
+        </div>
+        <figure class="hero__figure" data-illustration="hero">
+          <!-- @svg:hero-graph -->
+        </figure>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true" data-reveal data-theme="light">
+      <!-- @svg:divider-stripes noid -->
+    </div>
+
+    <!-- ===== 3 · VERTRAUENSLEISTE ===== -->
+    <section class="section trust" data-theme="light" aria-labelledby="trust-title">
+      <div class="container trust__inner">
+        <h2 class="trust__title" id="trust-title">Unsere Arbeit orientiert sich an</h2>
+        <ul class="trust__list">
+          <li data-reveal>NIS2</li>
+          <li data-reveal data-reveal-delay="1">OWASP</li>
+          <li data-reveal data-reveal-delay="2">CSA STAR / CCM</li>
+          <li data-reveal data-reveal-delay="3">BSI IT-Grundschutz</li>
+        </ul>
+        <p class="trust__note">„Orientiert an" heißt: Wir arbeiten entlang dieser Anforderungen.</p>
+      </div>
+    </section>
+
+    <!-- ===== 4 · LEISTUNGEN ===== -->
+    <section class="section" id="leistungen" data-theme="light" aria-labelledby="leistungen-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Leistungen</p>
+          <h2 id="leistungen-title" data-reveal data-reveal-delay="1">Sieben Bereiche. Ein Ziel: weniger unbekannte Risiken.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Sie müssen nicht alles auf einmal angehen. Wir starten dort, wo Ihr Risiko am größten ist.</p>
+        </div>
+
+        <div class="bento">
+          <!-- 01 Risiko Check -->
+          <article class="service service--1" id="leistung-risikocheck" aria-labelledby="l1-title" data-reveal>
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">01</span>
+              <h3 id="l1-title">Ein klares Bild Ihrer Risiken, bevor Sie investieren.</h3>
+            </div>
+            <div class="service__body">
+              <p>Der Risiko Check ist der ruhigste Einstieg. Wir prüfen Netzwerk, Zugriffsrechte, Backups und bestehende Software und sagen Ihnen, welche Lücken zuerst geschlossen werden sollten.</p>
+              <ul class="checks">
+                <li>Bestandsaufnahme und Schwachstellenanalyse</li>
+                <li>Risikobewertung nach Wahrscheinlichkeit und Schaden</li>
+                <li>Priorisierte Liste mit Verantwortlichen</li>
+                <li>Ergebnis persönlich besprochen, nicht nur verschickt</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Risiko Check)</span></a>
+            </div>
+            <div class="service__art" data-illustration="riskcheck">
+              <!-- @svg:service-risk-check -->
+            </div>
+          </article>
+
+          <!-- 02 Beratung -->
+          <article class="service service--2" id="leistung-beratung" aria-labelledby="l2-title" data-reveal data-reveal-delay="1">
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">02</span>
+              <h3 id="l2-title">Eine Roadmap, die Sie umsetzen können.</h3>
+            </div>
+            <div class="service__body">
+              <p>Wir klären, was Sie schützen müssen, wie hoch das Risiko ist und was zuerst dran ist. Das Ergebnis ist eine priorisierte Roadmap mit Verantwortlichen. Kein Aktenordner, den niemand liest.</p>
+              <ul class="checks">
+                <li>Sicherheitsberatung und Richtlinien</li>
+                <li>Compliance-Management mit Bezug auf NIS2, DSGVO und BSI IT-Grundschutz</li>
+                <li>Einordnung von Kundenanforderungen</li>
+                <li>Begleitung bei der Umsetzung</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Beratung)</span></a>
+            </div>
+            <div class="service__art" data-illustration="roadmap">
+              <!-- @svg:service-roadmap -->
+            </div>
+          </article>
+
+          <!-- 03 IT Security / Infrastruktur -->
+          <article class="service service--3" id="leistung-infrastruktur" data-theme="dark" aria-labelledby="l3-title" data-reveal>
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">03</span>
+              <h3 id="l3-title">Netze und Server, die nicht überraschen.</h3>
+            </div>
+            <div class="service__body">
+              <p>Wir schauen auf Netzwerk, Server und Endgeräte, so wie ein Angreifer es täte. Dann trennen, härten und dokumentieren wir.</p>
+              <ul class="checks">
+                <li>Netzwerksegmentierung und Zugriffskonzepte</li>
+                <li>Härtung von Servern und Endgeräten, Verschlüsselung</li>
+                <li>Patch- und Schwachstellenmanagement, Monitoring</li>
+                <li>Hardware- und Software-Management</li>
+                <li>Backup- und Wiederanlaufkonzept</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (IT Security)</span></a>
+            </div>
+            <div class="service__art" data-illustration="topology">
+              <!-- @svg:service-topology -->
+            </div>
+          </article>
+
+          <!-- 04 Cloud & SaaS -->
+          <article class="service service--4" id="leistung-cloud" data-theme="sand" aria-labelledby="l4-title" data-reveal data-reveal-delay="1">
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">04</span>
+              <h3 id="l4-title">Konfigurationsfehler finden, bevor sie ausgenutzt werden.</h3>
+            </div>
+            <div class="service__body">
+              <p>Die meisten Cloud-Risiken sind keine Zero-Days, sondern offene Speicher, zu weite Rechte und vergessene Zugänge. Wir prüfen Ihre Konten und liefern Findings mit Priorität und konkretem Fix.</p>
+              <ul class="checks">
+                <li>Prüfung von Identitäten, Rechten, Netzwerk und Speicher</li>
+                <li>Findings mit Priorität und Lösungsweg</li>
+                <li>SaaS-Anbindungen und Integrationen</li>
+                <li>Sichere Entwicklung entlang der OWASP-Empfehlungen</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Cloud- und SaaS-Security)</span></a>
+            </div>
+            <div class="service__art" data-illustration="cloud">
+              <!-- @svg:service-cloud-graph -->
+            </div>
+          </article>
+
+          <!-- 05 Audits -->
+          <article class="service service--5" id="leistung-audits" aria-labelledby="l5-title" data-reveal>
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">05</span>
+              <h3 id="l5-title">Prüfpfad statt Bauchgefühl.</h3>
+            </div>
+            <div class="service__body">
+              <p>Wir prüfen gegen einen klar definierten Maßstab und halten fest, was wir gesehen haben. Sie erhalten nachvollziehbare Nachweise und eine Lückenliste mit Maßnahmen.</p>
+              <ul class="checks">
+                <li>Audit orientiert an CSA CCM, BSI IT-Grundschutz oder OWASP</li>
+                <li>Klarer Status je Anforderung</li>
+                <li>Lückenliste mit Maßnahmen</li>
+                <li>Vorbereitung auf externe Prüfungen und Kundenfragebögen</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Audits)</span></a>
+            </div>
+            <div class="service__art" data-illustration="audit">
+              <!-- @svg:service-audit-path -->
+            </div>
+          </article>
+
+          <!-- 06 Awareness -->
+          <article class="service service--6" id="leistung-awareness" data-theme="dark" aria-labelledby="l6-title" data-reveal data-reveal-delay="1">
+            <div class="service__text">
+              <div class="service__head">
+                <span class="service__no" aria-hidden="true">06</span>
+                <h3 id="l6-title">Menschen erkennen, was Technik übersieht.</h3>
+              </div>
+              <div class="service__body">
+                <p>Ein guter Filter hilft, aber nicht immer. Wir zeigen Ihrem Team an echten Beispielen, woran es Phishing erkennt und wohin es sich wendet, wenn es unsicher ist.</p>
+                <ul class="checks">
+                  <li>Schulungen für Geschäftsführung und Mitarbeitende</li>
+                  <li>Kurze Formate mit Beispielen aus Ihrem Alltag</li>
+                  <li>Meldewege: „Wen rufe ich an?"</li>
+                  <li>Phishing-Tests nur nach Abstimmung mit Datenschutz und Betriebsrat</li>
+                </ul>
+                <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Awareness)</span></a>
+              </div>
+            </div>
+            <div class="service__art" data-illustration="awareness">
+              <!-- @svg:service-awareness -->
+            </div>
+          </article>
+
+          <!-- 07 KI und Automatisierung -->
+          <article class="service service--7" id="leistung-ki" aria-labelledby="l7-title" data-reveal>
+            <div class="service__art" data-illustration="ki">
+              <!-- @svg:service-ki -->
+            </div>
+            <div class="service__text">
+              <div class="service__head">
+                <span class="service__no" aria-hidden="true">07</span>
+                <h3 id="l7-title">Routine automatisieren, Kontrolle behalten.</h3>
+              </div>
+              <div class="service__body">
+                <p>Wir prüfen, wo KI und Automatisierung Ihrem Team Arbeit abnehmen, und bauen Abläufe, die sicher und nachvollziehbar bleiben. Ein Mensch entscheidet dort, wo es zählt.</p>
+                <ul class="checks">
+                  <li>Potenzialanalyse: Welche Abläufe lohnen sich?</li>
+                  <li>Automatisierung wiederkehrender Aufgaben, z. B. Dokumente, Tickets, Berichte</li>
+                  <li>Sicherer Einsatz von KI-Assistenten: Datenschutz, Zugriffsrechte, Freigaben</li>
+                  <li>Klare Regeln für den KI-Einsatz im Unternehmen</li>
+                </ul>
+                <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (KI und Automatisierung)</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5 · WARUM OKAPIO ===== -->
+    <section class="section why" id="warum-okapio" data-theme="dark" aria-labelledby="warum-title">
+      <div class="container">
+        <div class="why__grid">
+          <div class="why__head section-head">
+            <p class="kicker" data-reveal>Warum okapio</p>
+            <h2 id="warum-title" data-reveal data-reveal-delay="1">Nah dran. Konkret. Mit festen Ansprechpartnern.</h2>
+          </div>
+          <ol class="why__list">
+            <li class="why-item" data-reveal>
+              <span class="why-item__num" aria-hidden="true">01</span>
+              <div>
+                <h3>Nähe.</h3>
+                <p>Wir sitzen in Böblingen. Termine vor Ort in der Region Stuttgart sind der Normalfall, nicht die Ausnahme.</p>
+              </div>
+            </li>
+            <li class="why-item" data-reveal data-reveal-delay="1">
+              <span class="why-item__num" aria-hidden="true">02</span>
+              <div>
+                <h3>Praxis.</h3>
+                <p>Über 10 Jahre Erfahrung in der IT für kleine und mittelständische Unternehmen in der Region. Kein Callcenter, sondern ein Ansprechpartner.</p>
+              </div>
+            </li>
+            <li class="why-item" data-reveal data-reveal-delay="2">
+              <span class="why-item__num" aria-hidden="true">03</span>
+              <div>
+                <h3>Feste Ansprechpartner.</h3>
+                <p>Sie haben einen Namen und eine Telefonnummer, kein Ticket. Wer Ihr Projekt startet, führt es auch zu Ende.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <dl class="facts" aria-label="okapio in Zahlen (strukturelle Angaben)">
+          <div class="fact" data-reveal>
+            <dt class="fact__label">Leistungsbereiche</dt>
+            <dd class="fact__num" data-count="7">7</dd>
+          </div>
+          <div class="fact" data-reveal data-reveal-delay="1">
+            <dt class="fact__label">Schritte im Vorgehen</dt>
+            <dd class="fact__num" data-count="6">6</dd>
+          </div>
+          <div class="fact" data-reveal data-reveal-delay="2">
+            <dt class="fact__label">feste Ansprechperson pro Projekt</dt>
+            <dd class="fact__num" data-count="1">1</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== 6 · VORGEHEN ===== -->
+    <section class="section" id="vorgehen" data-theme="light" aria-labelledby="vorgehen-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Vorgehen</p>
+          <h2 id="vorgehen-title" data-reveal data-reveal-delay="1">In sechs Schritten von der Frage zur Maßnahme.</h2>
+        </div>
+        <ol class="timeline" data-timeline>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">1</span>
+            <div class="timeline__body">
+              <h3>Bestandsaufnahme</h3>
+              <p>Nach dem Erstgespräch prüfen wir Netzwerk, Zugriffsrechte, Backups und bestehende Software. Auf Wunsch unterzeichnen wir vorher eine Geheimhaltungsvereinbarung.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">2</span>
+            <div class="timeline__body">
+              <h3>Risiko Check und Bewertung</h3>
+              <p>Aus der Bestandsaufnahme leiten wir die Risiken ab, die für Ihr Unternehmen wirklich zählen, und ordnen sie nach Dringlichkeit. Keine lange Liste ohne Reihenfolge.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">3</span>
+            <div class="timeline__body">
+              <h3>Fahrplan</h3>
+              <p>Ein umsetzbarer Maßnahmenplan mit Verantwortlichen und Aufwand, auf Wunsch mit Bezug auf NIS2 oder BSI IT-Grundschutz. Sie wissen, was wann passiert.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">4</span>
+            <div class="timeline__body">
+              <h3>Umsetzung</h3>
+              <p>Technische und organisatorische Maßnahmen führen wir gemeinsam ein, von Verschlüsselung und Zugriffskonzepten bis zur Backup-Strategie. Wir dokumentieren nachvollziehbar, was erledigt ist.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">5</span>
+            <div class="timeline__body">
+              <h3>Schulung und Awareness</h3>
+              <p>Wir schulen Ihr Team an echten Beispielen. Nach Abstimmung mit Datenschutz und Betriebsrat zeigen Phishing-Tests, ob das Gelernte im Alltag ankommt.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">6</span>
+            <div class="timeline__body">
+              <h3>Begleitung</h3>
+              <p>Sicherheit ist kein einmaliges Projekt. Ihre feste Ansprechperson prüft den Stand regelmäßig und passt die Maßnahmen an neue Bedrohungen an.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 6b · WERKZEUGE ===== -->
+    <section class="section" id="werkzeuge" data-theme="dark" aria-labelledby="werkzeuge-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Werkzeuge</p>
+          <h2 id="werkzeuge-title" data-reveal data-reveal-delay="1">Zwei eigene Werkzeuge, die unsere Beratung ergänzen.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Ein Überblick über Ihren Compliance-Stand und ein Blick auf Ihre von außen sichtbare Angriffsfläche. Beide Werkzeuge sind im Aufbau und noch nicht zugänglich.</p>
+        </div>
+
+        <div class="tools">
+          <!-- Compliance Copilot -->
+          <article class="tool" aria-labelledby="tool-cc-title" data-reveal>
+            <header class="tool__head">
+              <h3 id="tool-cc-title">Compliance Copilot</h3>
+              <span class="tool__status"><span class="tool__dot" aria-hidden="true"></span>Im Aufbau</span>
+            </header>
+            <p class="tool__text">Frameworks aktivieren, Controls abarbeiten und den Fortschritt über die Zeit verfolgen. Jederzeit einsehbar, ohne auf den nächsten Termin zu warten.</p>
+            <div class="tool__panel" data-illustration="tool" role="group" aria-label="Vorschau des Compliance Copilot mit Beispieldaten">
+              <div class="tool__panel-head"><span>Vorschau</span><span class="tag">Beispieldaten</span></div>
+              <div class="gauge-row">
+                <div class="gauge">
+                  <svg viewBox="0 0 92 92" aria-hidden="true" focusable="false"><circle class="gauge__track" cx="46" cy="46" r="39"/><circle class="gauge__fill" pathLength="1" cx="46" cy="46" r="39" transform="rotate(-90 46 46)"/></svg>
+                  <span class="gauge__num"><span data-count="78">78</span>%</span>
+                </div>
+                <div class="gauge-row__text"><strong>Etablierte Stufe</strong><span class="muted small">Durchschnitt über 3 aktive Frameworks</span></div>
+              </div>
+              <ul class="bars">
+                <li class="bar"><span class="bar__name">BSI</span><span class="bar__track"><span class="bar__fill" data-fill="82"></span></span><span class="bar__pct"><span data-count="82">82</span>%</span></li>
+                <li class="bar"><span class="bar__name">NIS2</span><span class="bar__track"><span class="bar__fill" data-fill="64"></span></span><span class="bar__pct"><span data-count="64">64</span>%</span></li>
+                <li class="bar"><span class="bar__name">DSGVO</span><span class="bar__track"><span class="bar__fill" data-fill="91"></span></span><span class="bar__pct"><span data-count="91">91</span>%</span></li>
+              </ul>
+            </div>
+            <ul class="checks">
+              <li>Mehrere Frameworks an einem Ort: NIS2, DSGVO, BSI IT-Grundschutz, CRA und MVSP</li>
+              <li>Live-Score und Verlauf: Snapshots zeigen den Fortschritt über die Zeit</li>
+              <li>KI-gestützte Nachweisprüfung: Die KI schlägt einen Status vor, Sie bestätigen</li>
+              <li>PDF-Export für Audits</li>
+            </ul>
+          </article>
+
+          <!-- Attack Surface Monitor -->
+          <article class="tool" aria-labelledby="tool-asm-title" data-reveal data-reveal-delay="1">
+            <header class="tool__head">
+              <h3 id="tool-asm-title">Attack Surface Monitor</h3>
+              <span class="tool__status"><span class="tool__dot" aria-hidden="true"></span>Im Aufbau</span>
+            </header>
+            <p class="tool__text">Domains, Subdomains, IP-Adressen und Zertifikate werden erfasst, Findings nach Schweregrad geordnet. Damit Sie sehen, was von außen sichtbar ist, bevor andere es tun.</p>
+            <div class="tool__panel" data-illustration="tool" role="group" aria-label="Vorschau des Attack Surface Monitor mit Beispieldaten">
+              <div class="tool__panel-head"><span>Vorschau</span><span class="tag">Beispieldaten</span></div>
+              <dl class="stats">
+                <div class="stat"><dd data-count="24">24</dd><dt>Assets</dt></div>
+                <div class="stat stat--risk"><dd data-count="1">1</dd><dt>Kritisch</dt></div>
+                <div class="stat stat--risk"><dd data-count="1">1</dd><dt>Hoch</dt></div>
+                <div class="stat"><dd data-count="3">3</dd><dt>Mittel</dt></div>
+              </dl>
+              <ul class="findings">
+                <li><div><strong>Veraltete TLS-Version aktiv</strong><span class="muted small">shop.beispiel.de · vor 2 Tagen</span></div><span class="sev sev--crit">Kritisch</span></li>
+                <li><div><strong>Offener Management-Port erreichbar</strong><span class="muted small">203.0.113.4:8080 · vor 5 Tagen</span></div><span class="sev sev--high">Hoch</span></li>
+                <li><div><strong>Zertifikat läuft in 14 Tagen ab</strong><span class="muted small">mail.beispiel.de · vor 1 Tag</span></div><span class="sev sev--mid">Mittel</span></li>
+              </ul>
+            </div>
+            <ul class="checks">
+              <li>Assets automatisch im Blick: Domains, Subdomains, IPs, offene Ports, Zertifikate</li>
+              <li>Findings nach Schweregrad: kritisch, hoch, mittel, niedrig</li>
+              <li>Scan direkt anfragen</li>
+              <li>PDF-Report für Geschäftsführung oder Prüfer</li>
+            </ul>
+          </article>
+        </div>
+        <p class="tools__note" data-reveal>Die Werte in den Vorschauen sind Beispieldaten und keine Kundendaten. Zugang folgt, sobald die Werkzeuge bereitstehen.</p>
+      </div>
+    </section>
+
+    <!-- ===== 7 · BRANCHENFOKUS ===== -->
+    <section class="section" id="branchen" data-theme="sand" aria-labelledby="branchen-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Branchenfokus</p>
+          <h2 id="branchen-title" data-reveal data-reveal-delay="1">Drei Umfelder, die wir kennen.</h2>
+                  </div>
+        <div class="industries">
+          <article class="industry" data-reveal>
+            <div class="industry__icon" aria-hidden="true"><!-- @svg:icon-automotive noid --></div>
+            <h3>Automotive</h3>
+            <p>Zulieferer müssen Sicherheitsanforderungen ihrer Kunden nachweisen. Wir helfen bei Prüfpfaden für Kundenanforderungen, beim Schutz von Entwicklungsdaten und bei der Trennung von Büro- und Produktionsnetzen.</p>
+          </article>
+          <article class="industry" data-reveal data-reveal-delay="1">
+            <div class="industry__icon" aria-hidden="true"><!-- @svg:icon-saas noid --></div>
+            <h3>Software und SaaS</h3>
+            <p>Enterprise-Kunden fragen nach Ihrer Sicherheit. Wir prüfen Ihre Cloud-Konfiguration und Ihre Entwicklungsprozesse und bereiten Sie auf Kundenfragebögen vor.</p>
+          </article>
+          <article class="industry" data-reveal data-reveal-delay="2">
+            <div class="industry__icon" aria-hidden="true"><!-- @svg:icon-mittelstand noid --></div>
+            <h3>Mittelstand</h3>
+            <p>Kleine IT-Teams, viele Aufgaben, neue Pflichten wie NIS2. Wir priorisieren pragmatisch und arbeiten mit dem, was Sie haben.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8 · REGION ===== -->
+    <section class="section" id="region" data-theme="dark" aria-labelledby="region-title">
+      <div class="container region__grid">
+        <div class="region__copy">
+          <p class="kicker" data-reveal>Region</p>
+          <h2 id="region-title" data-reveal data-reveal-delay="1">Aus Böblingen für die Region Stuttgart.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Wir arbeiten vor Ort in Böblingen, Sindelfingen, Stuttgart, Leonberg, Herrenberg, Esslingen und Umgebung. Für Themen, die es zulassen, arbeiten wir auch remote in ganz Baden-Württemberg.</p>
+          <ul class="places" aria-label="Orte" data-reveal data-reveal-delay="3">
+            <li class="is-home">Böblingen</li><li>Sindelfingen</li><li>Stuttgart</li><li>Leonberg</li><li>Herrenberg</li><li>Esslingen</li>
+          </ul>
+          <address class="muted" data-reveal data-reveal-delay="4">Brühlweg 22, 71111 Waldenbuch</address>
+        </div>
+        <figure class="region__map" data-illustration="region" data-reveal>
+          <!-- @svg:region-map -->
+          <figcaption>Schematische Darstellung, nicht maßstäblich.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== 9 · ÜBER UNS / TEAM ===== -->
+    <section class="section" id="team" data-theme="light" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Team</p>
+          <h2 id="team-title" data-reveal data-reveal-delay="1">Der Mensch hinter okapio.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Bei okapio sprechen Sie mit der Person, die Ihr Projekt auch umsetzt, schon im ersten Gespräch.</p>
+        </div>
+        <div class="team">
+          <figure class="team__person" data-reveal>
+            <div class="photo-ph" role="img" aria-label="Platzhalter für ein Porträtfoto">
+              <p class="photo-ph__text"><mark class="ph">[Foto folgt: 4:5, mind. 1200 × 1500 px, WebP/AVIF]</mark><br>Art Direction: natürliches Tageslicht, am Arbeitsplatz, halbnah. Keine gestellten Handschläge.</p>
+            </div>
+            <figcaption>
+              <h3>Taha Cevik</h3>
+              <p class="team__role">Inhaber · Cybersecurity und IT. Über 10 Jahre Erfahrung in der IT für kleine und mittelständische Unternehmen.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10 · FAQ ===== -->
+    <section class="section" id="faq" data-theme="sand" aria-labelledby="faq-title">
+      <div class="container faq__grid">
+        <div class="faq__head section-head">
+          <p class="kicker" data-reveal>FAQ</p>
+          <h2 id="faq-title" data-reveal data-reveal-delay="1">Häufige Fragen.</h2>
+        </div>
+        <div class="faq-list" data-reveal>
+          <details>
+            <summary>Was kostet eine Beratung oder ein Audit?</summary>
+            <div class="faq-list__answer"><p>Das hängt von Umfang und Tiefe ab. Nach dem Erstgespräch erhalten Sie ein schriftliches Angebot mit klarem Leistungsumfang. Wir arbeiten so, dass Sie vorher wissen, was Sie zahlen.</p><p>Kein Paket von der Stange: Umfang und Preis richten sich nach Ihrer Situation.</p></div>
+          </details>
+          <details>
+            <summary>Sind wir von NIS2 betroffen?</summary>
+            <div class="faq-list__answer"><p>Das hängt von Branche, Unternehmensgröße und Ihrer Rolle in Lieferketten ab. Wir helfen Ihnen, das einzuordnen und zu klären, was daraus praktisch folgt. Eine verbindliche Rechtsauskunft geben wir nicht. Dafür ziehen wir bei Bedarf Ihre Rechtsberatung hinzu.</p></div>
+          </details>
+          <details>
+            <summary>Wie läuft die Zusammenarbeit ab?</summary>
+            <div class="faq-list__answer"><p>Erstgespräch, Bestandsaufnahme, Bericht mit Roadmap, Begleitung bei der Umsetzung. Sie haben in allen Schritten dieselbe Ansprechperson.</p></div>
+          </details>
+          <details>
+            <summary>Kommen Sie zu uns ins Haus?</summary>
+            <div class="faq-list__answer"><p>Ja. In Böblingen, Stuttgart und Umgebung sind Vor-Ort-Termine der Normalfall. Vieles lässt sich zusätzlich remote klären. Was sinnvoll ist, entscheiden wir gemeinsam.</p></div>
+          </details>
+          <details>
+            <summary>Sind Sie zertifiziert?</summary>
+            <div class="faq-list__answer"><p>Wir orientieren uns in unserer Arbeit an anerkannten Standards wie NIS2, OWASP und dem BSI IT-Grundschutz, sind aber kein Zertifizierer. Zertifikate stellen akkreditierte Stellen aus.</p></div>
+          </details>
+          <details>
+            <summary>Wie gehen Sie mit vertraulichen Informationen um?</summary>
+            <div class="faq-list__answer"><p>Auf Wunsch schließen wir vor dem ersten Blick in Ihre Systeme eine Geheimhaltungsvereinbarung. Wir verlangen nur die Zugriffe, die wir für die Aufgabe brauchen, und dokumentieren, was wir gesehen haben.</p></div>
+          </details>
+          <details>
+            <summary>Wir haben keine eigene Security-Abteilung. Ist das ein Problem?</summary>
+            <div class="faq-list__answer"><p>Nein, das ist bei vielen mittelständischen Unternehmen so. Wir richten die Roadmap an Ihren Ressourcen aus und benennen, was intern, extern oder gar nicht nötig ist.</p></div>
+          </details>
+          <details>
+            <summary>Was passiert nach dem Bericht? Setzen Sie Maßnahmen auch um?</summary>
+            <div class="faq-list__answer"><p>Auf Wunsch begleiten wir die wichtigsten Maßnahmen und prüfen, ob sie wirken. Was Ihre IT oder Ihr Dienstleister selbst umsetzt, besprechen wir mit den Beteiligten.</p></div>
+          </details>
+          <details>
+            <summary>Für welche Unternehmen arbeiten Sie?</summary>
+            <div class="faq-list__answer"><p>Für kleine und mittelständische Unternehmen, Automobilzulieferer und Software-/SaaS-Firmen in der Region Stuttgart.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11 · KONTAKT ===== -->
+    <section class="section contact" id="kontakt" data-theme="dark" aria-labelledby="kontakt-title">
+      <div class="contact__stripes" aria-hidden="true"></div>
+      <div class="container contact__grid">
+        <div class="contact__copy">
+          <p class="kicker" data-reveal>Kontakt</p>
+          <h2 id="kontakt-title" data-reveal data-reveal-delay="1">Sprechen wir über Ihr wichtigstes Risiko.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Beschreiben Sie kurz, worum es geht. Wir melden uns bei Ihnen persönlich.</p>
+          <dl class="contact__direct" data-reveal data-reveal-delay="3">
+            <dt>Lieber direkt? Telefon</dt>
+            <dd><a href="tel:+491743292211">+49 174 329 22 11</a></dd>
+            <dt>WhatsApp</dt>
+            <dd><a href="https://wa.me/491743292211" target="_blank" rel="noopener">Nachricht schreiben<span class="visually-hidden"> (öffnet WhatsApp in einem neuen Tab)</span></a></dd>
+            <dt>E-Mail</dt>
+            <dd><a href="mailto:info@plussec.de">info@plussec.de</a></dd>
+          </dl>
+        </div>
+
+        <div class="form-card" data-theme="light" data-reveal>
+          <p class="form-status form-status--ok" id="kontakt-gesendet" role="status" data-form-status>Danke. Ihre Anfrage ist bei uns angekommen. Wir melden uns bei Ihnen.</p>
+          <p class="form-status form-status--error" id="kontakt-fehler" role="alert" data-form-status>Das hat leider nicht geklappt. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail.</p>
+          <p class="form-status form-status--error" id="kontakt-eingabe" role="alert" data-form-status>Bitte prüfen Sie Ihre Angaben und senden Sie das Formular erneut.</p>
+
+          <form class="form" action="assets/php/kontakt.php" method="post" novalidate data-form>
+            <p class="error-summary" role="alert" tabindex="-1" hidden data-error-summary>Bitte prüfen Sie die markierten Felder.</p>
+
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="f-name-err">
+              <p class="field__error" id="f-name-err" hidden>Bitte geben Sie Ihren Namen an.</p>
+            </div>
+            <div class="field">
+              <label for="f-firma">Firma</label>
+              <input id="f-firma" name="firma" type="text" autocomplete="organization" required maxlength="160" aria-describedby="f-firma-err">
+              <p class="field__error" id="f-firma-err" hidden>Bitte geben Sie Ihre Firma an.</p>
+            </div>
+            <div class="field">
+              <label for="f-email">E-Mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="f-email-err">
+              <p class="field__error" id="f-email-err" hidden>Bitte geben Sie eine gültige E-Mail-Adresse an.</p>
+            </div>
+            <div class="field">
+              <label for="f-nachricht">Nachricht</label>
+              <textarea id="f-nachricht" name="nachricht" rows="5" required maxlength="4000" placeholder="Was möchten Sie schützen, oder was macht Ihnen Sorgen?" aria-describedby="f-nachricht-err"></textarea>
+              <p class="field__error" id="f-nachricht-err" hidden>Bitte schreiben Sie uns kurz, worum es geht.</p>
+            </div>
+
+            <!-- Honeypot: für Menschen unsichtbar, für Bots verlockend -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">Website (bitte leer lassen)</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <div class="check">
+                <input id="f-datenschutz" name="datenschutz" type="checkbox" value="1" required aria-describedby="f-datenschutz-err">
+                <label for="f-datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass okapio meine Angaben zur Bearbeitung der Anfrage verarbeitet.</label>
+              </div>
+              <p class="field__error" id="f-datenschutz-err" hidden>Bitte bestätigen Sie den Hinweis zum Datenschutz.</p>
+            </div>
+
+            <button class="btn btn--primary btn--block" type="submit">Anfrage senden</button>
+            <p class="form__note">Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Keine Weitergabe, kein Newsletter.</p>
+            <p class="form__fallback">Klappt das Formular nicht? <a href="mailto:info@plussec.de?subject=Anfrage%20%C3%BCber%20die%20Website">Per E-Mail schreiben</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 12 · FOOTER ===== -->
+  <div class="divider divider--flip" aria-hidden="true" data-theme="dark">
+    <!-- @svg:divider-stripes noid -->
+  </div>
+  <footer class="site-footer" data-theme="dark">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="footer-brand brand" href="#top" aria-label="okapio, zum Seitenanfang"><!-- @svg:logo-wordmark noid --></a>
+          <p class="muted">Cybersecurity-Beratung für die Region Stuttgart.</p>
+          <address class="muted">Brühlweg 22, 71111 Waldenbuch</address>
+        </div>
+        <nav aria-label="Rechtliches und Kontakt">
+          <h2 class="footer-title">Rechtliches</h2>
+          <ul class="footer-list">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Seitenbereiche">
+          <h2 class="footer-title">Auf dieser Seite</h2>
+          <ul class="footer-list">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#vorgehen">Vorgehen</a></li>
+            <li><a href="#werkzeuge">Werkzeuge</a></li>
+            <li><a href="#region">Region</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCHWEBENDE BEDIENELEMENTE ===== -->
+  <button class="fab fab--mode" type="button" aria-pressed="false" aria-label="Dunkle Darstellung" data-mode-toggle>
+    <svg class="fab__icon fab__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+    <svg class="fab__icon fab__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+  </button>
+  <a class="fab fab--whatsapp" href="https://wa.me/491743292211" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben (öffnet WhatsApp in einem neuen Tab)">
+    <svg class="fab__icon fab__icon--wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.6 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.3-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.4.3.1.2.1.6-.1 1.1z"/></svg>
+  </a>
+</body>
+</html>

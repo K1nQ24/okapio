@@ -1,0 +1,183 @@
+/* ==========================================================================
+   okapio – Layout (Container, Raster, Sektionen)
+   Besitzer: Agent FRONTEND · Mobile-first. Breakpoints: 40em / 64em / 80em
+   ========================================================================== */
+
+.container {
+  inline-size: 100%;
+  max-inline-size: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-inline-size: calc(var(--container-narrow) + 2 * var(--gutter)); }
+
+/* Sektionen tragen ihr Thema über data-theme (light | sand | dark) */
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+  background: var(--c-bg);
+  color: var(--c-text);
+}
+.section-head { display: grid; gap: var(--space-4); margin-block-end: var(--space-8); max-inline-size: var(--measure-section); }
+.section-head h2 { max-inline-size: var(--measure-h2); }
+
+/* ---------- Header ---------- */
+/* Ohne JS (mobil): normale Zeile mit sichtbarer Navigation im Fluss.
+   Ab 64em: sticky, Navigation inline. Mit JS (mobil): sticky + Menü-Button. */
+.site-header {
+  position: relative;
+  z-index: var(--z-header);
+  color: var(--c-text);
+}
+.site-header__bar {
+  position: absolute;
+  inset: 0;
+  background: var(--c-bg);
+  box-shadow: var(--shadow-header);
+  transform-origin: top;
+}
+.site-header__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+  min-block-size: var(--header-h);
+  padding-block: var(--space-2);
+}
+.brand { display: block; inline-size: var(--size-brand); flex: none; color: var(--c-text); }
+.brand svg { inline-size: 100%; block-size: auto; }
+.site-header__cta { margin-inline-start: auto; }
+.site-nav { order: 3; flex-basis: 100%; }
+.site-nav ul { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); }
+
+@media (max-width: 63.99em) {
+  .js .site-header { position: sticky; inset-block-start: 0; block-size: var(--header-h); }
+  .js .site-header__inner { flex-wrap: nowrap; padding-block: 0; }
+  .js .site-nav {
+    position: absolute; inset-inline: 0; inset-block-start: 100%;
+    display: none;
+    padding: var(--space-3) var(--gutter) var(--space-5);
+    background: var(--c-bg);
+    box-shadow: var(--shadow-2);
+  }
+  .js .site-nav.is-open { display: block; }
+  .js .site-nav ul { display: grid; }
+  .js .site-header__cta { display: none; }
+  .js .nav-toggle { margin-inline-start: auto; }
+}
+
+@media (min-width: 64em) {
+  .site-header { position: sticky; inset-block-start: 0; block-size: var(--header-h); }
+  .site-header__inner { flex-wrap: nowrap; padding-block: 0; }
+  .site-nav { order: 0; flex-basis: auto; margin-inline: auto; }
+}
+
+/* ---------- Hero ---------- */
+.hero { overflow: hidden; padding-block: var(--space-8) var(--space-9); }
+.hero__stripes {
+  position: absolute;
+  inset: 0 auto 0 0;
+  inline-size: var(--w-hero-stripes);
+  color: var(--c-stripe);
+  opacity: 0.1;
+  pointer-events: none;
+  -webkit-mask-image: var(--stripe-fade-up);
+  mask-image: var(--stripe-fade-up);
+}
+.hero__stripes svg { inline-size: 100%; block-size: 100%; }
+.hero__grid { position: relative; display: grid; gap: var(--space-8); align-items: center; }
+.hero__copy { display: grid; gap: var(--space-6); justify-items: start; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); }
+.hero__figure { position: relative; margin-inline: calc(var(--gutter) * -0.5); }
+
+@media (min-width: 64em) {
+  .hero { padding-block: var(--space-9) var(--space-10); min-block-size: min(var(--hero-min), calc(100svh - var(--header-h))); display: grid; align-items: center; }
+  .hero__grid { grid-template-columns: minmax(0, 6.2fr) minmax(0, 5.8fr); gap: var(--space-6); }
+  /* Rasterbruch: Illustration ragt über den Containerrand */
+  .hero__figure { margin-inline: 0 -3%; inline-size: 106%; max-inline-size: none; }
+}
+
+/* ---------- Trenner ---------- */
+.divider { display: block; background: var(--c-bg); block-size: var(--size-divider); overflow: hidden; color: var(--c-stripe); opacity: 0.28; }
+.divider svg { inline-size: 100%; block-size: 100%; }
+.divider--flip svg { transform: scaleY(-1); }
+
+/* ---------- Vertrauensleiste ---------- */
+.trust { padding-block: var(--space-7); }
+.trust__inner { display: grid; gap: var(--space-5); }
+@media (min-width: 64em) { .trust__inner { grid-template-columns: var(--col-trust) 1fr; align-items: center; } }
+
+/* ---------- Leistungen (Bento, bewusst ungleich) ---------- */
+.bento { display: grid; gap: var(--space-5); }
+@media (min-width: 64em) {
+  .bento { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-6); }
+  .service--1 { grid-column: span 7; }
+  .service--2 { grid-column: span 5; }
+  .service--3 { grid-column: span 5; }
+  .service--4 { grid-column: span 7; }
+  .service--5 { grid-column: span 7; }
+  .service--6 { grid-column: span 5; }
+  .service--7 { grid-column: 1 / -1; }
+}
+
+/* ---------- Warum okapio ---------- */
+.why__grid { display: grid; gap: var(--space-8); }
+@media (min-width: 64em) {
+  .why__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-9); }
+  .why__head { position: sticky; inset-block-start: calc(var(--header-h) + var(--space-6)); align-self: start; }
+}
+.why__list { display: grid; gap: var(--space-7); }
+.facts { display: grid; gap: var(--space-6); margin-block-start: var(--space-9); padding-block-start: var(--space-7); border-block-start: var(--line-w) solid var(--c-line); }
+@media (min-width: 40em) { .facts { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- Vorgehen ---------- */
+.timeline { position: relative; display: grid; gap: var(--space-8); padding-inline-start: var(--space-8); }
+@media (min-width: 64em) {
+  .timeline { padding-inline-start: var(--tl-pad-lg); }
+  .timeline__step:nth-child(even) .timeline__body { margin-inline-start: 10%; }
+}
+
+/* ---------- Branchen (versetzt) ---------- */
+.industries { display: grid; gap: var(--space-5); }
+@media (min-width: 64em) {
+  .industries { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); align-items: start; }
+  .industry:nth-child(2) { margin-block-start: var(--space-7); }
+  .industry:nth-child(3) { margin-block-start: var(--space-8); }
+}
+
+/* ---------- Region ---------- */
+.region__grid { display: grid; gap: var(--space-8); align-items: center; }
+.region__copy { display: grid; gap: var(--space-5); justify-items: start; }
+@media (min-width: 64em) {
+  .region__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); }
+  .region__map { margin-inline-end: calc(var(--gutter) * -1); }
+}
+
+/* ---------- Team (versetzt) ---------- */
+.team { display: grid; gap: var(--space-6); }
+@media (min-width: 40em) { .team { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; } .team__person:nth-child(2) { margin-block-start: var(--space-8); } }
+
+/* ---------- FAQ ---------- */
+.faq__grid { display: grid; gap: var(--space-7); }
+@media (min-width: 64em) { .faq__grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-9); } .faq__head { position: sticky; inset-block-start: calc(var(--header-h) + var(--space-6)); align-self: start; } }
+
+/* ---------- Kontakt ---------- */
+.contact { overflow: hidden; }
+.contact__stripes { position: absolute; inset: 0 auto 0 0; inline-size: 45%; opacity: var(--stripe-opacity); pointer-events: none; background-image: var(--stripes); background-size: var(--stripe-tile) 100%; -webkit-mask-image: var(--stripe-fade-right); mask-image: var(--stripe-fade-right); }
+.contact__grid { position: relative; display: grid; gap: var(--space-8); align-items: start; }
+.contact__copy { display: grid; gap: var(--space-5); justify-items: start; }
+@media (min-width: 64em) { .contact__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-9); } }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding-block: var(--space-8) var(--space-6);
+  background: var(--c-bg-alt);
+  color: var(--c-text);
+}
+.site-footer__grid { display: grid; gap: var(--space-7); }
+@media (min-width: 64em) { .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+
+/* ---------- Rechtstexte ---------- */
+.legal { padding-block: var(--space-8) var(--section-y); }
+.legal__body { display: grid; gap: var(--space-5); max-inline-size: var(--container-narrow); }

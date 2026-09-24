@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-topology" viewBox="0 0 480 340" role="img" aria-labelledby="ill-topology-title ill-topology-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-topology-title">Netzwerk in getrennten Zonen</title>
+  <desc id="ill-topology-desc">Topologie aus Internet, Firewall und Switch. Darunter drei getrennte Zonen: Büro, Server und Produktion. Eine direkte Verbindung zwischen Büro und Produktion ist gesperrt.</desc>
+
+  <!-- Zonen (Segmentierung) -->
+  <g id="tp-zones" data-stagger="fade" stroke-dasharray="5 7" stroke="var(--ill-line)">
+    <rect id="tp-zone-office" x="16" y="196" width="150" height="94" rx="14"/>
+    <rect id="tp-zone-server" x="188" y="196" width="104" height="94" rx="14"/>
+    <rect id="tp-zone-ot" x="314" y="196" width="150" height="94" rx="14"/>
+  </g>
+
+  <!-- Verbindungen -->
+  <g id="tp-links" data-stagger="draw">
+    <path id="tp-l-net-fw" pathLength="1" data-draw d="M240 50V76"/>
+    <path id="tp-l-fw-sw" pathLength="1" data-draw d="M240 106V126"/>
+    <path id="tp-l-sw-office" pathLength="1" data-draw d="M240 156V172H91V196"/>
+    <path id="tp-l-sw-server" pathLength="1" data-draw d="M240 156V196"/>
+    <path id="tp-l-sw-ot" pathLength="1" data-draw d="M240 156V172H389V196"/>
+  </g>
+
+  <!-- Gesperrter Querweg Büro ↔ Produktion -->
+  <g id="tp-blocked-link" stroke="var(--ill-risk)">
+    <path id="tp-blocked-path" data-fade stroke-dasharray="4 7" d="M91 290C91 326 389 326 389 290"/>
+    <g id="tp-blocked-mark" data-pop fill="var(--ill-surface)"><circle cx="240" cy="317" r="11"/><path d="M235 312l10 10M245 312l-10 10"/></g>
+  </g>
+
+  <!-- Geräte -->
+  <g id="tp-devices" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="tp-d-internet" transform="translate(240 32)"><circle r="18"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle r="8"/><ellipse rx="3.5" ry="8"/><path d="M-8 0H8"/></g></g>
+    <g id="tp-firewall" transform="translate(240 91)">
+      <rect x="-30" y="-15" width="60" height="30" rx="8" stroke="var(--ill-safe)" stroke-width="2.5"/>
+      <path stroke="var(--ill-safe)" stroke-width="1.75" d="M-30 0H30M-10 -15V0M10 0V15"/>
+    </g>
+    <g id="tp-d-switch" transform="translate(240 141)"><rect x="-32" y="-15" width="64" height="30" rx="8"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-18 0h.01M-8 0h.01M2 0h.01M12 0h.01"/></g></g>
+
+    <g id="tp-d-laptop-1" transform="translate(56 246)"><rect x="-16" y="-14" width="32" height="24" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-8" y="-8" width="16" height="11" rx="1.5"/><path d="M-11 7h22"/></g></g>
+    <g id="tp-d-laptop-2" transform="translate(126 246)"><rect x="-16" y="-14" width="32" height="24" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-8" y="-8" width="16" height="11" rx="1.5"/><path d="M-11 7h22"/></g></g>
+
+    <g id="tp-d-server-1" transform="translate(216 246)"><rect x="-16" y="-20" width="32" height="40" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-9-8h18M-9 2h18M-6 12h.01"/></g></g>
+    <g id="tp-d-server-2" transform="translate(264 246)"><rect x="-16" y="-20" width="32" height="40" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-9-8h18M-9 2h18M-6 12h.01"/></g></g>
+
+    <g id="tp-d-machine" transform="translate(360 246)"><rect x="-18" y="-16" width="36" height="32" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle r="6"/><path d="M0-10v4M0 6v4M-10 0h4M6 0h4"/></g></g>
+    <g id="tp-d-sensor" transform="translate(424 246)"><rect x="-16" y="-14" width="32" height="28" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-8 6a11 11 0 0 1 16 0M-4 0a6 6 0 0 1 8 0M0 6h.01" transform="translate(0 -2)"/></g></g>
+  </g>
+
+  <g id="tp-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="12.5" font-weight="600" text-anchor="middle">
+    <text x="91" y="279">Büro</text>
+    <text x="240" y="279">Server</text>
+    <text x="389" y="279">Produktion</text>
+  </g>
+</svg>

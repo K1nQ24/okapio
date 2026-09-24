@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-ki" viewBox="0 0 640 300" role="img" aria-labelledby="ill-ki-title ill-ki-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-ki-title">Automatisierter Ablauf mit KI-Schritt und menschlicher Freigabe</title>
+  <desc id="ill-ki-desc">Eingehende Dokumente laufen durch einen automatisierten Ablauf. Ein KI-Schritt bereitet sie auf, eine Person prüft und gibt frei, danach landet das Ergebnis im Zielsystem.</desc>
+
+  <!-- Ablauf: Eingang → KI-Schritt → Freigabe → Ergebnis -->
+  <g id="ki-edges" data-stagger="draw">
+    <path id="ki-e-1" pathLength="1" data-draw d="M112 150H196"/>
+    <path id="ki-e-2" pathLength="1" data-draw d="M284 150H366"/>
+    <path id="ki-e-3" pathLength="1" data-draw d="M454 150H530"/>
+    <path id="ki-e-loop" pathLength="1" data-draw stroke-dasharray="4 7" d="M410 108V62H240V106"/>
+  </g>
+
+  <g id="ki-nodes" data-stagger="fade" fill="var(--ill-surface)">
+    <!-- Eingang: Dokumentenstapel -->
+    <g id="ki-n-in" transform="translate(70 150)">
+      <rect x="-24" y="-30" width="48" height="60" rx="8" transform="translate(6 -6)" stroke="var(--ill-line-soft)"/>
+      <rect x="-24" y="-30" width="48" height="60" rx="8"/>
+      <path d="M-12-12h24M-12 0h24M-12 12h14"/>
+    </g>
+    <!-- KI-Schritt: Kern mit Funken -->
+    <g id="ki-n-ai" transform="translate(240 150)">
+      <rect x="-44" y="-44" width="88" height="88" rx="20" stroke="var(--ill-ink)" stroke-width="2.5"/>
+      <path stroke="var(--ill-ink)" stroke-width="2" d="M0-22c2 14 8 20 22 22-14 2-20 8-22 22-2-14-8-20-22-22 14-2 20-8 22-22z"/>
+    </g>
+    <!-- Freigabe: Mensch -->
+    <g id="ki-n-human" transform="translate(410 150)">
+      <circle r="44" stroke="var(--ill-safe)" stroke-width="3"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-8" r="8"/><path d="M-16 18a16 12 0 0 1 32 0"/></g>
+    </g>
+    <!-- Ergebnis: Zielsystem -->
+    <g id="ki-n-out" transform="translate(575 150)">
+      <rect x="-40" y="-34" width="80" height="68" rx="12"/>
+      <path d="M-24-14h48M-24 0h48M-24 14h30"/>
+    </g>
+  </g>
+
+  <!-- Freigabe-Häkchen -->
+  <g id="ki-approve" transform="translate(438 118)">
+    <circle id="ki-approve-badge" data-fade r="12" fill="var(--ill-safe)" stroke="none"/>
+    <path id="ki-approve-check" pathLength="1" data-draw stroke="var(--ill-surface)" stroke-width="2.5" d="M-5 .5l3.5 3.5 6.5-7"/>
+  </g>
+
+  <g id="ki-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="70" y="212">Eingang</text>
+    <text x="240" y="220">KI bereitet vor</text>
+    <text x="410" y="220">Mensch gibt frei</text>
+    <text x="575" y="212">Zielsystem</text>
+    <text x="325" y="50">Rückfrage bei Unsicherheit</text>
+  </g>
+</svg>

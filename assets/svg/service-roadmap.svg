@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-roadmap" viewBox="0 0 480 320" role="img" aria-labelledby="ill-roadmap-title ill-roadmap-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-roadmap-title">Roadmap mit Entscheidungspunkt</title>
+  <desc id="ill-roadmap-desc">Roadmap mit vier nummerierten Meilensteinen und einer Weggabelung. Ein Zweig wird verfolgt, der andere verworfen.</desc>
+
+  <!-- Unklarheit links: dichte Streifen, die sich zum Ziel hin auflösen -->
+  <g id="rm-stripes" data-stagger="grow" fill="var(--ill-ink)" stroke="none" opacity="0.12">
+    <rect x="16" y="150" width="2" height="150"/><rect x="26" y="120" width="5" height="180"/><rect x="38" y="170" width="1" height="130"/>
+    <rect x="46" y="100" width="8" height="200"/><rect x="62" y="160" width="2" height="140"/><rect x="72" y="130" width="3" height="170"/>
+    <rect x="86" y="200" width="2" height="100"/><rect x="98" y="180" width="5" height="120"/><rect x="114" y="240" width="1" height="60"/>
+    <rect x="126" y="230" width="3" height="70"/><rect x="142" y="270" width="2" height="30"/>
+  </g>
+
+  <path id="rm-route" pathLength="1" data-draw d="M60 250C110 250 120 200 170 200S230 130 280 130 330 150 370 150 410 70 440 70"/>
+  <path id="rm-branch-rejected" data-fade stroke-dasharray="4 7" opacity="0.9" d="M170 200C210 200 210 268 252 268"/>
+  <g id="rm-rejected-mark" data-fade stroke="var(--ill-muted)"><path d="M262 260l12 16M274 260l-12 16"/></g>
+
+  <g id="rm-milestones" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="rm-m1" transform="translate(60 250)"><circle id="rm-m1-ring" r="24" stroke="var(--ill-risk)" stroke-width="2" fill="none"/><circle r="16"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">1</text></g>
+    <g id="rm-decision" transform="translate(170 200)"><path d="M0-18 18 0 0 18-18 0z"/><path stroke="var(--ill-ink)" stroke-width="1.75" d="M-4-4a4 4 0 1 1 5.2 3.8C0 0 0 1 0 3M0 8h.01"/></g>
+    <g id="rm-m2" transform="translate(280 130)"><circle r="16"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">2</text></g>
+    <g id="rm-m3" transform="translate(370 150)"><circle r="16"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">3</text></g>
+    <g id="rm-m4" transform="translate(440 70)"><circle r="16" stroke="var(--ill-safe)" stroke-width="2.5"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">4</text></g>
+  </g>
+
+  <g id="rm-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="60" y="292">Ist-Stand</text>
+    <text x="150" y="168">Entscheidung</text>
+    <text x="440" y="108">Ziel</text>
+  </g>
+</svg>

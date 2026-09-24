@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-region-map" viewBox="0 0 560 440" role="img" aria-labelledby="ill-region-map-title ill-region-map-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-region-map-title">Schematische Karte der Region Stuttgart</title>
+  <desc id="ill-region-map-desc">Abstrakte, nicht maßstäbliche Karte mit Höhenlinien und einem Flusslauf. Markiert sind Böblingen (Standort), Stuttgart, Sindelfingen, Leonberg, Herrenberg, Esslingen und Ludwigsburg.</desc>
+
+  <!-- Höhenlinien (abstrakt) -->
+  <g id="rg-contours" data-stagger="fade" stroke="var(--ill-line-soft)" stroke-width="1.5">
+    <path d="M30 210C50 120 140 60 250 52S460 70 520 150s10 150-30 220-150 60-250 55S20 320 30 210z"/>
+    <path d="M78 214C96 140 166 96 252 90s176 22 220 82 8 122-24 176-118 46-198 42S64 300 78 214z"/>
+    <path d="M132 216c14-56 66-86 128-90s130 14 162 60 6 96-20 134-92 30-152 28-134-34-118-132z"/>
+    <path d="M190 222c10-34 44-52 84-52s82 12 100 40 0 66-20 86-62 14-96 12-78-20-68-86z"/>
+  </g>
+
+  <!-- Fluss (schematisch) -->
+  <path id="rg-river" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="2.5" opacity="0.7" d="M330 20C350 70 300 96 336 150s70 40 76 84 26 60 60 96 40 50 52 90"/>
+
+  <!-- Einzugsgebiet um Böblingen -->
+  <circle id="rg-service-area" data-pop cx="205" cy="300" r="96" stroke="var(--ill-risk)" stroke-dasharray="4 8"/>
+
+  <!-- Verbindungen zum Standort -->
+  <g id="rg-routes" data-stagger="fade" stroke="var(--ill-line)" stroke-dasharray="3 7">
+    <path id="rg-r-stuttgart" d="M205 300L330 190"/>
+    <path id="rg-r-sindelfingen" d="M205 300L195 268"/>
+    <path id="rg-r-leonberg" d="M205 300L205 168"/>
+    <path id="rg-r-herrenberg" d="M205 300L100 390"/>
+    <path id="rg-r-esslingen" d="M205 300L426 234"/>
+    <path id="rg-r-ludwigsburg" d="M330 190L338 60"/>
+  </g>
+
+  <!-- Orte -->
+  <g id="rg-towns" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="rg-town-stuttgart" transform="translate(330 190)"><circle r="12" stroke="var(--ill-ink)" stroke-width="2"/><circle r="4" fill="var(--ill-ink)" stroke="none"/></g>
+    <g id="rg-town-sindelfingen" transform="translate(195 268)"><circle r="6"/></g>
+    <g id="rg-town-leonberg" transform="translate(205 168)"><circle r="6"/></g>
+    <g id="rg-town-herrenberg" transform="translate(100 390)"><circle r="6"/></g>
+    <g id="rg-town-esslingen" transform="translate(426 234)"><circle r="6"/></g>
+    <g id="rg-town-ludwigsburg" transform="translate(338 60)"><circle r="6"/></g>
+  </g>
+
+  <!-- Standort Böblingen -->
+  <g id="rg-pin" transform="translate(205 300)">
+    <circle id="rg-pin-pulse" r="18" stroke="var(--ill-risk)" stroke-width="2" opacity="0.5"/>
+    <circle r="11" fill="var(--ill-risk)" stroke="none"/>
+    <circle r="4" fill="var(--ill-surface)" stroke="none"/>
+  </g>
+
+  <g id="rg-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600">
+    <text x="348" y="182">Stuttgart</text>
+    <text x="224" y="324" fill="var(--ill-ink)" font-weight="800" font-size="14.5">Böblingen</text>
+    <text x="148" y="255" text-anchor="end">Sindelfingen</text>
+    <text x="221" y="164">Leonberg</text>
+    <text x="118" y="410">Herrenberg</text>
+    <text x="440" y="252">Esslingen</text>
+    <text x="354" y="56">Ludwigsburg</text>
+  </g>
+</svg>

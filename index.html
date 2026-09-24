@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Strikte CSP als Meta-Tag (kein unsafe-inline, kein unsafe-eval, keine externen Quellen).
+    Hinweis: frame-ancestors, report-uri und sandbox wirken NICHT per Meta-Tag. Bitte zusätzlich als Server-Header setzen, z. B. (Apache, .htaccess):
+      Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+      Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+      Header always set X-Content-Type-Options "nosniff"
+      Header always set Referrer-Policy "strict-origin-when-cross-origin"
+      Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+      Header always set Cross-Origin-Opener-Policy "same-origin"
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
+
+  <title>Cybersecurity Böblingen &amp; Stuttgart | okapio Beratung</title>
+  <meta name="description" content="Cybersecurity-Beratung in Böblingen und Stuttgart für Mittelstand, Automotive und SaaS. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#e5eef2">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="okapio">
+  <meta property="og:title" content="okapio – Cybersecurity-Beratung Böblingen &amp; Stuttgart">
+  <meta property="og:description" content="Risiken sichtbar machen, bevor andere sie finden. Risiko Check, Infrastruktur, Cloud, Audits, Awareness sowie KI und Automatisierung.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
+  <script src="assets/js/init.js"></script>
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- JSON-LD: nur belegte Angaben -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "okapio",
+    "telephone": "+491743292211",
+    "email": "info@plussec.de",
+    "founder": { "@type": "Person", "name": "Taha Cevik" },
+    "description": "Cybersecurity-Beratung für Mittelstand, Automobilzulieferer und Software-/SaaS-Unternehmen: Infrastruktur-Security, Cloud- und SaaS-Security, Audits und Awareness-Trainings.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Brühlweg 22",
+      "postalCode": "71111",
+      "addressLocality": "Waldenbuch",
+      "addressRegion": "Baden-Württemberg",
+      "addressCountry": "DE"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Böblingen" },
+      { "@type": "City", "name": "Stuttgart" },
+      { "@type": "City", "name": "Sindelfingen" },
+      { "@type": "AdministrativeArea", "name": "Region Stuttgart" }
+    ],
+    "knowsAbout": ["Cybersecurity", "Informationssicherheit", "Risikoanalyse", "Cloud-Security", "Security-Audits", "Awareness-Training", "NIS2", "DSGVO", "BSI IT-Grundschutz", "KI und Automatisierung"],
+    "serviceType": ["Cybersecurity-Beratung", "Risiko Check", "Infrastruktur-Security", "Cloud- und SaaS-Security", "Security-Audits", "Awareness-Trainings", "KI und Automatisierung"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- ===== 1 · HEADER ===== -->
+  <header class="site-header" data-theme="dark" data-header>
+    <div class="site-header__bar" aria-hidden="true" data-header-bar></div>
+    <div class="container site-header__inner" data-header-inner>
+      <a class="brand" href="#top" aria-label="okapio, zum Seitenanfang">
+        <svg viewBox="-20 -765 3305 1070" role="img" aria-label="okapio" fill="currentColor">
+  <g><path d="M304 13.7Q225.7 13.7 165.4 -17.7Q105.2 -49 71 -110.8Q36.8 -172.5 36.8 -264Q36.8 -356.3 71.4 -417.3Q106 -478.3 166.6 -508.7Q227.2 -539 304.5 -539Q382.2 -539 442.8 -507.9Q503.5 -476.8 538 -415.5Q572.5 -354.2 572.5 -262.2Q572.5 -168.7 537.3 -107.2Q502.2 -45.7 441.2 -16Q380.2 13.7 304 13.7ZM308.7 -92.8Q347.7 -92.8 374.3 -111Q400.8 -129.2 414.5 -165.5Q428.2 -201.8 428.2 -254Q428.2 -309 413.6 -347.5Q399 -386 370.8 -406.8Q342.7 -427.5 300 -427.5Q263 -427.5 235.9 -409.6Q208.8 -391.7 195.1 -355.6Q181.3 -319.5 181.3 -266Q181.3 -181 215.2 -136.9Q249 -92.8 308.7 -92.8Z M665.2 0V-716H806.3V-317.5Q837.8 -338.5 866 -363.3Q894.2 -388.2 918 -415.2Q941.8 -442.2 960.8 -470Q979.7 -497.8 992.5 -525.3H1157Q1142.5 -486.7 1117.9 -448.4Q1093.3 -410.2 1059.6 -377.7Q1025.8 -345.3 981.7 -322.2Q937.5 -299.2 885 -290.8V-274.3Q951.2 -285.8 995.6 -271.7Q1040 -257.5 1068.4 -227.6Q1096.8 -197.7 1114.3 -157.9Q1131.8 -118.2 1145 -78.2L1168.5 0H1011.7L998.7 -49Q984.3 -98.7 967.1 -135.2Q949.8 -171.7 922.1 -192.3Q894.3 -213 846.5 -213H806.3V0Z M1372.2 13.7Q1328.5 13.7 1294.5 -3.5Q1260.5 -20.7 1241.3 -54Q1222.2 -87.3 1222.2 -135.7Q1222.2 -178.7 1238.6 -207.8Q1255 -237 1287.2 -255.1Q1319.5 -273.2 1366.1 -285.2Q1412.7 -297.2 1473.8 -306Q1504.7 -311 1525.1 -315.7Q1545.5 -320.3 1555.8 -330.7Q1566 -341 1566 -361.2Q1566 -389.2 1546.1 -409.3Q1526.2 -429.3 1482.2 -429.3Q1453.8 -429.3 1429.6 -419.3Q1405.3 -409.3 1387.7 -389.2Q1370.2 -369 1362.5 -338.3L1235.2 -376.8Q1246.7 -417.3 1268.9 -447.7Q1291.2 -478.2 1323.1 -498.7Q1355 -519.3 1396.7 -529.2Q1438.3 -539 1485.8 -539Q1562.3 -539 1611 -514.4Q1659.7 -489.8 1683.4 -438.3Q1707.2 -386.8 1707.2 -306V-216.7Q1707.2 -181.8 1708.7 -145.3Q1710.2 -108.8 1712.7 -72.2Q1715.3 -35.7 1719.2 0H1591.7Q1587.8 -25.2 1584.3 -57.6Q1580.7 -90 1578.8 -123.7H1561.5Q1547.3 -85.8 1521.2 -54.1Q1495 -22.3 1457.6 -4.3Q1420.2 13.7 1372.2 13.7ZM1433.7 -90.2Q1452.5 -90.2 1472.1 -96.8Q1491.7 -103.5 1510.1 -116.1Q1528.5 -128.7 1544 -147.7Q1559.5 -166.8 1568.7 -190.5L1567 -274.8L1590.5 -269.8Q1572.2 -256.8 1548.3 -249.5Q1524.3 -242.2 1498.8 -238Q1473.2 -233.8 1448.2 -229Q1423.3 -224.2 1403.6 -216.3Q1383.8 -208.5 1372.3 -194.7Q1360.8 -181 1360.8 -157Q1360.8 -126 1381.2 -108.1Q1401.5 -90.2 1433.7 -90.2Z M1831.2 167.2V-258V-525.3H1950.7L1951 -379.7L1968.2 -378Q1977.8 -431 2000.5 -466.9Q2023.2 -502.8 2059 -520.9Q2094.8 -539 2142.2 -539Q2212.5 -539 2262.2 -504.6Q2312 -470.2 2338.2 -407.5Q2364.3 -344.8 2364.3 -259.5Q2364.3 -181.7 2340.7 -119.8Q2317.2 -58 2270 -22.2Q2222.8 13.7 2151.2 13.7Q2100.8 13.7 2066.5 -5.1Q2032.2 -23.8 2009.3 -58.4Q1986.5 -93 1971.5 -141.7H1953.2Q1959.2 -114.5 1963.7 -86.2Q1968.3 -57.8 1971.6 -31.3Q1974.8 -4.7 1974.8 19.8V167.2ZM2101.2 -101.3Q2137 -101.3 2162.2 -121.2Q2187.3 -141 2201.1 -176.7Q2214.8 -212.3 2214.8 -259.3Q2214.8 -309.2 2200.6 -344.8Q2186.3 -380.5 2160 -400.3Q2133.7 -420 2098.2 -420Q2065.8 -420 2042.5 -405.8Q2019.2 -391.5 2004.1 -368.5Q1989 -345.5 1981.8 -319.4Q1974.7 -293.3 1974.7 -269.7V-250Q1974.7 -230.8 1979.9 -210.4Q1985.2 -190 1995.7 -170.7Q2006.3 -151.3 2021.4 -135.5Q2036.5 -119.7 2056.7 -110.5Q2076.8 -101.3 2101.2 -101.3Z M2461.3 0V-525.3H2604.8V0Z M2970 13.7Q2891.7 13.7 2831.4 -17.7Q2771.2 -49 2737 -110.8Q2702.8 -172.5 2702.8 -264Q2702.8 -356.3 2737.4 -417.3Q2772 -478.3 2832.6 -508.7Q2893.2 -539 2970.5 -539Q3048.2 -539 3108.8 -507.9Q3169.5 -476.8 3204 -415.5Q3238.5 -354.2 3238.5 -262.2Q3238.5 -168.7 3203.3 -107.2Q3168.2 -45.7 3107.2 -16Q3046.2 13.7 2970 13.7ZM2974.7 -92.8Q3013.7 -92.8 3040.3 -111Q3066.8 -129.2 3080.5 -165.5Q3094.2 -201.8 3094.2 -254Q3094.2 -309 3079.6 -347.5Q3065 -386 3036.8 -406.8Q3008.7 -427.5 2966 -427.5Q2929 -427.5 2901.9 -409.6Q2874.8 -391.7 2861.1 -355.6Q2847.3 -319.5 2847.3 -266Q2847.3 -181 2881.2 -136.9Q2915 -92.8 2974.7 -92.8Z"/></g>
+  <path fill="var(--ill-risk)" d="M2533.4 -603.3Q2491.2 -603.3 2468.8 -621.2Q2446.3 -639.2 2446.3 -672.5Q2446.3 -707.5 2468.8 -725.4Q2491.2 -743.3 2533.5 -743.3Q2576.7 -743.3 2599.1 -725.4Q2621.5 -707.5 2621.5 -673.5Q2621.5 -639.2 2599 -621.2Q2576.5 -603.3 2533.4 -603.3Z"/>
+</svg>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation" data-nav>
+        <ul>
+          <li class="nav-group" data-nav-group>
+            <button class="nav-group__btn" type="button" aria-expanded="false" aria-controls="nav-leistungen" data-nav-group-btn>Leistungen<svg class="nav-group__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
+            <ul class="nav-group__list" id="nav-leistungen">
+              <li><a href="#leistungen">Alle Leistungen</a></li>
+              <li><a href="#leistung-risikocheck">Risiko Check</a></li>
+              <li><a href="#leistung-beratung">Beratung und Compliance</a></li>
+              <li><a href="#leistung-infrastruktur">IT Security</a></li>
+              <li><a href="#leistung-cloud">Cloud und SaaS</a></li>
+              <li><a href="#leistung-audits">Audits</a></li>
+              <li><a href="#leistung-awareness">Awareness</a></li>
+              <li><a href="#leistung-ki">KI und Automatisierung</a></li>
+            </ul>
+          </li>
+          <li><a href="#vorgehen">Vorgehen</a></li>
+          <li><a href="#werkzeuge">Werkzeuge</a></li>
+          <li class="nav-group" data-nav-group>
+            <button class="nav-group__btn" type="button" aria-expanded="false" aria-controls="nav-ueber" data-nav-group-btn>Über okapio<svg class="nav-group__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
+            <ul class="nav-group__list" id="nav-ueber">
+              <li><a href="#warum-okapio">Warum okapio</a></li>
+              <li><a href="#branchen">Branchen</a></li>
+              <li><a href="#region">Region</a></li>
+              <li><a href="#team">Team</a></li>
+            </ul>
+          </li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li class="site-nav__cta"><a class="btn btn--primary" href="#kontakt">Erstgespräch vereinbaren</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menü öffnen</button>
+      <a class="btn btn--primary btn--sm site-header__cta" href="#kontakt">Erstgespräch vereinbaren</a>
+    </div>
+  </header>
+
+  <main id="inhalt" tabindex="-1">
+
+    <!-- ===== 2 · HERO ===== -->
+    <section class="section hero" id="top" data-theme="dark" aria-labelledby="hero-title">
+      <div class="hero__stripes" aria-hidden="true" data-illustration="stripes" data-parallax="0.12">
+        <svg id="ill-hero-stripes" viewBox="0 0 720 640" preserveAspectRatio="xMinYMax slice" aria-hidden="true" focusable="false" fill="currentColor">
+  <g id="hs-stripes" data-stagger="grow">
+    <rect id="hs-01" x="0" y="40" width="2" height="600"/>
+    <rect id="hs-02" x="10" y="50.4" width="5" height="589.6"/>
+    <rect id="hs-03" x="20" y="60.8" width="1" height="579.2"/>
+    <rect id="hs-04" x="34" y="75.2" width="8" height="564.8"/>
+    <rect id="hs-05" x="47" y="88.6" width="2" height="551.4"/>
+    <rect id="hs-06" x="60" y="101.8" width="3" height="538.2"/>
+    <rect id="hs-07" x="72" y="114" width="2" height="526"/>
+    <rect id="hs-08" x="82" y="124.2" width="5" height="515.8"/>
+    <rect id="hs-09" x="92" y="134.3" width="1" height="505.7"/>
+    <rect id="hs-10" x="106" y="148.3" width="8" height="491.7"/>
+    <rect id="hs-11" x="119" y="161.3" width="2" height="478.7"/>
+    <rect id="hs-12" x="132" y="174.2" width="3" height="465.8"/>
+    <rect id="hs-13" x="144" y="186" width="2" height="454"/>
+    <rect id="hs-14" x="154" y="195.9" width="5" height="444.1"/>
+    <rect id="hs-15" x="164" y="205.7" width="1" height="434.3"/>
+    <rect id="hs-16" x="178" y="219.3" width="8" height="420.7"/>
+    <rect id="hs-17" x="191" y="231.9" width="2" height="408.1"/>
+    <rect id="hs-18" x="204" y="244.4" width="3" height="395.6"/>
+    <rect id="hs-19" x="216" y="255.8" width="2" height="384.2"/>
+    <rect id="hs-20" x="226" y="265.3" width="5" height="374.7"/>
+    <rect id="hs-21" x="236" y="274.8" width="1" height="365.2"/>
+    <rect id="hs-22" x="250" y="287.9" width="8" height="352.1"/>
+    <rect id="hs-23" x="263" y="300.1" width="2" height="339.9"/>
+    <rect id="hs-24" x="276" y="312.1" width="3" height="327.9"/>
+    <rect id="hs-25" x="288" y="323.2" width="2" height="316.8"/>
+    <rect id="hs-26" x="298" y="332.3" width="5" height="307.7"/>
+    <rect id="hs-27" x="308" y="341.4" width="1" height="298.6"/>
+    <rect id="hs-28" x="322" y="354" width="8" height="286"/>
+    <rect id="hs-29" x="335" y="365.6" width="2" height="274.4"/>
+    <rect id="hs-30" x="348" y="377.2" width="3" height="262.8"/>
+    <rect id="hs-31" x="360" y="387.7" width="2" height="252.3"/>
+    <rect id="hs-32" x="370" y="396.5" width="5" height="243.5"/>
+    <rect id="hs-33" x="380" y="405.1" width="1" height="234.9"/>
+    <rect id="hs-34" x="394" y="417.2" width="8" height="222.8"/>
+    <rect id="hs-35" x="407" y="428.2" width="2" height="211.8"/>
+    <rect id="hs-36" x="420" y="439.1" width="3" height="200.9"/>
+    <rect id="hs-37" x="432" y="449.1" width="2" height="190.9"/>
+    <rect id="hs-38" x="442" y="457.4" width="5" height="182.6"/>
+    <rect id="hs-39" x="452" y="465.6" width="1" height="174.4"/>
+    <rect id="hs-40" x="466" y="476.9" width="8" height="163.1"/>
+    <rect id="hs-41" x="479" y="487.2" width="2" height="152.8"/>
+    <rect id="hs-42" x="492" y="497.5" width="3" height="142.5"/>
+    <rect id="hs-43" x="504" y="506.8" width="2" height="133.2"/>
+    <rect id="hs-44" x="514" y="514.4" width="5" height="125.6"/>
+    <rect id="hs-45" x="524" y="522" width="1" height="118"/>
+    <rect id="hs-46" x="538" y="532.5" width="8" height="107.5"/>
+    <rect id="hs-47" x="551" y="542" width="2" height="98"/>
+    <rect id="hs-48" x="564" y="551.3" width="3" height="88.7"/>
+    <rect id="hs-49" x="576" y="559.8" width="2" height="80.2"/>
+    <rect id="hs-50" x="586" y="566.7" width="5" height="73.3"/>
+    <rect id="hs-51" x="596" y="573.4" width="1" height="66.6"/>
+    <rect id="hs-52" x="610" y="582.7" width="8" height="57.3"/>
+    <rect id="hs-53" x="623" y="591" width="2" height="49"/>
+    <rect id="hs-54" x="636" y="599.1" width="3" height="40.9"/>
+    <rect id="hs-55" x="648" y="606.3" width="2" height="33.7"/>
+    <rect id="hs-56" x="658" y="612" width="5" height="28"/>
+    <rect id="hs-57" x="668" y="617.5" width="1" height="22.5"/>
+    <rect id="hs-58" x="682" y="624.8" width="8" height="15.2"/>
+    <rect id="hs-59" x="695" y="631" width="2" height="9"/>
+  </g>
+</svg>
+      </div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title" data-reveal>
+            <span class="hero__kicker">Cybersecurity Böblingen Stuttgart<span class="visually-hidden">:</span></span>
+            Risiken sichtbar machen, bevor andere sie finden.
+          </h1>
+          <p class="lead hero__lead" data-reveal data-reveal-delay="1">okapio berät Mittelständler, Automobilzulieferer und Software-Firmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. Aus Böblingen, mit festen Ansprechpartnern statt Ticketsystem.</p>
+          <div class="hero__actions" data-reveal data-reveal-delay="2">
+            <a class="btn btn--primary" href="#kontakt">Erstgespräch vereinbaren</a>
+            <a class="btn btn--ghost" href="#leistungen">Leistungen ansehen</a>
+          </div>
+          <p class="hero__micro" data-reveal data-reveal-delay="3">Antwort in der Regel innerhalb von 24 Stunden. Ein Gespräch, kein Vertriebsdruck.</p>
+        </div>
+        <figure class="hero__figure" data-illustration="hero">
+          <svg id="ill-hero-graph" viewBox="0 0 640 560" role="img" aria-labelledby="ill-hero-graph-title ill-hero-graph-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-hero-graph-title">Angriffspfad wird an der Schutzschicht gestoppt</title>
+  <desc id="ill-hero-graph-desc">Netzwerkgraph aus Servern, Cloud und Endgeräten. Ein Angriffspfad (Terrakotta) führt von außen über Web und API auf die Kundendaten und wird von einem Schutzschild gestoppt.</desc>
+
+  <g id="hg-stripes" data-stagger="grow" fill="var(--ill-ink)" stroke="none" opacity="0.12">
+    <rect x="392" y="330" width="2" height="190"/>
+    <rect x="404" y="300" width="5" height="220"/>
+    <rect x="418" y="360" width="1" height="160"/>
+    <rect x="428" y="270" width="8" height="250"/>
+    <rect x="446" y="340" width="2" height="180"/>
+    <rect x="458" y="290" width="3" height="230"/>
+    <rect x="474" y="320" width="2" height="200"/>
+    <rect x="484" y="250" width="5" height="270"/>
+    <rect x="500" y="380" width="1" height="140"/>
+    <rect x="510" y="300" width="8" height="220"/>
+    <rect x="530" y="360" width="2" height="160"/>
+    <rect x="542" y="330" width="3" height="190"/>
+    <rect x="560" y="400" width="2" height="120"/>
+    <rect x="574" y="370" width="5" height="150"/>
+    <rect x="594" y="430" width="1" height="90"/>
+    <rect x="608" y="410" width="3" height="110"/>
+  </g>
+
+  <g id="hg-edges" data-stagger="draw" stroke-width="2">
+    <path id="hg-e-web-laptop" pathLength="1" data-draw d="M185 205 L110 370"/>
+    <path id="hg-e-web-cloud" pathLength="1" data-draw d="M185 205 L330 360"/>
+    <path id="hg-e-web-api" pathLength="1" data-draw d="M185 205 L320 145"/>
+    <path id="hg-e-api-cloud" pathLength="1" data-draw d="M320 145 L330 360"/>
+    <path id="hg-e-api-endpoint" pathLength="1" data-draw d="M320 145 L540 150"/>
+    <path id="hg-e-api-data" pathLength="1" data-draw d="M320 145 L525 340"/>
+    <path id="hg-e-cloud-data" pathLength="1" data-draw d="M330 360 L525 340"/>
+    <path id="hg-e-cloud-server" pathLength="1" data-draw d="M330 360 L235 480"/>
+    <path id="hg-e-laptop-server" pathLength="1" data-draw d="M110 370 L235 480"/>
+    <path id="hg-e-endpoint-data" pathLength="1" data-draw d="M540 150 L525 340"/>
+    <path id="hg-e-internet-web" pathLength="1" data-draw d="M60 110 L185 205"/>
+  </g>
+
+  <g id="hg-attack-path" stroke="var(--ill-risk)">
+    <path id="hg-attack-seg" pathLength="1" data-draw stroke-width="3.5" d="M60 110 L185 205 L320 145 L408 231"/>
+    <circle id="hg-attack-head" data-fade cx="408" cy="231" r="5" fill="var(--ill-risk)" stroke="none"/>
+  </g>
+
+  <g id="hg-node-rings" data-stagger="pulse" stroke="var(--ill-line)" stroke-width="1.5" opacity="0.5">
+    <circle id="hg-ring-web" cx="185" cy="205" r="28"/>
+    <circle id="hg-ring-api" cx="320" cy="145" r="28"/>
+    <circle id="hg-ring-cloud" cx="330" cy="360" r="28"/>
+    <circle id="hg-ring-laptop" cx="110" cy="370" r="28"/>
+    <circle id="hg-ring-server" cx="235" cy="480" r="28"/>
+    <circle id="hg-ring-endpoint" cx="540" cy="150" r="28"/>
+    <circle id="hg-ring-data" cx="525" cy="340" r="34"/>
+  </g>
+
+  <g id="hg-nodes" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="hg-n-internet" transform="translate(60 110)">
+      <circle r="22"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><circle r="9"/><ellipse rx="4" ry="9"/><path d="M-9 0H9"/></g>
+    </g>
+    <g id="hg-n-web" transform="translate(185 205)">
+      <circle r="20"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-9" y="-10" width="18" height="7" rx="2"/><rect x="-9" y="2" width="18" height="7" rx="2"/><path d="M-5 -6.5h.01M-5 5.5h.01"/></g>
+    </g>
+    <g id="hg-n-api" transform="translate(320 145)">
+      <circle r="20"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-4 -7l-6 7 6 7M4 -7l6 7-6 7"/></g>
+    </g>
+    <g id="hg-n-cloud" transform="translate(330 360)">
+      <circle r="20"/>
+      <path stroke="var(--ill-ink)" stroke-width="1.75" d="M-8 5a4.5 4.5 0 0 1-.4-9 6.5 6.5 0 0 1 12.4-1.5 5 5 0 0 1 3 10.5z"/>
+    </g>
+    <g id="hg-n-laptop" transform="translate(110 370)">
+      <circle r="20"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-8" y="-8" width="16" height="11" rx="1.5"/><path d="M-11 7h22"/></g>
+    </g>
+    <g id="hg-n-server" transform="translate(235 480)">
+      <circle r="20"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-9" y="-10" width="18" height="7" rx="2"/><rect x="-9" y="2" width="18" height="7" rx="2"/><path d="M-5 -6.5h.01M-5 5.5h.01"/></g>
+    </g>
+    <g id="hg-n-endpoint" transform="translate(540 150)">
+      <circle r="20"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-4" r="4"/><path d="M-8 9a8 7 0 0 1 16 0"/></g>
+    </g>
+    <g id="hg-n-data" transform="translate(525 340)">
+      <circle r="26"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><ellipse cy="-7" rx="10" ry="4"/><path d="M-10 -7v14a10 4 0 0 0 20 0v-14M-10 0a10 4 0 0 0 20 0"/></g>
+    </g>
+  </g>
+
+  <g id="hg-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="60" y="150">Internet</text>
+    <text x="185" y="243">Web</text>
+    <text x="320" y="113">API</text>
+    <text x="525" y="384">Kundendaten</text>
+  </g>
+
+  <g id="hg-shield">
+    <circle id="hg-shield-ring" cx="425" cy="245" r="30" stroke="var(--ill-safe)" stroke-width="2" opacity="0"/>
+    <g id="hg-shield-body" data-pop>
+      <path fill="var(--ill-surface)" stroke="var(--ill-safe)" stroke-width="3" d="M425 220l20 7v15c0 15-9 26-20 32-11-6-20-17-20-32v-15z"/>
+      <path id="hg-shield-check" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="3" d="M415 246l7 7 13-14"/>
+    </g>
+  </g>
+
+  <g id="hg-blocked-tag" data-rise>
+    <rect x="448" y="196" width="88" height="26" rx="13" fill="var(--ill-surface)" stroke="var(--ill-safe)" stroke-width="1.75"/>
+    <text x="492" y="213.5" fill="var(--ill-safe)" stroke="none" font-family="var(--font-text)" font-size="12.5" font-weight="700" text-anchor="middle">blockiert</text>
+  </g>
+</svg>
+        </figure>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true" data-reveal data-theme="light">
+      <svg viewBox="0 0 1440 56" preserveAspectRatio="xMinYMin slice" aria-hidden="true" focusable="false" fill="currentColor">
+  <g data-stagger="grow"><rect x="0" y="0" width="2" height="56"/><rect x="10" y="0" width="5" height="55.6"/><rect x="20" y="0" width="1" height="55.2"/><rect x="34" y="0" width="8" height="54.6"/><rect x="47" y="0" width="2" height="54.1"/><rect x="60" y="0" width="3" height="53.6"/><rect x="72" y="0" width="2" height="53.1"/><rect x="82" y="0" width="5" height="52.7"/><rect x="92" y="0" width="1" height="52.2"/><rect x="106" y="0" width="8" height="51.7"/><rect x="119" y="0" width="2" height="51.2"/><rect x="132" y="0" width="3" height="50.6"/><rect x="144" y="0" width="2" height="50.1"/><rect x="154" y="0" width="5" height="49.7"/><rect x="164" y="0" width="1" height="49.3"/><rect x="178" y="0" width="8" height="48.8"/><rect x="191" y="0" width="2" height="48.2"/><rect x="204" y="0" width="3" height="47.7"/><rect x="216" y="0" width="2" height="47.2"/><rect x="226" y="0" width="5" height="46.8"/><rect x="236" y="0" width="1" height="46.4"/><rect x="250" y="0" width="8" height="45.8"/><rect x="263" y="0" width="2" height="45.3"/><rect x="276" y="0" width="3" height="44.8"/><rect x="288" y="0" width="2" height="44.3"/><rect x="298" y="0" width="5" height="43.9"/><rect x="308" y="0" width="1" height="43.5"/><rect x="322" y="0" width="8" height="42.9"/><rect x="335" y="0" width="2" height="42.4"/><rect x="348" y="0" width="3" height="41.9"/><rect x="360" y="0" width="2" height="41.4"/><rect x="370" y="0" width="5" height="41"/><rect x="380" y="0" width="1" height="40.6"/><rect x="394" y="0" width="8" height="40"/><rect x="407" y="0" width="2" height="39.5"/><rect x="420" y="0" width="3" height="39"/><rect x="432" y="0" width="2" height="38.5"/><rect x="442" y="0" width="5" height="38.1"/><rect x="452" y="0" width="1" height="37.7"/><rect x="466" y="0" width="8" height="37.1"/><rect x="479" y="0" width="2" height="36.6"/><rect x="492" y="0" width="3" height="36.1"/><rect x="504" y="0" width="2" height="35.6"/><rect x="514" y="0" width="5" height="35.2"/><rect x="524" y="0" width="1" height="34.8"/><rect x="538" y="0" width="8" height="34.3"/><rect x="551" y="0" width="2" height="33.7"/><rect x="564" y="0" width="3" height="33.2"/><rect x="576" y="0" width="2" height="32.8"/><rect x="586" y="0" width="5" height="32.4"/><rect x="596" y="0" width="1" height="32"/><rect x="610" y="0" width="8" height="31.4"/><rect x="623" y="0" width="2" height="30.9"/><rect x="636" y="0" width="3" height="30.4"/><rect x="648" y="0" width="2" height="29.9"/><rect x="658" y="0" width="5" height="29.5"/><rect x="668" y="0" width="1" height="29.1"/><rect x="682" y="0" width="8" height="28.5"/><rect x="695" y="0" width="2" height="28"/><rect x="708" y="0" width="3" height="27.5"/><rect x="720" y="0" width="2" height="27"/><rect x="730" y="0" width="5" height="26.7"/><rect x="740" y="0" width="1" height="26.3"/><rect x="754" y="0" width="8" height="25.7"/><rect x="767" y="0" width="2" height="25.2"/><rect x="780" y="0" width="3" height="24.7"/><rect x="792" y="0" width="2" height="24.2"/><rect x="802" y="0" width="5" height="23.8"/><rect x="812" y="0" width="1" height="23.4"/><rect x="826" y="0" width="8" height="22.9"/><rect x="839" y="0" width="2" height="22.4"/><rect x="852" y="0" width="3" height="21.9"/><rect x="864" y="0" width="2" height="21.4"/><rect x="874" y="0" width="5" height="21"/><rect x="884" y="0" width="1" height="20.6"/><rect x="898" y="0" width="8" height="20.1"/><rect x="911" y="0" width="2" height="19.6"/><rect x="924" y="0" width="3" height="19.1"/><rect x="936" y="0" width="2" height="18.6"/><rect x="946" y="0" width="5" height="18.2"/><rect x="956" y="0" width="1" height="17.8"/><rect x="970" y="0" width="8" height="17.3"/><rect x="983" y="0" width="2" height="16.8"/><rect x="996" y="0" width="3" height="16.3"/><rect x="1008" y="0" width="2" height="15.8"/><rect x="1018" y="0" width="5" height="15.4"/><rect x="1028" y="0" width="1" height="15.1"/><rect x="1042" y="0" width="8" height="14.5"/><rect x="1055" y="0" width="2" height="14"/><rect x="1068" y="0" width="3" height="13.5"/><rect x="1080" y="0" width="2" height="13.1"/><rect x="1090" y="0" width="5" height="12.7"/><rect x="1100" y="0" width="1" height="12.3"/><rect x="1114" y="0" width="8" height="11.8"/><rect x="1127" y="0" width="2" height="11.3"/><rect x="1140" y="0" width="3" height="10.8"/><rect x="1152" y="0" width="2" height="10.3"/><rect x="1162" y="0" width="5" height="10"/><rect x="1172" y="0" width="1" height="9.6"/><rect x="1186" y="0" width="8" height="9.1"/><rect x="1199" y="0" width="2" height="8.6"/><rect x="1212" y="0" width="3" height="8.1"/><rect x="1224" y="0" width="2" height="7.6"/><rect x="1234" y="0" width="5" height="7.3"/><rect x="1244" y="0" width="1" height="6.9"/><rect x="1258" y="0" width="8" height="6.4"/><rect x="1271" y="0" width="2" height="5.9"/><rect x="1284" y="0" width="3" height="5.4"/><rect x="1296" y="0" width="2" height="5"/><rect x="1306" y="0" width="5" height="4.6"/><rect x="1316" y="0" width="1" height="4.3"/><rect x="1330" y="0" width="8" height="3.8"/><rect x="1343" y="0" width="2" height="3.3"/></g>
+</svg>
+    </div>
+
+    <!-- ===== 3 · VERTRAUENSLEISTE ===== -->
+    <section class="section trust" data-theme="light" aria-labelledby="trust-title">
+      <div class="container trust__inner">
+        <h2 class="trust__title" id="trust-title">Unsere Arbeit orientiert sich an</h2>
+        <ul class="trust__list">
+          <li data-reveal>NIS2</li>
+          <li data-reveal data-reveal-delay="1">OWASP</li>
+          <li data-reveal data-reveal-delay="2">CSA STAR / CCM</li>
+          <li data-reveal data-reveal-delay="3">BSI IT-Grundschutz</li>
+        </ul>
+        <p class="trust__note">„Orientiert an" heißt: Wir arbeiten entlang dieser Anforderungen.</p>
+      </div>
+    </section>
+
+    <!-- ===== 4 · LEISTUNGEN ===== -->
+    <section class="section" id="leistungen" data-theme="light" aria-labelledby="leistungen-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Leistungen</p>
+          <h2 id="leistungen-title" data-reveal data-reveal-delay="1">Sieben Bereiche. Ein Ziel: weniger unbekannte Risiken.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Sie müssen nicht alles auf einmal angehen. Wir starten dort, wo Ihr Risiko am größten ist.</p>
+        </div>
+
+        <div class="bento">
+          <!-- 01 Risiko Check -->
+          <article class="service service--1" id="leistung-risikocheck" aria-labelledby="l1-title" data-reveal>
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">01</span>
+              <h3 id="l1-title">Ein klares Bild Ihrer Risiken, bevor Sie investieren.</h3>
+            </div>
+            <div class="service__body">
+              <p>Der Risiko Check ist der ruhigste Einstieg. Wir prüfen Netzwerk, Zugriffsrechte, Backups und bestehende Software und sagen Ihnen, welche Lücken zuerst geschlossen werden sollten.</p>
+              <ul class="checks">
+                <li>Bestandsaufnahme und Schwachstellenanalyse</li>
+                <li>Risikobewertung nach Wahrscheinlichkeit und Schaden</li>
+                <li>Priorisierte Liste mit Verantwortlichen</li>
+                <li>Ergebnis persönlich besprochen, nicht nur verschickt</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Risiko Check)</span></a>
+            </div>
+            <div class="service__art" data-illustration="riskcheck">
+              <svg id="ill-risk-check" viewBox="0 0 480 320" role="img" aria-labelledby="ill-risk-check-title ill-risk-check-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-risk-check-title">Risiko-Matrix mit priorisierter Liste</title>
+  <desc id="ill-risk-check-desc">Eine Matrix aus Wahrscheinlichkeit und Schaden. Mehrere Risiken liegen als Punkte darin, zwei davon im kritischen Feld oben rechts. Eine Linie führt vom kritischsten Risiko zu einer Liste, die die Reihenfolge der Maßnahmen zeigt.</desc>
+
+  <g id="rc-stripes" data-stagger="grow" fill="var(--ill-ink)" stroke="none" opacity="0.1">
+    <rect x="20" y="232" width="2" height="68"/><rect x="30" y="220" width="5" height="80"/><rect x="42" y="250" width="1" height="50"/><rect x="50" y="240" width="3" height="60"/><rect x="60" y="262" width="2" height="38"/>
+  </g>
+
+  <rect id="rc-grid" data-fade x="16" y="20" width="248" height="280" rx="16" fill="var(--ill-surface)"/>
+
+  <g id="rc-cells" data-fade stroke="none" fill="var(--ill-risk)">
+    <rect x="184" y="48" width="64" height="64" rx="6" opacity="0.2"/>
+    <rect x="120" y="48" width="64" height="64" rx="6" opacity="0.09"/>
+    <rect x="184" y="112" width="64" height="64" rx="6" opacity="0.09"/>
+  </g>
+  <g id="rc-lines" data-fade stroke="var(--ill-line-soft)" stroke-width="1.5">
+    <path d="M56 48h192M56 112h192M56 176h192M56 240h192"/>
+    <path d="M56 48v192M120 48v192M184 48v192M248 48v192"/>
+  </g>
+
+  <g id="rc-dots" data-stagger="fade" fill="var(--ill-muted)" stroke="none">
+    <circle cx="88" cy="208" r="6"/><circle cx="152" cy="208" r="6"/><circle cx="88" cy="144" r="6"/><circle cx="152" cy="144" r="6"/><circle cx="216" cy="144" r="6"/><circle cx="152" cy="80" r="6"/>
+  </g>
+  <g id="rc-risk-1" data-pop fill="var(--ill-risk)" stroke="none"><circle cx="228" cy="68" r="9"/></g>
+  <g id="rc-risk-2" data-pop fill="var(--ill-risk)" stroke="none"><circle cx="204" cy="92" r="7"/></g>
+
+  <path id="rc-link" pathLength="1" data-draw stroke="var(--ill-risk)" stroke-dasharray="1" d="M237 68C262 68 274 86 300 86"/>
+
+  <g id="rc-list" data-stagger="slide">
+    <g id="rc-row-1"><rect x="300" y="64" width="164" height="44" rx="8" fill="var(--ill-surface-2)" stroke="var(--ill-risk)" stroke-width="2.5"/><circle cx="324" cy="86" r="11" fill="var(--ill-risk)" stroke="none"/><text x="324" y="91" fill="var(--ill-surface)" stroke="none" font-family="var(--font-display)" font-size="14" font-weight="700" text-anchor="middle">1</text><path stroke="var(--ill-ink)" stroke-width="3" d="M346 80h86"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M346 92h50"/></g>
+    <g id="rc-row-2"><rect x="300" y="124" width="164" height="44" rx="8" fill="var(--ill-surface-2)" stroke="none"/><circle cx="324" cy="146" r="11" stroke="var(--ill-line)" stroke-width="2"/><text x="324" y="151" fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="14" font-weight="700" text-anchor="middle">2</text><path stroke="var(--ill-ink)" stroke-width="3" d="M346 140h70"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M346 152h44"/></g>
+    <g id="rc-row-3"><rect x="300" y="184" width="164" height="44" rx="8" fill="var(--ill-surface-2)" stroke="none"/><circle cx="324" cy="206" r="11" stroke="var(--ill-line)" stroke-width="2"/><text x="324" y="211" fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="14" font-weight="700" text-anchor="middle">3</text><path stroke="var(--ill-ink)" stroke-width="3" d="M346 200h94"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M346 212h58"/></g>
+  </g>
+
+  <g id="rc-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="152" y="266">Wahrscheinlichkeit</text>
+    <text x="0" y="0" transform="translate(36 144) rotate(-90)">Schaden</text>
+    <text x="382" y="48">Reihenfolge</text>
+    <text x="382" y="256">Zuerst das Kritische</text>
+  </g>
+</svg>
+            </div>
+          </article>
+
+          <!-- 02 Beratung -->
+          <article class="service service--2" id="leistung-beratung" aria-labelledby="l2-title" data-reveal data-reveal-delay="1">
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">02</span>
+              <h3 id="l2-title">Eine Roadmap, die Sie umsetzen können.</h3>
+            </div>
+            <div class="service__body">
+              <p>Wir klären, was Sie schützen müssen, wie hoch das Risiko ist und was zuerst dran ist. Das Ergebnis ist eine priorisierte Roadmap mit Verantwortlichen. Kein Aktenordner, den niemand liest.</p>
+              <ul class="checks">
+                <li>Sicherheitsberatung und Richtlinien</li>
+                <li>Compliance-Management mit Bezug auf NIS2, DSGVO und BSI IT-Grundschutz</li>
+                <li>Einordnung von Kundenanforderungen</li>
+                <li>Begleitung bei der Umsetzung</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Beratung)</span></a>
+            </div>
+            <div class="service__art" data-illustration="roadmap">
+              <svg id="ill-roadmap" viewBox="0 0 480 320" role="img" aria-labelledby="ill-roadmap-title ill-roadmap-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-roadmap-title">Roadmap mit Entscheidungspunkt</title>
+  <desc id="ill-roadmap-desc">Roadmap mit vier nummerierten Meilensteinen und einer Weggabelung. Ein Zweig wird verfolgt, der andere verworfen.</desc>
+
+  <g id="rm-stripes" data-stagger="grow" fill="var(--ill-ink)" stroke="none" opacity="0.12">
+    <rect x="16" y="150" width="2" height="150"/><rect x="26" y="120" width="5" height="180"/><rect x="38" y="170" width="1" height="130"/>
+    <rect x="46" y="100" width="8" height="200"/><rect x="62" y="160" width="2" height="140"/><rect x="72" y="130" width="3" height="170"/>
+    <rect x="86" y="200" width="2" height="100"/><rect x="98" y="180" width="5" height="120"/><rect x="114" y="240" width="1" height="60"/>
+    <rect x="126" y="230" width="3" height="70"/><rect x="142" y="270" width="2" height="30"/>
+  </g>
+
+  <path id="rm-route" pathLength="1" data-draw d="M60 250C110 250 120 200 170 200S230 130 280 130 330 150 370 150 410 70 440 70"/>
+  <path id="rm-branch-rejected" data-fade stroke-dasharray="4 7" opacity="0.9" d="M170 200C210 200 210 268 252 268"/>
+  <g id="rm-rejected-mark" data-fade stroke="var(--ill-muted)"><path d="M262 260l12 16M274 260l-12 16"/></g>
+
+  <g id="rm-milestones" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="rm-m1" transform="translate(60 250)"><circle id="rm-m1-ring" r="24" stroke="var(--ill-risk)" stroke-width="2" fill="none"/><circle r="16"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">1</text></g>
+    <g id="rm-decision" transform="translate(170 200)"><path d="M0-18 18 0 0 18-18 0z"/><path stroke="var(--ill-ink)" stroke-width="1.75" d="M-4-4a4 4 0 1 1 5.2 3.8C0 0 0 1 0 3M0 8h.01"/></g>
+    <g id="rm-m2" transform="translate(280 130)"><circle r="16"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">2</text></g>
+    <g id="rm-m3" transform="translate(370 150)"><circle r="16"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">3</text></g>
+    <g id="rm-m4" transform="translate(440 70)"><circle r="16" stroke="var(--ill-safe)" stroke-width="2.5"/><text fill="var(--ill-ink)" stroke="none" font-family="var(--font-display)" font-size="16" font-weight="700" text-anchor="middle" y="5.5">4</text></g>
+  </g>
+
+  <g id="rm-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="60" y="292">Ist-Stand</text>
+    <text x="150" y="168">Entscheidung</text>
+    <text x="440" y="108">Ziel</text>
+  </g>
+</svg>
+            </div>
+          </article>
+
+          <!-- 03 IT Security / Infrastruktur -->
+          <article class="service service--3" id="leistung-infrastruktur" data-theme="dark" aria-labelledby="l3-title" data-reveal>
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">03</span>
+              <h3 id="l3-title">Netze und Server, die nicht überraschen.</h3>
+            </div>
+            <div class="service__body">
+              <p>Wir schauen auf Netzwerk, Server und Endgeräte, so wie ein Angreifer es täte. Dann trennen, härten und dokumentieren wir.</p>
+              <ul class="checks">
+                <li>Netzwerksegmentierung und Zugriffskonzepte</li>
+                <li>Härtung von Servern und Endgeräten, Verschlüsselung</li>
+                <li>Patch- und Schwachstellenmanagement, Monitoring</li>
+                <li>Hardware- und Software-Management</li>
+                <li>Backup- und Wiederanlaufkonzept</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (IT Security)</span></a>
+            </div>
+            <div class="service__art" data-illustration="topology">
+              <svg id="ill-topology" viewBox="0 0 480 340" role="img" aria-labelledby="ill-topology-title ill-topology-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-topology-title">Netzwerk in getrennten Zonen</title>
+  <desc id="ill-topology-desc">Topologie aus Internet, Firewall und Switch. Darunter drei getrennte Zonen: Büro, Server und Produktion. Eine direkte Verbindung zwischen Büro und Produktion ist gesperrt.</desc>
+
+  <g id="tp-zones" data-stagger="fade" stroke-dasharray="5 7" stroke="var(--ill-line)">
+    <rect id="tp-zone-office" x="16" y="196" width="150" height="94" rx="14"/>
+    <rect id="tp-zone-server" x="188" y="196" width="104" height="94" rx="14"/>
+    <rect id="tp-zone-ot" x="314" y="196" width="150" height="94" rx="14"/>
+  </g>
+
+  <g id="tp-links" data-stagger="draw">
+    <path id="tp-l-net-fw" pathLength="1" data-draw d="M240 50V76"/>
+    <path id="tp-l-fw-sw" pathLength="1" data-draw d="M240 106V126"/>
+    <path id="tp-l-sw-office" pathLength="1" data-draw d="M240 156V172H91V196"/>
+    <path id="tp-l-sw-server" pathLength="1" data-draw d="M240 156V196"/>
+    <path id="tp-l-sw-ot" pathLength="1" data-draw d="M240 156V172H389V196"/>
+  </g>
+
+  <g id="tp-blocked-link" stroke="var(--ill-risk)">
+    <path id="tp-blocked-path" data-fade stroke-dasharray="4 7" d="M91 290C91 326 389 326 389 290"/>
+    <g id="tp-blocked-mark" data-pop fill="var(--ill-surface)"><circle cx="240" cy="317" r="11"/><path d="M235 312l10 10M245 312l-10 10"/></g>
+  </g>
+
+  <g id="tp-devices" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="tp-d-internet" transform="translate(240 32)"><circle r="18"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle r="8"/><ellipse rx="3.5" ry="8"/><path d="M-8 0H8"/></g></g>
+    <g id="tp-firewall" transform="translate(240 91)">
+      <rect x="-30" y="-15" width="60" height="30" rx="8" stroke="var(--ill-safe)" stroke-width="2.5"/>
+      <path stroke="var(--ill-safe)" stroke-width="1.75" d="M-30 0H30M-10 -15V0M10 0V15"/>
+    </g>
+    <g id="tp-d-switch" transform="translate(240 141)"><rect x="-32" y="-15" width="64" height="30" rx="8"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-18 0h.01M-8 0h.01M2 0h.01M12 0h.01"/></g></g>
+
+    <g id="tp-d-laptop-1" transform="translate(56 246)"><rect x="-16" y="-14" width="32" height="24" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-8" y="-8" width="16" height="11" rx="1.5"/><path d="M-11 7h22"/></g></g>
+    <g id="tp-d-laptop-2" transform="translate(126 246)"><rect x="-16" y="-14" width="32" height="24" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-8" y="-8" width="16" height="11" rx="1.5"/><path d="M-11 7h22"/></g></g>
+
+    <g id="tp-d-server-1" transform="translate(216 246)"><rect x="-16" y="-20" width="32" height="40" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-9-8h18M-9 2h18M-6 12h.01"/></g></g>
+    <g id="tp-d-server-2" transform="translate(264 246)"><rect x="-16" y="-20" width="32" height="40" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-9-8h18M-9 2h18M-6 12h.01"/></g></g>
+
+    <g id="tp-d-machine" transform="translate(360 246)"><rect x="-18" y="-16" width="36" height="32" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle r="6"/><path d="M0-10v4M0 6v4M-10 0h4M6 0h4"/></g></g>
+    <g id="tp-d-sensor" transform="translate(424 246)"><rect x="-16" y="-14" width="32" height="28" rx="6"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-8 6a11 11 0 0 1 16 0M-4 0a6 6 0 0 1 8 0M0 6h.01" transform="translate(0 -2)"/></g></g>
+  </g>
+
+  <g id="tp-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="12.5" font-weight="600" text-anchor="middle">
+    <text x="91" y="279">Büro</text>
+    <text x="240" y="279">Server</text>
+    <text x="389" y="279">Produktion</text>
+  </g>
+</svg>
+            </div>
+          </article>
+
+          <!-- 04 Cloud & SaaS -->
+          <article class="service service--4" id="leistung-cloud" data-theme="sand" aria-labelledby="l4-title" data-reveal data-reveal-delay="1">
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">04</span>
+              <h3 id="l4-title">Konfigurationsfehler finden, bevor sie ausgenutzt werden.</h3>
+            </div>
+            <div class="service__body">
+              <p>Die meisten Cloud-Risiken sind keine Zero-Days, sondern offene Speicher, zu weite Rechte und vergessene Zugänge. Wir prüfen Ihre Konten und liefern Findings mit Priorität und konkretem Fix.</p>
+              <ul class="checks">
+                <li>Prüfung von Identitäten, Rechten, Netzwerk und Speicher</li>
+                <li>Findings mit Priorität und Lösungsweg</li>
+                <li>SaaS-Anbindungen und Integrationen</li>
+                <li>Sichere Entwicklung entlang der OWASP-Empfehlungen</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Cloud- und SaaS-Security)</span></a>
+            </div>
+            <div class="service__art" data-illustration="cloud">
+              <svg id="ill-cloud-graph" viewBox="0 0 480 320" role="img" aria-labelledby="ill-cloud-graph-title ill-cloud-graph-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-cloud-graph-title">Cloud-Graph mit Konfigurations-Findings</title>
+  <desc id="ill-cloud-graph-desc">Eine Cloud ist mit Speicher, Identitäten, Datenbank und SaaS-App verbunden. Zwei Dienste tragen nummerierte Findings, ein drittes ist behoben. Rechts steht die Findings-Liste mit Priorität.</desc>
+
+  <g id="cg-edges" data-stagger="draw">
+    <path id="cg-e-storage" pathLength="1" data-draw d="M160 150L64 64"/>
+    <path id="cg-e-iam" pathLength="1" data-draw d="M160 150L256 64"/>
+    <path id="cg-e-db" pathLength="1" data-draw d="M160 150L64 246"/>
+    <path id="cg-e-saas" pathLength="1" data-draw d="M160 150L256 246"/>
+  </g>
+
+  <g id="cg-nodes" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="cg-cloud-core" transform="translate(160 150)">
+      <circle r="38"/>
+      <path stroke="var(--ill-ink)" stroke-width="2" d="M-18 12a10 10 0 0 1-.8-20 14 14 0 0 1 27-3 10.5 10.5 0 0 1 7 23z"/>
+    </g>
+    <g id="cg-n-storage" transform="translate(64 64)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-9-6h18l-2 14h-14z"/><path d="M-9-6a9 3 0 0 1 18 0"/></g></g>
+    <g id="cg-n-iam" transform="translate(256 64)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle cx="-4" cy="0" r="5"/><path d="M1 0h11M8 0v5M12 0v4"/></g></g>
+    <g id="cg-n-db" transform="translate(64 246)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><ellipse cy="-6" rx="9" ry="3.5"/><path d="M-9-6v12a9 3.5 0 0 0 18 0v-12M-9 0a9 3.5 0 0 0 18 0"/></g></g>
+    <g id="cg-n-saas" transform="translate(256 246)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-10" y="-8" width="20" height="16" rx="3"/><path d="M-10-2h20M-6-5h.01M-3-5h.01"/></g></g>
+  </g>
+
+  <g id="cg-findings-markers" data-stagger="fade" font-family="var(--font-display)" font-size="12" font-weight="700" text-anchor="middle">
+    <g id="cg-mk-1" transform="translate(80 46)"><circle class="mk-ring" r="12" stroke="var(--ill-risk)" stroke-width="1.5" opacity="0"/><circle r="10" fill="var(--ill-risk)" stroke="none"/><text fill="var(--ill-surface)" stroke="none" y="4.2">1</text></g>
+    <g id="cg-mk-2" transform="translate(272 46)"><circle class="mk-ring" r="12" stroke="var(--ill-risk)" stroke-width="1.5" opacity="0"/><circle r="10" fill="var(--ill-surface)" stroke="var(--ill-risk)" stroke-width="2"/><text fill="var(--ill-risk)" stroke="none" y="4.2">2</text></g>
+    <g id="cg-mk-3" transform="translate(80 264)"><circle r="10" fill="var(--ill-surface)" stroke="var(--ill-safe)" stroke-width="2"/><path stroke="var(--ill-safe)" stroke-width="2" d="M-4.5 .5l3 3 6-6.5"/></g>
+  </g>
+
+  <g id="cg-panel" data-stagger="slide">
+    <rect id="cg-panel-card" x="316" y="44" width="150" height="232" rx="14" fill="var(--ill-surface)"/>
+    <path id="cg-panel-head" stroke="var(--ill-muted)" stroke-width="3" d="M332 66h50"/>
+    <g id="cg-row-1">
+      <rect x="326" y="86" width="130" height="52" rx="8" fill="var(--ill-surface-2)" stroke="none"/>
+      <circle cx="343" cy="112" r="6" fill="var(--ill-risk)" stroke="none"/>
+      <path stroke="var(--ill-ink)" stroke-width="3" d="M357 106h56"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 118h40"/>
+    </g>
+    <g id="cg-row-2">
+      <rect x="326" y="146" width="130" height="52" rx="8" fill="var(--ill-surface-2)" stroke="none"/>
+      <circle cx="343" cy="172" r="5" fill="none" stroke="var(--ill-risk)" stroke-width="2"/>
+      <path stroke="var(--ill-ink)" stroke-width="3" d="M357 166h44"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 178h56"/>
+    </g>
+    <g id="cg-row-3">
+      <rect x="326" y="206" width="130" height="52" rx="8" fill="var(--ill-surface-2)" stroke="none"/>
+      <circle cx="343" cy="232" r="6" fill="none" stroke="var(--ill-safe)" stroke-width="2"/><path stroke="var(--ill-safe)" stroke-width="2" d="M340 232l2.2 2.2 4-4.4"/>
+      <path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 226h48M357 238h28"/>
+    </g>
+  </g>
+</svg>
+            </div>
+          </article>
+
+          <!-- 05 Audits -->
+          <article class="service service--5" id="leistung-audits" aria-labelledby="l5-title" data-reveal>
+            <div class="service__head">
+              <span class="service__no" aria-hidden="true">05</span>
+              <h3 id="l5-title">Prüfpfad statt Bauchgefühl.</h3>
+            </div>
+            <div class="service__body">
+              <p>Wir prüfen gegen einen klar definierten Maßstab und halten fest, was wir gesehen haben. Sie erhalten nachvollziehbare Nachweise und eine Lückenliste mit Maßnahmen.</p>
+              <ul class="checks">
+                <li>Audit orientiert an CSA CCM, BSI IT-Grundschutz oder OWASP</li>
+                <li>Klarer Status je Anforderung</li>
+                <li>Lückenliste mit Maßnahmen</li>
+                <li>Vorbereitung auf externe Prüfungen und Kundenfragebögen</li>
+              </ul>
+              <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Audits)</span></a>
+            </div>
+            <div class="service__art" data-illustration="audit">
+              <svg id="ill-audit-path" viewBox="0 0 480 320" role="img" aria-labelledby="ill-audit-path-title ill-audit-path-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-audit-path-title">Checkliste mit Prüfpfad und Status</title>
+  <desc id="ill-audit-path-desc">Checkliste mit fünf Prüfpunkten. Zwei sind erledigt, einer ist in Prüfung, zwei sind offen. Ein Prüfpfad verbindet die Punkte. Rechts zeigt eine Statusanzeige den Fortschritt.</desc>
+
+  <rect id="au-checklist" data-fade x="16" y="20" width="296" height="280" rx="16" fill="var(--ill-surface)"/>
+
+  <path id="au-audit-path" pathLength="1" data-draw stroke="var(--ill-line)" stroke-dasharray="1" d="M50 62V262"/>
+
+  <g id="au-rows" data-stagger="slide">
+    <g id="au-row-1"><rect x="72" y="44" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 62h84"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 62h50"/></g>
+    <g id="au-row-2"><rect x="72" y="94" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 112h104"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 112h50"/></g>
+    <g id="au-row-3"><rect x="72" y="144" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="var(--ill-risk)" stroke-width="1.75"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 162h72"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 162h50"/></g>
+    <g id="au-row-4"><rect x="72" y="194" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 212h96"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 212h50"/></g>
+    <g id="au-row-5"><rect x="72" y="244" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 262h64"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 262h50"/></g>
+  </g>
+
+  <g id="au-status-icons" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="au-st-1" transform="translate(50 62)"><circle r="11" stroke="var(--ill-safe)" stroke-width="2.5"/><path id="au-st-1-check" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="2.5" d="M-4.5 .5l3.2 3.2 6-6.7"/></g>
+    <g id="au-st-2" transform="translate(50 112)"><circle r="11" stroke="var(--ill-safe)" stroke-width="2.5"/><path id="au-st-2-check" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="2.5" d="M-4.5 .5l3.2 3.2 6-6.7"/></g>
+    <g id="au-st-3" transform="translate(50 162)"><circle r="11" stroke="var(--ill-risk)" stroke-width="2.5"/><path id="au-st-3-dots" stroke="var(--ill-risk)" stroke-width="2.5" d="M-5 0h.01M0 0h.01M5 0h.01"/></g>
+    <g id="au-st-4" transform="translate(50 212)"><circle r="11"/></g>
+    <g id="au-st-5" transform="translate(50 262)"><circle r="11"/></g>
+  </g>
+
+  <g id="au-gauge" transform="translate(396 112)">
+    <circle id="au-gauge-track" r="52" stroke="var(--ill-line-soft)" stroke-width="12"/>
+    <circle id="au-gauge-done" pathLength="1" r="52" stroke="var(--ill-safe)" stroke-width="12" stroke-dasharray="0.4 1" transform="rotate(-90)"/>
+    <circle id="au-gauge-review" data-fade pathLength="1" r="52" stroke="var(--ill-risk)" stroke-width="12" stroke-dasharray="0.2 1" stroke-dashoffset="-0.4" transform="rotate(-90)"/>
+    <path stroke="var(--ill-ink)" stroke-width="1.75" d="M-9 2l6 6 12-13"/>
+  </g>
+
+  <g id="au-legend" data-fade font-family="var(--font-text)" font-size="12.5" font-weight="600">
+    <circle cx="340" cy="212" r="5" fill="var(--ill-safe)" stroke="none"/><text x="354" y="216.5" fill="var(--ill-muted)" stroke="none">erledigt</text>
+    <circle cx="340" cy="238" r="5" fill="var(--ill-risk)" stroke="none"/><text x="354" y="242.5" fill="var(--ill-muted)" stroke="none">in Prüfung</text>
+    <circle cx="340" cy="264" r="5" fill="none" stroke="var(--ill-line)" stroke-width="2"/><text x="354" y="268.5" fill="var(--ill-muted)" stroke="none">offen</text>
+  </g>
+</svg>
+            </div>
+          </article>
+
+          <!-- 06 Awareness -->
+          <article class="service service--6" id="leistung-awareness" data-theme="dark" aria-labelledby="l6-title" data-reveal data-reveal-delay="1">
+            <div class="service__text">
+              <div class="service__head">
+                <span class="service__no" aria-hidden="true">06</span>
+                <h3 id="l6-title">Menschen erkennen, was Technik übersieht.</h3>
+              </div>
+              <div class="service__body">
+                <p>Ein guter Filter hilft, aber nicht immer. Wir zeigen Ihrem Team an echten Beispielen, woran es Phishing erkennt und wohin es sich wendet, wenn es unsicher ist.</p>
+                <ul class="checks">
+                  <li>Schulungen für Geschäftsführung und Mitarbeitende</li>
+                  <li>Kurze Formate mit Beispielen aus Ihrem Alltag</li>
+                  <li>Meldewege: „Wen rufe ich an?"</li>
+                  <li>Phishing-Tests nur nach Abstimmung mit Datenschutz und Betriebsrat</li>
+                </ul>
+                <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (Awareness)</span></a>
+              </div>
+            </div>
+            <div class="service__art" data-illustration="awareness">
+              <svg id="ill-awareness" viewBox="0 0 640 300" role="img" aria-labelledby="ill-awareness-title ill-awareness-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-awareness-title">Ein Phishing-Signal wird von Menschen im Netzwerk erkannt</title>
+  <desc id="ill-awareness-desc">Personen als Knoten in einem Netzwerk. Eine Phishing-Nachricht erreicht mehrere Personen. Eine davon erkennt sie und meldet sie an die Meldestelle.</desc>
+
+  <g id="aw-network-edges" data-stagger="draw">
+    <path id="aw-pe-1-3" pathLength="1" data-draw d="M190 76L320 150"/>
+    <path id="aw-pe-2-3" pathLength="1" data-draw d="M200 232L320 150"/>
+    <path id="aw-pe-1-2" pathLength="1" data-draw d="M190 76L200 232"/>
+    <path id="aw-pe-3-4" pathLength="1" data-draw d="M320 150L430 70"/>
+    <path id="aw-pe-3-5" pathLength="1" data-draw d="M320 150L440 236"/>
+    <path id="aw-pe-4-r" pathLength="1" data-draw d="M430 70L570 150"/>
+    <path id="aw-pe-5-r" pathLength="1" data-draw d="M440 236L570 150"/>
+  </g>
+
+  <g id="aw-phish" stroke="var(--ill-risk)">
+    <path id="aw-phish-path-1" data-fade stroke-dasharray="4 7" d="M86 132L166 84"/>
+    <path id="aw-phish-path-2" data-fade stroke-dasharray="4 7" d="M86 168L176 224"/>
+    <path id="aw-phish-path-main" pathLength="1" data-draw stroke-width="3" d="M90 150H294"/>
+    <g id="aw-phish-mail" data-fade transform="translate(52 150)" fill="var(--ill-surface)">
+      <rect x="-26" y="-18" width="52" height="36" rx="8"/><path d="M-26-10l26 16 26-16"/>
+    </g>
+  </g>
+
+  <g id="aw-people" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="aw-p-1" transform="translate(190 76)"><circle r="24"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-5" r="5"/><path d="M-10 11a10 8 0 0 1 20 0"/></g></g>
+    <g id="aw-p-2" transform="translate(200 232)"><circle r="24"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-5" r="5"/><path d="M-10 11a10 8 0 0 1 20 0"/></g></g>
+    <g id="aw-p-3" transform="translate(320 150)">
+      <circle id="aw-signal-ring-1" r="30" stroke="var(--ill-safe)" stroke-width="2" opacity="0"/>
+      <circle id="aw-signal-ring-2" r="30" stroke="var(--ill-safe)" stroke-width="2" opacity="0"/>
+      <circle id="aw-p-3-body" r="26" stroke="var(--ill-safe)" stroke-width="3"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-5" r="5.5"/><path d="M-11 12a11 9 0 0 1 22 0"/></g>
+    </g>
+    <g id="aw-p-4" transform="translate(430 70)"><circle r="24"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-5" r="5"/><path d="M-10 11a10 8 0 0 1 20 0"/></g></g>
+    <g id="aw-p-5" transform="translate(440 236)"><circle r="24"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-5" r="5"/><path d="M-10 11a10 8 0 0 1 20 0"/></g></g>
+  </g>
+
+  <g id="aw-recognized">
+    <g id="aw-recognized-badge" data-fade transform="translate(340 128)"><circle r="11" fill="var(--ill-safe)" stroke="none"/><path id="aw-recognized-check" pathLength="1" data-draw stroke="var(--ill-surface)" stroke-width="2.5" d="M-4.5 .5l3.2 3.2 6-6.7"/></g>
+    <path id="aw-report-path" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="3" d="M350 156L440 150Q500 148 546 150"/>
+    <g id="aw-report-node" data-fade transform="translate(575 150)" fill="var(--ill-surface)">
+      <circle r="28" stroke="var(--ill-safe)" stroke-width="3"/>
+      <path stroke="var(--ill-safe)" stroke-width="2.5" d="M0-14l11 4v8c0 8-5 13-11 16-6-3-11-8-11-16v-8z"/>
+    </g>
+  </g>
+
+  <g id="aw-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="52" y="192">Phishing-Mail</text>
+    <text x="320" y="204">erkennt &amp; meldet</text>
+    <text x="575" y="200">Meldestelle</text>
+  </g>
+</svg>
+            </div>
+          </article>
+
+          <!-- 07 KI und Automatisierung -->
+          <article class="service service--7" id="leistung-ki" aria-labelledby="l7-title" data-reveal>
+            <div class="service__art" data-illustration="ki">
+              <svg id="ill-ki" viewBox="0 0 640 300" role="img" aria-labelledby="ill-ki-title ill-ki-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-ki-title">Automatisierter Ablauf mit KI-Schritt und menschlicher Freigabe</title>
+  <desc id="ill-ki-desc">Eingehende Dokumente laufen durch einen automatisierten Ablauf. Ein KI-Schritt bereitet sie auf, eine Person prüft und gibt frei, danach landet das Ergebnis im Zielsystem.</desc>
+
+  <g id="ki-edges" data-stagger="draw">
+    <path id="ki-e-1" pathLength="1" data-draw d="M112 150H196"/>
+    <path id="ki-e-2" pathLength="1" data-draw d="M284 150H366"/>
+    <path id="ki-e-3" pathLength="1" data-draw d="M454 150H530"/>
+    <path id="ki-e-loop" pathLength="1" data-draw stroke-dasharray="4 7" d="M410 108V62H240V106"/>
+  </g>
+
+  <g id="ki-nodes" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="ki-n-in" transform="translate(70 150)">
+      <rect x="-24" y="-30" width="48" height="60" rx="8" transform="translate(6 -6)" stroke="var(--ill-line-soft)"/>
+      <rect x="-24" y="-30" width="48" height="60" rx="8"/>
+      <path d="M-12-12h24M-12 0h24M-12 12h14"/>
+    </g>
+    <g id="ki-n-ai" transform="translate(240 150)">
+      <rect x="-44" y="-44" width="88" height="88" rx="20" stroke="var(--ill-ink)" stroke-width="2.5"/>
+      <path stroke="var(--ill-ink)" stroke-width="2" d="M0-22c2 14 8 20 22 22-14 2-20 8-22 22-2-14-8-20-22-22 14-2 20-8 22-22z"/>
+    </g>
+    <g id="ki-n-human" transform="translate(410 150)">
+      <circle r="44" stroke="var(--ill-safe)" stroke-width="3"/>
+      <g stroke="var(--ill-ink)" stroke-width="1.75"><circle cy="-8" r="8"/><path d="M-16 18a16 12 0 0 1 32 0"/></g>
+    </g>
+    <g id="ki-n-out" transform="translate(575 150)">
+      <rect x="-40" y="-34" width="80" height="68" rx="12"/>
+      <path d="M-24-14h48M-24 0h48M-24 14h30"/>
+    </g>
+  </g>
+
+  <g id="ki-approve" transform="translate(438 118)">
+    <circle id="ki-approve-badge" data-fade r="12" fill="var(--ill-safe)" stroke="none"/>
+    <path id="ki-approve-check" pathLength="1" data-draw stroke="var(--ill-surface)" stroke-width="2.5" d="M-5 .5l3.5 3.5 6.5-7"/>
+  </g>
+
+  <g id="ki-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600" text-anchor="middle">
+    <text x="70" y="212">Eingang</text>
+    <text x="240" y="220">KI bereitet vor</text>
+    <text x="410" y="220">Mensch gibt frei</text>
+    <text x="575" y="212">Zielsystem</text>
+    <text x="325" y="50">Rückfrage bei Unsicherheit</text>
+  </g>
+</svg>
+            </div>
+            <div class="service__text">
+              <div class="service__head">
+                <span class="service__no" aria-hidden="true">07</span>
+                <h3 id="l7-title">Routine automatisieren, Kontrolle behalten.</h3>
+              </div>
+              <div class="service__body">
+                <p>Wir prüfen, wo KI und Automatisierung Ihrem Team Arbeit abnehmen, und bauen Abläufe, die sicher und nachvollziehbar bleiben. Ein Mensch entscheidet dort, wo es zählt.</p>
+                <ul class="checks">
+                  <li>Potenzialanalyse: Welche Abläufe lohnen sich?</li>
+                  <li>Automatisierung wiederkehrender Aufgaben, z. B. Dokumente, Tickets, Berichte</li>
+                  <li>Sicherer Einsatz von KI-Assistenten: Datenschutz, Zugriffsrechte, Freigaben</li>
+                  <li>Klare Regeln für den KI-Einsatz im Unternehmen</li>
+                </ul>
+                <a class="link-arrow" href="#kontakt">Dazu sprechen<span class="visually-hidden"> (KI und Automatisierung)</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5 · WARUM OKAPIO ===== -->
+    <section class="section why" id="warum-okapio" data-theme="dark" aria-labelledby="warum-title">
+      <div class="container">
+        <div class="why__grid">
+          <div class="why__head section-head">
+            <p class="kicker" data-reveal>Warum okapio</p>
+            <h2 id="warum-title" data-reveal data-reveal-delay="1">Nah dran. Konkret. Mit festen Ansprechpartnern.</h2>
+          </div>
+          <ol class="why__list">
+            <li class="why-item" data-reveal>
+              <span class="why-item__num" aria-hidden="true">01</span>
+              <div>
+                <h3>Nähe.</h3>
+                <p>Wir sitzen in Böblingen. Termine vor Ort in der Region Stuttgart sind der Normalfall, nicht die Ausnahme.</p>
+              </div>
+            </li>
+            <li class="why-item" data-reveal data-reveal-delay="1">
+              <span class="why-item__num" aria-hidden="true">02</span>
+              <div>
+                <h3>Praxis.</h3>
+                <p>Über 10 Jahre Erfahrung in der IT für kleine und mittelständische Unternehmen in der Region. Kein Callcenter, sondern ein Ansprechpartner.</p>
+              </div>
+            </li>
+            <li class="why-item" data-reveal data-reveal-delay="2">
+              <span class="why-item__num" aria-hidden="true">03</span>
+              <div>
+                <h3>Feste Ansprechpartner.</h3>
+                <p>Sie haben einen Namen und eine Telefonnummer, kein Ticket. Wer Ihr Projekt startet, führt es auch zu Ende.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <dl class="facts" aria-label="okapio in Zahlen (strukturelle Angaben)">
+          <div class="fact" data-reveal>
+            <dt class="fact__label">Leistungsbereiche</dt>
+            <dd class="fact__num" data-count="7">7</dd>
+          </div>
+          <div class="fact" data-reveal data-reveal-delay="1">
+            <dt class="fact__label">Schritte im Vorgehen</dt>
+            <dd class="fact__num" data-count="6">6</dd>
+          </div>
+          <div class="fact" data-reveal data-reveal-delay="2">
+            <dt class="fact__label">feste Ansprechperson pro Projekt</dt>
+            <dd class="fact__num" data-count="1">1</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== 6 · VORGEHEN ===== -->
+    <section class="section" id="vorgehen" data-theme="light" aria-labelledby="vorgehen-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Vorgehen</p>
+          <h2 id="vorgehen-title" data-reveal data-reveal-delay="1">In sechs Schritten von der Frage zur Maßnahme.</h2>
+        </div>
+        <ol class="timeline" data-timeline>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">1</span>
+            <div class="timeline__body">
+              <h3>Bestandsaufnahme</h3>
+              <p>Nach dem Erstgespräch prüfen wir Netzwerk, Zugriffsrechte, Backups und bestehende Software. Auf Wunsch unterzeichnen wir vorher eine Geheimhaltungsvereinbarung.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">2</span>
+            <div class="timeline__body">
+              <h3>Risiko Check und Bewertung</h3>
+              <p>Aus der Bestandsaufnahme leiten wir die Risiken ab, die für Ihr Unternehmen wirklich zählen, und ordnen sie nach Dringlichkeit. Keine lange Liste ohne Reihenfolge.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">3</span>
+            <div class="timeline__body">
+              <h3>Fahrplan</h3>
+              <p>Ein umsetzbarer Maßnahmenplan mit Verantwortlichen und Aufwand, auf Wunsch mit Bezug auf NIS2 oder BSI IT-Grundschutz. Sie wissen, was wann passiert.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">4</span>
+            <div class="timeline__body">
+              <h3>Umsetzung</h3>
+              <p>Technische und organisatorische Maßnahmen führen wir gemeinsam ein, von Verschlüsselung und Zugriffskonzepten bis zur Backup-Strategie. Wir dokumentieren nachvollziehbar, was erledigt ist.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">5</span>
+            <div class="timeline__body">
+              <h3>Schulung und Awareness</h3>
+              <p>Wir schulen Ihr Team an echten Beispielen. Nach Abstimmung mit Datenschutz und Betriebsrat zeigen Phishing-Tests, ob das Gelernte im Alltag ankommt.</p>
+            </div>
+          </li>
+          <li class="timeline__step" data-reveal>
+            <span class="timeline__num" aria-hidden="true">6</span>
+            <div class="timeline__body">
+              <h3>Begleitung</h3>
+              <p>Sicherheit ist kein einmaliges Projekt. Ihre feste Ansprechperson prüft den Stand regelmäßig und passt die Maßnahmen an neue Bedrohungen an.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 6b · WERKZEUGE ===== -->
+    <section class="section" id="werkzeuge" data-theme="dark" aria-labelledby="werkzeuge-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Werkzeuge</p>
+          <h2 id="werkzeuge-title" data-reveal data-reveal-delay="1">Zwei eigene Werkzeuge, die unsere Beratung ergänzen.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Ein Überblick über Ihren Compliance-Stand und ein Blick auf Ihre von außen sichtbare Angriffsfläche. Beide Werkzeuge sind im Aufbau und noch nicht zugänglich.</p>
+        </div>
+
+        <div class="tools">
+          <!-- Compliance Copilot -->
+          <article class="tool" aria-labelledby="tool-cc-title" data-reveal>
+            <header class="tool__head">
+              <h3 id="tool-cc-title">Compliance Copilot</h3>
+              <span class="tool__status"><span class="tool__dot" aria-hidden="true"></span>Im Aufbau</span>
+            </header>
+            <p class="tool__text">Frameworks aktivieren, Controls abarbeiten und den Fortschritt über die Zeit verfolgen. Jederzeit einsehbar, ohne auf den nächsten Termin zu warten.</p>
+            <div class="tool__panel" data-illustration="tool" role="group" aria-label="Vorschau des Compliance Copilot mit Beispieldaten">
+              <div class="tool__panel-head"><span>Vorschau</span><span class="tag">Beispieldaten</span></div>
+              <div class="gauge-row">
+                <div class="gauge">
+                  <svg viewBox="0 0 92 92" aria-hidden="true" focusable="false"><circle class="gauge__track" cx="46" cy="46" r="39"/><circle class="gauge__fill" pathLength="1" cx="46" cy="46" r="39" transform="rotate(-90 46 46)"/></svg>
+                  <span class="gauge__num"><span data-count="78">78</span>%</span>
+                </div>
+                <div class="gauge-row__text"><strong>Etablierte Stufe</strong><span class="muted small">Durchschnitt über 3 aktive Frameworks</span></div>
+              </div>
+              <ul class="bars">
+                <li class="bar"><span class="bar__name">BSI</span><span class="bar__track"><span class="bar__fill" data-fill="82"></span></span><span class="bar__pct"><span data-count="82">82</span>%</span></li>
+                <li class="bar"><span class="bar__name">NIS2</span><span class="bar__track"><span class="bar__fill" data-fill="64"></span></span><span class="bar__pct"><span data-count="64">64</span>%</span></li>
+                <li class="bar"><span class="bar__name">DSGVO</span><span class="bar__track"><span class="bar__fill" data-fill="91"></span></span><span class="bar__pct"><span data-count="91">91</span>%</span></li>
+              </ul>
+            </div>
+            <ul class="checks">
+              <li>Mehrere Frameworks an einem Ort: NIS2, DSGVO, BSI IT-Grundschutz, CRA und MVSP</li>
+              <li>Live-Score und Verlauf: Snapshots zeigen den Fortschritt über die Zeit</li>
+              <li>KI-gestützte Nachweisprüfung: Die KI schlägt einen Status vor, Sie bestätigen</li>
+              <li>PDF-Export für Audits</li>
+            </ul>
+          </article>
+
+          <!-- Attack Surface Monitor -->
+          <article class="tool" aria-labelledby="tool-asm-title" data-reveal data-reveal-delay="1">
+            <header class="tool__head">
+              <h3 id="tool-asm-title">Attack Surface Monitor</h3>
+              <span class="tool__status"><span class="tool__dot" aria-hidden="true"></span>Im Aufbau</span>
+            </header>
+            <p class="tool__text">Domains, Subdomains, IP-Adressen und Zertifikate werden erfasst, Findings nach Schweregrad geordnet. Damit Sie sehen, was von außen sichtbar ist, bevor andere es tun.</p>
+            <div class="tool__panel" data-illustration="tool" role="group" aria-label="Vorschau des Attack Surface Monitor mit Beispieldaten">
+              <div class="tool__panel-head"><span>Vorschau</span><span class="tag">Beispieldaten</span></div>
+              <dl class="stats">
+                <div class="stat"><dd data-count="24">24</dd><dt>Assets</dt></div>
+                <div class="stat stat--risk"><dd data-count="1">1</dd><dt>Kritisch</dt></div>
+                <div class="stat stat--risk"><dd data-count="1">1</dd><dt>Hoch</dt></div>
+                <div class="stat"><dd data-count="3">3</dd><dt>Mittel</dt></div>
+              </dl>
+              <ul class="findings">
+                <li><div><strong>Veraltete TLS-Version aktiv</strong><span class="muted small">shop.beispiel.de · vor 2 Tagen</span></div><span class="sev sev--crit">Kritisch</span></li>
+                <li><div><strong>Offener Management-Port erreichbar</strong><span class="muted small">203.0.113.4:8080 · vor 5 Tagen</span></div><span class="sev sev--high">Hoch</span></li>
+                <li><div><strong>Zertifikat läuft in 14 Tagen ab</strong><span class="muted small">mail.beispiel.de · vor 1 Tag</span></div><span class="sev sev--mid">Mittel</span></li>
+              </ul>
+            </div>
+            <ul class="checks">
+              <li>Assets automatisch im Blick: Domains, Subdomains, IPs, offene Ports, Zertifikate</li>
+              <li>Findings nach Schweregrad: kritisch, hoch, mittel, niedrig</li>
+              <li>Scan direkt anfragen</li>
+              <li>PDF-Report für Geschäftsführung oder Prüfer</li>
+            </ul>
+          </article>
+        </div>
+        <p class="tools__note" data-reveal>Die Werte in den Vorschauen sind Beispieldaten und keine Kundendaten. Zugang folgt, sobald die Werkzeuge bereitstehen.</p>
+      </div>
+    </section>
+
+    <!-- ===== 7 · BRANCHENFOKUS ===== -->
+    <section class="section" id="branchen" data-theme="sand" aria-labelledby="branchen-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Branchenfokus</p>
+          <h2 id="branchen-title" data-reveal data-reveal-delay="1">Drei Umfelder, die wir kennen.</h2>
+                  </div>
+        <div class="industries">
+          <article class="industry" data-reveal>
+            <div class="industry__icon" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g><rect x="4" y="24" width="40" height="11" rx="4"/><path d="M11 24l5-9h16l5 9M24 15v9"/></g>
+  <g fill="var(--ill-surface)"><circle cx="14" cy="35" r="4.5"/><circle cx="34" cy="35" r="4.5"/></g>
+  <path stroke="var(--ill-risk)" d="M40 29h.01"/>
+</svg></div>
+            <h3>Automotive</h3>
+            <p>Zulieferer müssen Sicherheitsanforderungen ihrer Kunden nachweisen. Wir helfen bei Prüfpfaden für Kundenanforderungen, beim Schutz von Entwicklungsdaten und bei der Trennung von Büro- und Produktionsnetzen.</p>
+          </article>
+          <article class="industry" data-reveal data-reveal-delay="1">
+            <div class="industry__icon" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g><rect x="5" y="8" width="30" height="24" rx="4"/><path d="M5 15h30M10 11.5h.01M14 11.5h.01"/></g>
+  <g fill="var(--ill-surface)"><path d="M21 41a5.5 5.5 0 0 1-.4-11A8 8 0 0 1 36 28.6 6.2 6.2 0 0 1 36.5 41z"/></g>
+  <path stroke="var(--ill-safe)" d="M25 35.5l3 3 5-5.5"/>
+</svg></div>
+            <h3>Software und SaaS</h3>
+            <p>Enterprise-Kunden fragen nach Ihrer Sicherheit. Wir prüfen Ihre Cloud-Konfiguration und Ihre Entwicklungsprozesse und bereiten Sie auf Kundenfragebögen vor.</p>
+          </article>
+          <article class="industry" data-reveal data-reveal-delay="2">
+            <div class="industry__icon" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g><path d="M5 40V22h11v18M18 40V9h13v31M33 40V27h10v13"/><path d="M3 40h42"/></g>
+  <path d="M23 16h3M23 23h3M23 30h3M9 28h3M9 34h3M37 33h2"/>
+  <path stroke="var(--ill-risk)" d="M24.5 40v-5"/>
+</svg></div>
+            <h3>Mittelstand</h3>
+            <p>Kleine IT-Teams, viele Aufgaben, neue Pflichten wie NIS2. Wir priorisieren pragmatisch und arbeiten mit dem, was Sie haben.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8 · REGION ===== -->
+    <section class="section" id="region" data-theme="dark" aria-labelledby="region-title">
+      <div class="container region__grid">
+        <div class="region__copy">
+          <p class="kicker" data-reveal>Region</p>
+          <h2 id="region-title" data-reveal data-reveal-delay="1">Aus Böblingen für die Region Stuttgart.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Wir arbeiten vor Ort in Böblingen, Sindelfingen, Stuttgart, Leonberg, Herrenberg, Esslingen und Umgebung. Für Themen, die es zulassen, arbeiten wir auch remote in ganz Baden-Württemberg.</p>
+          <ul class="places" aria-label="Orte" data-reveal data-reveal-delay="3">
+            <li class="is-home">Böblingen</li><li>Sindelfingen</li><li>Stuttgart</li><li>Leonberg</li><li>Herrenberg</li><li>Esslingen</li>
+          </ul>
+          <address class="muted" data-reveal data-reveal-delay="4">Brühlweg 22, 71111 Waldenbuch</address>
+        </div>
+        <figure class="region__map" data-illustration="region" data-reveal>
+          <svg id="ill-region-map" viewBox="0 0 560 440" role="img" aria-labelledby="ill-region-map-title ill-region-map-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-region-map-title">Schematische Karte der Region Stuttgart</title>
+  <desc id="ill-region-map-desc">Abstrakte, nicht maßstäbliche Karte mit Höhenlinien und einem Flusslauf. Markiert sind Böblingen (Standort), Stuttgart, Sindelfingen, Leonberg, Herrenberg, Esslingen und Ludwigsburg.</desc>
+
+  <g id="rg-contours" data-stagger="fade" stroke="var(--ill-line-soft)" stroke-width="1.5">
+    <path d="M30 210C50 120 140 60 250 52S460 70 520 150s10 150-30 220-150 60-250 55S20 320 30 210z"/>
+    <path d="M78 214C96 140 166 96 252 90s176 22 220 82 8 122-24 176-118 46-198 42S64 300 78 214z"/>
+    <path d="M132 216c14-56 66-86 128-90s130 14 162 60 6 96-20 134-92 30-152 28-134-34-118-132z"/>
+    <path d="M190 222c10-34 44-52 84-52s82 12 100 40 0 66-20 86-62 14-96 12-78-20-68-86z"/>
+  </g>
+
+  <path id="rg-river" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="2.5" opacity="0.7" d="M330 20C350 70 300 96 336 150s70 40 76 84 26 60 60 96 40 50 52 90"/>
+
+  <circle id="rg-service-area" data-pop cx="205" cy="300" r="96" stroke="var(--ill-risk)" stroke-dasharray="4 8"/>
+
+  <g id="rg-routes" data-stagger="fade" stroke="var(--ill-line)" stroke-dasharray="3 7">
+    <path id="rg-r-stuttgart" d="M205 300L330 190"/>
+    <path id="rg-r-sindelfingen" d="M205 300L195 268"/>
+    <path id="rg-r-leonberg" d="M205 300L205 168"/>
+    <path id="rg-r-herrenberg" d="M205 300L100 390"/>
+    <path id="rg-r-esslingen" d="M205 300L426 234"/>
+    <path id="rg-r-ludwigsburg" d="M330 190L338 60"/>
+  </g>
+
+  <g id="rg-towns" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="rg-town-stuttgart" transform="translate(330 190)"><circle r="12" stroke="var(--ill-ink)" stroke-width="2"/><circle r="4" fill="var(--ill-ink)" stroke="none"/></g>
+    <g id="rg-town-sindelfingen" transform="translate(195 268)"><circle r="6"/></g>
+    <g id="rg-town-leonberg" transform="translate(205 168)"><circle r="6"/></g>
+    <g id="rg-town-herrenberg" transform="translate(100 390)"><circle r="6"/></g>
+    <g id="rg-town-esslingen" transform="translate(426 234)"><circle r="6"/></g>
+    <g id="rg-town-ludwigsburg" transform="translate(338 60)"><circle r="6"/></g>
+  </g>
+
+  <g id="rg-pin" transform="translate(205 300)">
+    <circle id="rg-pin-pulse" r="18" stroke="var(--ill-risk)" stroke-width="2" opacity="0.5"/>
+    <circle r="11" fill="var(--ill-risk)" stroke="none"/>
+    <circle r="4" fill="var(--ill-surface)" stroke="none"/>
+  </g>
+
+  <g id="rg-labels" data-fade fill="var(--ill-muted)" stroke="none" font-family="var(--font-text)" font-size="13" font-weight="600">
+    <text x="348" y="182">Stuttgart</text>
+    <text x="224" y="324" fill="var(--ill-ink)" font-weight="800" font-size="14.5">Böblingen</text>
+    <text x="148" y="255" text-anchor="end">Sindelfingen</text>
+    <text x="221" y="164">Leonberg</text>
+    <text x="118" y="410">Herrenberg</text>
+    <text x="440" y="252">Esslingen</text>
+    <text x="354" y="56">Ludwigsburg</text>
+  </g>
+</svg>
+          <figcaption>Schematische Darstellung, nicht maßstäblich.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== 9 · ÜBER UNS / TEAM ===== -->
+    <section class="section" id="team" data-theme="light" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>Team</p>
+          <h2 id="team-title" data-reveal data-reveal-delay="1">Der Mensch hinter okapio.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Bei okapio sprechen Sie mit der Person, die Ihr Projekt auch umsetzt, schon im ersten Gespräch.</p>
+        </div>
+        <div class="team">
+          <figure class="team__person" data-reveal>
+            <div class="photo-ph" role="img" aria-label="Platzhalter für ein Porträtfoto">
+              <p class="photo-ph__text"><mark class="ph">[Foto folgt: 4:5, mind. 1200 × 1500 px, WebP/AVIF]</mark><br>Art Direction: natürliches Tageslicht, am Arbeitsplatz, halbnah. Keine gestellten Handschläge.</p>
+            </div>
+            <figcaption>
+              <h3>Taha Cevik</h3>
+              <p class="team__role">Inhaber · Cybersecurity und IT. Über 10 Jahre Erfahrung in der IT für kleine und mittelständische Unternehmen.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10 · FAQ ===== -->
+    <section class="section" id="faq" data-theme="sand" aria-labelledby="faq-title">
+      <div class="container faq__grid">
+        <div class="faq__head section-head">
+          <p class="kicker" data-reveal>FAQ</p>
+          <h2 id="faq-title" data-reveal data-reveal-delay="1">Häufige Fragen.</h2>
+        </div>
+        <div class="faq-list" data-reveal>
+          <details>
+            <summary>Was kostet eine Beratung oder ein Audit?</summary>
+            <div class="faq-list__answer"><p>Das hängt von Umfang und Tiefe ab. Nach dem Erstgespräch erhalten Sie ein schriftliches Angebot mit klarem Leistungsumfang. Wir arbeiten so, dass Sie vorher wissen, was Sie zahlen.</p><p>Kein Paket von der Stange: Umfang und Preis richten sich nach Ihrer Situation.</p></div>
+          </details>
+          <details>
+            <summary>Sind wir von NIS2 betroffen?</summary>
+            <div class="faq-list__answer"><p>Das hängt von Branche, Unternehmensgröße und Ihrer Rolle in Lieferketten ab. Wir helfen Ihnen, das einzuordnen und zu klären, was daraus praktisch folgt. Eine verbindliche Rechtsauskunft geben wir nicht. Dafür ziehen wir bei Bedarf Ihre Rechtsberatung hinzu.</p></div>
+          </details>
+          <details>
+            <summary>Wie läuft die Zusammenarbeit ab?</summary>
+            <div class="faq-list__answer"><p>Erstgespräch, Bestandsaufnahme, Bericht mit Roadmap, Begleitung bei der Umsetzung. Sie haben in allen Schritten dieselbe Ansprechperson.</p></div>
+          </details>
+          <details>
+            <summary>Kommen Sie zu uns ins Haus?</summary>
+            <div class="faq-list__answer"><p>Ja. In Böblingen, Stuttgart und Umgebung sind Vor-Ort-Termine der Normalfall. Vieles lässt sich zusätzlich remote klären. Was sinnvoll ist, entscheiden wir gemeinsam.</p></div>
+          </details>
+          <details>
+            <summary>Sind Sie zertifiziert?</summary>
+            <div class="faq-list__answer"><p>Wir orientieren uns in unserer Arbeit an anerkannten Standards wie NIS2, OWASP und dem BSI IT-Grundschutz, sind aber kein Zertifizierer. Zertifikate stellen akkreditierte Stellen aus.</p></div>
+          </details>
+          <details>
+            <summary>Wie gehen Sie mit vertraulichen Informationen um?</summary>
+            <div class="faq-list__answer"><p>Auf Wunsch schließen wir vor dem ersten Blick in Ihre Systeme eine Geheimhaltungsvereinbarung. Wir verlangen nur die Zugriffe, die wir für die Aufgabe brauchen, und dokumentieren, was wir gesehen haben.</p></div>
+          </details>
+          <details>
+            <summary>Wir haben keine eigene Security-Abteilung. Ist das ein Problem?</summary>
+            <div class="faq-list__answer"><p>Nein, das ist bei vielen mittelständischen Unternehmen so. Wir richten die Roadmap an Ihren Ressourcen aus und benennen, was intern, extern oder gar nicht nötig ist.</p></div>
+          </details>
+          <details>
+            <summary>Was passiert nach dem Bericht? Setzen Sie Maßnahmen auch um?</summary>
+            <div class="faq-list__answer"><p>Auf Wunsch begleiten wir die wichtigsten Maßnahmen und prüfen, ob sie wirken. Was Ihre IT oder Ihr Dienstleister selbst umsetzt, besprechen wir mit den Beteiligten.</p></div>
+          </details>
+          <details>
+            <summary>Für welche Unternehmen arbeiten Sie?</summary>
+            <div class="faq-list__answer"><p>Für kleine und mittelständische Unternehmen, Automobilzulieferer und Software-/SaaS-Firmen in der Region Stuttgart.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11 · KONTAKT ===== -->
+    <section class="section contact" id="kontakt" data-theme="dark" aria-labelledby="kontakt-title">
+      <div class="contact__stripes" aria-hidden="true"></div>
+      <div class="container contact__grid">
+        <div class="contact__copy">
+          <p class="kicker" data-reveal>Kontakt</p>
+          <h2 id="kontakt-title" data-reveal data-reveal-delay="1">Sprechen wir über Ihr wichtigstes Risiko.</h2>
+          <p class="lead" data-reveal data-reveal-delay="2">Beschreiben Sie kurz, worum es geht. Wir melden uns bei Ihnen persönlich.</p>
+          <dl class="contact__direct" data-reveal data-reveal-delay="3">
+            <dt>Lieber direkt? Telefon</dt>
+            <dd><a href="tel:+491743292211">+49 174 329 22 11</a></dd>
+            <dt>WhatsApp</dt>
+            <dd><a href="https://wa.me/491743292211" target="_blank" rel="noopener">Nachricht schreiben<span class="visually-hidden"> (öffnet WhatsApp in einem neuen Tab)</span></a></dd>
+            <dt>E-Mail</dt>
+            <dd><a href="mailto:info@plussec.de">info@plussec.de</a></dd>
+          </dl>
+        </div>
+
+        <div class="form-card" data-theme="light" data-reveal>
+          <p class="form-status form-status--ok" id="kontakt-gesendet" role="status" data-form-status>Danke. Ihre Anfrage ist bei uns angekommen. Wir melden uns bei Ihnen.</p>
+          <p class="form-status form-status--error" id="kontakt-fehler" role="alert" data-form-status>Das hat leider nicht geklappt. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail.</p>
+          <p class="form-status form-status--error" id="kontakt-eingabe" role="alert" data-form-status>Bitte prüfen Sie Ihre Angaben und senden Sie das Formular erneut.</p>
+
+          <form class="form" action="assets/php/kontakt.php" method="post" novalidate data-form>
+            <p class="error-summary" role="alert" tabindex="-1" hidden data-error-summary>Bitte prüfen Sie die markierten Felder.</p>
+
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="f-name-err">
+              <p class="field__error" id="f-name-err" hidden>Bitte geben Sie Ihren Namen an.</p>
+            </div>
+            <div class="field">
+              <label for="f-firma">Firma</label>
+              <input id="f-firma" name="firma" type="text" autocomplete="organization" required maxlength="160" aria-describedby="f-firma-err">
+              <p class="field__error" id="f-firma-err" hidden>Bitte geben Sie Ihre Firma an.</p>
+            </div>
+            <div class="field">
+              <label for="f-email">E-Mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="f-email-err">
+              <p class="field__error" id="f-email-err" hidden>Bitte geben Sie eine gültige E-Mail-Adresse an.</p>
+            </div>
+            <div class="field">
+              <label for="f-nachricht">Nachricht</label>
+              <textarea id="f-nachricht" name="nachricht" rows="5" required maxlength="4000" placeholder="Was möchten Sie schützen, oder was macht Ihnen Sorgen?" aria-describedby="f-nachricht-err"></textarea>
+              <p class="field__error" id="f-nachricht-err" hidden>Bitte schreiben Sie uns kurz, worum es geht.</p>
+            </div>
+
+            <!-- Honeypot: für Menschen unsichtbar, für Bots verlockend -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">Website (bitte leer lassen)</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <div class="check">
+                <input id="f-datenschutz" name="datenschutz" type="checkbox" value="1" required aria-describedby="f-datenschutz-err">
+                <label for="f-datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass okapio meine Angaben zur Bearbeitung der Anfrage verarbeitet.</label>
+              </div>
+              <p class="field__error" id="f-datenschutz-err" hidden>Bitte bestätigen Sie den Hinweis zum Datenschutz.</p>
+            </div>
+
+            <button class="btn btn--primary btn--block" type="submit">Anfrage senden</button>
+            <p class="form__note">Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Keine Weitergabe, kein Newsletter.</p>
+            <p class="form__fallback">Klappt das Formular nicht? <a href="mailto:info@plussec.de?subject=Anfrage%20%C3%BCber%20die%20Website">Per E-Mail schreiben</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 12 · FOOTER ===== -->
+  <div class="divider divider--flip" aria-hidden="true" data-theme="dark">
+    <svg viewBox="0 0 1440 56" preserveAspectRatio="xMinYMin slice" aria-hidden="true" focusable="false" fill="currentColor">
+  <g data-stagger="grow"><rect x="0" y="0" width="2" height="56"/><rect x="10" y="0" width="5" height="55.6"/><rect x="20" y="0" width="1" height="55.2"/><rect x="34" y="0" width="8" height="54.6"/><rect x="47" y="0" width="2" height="54.1"/><rect x="60" y="0" width="3" height="53.6"/><rect x="72" y="0" width="2" height="53.1"/><rect x="82" y="0" width="5" height="52.7"/><rect x="92" y="0" width="1" height="52.2"/><rect x="106" y="0" width="8" height="51.7"/><rect x="119" y="0" width="2" height="51.2"/><rect x="132" y="0" width="3" height="50.6"/><rect x="144" y="0" width="2" height="50.1"/><rect x="154" y="0" width="5" height="49.7"/><rect x="164" y="0" width="1" height="49.3"/><rect x="178" y="0" width="8" height="48.8"/><rect x="191" y="0" width="2" height="48.2"/><rect x="204" y="0" width="3" height="47.7"/><rect x="216" y="0" width="2" height="47.2"/><rect x="226" y="0" width="5" height="46.8"/><rect x="236" y="0" width="1" height="46.4"/><rect x="250" y="0" width="8" height="45.8"/><rect x="263" y="0" width="2" height="45.3"/><rect x="276" y="0" width="3" height="44.8"/><rect x="288" y="0" width="2" height="44.3"/><rect x="298" y="0" width="5" height="43.9"/><rect x="308" y="0" width="1" height="43.5"/><rect x="322" y="0" width="8" height="42.9"/><rect x="335" y="0" width="2" height="42.4"/><rect x="348" y="0" width="3" height="41.9"/><rect x="360" y="0" width="2" height="41.4"/><rect x="370" y="0" width="5" height="41"/><rect x="380" y="0" width="1" height="40.6"/><rect x="394" y="0" width="8" height="40"/><rect x="407" y="0" width="2" height="39.5"/><rect x="420" y="0" width="3" height="39"/><rect x="432" y="0" width="2" height="38.5"/><rect x="442" y="0" width="5" height="38.1"/><rect x="452" y="0" width="1" height="37.7"/><rect x="466" y="0" width="8" height="37.1"/><rect x="479" y="0" width="2" height="36.6"/><rect x="492" y="0" width="3" height="36.1"/><rect x="504" y="0" width="2" height="35.6"/><rect x="514" y="0" width="5" height="35.2"/><rect x="524" y="0" width="1" height="34.8"/><rect x="538" y="0" width="8" height="34.3"/><rect x="551" y="0" width="2" height="33.7"/><rect x="564" y="0" width="3" height="33.2"/><rect x="576" y="0" width="2" height="32.8"/><rect x="586" y="0" width="5" height="32.4"/><rect x="596" y="0" width="1" height="32"/><rect x="610" y="0" width="8" height="31.4"/><rect x="623" y="0" width="2" height="30.9"/><rect x="636" y="0" width="3" height="30.4"/><rect x="648" y="0" width="2" height="29.9"/><rect x="658" y="0" width="5" height="29.5"/><rect x="668" y="0" width="1" height="29.1"/><rect x="682" y="0" width="8" height="28.5"/><rect x="695" y="0" width="2" height="28"/><rect x="708" y="0" width="3" height="27.5"/><rect x="720" y="0" width="2" height="27"/><rect x="730" y="0" width="5" height="26.7"/><rect x="740" y="0" width="1" height="26.3"/><rect x="754" y="0" width="8" height="25.7"/><rect x="767" y="0" width="2" height="25.2"/><rect x="780" y="0" width="3" height="24.7"/><rect x="792" y="0" width="2" height="24.2"/><rect x="802" y="0" width="5" height="23.8"/><rect x="812" y="0" width="1" height="23.4"/><rect x="826" y="0" width="8" height="22.9"/><rect x="839" y="0" width="2" height="22.4"/><rect x="852" y="0" width="3" height="21.9"/><rect x="864" y="0" width="2" height="21.4"/><rect x="874" y="0" width="5" height="21"/><rect x="884" y="0" width="1" height="20.6"/><rect x="898" y="0" width="8" height="20.1"/><rect x="911" y="0" width="2" height="19.6"/><rect x="924" y="0" width="3" height="19.1"/><rect x="936" y="0" width="2" height="18.6"/><rect x="946" y="0" width="5" height="18.2"/><rect x="956" y="0" width="1" height="17.8"/><rect x="970" y="0" width="8" height="17.3"/><rect x="983" y="0" width="2" height="16.8"/><rect x="996" y="0" width="3" height="16.3"/><rect x="1008" y="0" width="2" height="15.8"/><rect x="1018" y="0" width="5" height="15.4"/><rect x="1028" y="0" width="1" height="15.1"/><rect x="1042" y="0" width="8" height="14.5"/><rect x="1055" y="0" width="2" height="14"/><rect x="1068" y="0" width="3" height="13.5"/><rect x="1080" y="0" width="2" height="13.1"/><rect x="1090" y="0" width="5" height="12.7"/><rect x="1100" y="0" width="1" height="12.3"/><rect x="1114" y="0" width="8" height="11.8"/><rect x="1127" y="0" width="2" height="11.3"/><rect x="1140" y="0" width="3" height="10.8"/><rect x="1152" y="0" width="2" height="10.3"/><rect x="1162" y="0" width="5" height="10"/><rect x="1172" y="0" width="1" height="9.6"/><rect x="1186" y="0" width="8" height="9.1"/><rect x="1199" y="0" width="2" height="8.6"/><rect x="1212" y="0" width="3" height="8.1"/><rect x="1224" y="0" width="2" height="7.6"/><rect x="1234" y="0" width="5" height="7.3"/><rect x="1244" y="0" width="1" height="6.9"/><rect x="1258" y="0" width="8" height="6.4"/><rect x="1271" y="0" width="2" height="5.9"/><rect x="1284" y="0" width="3" height="5.4"/><rect x="1296" y="0" width="2" height="5"/><rect x="1306" y="0" width="5" height="4.6"/><rect x="1316" y="0" width="1" height="4.3"/><rect x="1330" y="0" width="8" height="3.8"/><rect x="1343" y="0" width="2" height="3.3"/></g>
+</svg>
+  </div>
+  <footer class="site-footer" data-theme="dark">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="footer-brand brand" href="#top" aria-label="okapio, zum Seitenanfang"><svg viewBox="-20 -765 3305 1070" role="img" aria-label="okapio" fill="currentColor">
+  <g><path d="M304 13.7Q225.7 13.7 165.4 -17.7Q105.2 -49 71 -110.8Q36.8 -172.5 36.8 -264Q36.8 -356.3 71.4 -417.3Q106 -478.3 166.6 -508.7Q227.2 -539 304.5 -539Q382.2 -539 442.8 -507.9Q503.5 -476.8 538 -415.5Q572.5 -354.2 572.5 -262.2Q572.5 -168.7 537.3 -107.2Q502.2 -45.7 441.2 -16Q380.2 13.7 304 13.7ZM308.7 -92.8Q347.7 -92.8 374.3 -111Q400.8 -129.2 414.5 -165.5Q428.2 -201.8 428.2 -254Q428.2 -309 413.6 -347.5Q399 -386 370.8 -406.8Q342.7 -427.5 300 -427.5Q263 -427.5 235.9 -409.6Q208.8 -391.7 195.1 -355.6Q181.3 -319.5 181.3 -266Q181.3 -181 215.2 -136.9Q249 -92.8 308.7 -92.8Z M665.2 0V-716H806.3V-317.5Q837.8 -338.5 866 -363.3Q894.2 -388.2 918 -415.2Q941.8 -442.2 960.8 -470Q979.7 -497.8 992.5 -525.3H1157Q1142.5 -486.7 1117.9 -448.4Q1093.3 -410.2 1059.6 -377.7Q1025.8 -345.3 981.7 -322.2Q937.5 -299.2 885 -290.8V-274.3Q951.2 -285.8 995.6 -271.7Q1040 -257.5 1068.4 -227.6Q1096.8 -197.7 1114.3 -157.9Q1131.8 -118.2 1145 -78.2L1168.5 0H1011.7L998.7 -49Q984.3 -98.7 967.1 -135.2Q949.8 -171.7 922.1 -192.3Q894.3 -213 846.5 -213H806.3V0Z M1372.2 13.7Q1328.5 13.7 1294.5 -3.5Q1260.5 -20.7 1241.3 -54Q1222.2 -87.3 1222.2 -135.7Q1222.2 -178.7 1238.6 -207.8Q1255 -237 1287.2 -255.1Q1319.5 -273.2 1366.1 -285.2Q1412.7 -297.2 1473.8 -306Q1504.7 -311 1525.1 -315.7Q1545.5 -320.3 1555.8 -330.7Q1566 -341 1566 -361.2Q1566 -389.2 1546.1 -409.3Q1526.2 -429.3 1482.2 -429.3Q1453.8 -429.3 1429.6 -419.3Q1405.3 -409.3 1387.7 -389.2Q1370.2 -369 1362.5 -338.3L1235.2 -376.8Q1246.7 -417.3 1268.9 -447.7Q1291.2 -478.2 1323.1 -498.7Q1355 -519.3 1396.7 -529.2Q1438.3 -539 1485.8 -539Q1562.3 -539 1611 -514.4Q1659.7 -489.8 1683.4 -438.3Q1707.2 -386.8 1707.2 -306V-216.7Q1707.2 -181.8 1708.7 -145.3Q1710.2 -108.8 1712.7 -72.2Q1715.3 -35.7 1719.2 0H1591.7Q1587.8 -25.2 1584.3 -57.6Q1580.7 -90 1578.8 -123.7H1561.5Q1547.3 -85.8 1521.2 -54.1Q1495 -22.3 1457.6 -4.3Q1420.2 13.7 1372.2 13.7ZM1433.7 -90.2Q1452.5 -90.2 1472.1 -96.8Q1491.7 -103.5 1510.1 -116.1Q1528.5 -128.7 1544 -147.7Q1559.5 -166.8 1568.7 -190.5L1567 -274.8L1590.5 -269.8Q1572.2 -256.8 1548.3 -249.5Q1524.3 -242.2 1498.8 -238Q1473.2 -233.8 1448.2 -229Q1423.3 -224.2 1403.6 -216.3Q1383.8 -208.5 1372.3 -194.7Q1360.8 -181 1360.8 -157Q1360.8 -126 1381.2 -108.1Q1401.5 -90.2 1433.7 -90.2Z M1831.2 167.2V-258V-525.3H1950.7L1951 -379.7L1968.2 -378Q1977.8 -431 2000.5 -466.9Q2023.2 -502.8 2059 -520.9Q2094.8 -539 2142.2 -539Q2212.5 -539 2262.2 -504.6Q2312 -470.2 2338.2 -407.5Q2364.3 -344.8 2364.3 -259.5Q2364.3 -181.7 2340.7 -119.8Q2317.2 -58 2270 -22.2Q2222.8 13.7 2151.2 13.7Q2100.8 13.7 2066.5 -5.1Q2032.2 -23.8 2009.3 -58.4Q1986.5 -93 1971.5 -141.7H1953.2Q1959.2 -114.5 1963.7 -86.2Q1968.3 -57.8 1971.6 -31.3Q1974.8 -4.7 1974.8 19.8V167.2ZM2101.2 -101.3Q2137 -101.3 2162.2 -121.2Q2187.3 -141 2201.1 -176.7Q2214.8 -212.3 2214.8 -259.3Q2214.8 -309.2 2200.6 -344.8Q2186.3 -380.5 2160 -400.3Q2133.7 -420 2098.2 -420Q2065.8 -420 2042.5 -405.8Q2019.2 -391.5 2004.1 -368.5Q1989 -345.5 1981.8 -319.4Q1974.7 -293.3 1974.7 -269.7V-250Q1974.7 -230.8 1979.9 -210.4Q1985.2 -190 1995.7 -170.7Q2006.3 -151.3 2021.4 -135.5Q2036.5 -119.7 2056.7 -110.5Q2076.8 -101.3 2101.2 -101.3Z M2461.3 0V-525.3H2604.8V0Z M2970 13.7Q2891.7 13.7 2831.4 -17.7Q2771.2 -49 2737 -110.8Q2702.8 -172.5 2702.8 -264Q2702.8 -356.3 2737.4 -417.3Q2772 -478.3 2832.6 -508.7Q2893.2 -539 2970.5 -539Q3048.2 -539 3108.8 -507.9Q3169.5 -476.8 3204 -415.5Q3238.5 -354.2 3238.5 -262.2Q3238.5 -168.7 3203.3 -107.2Q3168.2 -45.7 3107.2 -16Q3046.2 13.7 2970 13.7ZM2974.7 -92.8Q3013.7 -92.8 3040.3 -111Q3066.8 -129.2 3080.5 -165.5Q3094.2 -201.8 3094.2 -254Q3094.2 -309 3079.6 -347.5Q3065 -386 3036.8 -406.8Q3008.7 -427.5 2966 -427.5Q2929 -427.5 2901.9 -409.6Q2874.8 -391.7 2861.1 -355.6Q2847.3 -319.5 2847.3 -266Q2847.3 -181 2881.2 -136.9Q2915 -92.8 2974.7 -92.8Z"/></g>
+  <path fill="var(--ill-risk)" d="M2533.4 -603.3Q2491.2 -603.3 2468.8 -621.2Q2446.3 -639.2 2446.3 -672.5Q2446.3 -707.5 2468.8 -725.4Q2491.2 -743.3 2533.5 -743.3Q2576.7 -743.3 2599.1 -725.4Q2621.5 -707.5 2621.5 -673.5Q2621.5 -639.2 2599 -621.2Q2576.5 -603.3 2533.4 -603.3Z"/>
+</svg></a>
+          <p class="muted">Cybersecurity-Beratung für die Region Stuttgart.</p>
+          <address class="muted">Brühlweg 22, 71111 Waldenbuch</address>
+        </div>
+        <nav aria-label="Rechtliches und Kontakt">
+          <h2 class="footer-title">Rechtliches</h2>
+          <ul class="footer-list">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Seitenbereiche">
+          <h2 class="footer-title">Auf dieser Seite</h2>
+          <ul class="footer-list">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#vorgehen">Vorgehen</a></li>
+            <li><a href="#werkzeuge">Werkzeuge</a></li>
+            <li><a href="#region">Region</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCHWEBENDE BEDIENELEMENTE ===== -->
+  <button class="fab fab--mode" type="button" aria-pressed="false" aria-label="Dunkle Darstellung" data-mode-toggle>
+    <svg class="fab__icon fab__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+    <svg class="fab__icon fab__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+  </button>
+  <a class="fab fab--whatsapp" href="https://wa.me/491743292211" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben (öffnet WhatsApp in einem neuen Tab)">
+    <svg class="fab__icon fab__icon--wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.6 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.3-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.4.3.1.2.1.6-.1 1.1z"/></svg>
+  </a>
+</body>
+</html>

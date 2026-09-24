@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-cloud-graph" viewBox="0 0 480 320" role="img" aria-labelledby="ill-cloud-graph-title ill-cloud-graph-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-cloud-graph-title">Cloud-Graph mit Konfigurations-Findings</title>
+  <desc id="ill-cloud-graph-desc">Eine Cloud ist mit Speicher, Identitäten, Datenbank und SaaS-App verbunden. Zwei Dienste tragen nummerierte Findings, ein drittes ist behoben. Rechts steht die Findings-Liste mit Priorität.</desc>
+
+  <g id="cg-edges" data-stagger="draw">
+    <path id="cg-e-storage" pathLength="1" data-draw d="M160 150L64 64"/>
+    <path id="cg-e-iam" pathLength="1" data-draw d="M160 150L256 64"/>
+    <path id="cg-e-db" pathLength="1" data-draw d="M160 150L64 246"/>
+    <path id="cg-e-saas" pathLength="1" data-draw d="M160 150L256 246"/>
+  </g>
+
+  <g id="cg-nodes" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="cg-cloud-core" transform="translate(160 150)">
+      <circle r="38"/>
+      <path stroke="var(--ill-ink)" stroke-width="2" d="M-18 12a10 10 0 0 1-.8-20 14 14 0 0 1 27-3 10.5 10.5 0 0 1 7 23z"/>
+    </g>
+    <g id="cg-n-storage" transform="translate(64 64)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><path d="M-9-6h18l-2 14h-14z"/><path d="M-9-6a9 3 0 0 1 18 0"/></g></g>
+    <g id="cg-n-iam" transform="translate(256 64)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><circle cx="-4" cy="0" r="5"/><path d="M1 0h11M8 0v5M12 0v4"/></g></g>
+    <g id="cg-n-db" transform="translate(64 246)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><ellipse cy="-6" rx="9" ry="3.5"/><path d="M-9-6v12a9 3.5 0 0 0 18 0v-12M-9 0a9 3.5 0 0 0 18 0"/></g></g>
+    <g id="cg-n-saas" transform="translate(256 246)"><circle r="22"/><g stroke="var(--ill-ink)" stroke-width="1.75"><rect x="-10" y="-8" width="20" height="16" rx="3"/><path d="M-10-2h20M-6-5h.01M-3-5h.01"/></g></g>
+  </g>
+
+  <!-- Finding-Markierungen an den Diensten -->
+  <g id="cg-findings-markers" data-stagger="fade" font-family="var(--font-display)" font-size="12" font-weight="700" text-anchor="middle">
+    <g id="cg-mk-1" transform="translate(80 46)"><circle class="mk-ring" r="12" stroke="var(--ill-risk)" stroke-width="1.5" opacity="0"/><circle r="10" fill="var(--ill-risk)" stroke="none"/><text fill="var(--ill-surface)" stroke="none" y="4.2">1</text></g>
+    <g id="cg-mk-2" transform="translate(272 46)"><circle class="mk-ring" r="12" stroke="var(--ill-risk)" stroke-width="1.5" opacity="0"/><circle r="10" fill="var(--ill-surface)" stroke="var(--ill-risk)" stroke-width="2"/><text fill="var(--ill-risk)" stroke="none" y="4.2">2</text></g>
+    <g id="cg-mk-3" transform="translate(80 264)"><circle r="10" fill="var(--ill-surface)" stroke="var(--ill-safe)" stroke-width="2"/><path stroke="var(--ill-safe)" stroke-width="2" d="M-4.5 .5l3 3 6-6.5"/></g>
+  </g>
+
+  <!-- Findings-Liste (kleines UI-Mockup) -->
+  <g id="cg-panel" data-stagger="slide">
+    <rect id="cg-panel-card" x="316" y="44" width="150" height="232" rx="14" fill="var(--ill-surface)"/>
+    <path id="cg-panel-head" stroke="var(--ill-muted)" stroke-width="3" d="M332 66h50"/>
+    <g id="cg-row-1">
+      <rect x="326" y="86" width="130" height="52" rx="8" fill="var(--ill-surface-2)" stroke="none"/>
+      <circle cx="343" cy="112" r="6" fill="var(--ill-risk)" stroke="none"/>
+      <path stroke="var(--ill-ink)" stroke-width="3" d="M357 106h56"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 118h40"/>
+    </g>
+    <g id="cg-row-2">
+      <rect x="326" y="146" width="130" height="52" rx="8" fill="var(--ill-surface-2)" stroke="none"/>
+      <circle cx="343" cy="172" r="5" fill="none" stroke="var(--ill-risk)" stroke-width="2"/>
+      <path stroke="var(--ill-ink)" stroke-width="3" d="M357 166h44"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 178h56"/>
+    </g>
+    <g id="cg-row-3">
+      <rect x="326" y="206" width="130" height="52" rx="8" fill="var(--ill-surface-2)" stroke="none"/>
+      <circle cx="343" cy="232" r="6" fill="none" stroke="var(--ill-safe)" stroke-width="2"/><path stroke="var(--ill-safe)" stroke-width="2" d="M340 232l2.2 2.2 4-4.4"/>
+      <path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M357 226h48M357 238h28"/>
+    </g>
+  </g>
+</svg>

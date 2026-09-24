@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-audit-path" viewBox="0 0 480 320" role="img" aria-labelledby="ill-audit-path-title ill-audit-path-desc" fill="none" stroke="var(--ill-line)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title id="ill-audit-path-title">Checkliste mit Prüfpfad und Status</title>
+  <desc id="ill-audit-path-desc">Checkliste mit fünf Prüfpunkten. Zwei sind erledigt, einer ist in Prüfung, zwei sind offen. Ein Prüfpfad verbindet die Punkte. Rechts zeigt eine Statusanzeige den Fortschritt.</desc>
+
+  <rect id="au-checklist" data-fade x="16" y="20" width="296" height="280" rx="16" fill="var(--ill-surface)"/>
+
+  <!-- Prüfpfad -->
+  <path id="au-audit-path" pathLength="1" data-draw stroke="var(--ill-line)" stroke-dasharray="1" d="M50 62V262"/>
+
+  <g id="au-rows" data-stagger="slide">
+    <g id="au-row-1"><rect x="72" y="44" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 62h84"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 62h50"/></g>
+    <g id="au-row-2"><rect x="72" y="94" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 112h104"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 112h50"/></g>
+    <g id="au-row-3"><rect x="72" y="144" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="var(--ill-risk)" stroke-width="1.75"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 162h72"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 162h50"/></g>
+    <g id="au-row-4"><rect x="72" y="194" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 212h96"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 212h50"/></g>
+    <g id="au-row-5"><rect x="72" y="244" width="220" height="36" rx="8" fill="var(--ill-surface-2)" stroke="none"/><path stroke="var(--ill-ink)" stroke-width="3" d="M86 262h64"/><path stroke="var(--ill-muted)" stroke-width="3" opacity="0.7" d="M228 262h50"/></g>
+  </g>
+
+  <!-- Statusanzeigen auf dem Prüfpfad -->
+  <g id="au-status-icons" data-stagger="fade" fill="var(--ill-surface)">
+    <g id="au-st-1" transform="translate(50 62)"><circle r="11" stroke="var(--ill-safe)" stroke-width="2.5"/><path id="au-st-1-check" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="2.5" d="M-4.5 .5l3.2 3.2 6-6.7"/></g>
+    <g id="au-st-2" transform="translate(50 112)"><circle r="11" stroke="var(--ill-safe)" stroke-width="2.5"/><path id="au-st-2-check" pathLength="1" data-draw stroke="var(--ill-safe)" stroke-width="2.5" d="M-4.5 .5l3.2 3.2 6-6.7"/></g>
+    <g id="au-st-3" transform="translate(50 162)"><circle r="11" stroke="var(--ill-risk)" stroke-width="2.5"/><path id="au-st-3-dots" stroke="var(--ill-risk)" stroke-width="2.5" d="M-5 0h.01M0 0h.01M5 0h.01"/></g>
+    <g id="au-st-4" transform="translate(50 212)"><circle r="11"/></g>
+    <g id="au-st-5" transform="translate(50 262)"><circle r="11"/></g>
+  </g>
+
+  <!-- Statusanzeige -->
+  <g id="au-gauge" transform="translate(396 112)">
+    <circle id="au-gauge-track" r="52" stroke="var(--ill-line-soft)" stroke-width="12"/>
+    <circle id="au-gauge-done" pathLength="1" r="52" stroke="var(--ill-safe)" stroke-width="12" stroke-dasharray="0.4 1" transform="rotate(-90)"/>
+    <circle id="au-gauge-review" data-fade pathLength="1" r="52" stroke="var(--ill-risk)" stroke-width="12" stroke-dasharray="0.2 1" stroke-dashoffset="-0.4" transform="rotate(-90)"/>
+    <path stroke="var(--ill-ink)" stroke-width="1.75" d="M-9 2l6 6 12-13"/>
+  </g>
+
+  <g id="au-legend" data-fade font-family="var(--font-text)" font-size="12.5" font-weight="600">
+    <circle cx="340" cy="212" r="5" fill="var(--ill-safe)" stroke="none"/><text x="354" y="216.5" fill="var(--ill-muted)" stroke="none">erledigt</text>
+    <circle cx="340" cy="238" r="5" fill="var(--ill-risk)" stroke="none"/><text x="354" y="242.5" fill="var(--ill-muted)" stroke="none">in Prüfung</text>
+    <circle cx="340" cy="264" r="5" fill="none" stroke="var(--ill-line)" stroke-width="2"/><text x="354" y="268.5" fill="var(--ill-muted)" stroke="none">offen</text>
+  </g>
+</svg>
