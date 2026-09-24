@@ -70,8 +70,10 @@
   .js .hero [data-reveal-delay="5"] { animation-delay: 660ms; }
   .js .hero [data-reveal-delay="6"] { animation-delay: 780ms; }
   /* „sichtbar": Tarnstreifen fahren ein, das Wort wird klar. Zweck: die Markenidee in einer Sekunde. */
-  .js .hero__camo::after { animation: mo-camo-out 1200ms var(--ease-snap) 900ms both; }
-  .js .hero__camo::before { animation: mo-camo-out 1000ms var(--ease-snap) 1250ms both; }
+  /* Dauerschleife: Streifen fahren ein, das Wort wird klar, nach einer Pause kehrt die Tarnung zurück. */
+  @keyframes mo-camo-loop { 0% { transform: scaleY(1); } 14% { transform: scaleY(0); } 84% { transform: scaleY(0); } 94%, 100% { transform: scaleY(1); } }
+  .js .hero__camo::after { animation: mo-camo-loop 8s var(--ease-snap) 900ms infinite both; }
+  .js .hero__camo::before { animation: mo-camo-loop 8s var(--ease-snap) 1250ms infinite both; }
 
   /* ---------- 2. Header ----------
      Zweck: Beim Scrollen wird der Kopf kompakter, bekommt Milchglas und eine Haarlinie; die Fortschrittslinie wandert mit. */
@@ -227,7 +229,13 @@
      Parallax (rAF in main.js setzt --py): Streifenmuster bewegt sich langsamer als der Inhalt.
      Neigung (main.js setzt --tx/--ty im Hero): der Graph folgt dem Zeiger um wenige Pixel. */
   .js [data-parallax] { transform: translate3d(0, var(--py, 0), 0); will-change: transform; }
-  .js [data-tilt] > svg { transform: translate3d(var(--tx, 0), var(--ty, 0), 0); transition: transform var(--dur-reveal) var(--ease-expo); }
+  .js [data-tilt] > svg { transform: translate3d(var(--tx, 0), var(--ty, 0), 0); transition: transform var(--dur-reveal) var(--ease-expo), opacity 450ms var(--ease-out); }
+
+  /* Neustart der Illustrations-Schleife (main.js): kurzes Aus- und Einblenden statt Sprung. */
+  .js [data-illustration]:not([data-tilt]) > svg,
+  .js .tool__panel[data-illustration] > :not(.tool__panel-head):not(.tool__scan) { transition: opacity 450ms var(--ease-out); }
+  .js [data-illustration].is-resetting > svg,
+  .js .tool__panel[data-illustration].is-resetting > :not(.tool__panel-head):not(.tool__scan) { opacity: 0; }
 
   /* Scroll-gebunden (nur wo der Browser Scroll-Timelines kann; sonst statisch).
      Zweck: Hero-Grafik tritt beim Weiterscrollen zurück, Regionskarte gleitet leicht gegen den Text. */

@@ -216,9 +216,35 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     $all('[data-reveal]').forEach(function (el) { revealIO.observe(el); });
 
+    /* Dauerschleife: Jede Illustration spielt ihren Ablauf erneut ab, solange sie sichtbar ist.
+       Vor dem Neustart blendet sie kurz aus (CSS: .is-resetting), damit der Wechsel nicht springt.
+       Zykluslänge je Illustration in ms (Ablauf + ruhige Haltezeit). „stripes" bleibt einmalig. */
+    var CYCLE = { hero: 13000, riskcheck: 8000, roadmap: 8000, topology: 9000, cloud: 9000, audit: 8500, awareness: 11000, ki: 9000, region: 10000, tool: 8000 };
+    var FADE = 450;
+    function restart(el) {
+      el.classList.add('is-resetting');
+      setTimeout(function () {
+        el.classList.remove('is-playing');
+        void el.offsetWidth;                          /* Reflow: Animationen starten von vorn */
+        el.classList.add('is-playing');
+        el.classList.remove('is-resetting');
+      }, FADE);
+    }
+    function startLoop(el) {
+      var cycle = CYCLE[el.getAttribute('data-illustration')];
+      if (!cycle || el._loop) { return; }
+      el._loop = setInterval(function () { if (!document.hidden) { restart(el); } }, cycle);
+    }
+    function stopLoop(el) { clearInterval(el._loop); el._loop = null; }
     var illuIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('is-playing'); illuIO.unobserve(entry.target); }
+        var el = entry.target;
+        if (entry.isIntersecting) {
+          if (!el.classList.contains('is-playing')) { el.classList.add('is-playing'); }
+          startLoop(el);
+        } else {
+          stopLoop(el);                               /* außerhalb des Bildes: Endzustand bleibt stehen */
+        }
       });
     }, { threshold: 0.3 });
     $all('[data-illustration]').forEach(function (el) { illuIO.observe(el); });
