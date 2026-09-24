@@ -6,37 +6,63 @@
    Kontrastwerte: siehe /docs/design-tokens.md (per tools/contrast.mjs berechnet).
    ========================================================================== */
 
-/* ---------- Schriften (self-hosted, Latin-Subset, OFL) ---------- */
+/* ---------- Schriften (self-hosted, Latin-Subset, OFL) ----------
+   Newsreader: Überschriften (optische Größe mit fontTools auf 36 fixiert, wght 400–700; Kursiv 400–600 für Akzentwörter).
+   Hanken Grotesk: Fließtext und Bedienelemente (wght 400–700).
+   Geist Mono: technische Labels, Nummern, Kicker (wght 400–600).                                              */
 @font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
-  font-weight: 200 800;
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin-wght-normal.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/manrope-latin-wght-normal.woff2") format("woff2");
-  font-weight: 200 800;
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin-wght-italic.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("../fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+  font-weight: 400 600;
   font-style: normal;
   font-display: swap;
 }
 
-/* Fallback-Schriften mit Metrik-Anpassung (gemessen mit fontTools gegen Arial) gegen Layoutsprung beim Schriftwechsel */
+/* Fallback-Schriften mit Metrik-Anpassung gegen Layoutsprung beim Schriftwechsel
+   (Zielwerte mit fontTools gemessen: hhea/OS2-Metriken und buchstabengewichtete Durchschnittsbreite). */
 @font-face {
-  font-family: "Manrope Fallback";
-  src: local("Arial");
-  size-adjust: 104.5%;
-  ascent-override: 102%;
-  descent-override: 28.7%;
+  font-family: "Newsreader Fallback";
+  src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Georgia");
+  size-adjust: 102.8%;
+  ascent-override: 71.5%;
+  descent-override: 25.8%;
   line-gap-override: 0%;
 }
 @font-face {
-  font-family: "Bricolage Fallback";
-  src: local("Arial");
-  size-adjust: 111.2%;
-  ascent-override: 83.6%;
-  descent-override: 24.3%;
+  font-family: "Hanken Fallback";
+  src: local("Arial"), local("ArialMT"), local("Helvetica");
+  size-adjust: 100.2%;
+  ascent-override: 99.8%;
+  descent-override: 30.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Geist Mono Fallback";
+  src: local("Courier New"), local("CourierNewPSMT");
+  size-adjust: 100%;
+  ascent-override: 100.5%;
+  descent-override: 29.5%;
   line-gap-override: 0%;
 }
 
@@ -129,31 +155,37 @@
   --ill-muted: var(--ink-600);
 
   /* ---------- Typografie ---------- */
-  --font-display: "Bricolage Grotesque", "Bricolage Fallback", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-text: "Manrope", "Manrope Fallback", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Newsreader", "Newsreader Fallback", Georgia, "Times New Roman", serif;
+  --font-text: "Hanken Grotesk", "Hanken Fallback", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-  --fw-display: 700;
+  --fw-display: 500;      /* H1/H2: ruhig, nicht laut */
+  --fw-heading: 600;      /* H3/H4: etwas kräftiger für kleinere Größen */
+  --fw-accent: 400;       /* kursives Akzentwort */
 
   /* Fluide Skala (rem; min 12 px) */
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-base: 1.0625rem;
-  --fs-lead: clamp(1.125rem, 0.55vw + 1rem, 1.4rem);
-  --fs-h4: 1.125rem;
-  --fs-h3: clamp(1.375rem, 1.1vw + 1rem, 1.9rem);
-  --fs-h2: clamp(2.125rem, 3.4vw + 0.9rem, 4.1rem);
-  --fs-h1: clamp(2.6rem, 5.6vw + 0.6rem, 6rem);
-  --fs-kicker: 0.8125rem;
+  --fs-lead: clamp(1.125rem, 0.5vw + 1rem, 1.375rem);
+  --fs-h4: 1.1875rem;
+  --fs-h3: clamp(1.45rem, 0.9vw + 1.1rem, 2rem);
+  --fs-h2: clamp(2.35rem, 2.9vw + 1.15rem, 4.35rem);
+  --fs-h1: clamp(2.8rem, 4.3vw + 1.05rem, 5.9rem);
+  --fs-num: clamp(3.25rem, 5vw + 1.25rem, 6.5rem);
+  --fs-kicker: 0.75rem;
+  --fs-mono: 0.8125rem;
 
   --lh-display: 1.02;
   --lh-heading: 1.12;
-  --lh-text: 1.62;
-  --ls-display: -0.035em;
-  --ls-heading: -0.02em;
-  --ls-kicker: 0.12em;
+  --lh-text: 1.65;
+  --ls-display: -0.028em;
+  --ls-heading: -0.012em;
+  --ls-kicker: 0.14em;
+  --ls-mono: 0.02em;
   --measure: 62ch;
 
   /* ---------- Abstände (4-px-Basis, rem) ---------- */
@@ -191,6 +223,8 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-pop: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);        /* weiche, lange Auslaufkurve für Reveals */
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);         /* Wischer/Flächen (Buttons, Masken) */
   --dur-fast: 150ms;
   --dur-base: 320ms;
   --dur-slow: 700ms;
@@ -203,8 +237,9 @@
   --dur-draw-s: 1700ms;
   --dur-draw-m: 2210ms;
   --dur-draw-l: 3400ms;
+  --dur-reveal: 1100ms;
   --stagger: 90ms;
-  --reveal-distance: 1.5rem;
+  --reveal-distance: 2rem;
 
   /* ---------- Linien, Fokus, Größen (Komponenten) ---------- */
   --line-w: 1px;
@@ -229,7 +264,7 @@
   --measure-note: 60ch;
   --measure-label: 22ch;
   --measure-h2: 18ch;
-  --measure-h1: 13ch;
+  --measure-h1: 12em;
   --measure-section: 48rem;
   --w-hero-stripes: min(70vw, 56rem);
   --hero-min: 52rem;
@@ -238,6 +273,10 @@
   --tl-pad-lg: 9rem;
   --lift-sm: -0.125rem;
   --lift: -0.25rem;
+  --size-dot: 0.5rem;
+  --size-progress: 2px;
+  --size-spot: 22rem;         /* Radius des Zeiger-Lichtkegels auf Karten */
+  --grid-cell: 3.5rem;        /* Raster-Hintergrund (Werkzeuge) */
 
   /* ---------- Ebenen ---------- */
   --z-base: 1;
@@ -266,6 +305,12 @@
    (Abgeleitete var()-Werte werden sonst auf :root eingefroren.) */
 :root,
 [data-theme] {
+  /* Abgeleitete Tönungen (je Thema neu berechnet) */
+  --c-accent-tint: color-mix(in srgb, var(--c-accent) 12%, transparent);
+  --c-accent-glow: color-mix(in srgb, var(--c-accent) 9%, transparent);
+  --c-text-tint: color-mix(in srgb, var(--c-text) 6%, transparent);
+  --c-grid: color-mix(in srgb, var(--c-text) 7%, transparent);
+  --c-glass: color-mix(in srgb, var(--c-bg) 84%, transparent);
   --stripe-color: var(--c-stripe);
   --stripes: repeating-linear-gradient(
     90deg,
@@ -320,8 +365,11 @@
   --shadow-2: 0 2px 4px rgb(10 17 23 / 0.06), 0 22px 44px -20px rgb(10 17 23 / 0.28);
 }
 
-/* ---------- Semantik: DUNKLES Thema ---------- */
-[data-theme="dark"] {
+/* ---------- Semantik: DUNKLES Thema ----------
+   „night" nutzt dieselben Werte, wird aber im hellen Modus NICHT zu Dunst aufgehellt:
+   bewusst dunkle Bänder (Werkzeuge, Footer) für einen klaren Rhythmus. Kontraste = dunkles Thema (siehe Doku). */
+[data-theme="dark"],
+[data-theme="night"] {
   color-scheme: dark;
   --c-bg: var(--night-900);
   --c-bg-alt: var(--night-950);
@@ -449,6 +497,13 @@
   --c-bg-alt: var(--night-950);
   --c-surface: var(--dusk-800);
   --c-surface-2: var(--dusk-700);
+}
+/* Im Dunkelmodus liegt „night" eine Stufe tiefer als die Dämmerungs-Sektionen */
+:root[data-mode="dark"] [data-theme="night"] {
+  --c-bg: var(--night-950);
+  --c-bg-alt: var(--night-950);
+  --c-surface: var(--night-800);
+  --c-surface-2: var(--night-700);
 }
 
 /* Sand-Variante des hellen Themas (Sektionswechsel ohne Dunkel) */

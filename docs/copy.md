@@ -175,3 +175,17 @@ Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile: **Cybersecurity Böbl
 ## 06 KI und Automatisierung
 - H3: Routine automatisieren, Kontrolle behalten.
 - Punkte: Potenzialanalyse · Automatisierung wiederkehrender Aufgaben · Sicherer Einsatz von KI-Assistenten (Datenschutz, Zugriffsrechte, Freigaben) · Klare Regeln für den KI-Einsatz
+
+
+## Ergänzungen Redesign (Mikrotexte)
+
+Neue, kurze Texte aus der Überarbeitung. Inhaltlich aus bestehenden Aussagen abgeleitet, keine neuen Fakten.
+
+- Überschriften: Der zweite Teil steht jeweils kursiv (z. B. „Sieben Bereiche. Ein Ziel: *weniger unbekannte Risiken.*"). Wortlaut unverändert.
+- Vorgehen, Lead: „Sie wissen in jedem Schritt, was passiert, wer es macht und was als Nächstes kommt."
+- Vorgehen, Schrittanzeige (dekorativ, `aria-hidden`): „Schritt 01 / 06"
+- Team, Kontaktwege: „Anrufen" · „E-Mail schreiben"
+- FAQ, unter der Überschrift: „Ihre Frage fehlt? Schreiben Sie uns."
+- Kontakt, über den Direktkontakten: „Lieber direkt?" · Etiketten „Telefon", „WhatsApp", „E-Mail"
+- Footer: Spalte „Kontakt" (Telefon, E-Mail, Kontaktformular) · „Nach oben"
+- Rechtstexte, Header: „← Zur Startseite"

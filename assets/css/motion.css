@@ -1,7 +1,9 @@
 /* ==========================================================================
    okapio – Motion (Besitzer: Agent MOTION)
    Regeln:
-   - Nur transform/opacity (Ausnahme: stroke-dashoffset für „Linie zeichnet sich", laut Briefing).
+   - Bewegung über transform/opacity. Ausnahmen: stroke-dashoffset („Linie zeichnet sich"),
+     kurze Farbübergänge bei Zuständen (color/background-color/border-color, ≤ 320 ms)
+     und die Höhe der FAQ-Antworten (nur wo der Browser interpolate-size kann).
    - Alle Ausgangszustände stehen unter .js UND prefers-reduced-motion: no-preference.
      → Ohne JS oder bei reduzierter Bewegung sind alle Endzustände sofort sichtbar.
    - Jede Animation hat einen dokumentierten Zweck.
@@ -26,14 +28,20 @@
   @keyframes mo-dim    { to { opacity: 0.6; } }
   @keyframes mo-ring   { from { opacity: 0.9; transform: scale(1); } to { opacity: 0; transform: scale(1.8); } }
   @keyframes mo-pulse  { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.25; transform: scale(1.12); } }
-  @keyframes mo-hero-in { from { opacity: 0; transform: translateY(var(--space-4)); } to { opacity: 1; transform: none; } }
+  @keyframes mo-hero-in { from { opacity: 0; transform: translateY(0.45em); } to { opacity: 1; transform: none; } }
+  @keyframes mo-hero-fade { from { opacity: 0; transform: translateY(var(--space-4)); } to { opacity: 1; transform: none; } }
+  @keyframes mo-camo-out { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+  @keyframes mo-scan   { 0% { opacity: 0; transform: translateY(-100%); } 8% { opacity: 1; } 55% { opacity: 1; transform: translateY(260%); } 62%, 100% { opacity: 0; transform: translateY(260%); } }
+  @keyframes mo-menu   { from { opacity: 0; transform: translateY(calc(var(--space-2) * -1)); } to { opacity: 1; transform: none; } }
+  @keyframes mo-mark   { from { opacity: 0; transform: translateY(35%); } to { opacity: 1; transform: none; } }
 
   /* ---------- 1. Scroll-Reveal ----------
-     Zweck: Inhalte erscheinen in Lesereihenfolge und geben dem Auge einen Einstiegspunkt. */
+     Zweck: Inhalte erscheinen in Lesereihenfolge und geben dem Auge einen Einstiegspunkt.
+     Lange, weiche Auslaufkurve: wirkt ruhig statt verspielt. */
   .js [data-reveal] {
     opacity: 0;
     transform: translateY(var(--reveal-distance));
-    transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out), translate var(--dur-base) var(--ease-out);
+    transition: opacity var(--dur-reveal) var(--ease-expo), transform var(--dur-reveal) var(--ease-expo), translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
   }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
   .js [data-reveal-delay="1"] { transition-delay: calc(var(--stagger) * 1); }
@@ -41,31 +49,44 @@
   .js [data-reveal-delay="3"] { transition-delay: calc(var(--stagger) * 3); }
   .js [data-reveal-delay="4"] { transition-delay: calc(var(--stagger) * 4); }
   .js [data-reveal-delay="5"] { transition-delay: calc(var(--stagger) * 5); }
+  /* Nach dem Einblenden keine Verzögerung mehr für Hover-Übergänge */
+  .js [data-reveal].is-done { transition-delay: 0s; }
+
+  /* Kicker-Linie zeichnet sich, nachdem der Text steht. Zweck: führt den Blick zur Überschrift. */
+  .js .kicker[data-reveal]::before { transform: scaleX(0); transition: transform var(--dur-reveal) var(--ease-expo) 240ms; }
+  .js .kicker[data-reveal].is-in::before { transform: none; }
 
   /* Hero: rein CSS, ohne auf JS/IntersectionObserver zu warten (schneller LCP).
-     Zweck: Die Kernaussage baut sich sofort und ruhig auf. */
+     Zweck: Die Kernaussage baut sich Zeile für Zeile ruhig auf. */
   .js .hero [data-reveal] {
     opacity: 1; transform: none; transition: none;
-    animation: mo-hero-in var(--dur-slow) var(--ease-out) both;
+    animation: mo-hero-fade var(--dur-reveal) var(--ease-expo) both;
   }
-  .js .hero [data-reveal-delay="1"] { animation-delay: 90ms; }
-  .js .hero [data-reveal-delay="2"] { animation-delay: 180ms; }
-  .js .hero [data-reveal-delay="3"] { animation-delay: 270ms; }
+  .js .hero .hero__line[data-reveal] { animation-name: mo-hero-in; }
+  .js .hero [data-reveal-delay="1"] { animation-delay: 120ms; }
+  .js .hero [data-reveal-delay="2"] { animation-delay: 240ms; }
+  .js .hero [data-reveal-delay="3"] { animation-delay: 420ms; }
+  .js .hero [data-reveal-delay="4"] { animation-delay: 540ms; }
+  .js .hero [data-reveal-delay="5"] { animation-delay: 660ms; }
+  .js .hero [data-reveal-delay="6"] { animation-delay: 780ms; }
+  /* „sichtbar": Tarnstreifen fahren ein, das Wort wird klar. Zweck: die Markenidee in einer Sekunde. */
+  .js .hero__camo::after { animation: mo-camo-out 1200ms var(--ease-snap) 900ms both; }
+  .js .hero__camo::before { animation: mo-camo-out 1000ms var(--ease-snap) 1250ms both; }
 
   /* ---------- 2. Header ----------
-     Zweck: Beim Scrollen wird der Kopf kompakter und gibt Platz frei, der Blur trennt ihn vom Inhalt. */
-  .js [data-header-bar] { transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
-  .js [data-header-inner] { transition: transform var(--dur-base) var(--ease-out); }
-  .js [data-header].is-scrolled [data-header-bar] {
-    transform: scaleY(0.79);
-    opacity: 0.9;
-    -webkit-backdrop-filter: blur(var(--blur-header));
-    backdrop-filter: blur(var(--blur-header));
-  }
-  .js [data-header].is-scrolled [data-header-inner] { transform: translateY(calc(var(--space-2) * -1)); }
-  @media (max-width: 63.99em) {
-    .js [data-header].is-scrolled [data-header-inner] { transform: translateY(calc(var(--space-2) * -1)); }
-  }
+     Zweck: Beim Scrollen wird der Kopf kompakter, bekommt Milchglas und eine Haarlinie; die Fortschrittslinie wandert mit. */
+  .js [data-header-bar] { transition: transform var(--dur-base) var(--ease-out), background-color var(--dur-base) var(--ease-out); }
+  .js [data-header-bar]::after { transition: opacity var(--dur-base) var(--ease-out); }
+  .js [data-header-inner],
+  .js [data-progress] { transition: translate var(--dur-base) var(--ease-out); }
+  .js [data-header].is-scrolled [data-header-bar] { transform: scaleY(0.79); }
+  .js [data-header].is-scrolled [data-header-inner] { translate: 0 calc(var(--space-2) * -1); }
+  .js [data-header].is-scrolled [data-progress] { translate: 0 calc(var(--header-h-shrunk) - var(--header-h)); }
+
+  /* Menü (mobil): klappt weich auf. Zweck: Antwort auf die Geste statt Sprung. */
+  .js .site-nav.is-open { animation: mo-menu var(--dur-base) var(--ease-expo) both; }
+  @media (min-width: 64em) { .js .site-nav.is-open { animation: none; } }
+  .nav-toggle__icon span { transition: transform var(--dur-base) var(--ease-expo); }
 
   /* ---------- 3. Illustrationen (gesteuert über data-Attribute in den SVGs) ----------
      Start: JS setzt .is-playing am [data-illustration]-Container, sobald er sichtbar ist.
@@ -182,6 +203,19 @@
   .js [data-illustration] #rg-pin-pulse { transform-box: fill-box; transform-origin: center; }
   .js [data-illustration].is-playing #rg-pin-pulse { animation: mo-pulse var(--dur-loop) var(--ease-in-out) 3.4s infinite; }
 
+  /* --- Risiko-Matrix: Raster, Risiken, kritische Punkte poppen, Linie zur Liste, Reihenfolge --- */
+  #rc-stripes { --base: 0s;    --step: 68ms; }
+  #rc-grid    { --d: 0s; }
+  #rc-cells   { --d: 0.3s; }
+  #rc-lines   { --d: 0.25s; }
+  #rc-dots    { --base: 0.7s; --step: 130ms; }
+  #rc-risk-1  { --d: 1.7s; }
+  #rc-risk-2  { --d: 1.95s; }
+  #rc-link    { --d: 2.3s; --dur: var(--dur-el); }
+  #rc-list    { --base: 2.75s; --step: 220ms; }
+  #rc-labels  { --d: 1.2s; }
+  .js [data-illustration] :is(#rc-risk-1, #rc-risk-2) { transform-box: fill-box; transform-origin: center; }
+
   /* --- Streifen-Trenner und Hero-Textur: Streifen wachsen aus der Kante ---
      Zweck: das Markenmotiv „baut sich auf", statt statisch zu liegen. */
   .js .divider [data-stagger="grow"] > * { transform: scaleY(0); transform-box: fill-box; transform-origin: top; }
@@ -189,38 +223,108 @@
   .js .divider--flip [data-stagger="grow"] > * { transform-origin: top; }
   #hs-stripes { --base: 0.34s; --step: 42ms; }
 
-  /* ---------- 4. Parallax (rAF in main.js setzt --py) ---------- */
+  /* ---------- 4. Tiefe ----------
+     Parallax (rAF in main.js setzt --py): Streifenmuster bewegt sich langsamer als der Inhalt.
+     Neigung (main.js setzt --tx/--ty im Hero): der Graph folgt dem Zeiger um wenige Pixel. */
   .js [data-parallax] { transform: translate3d(0, var(--py, 0), 0); will-change: transform; }
+  .js [data-tilt] > svg { transform: translate3d(var(--tx, 0), var(--ty, 0), 0); transition: transform var(--dur-reveal) var(--ease-expo); }
 
-  /* ---------- 5. Timeline ----------
-     Zweck: Die Linie füllt sich mit dem Scrollen und zeigt, wo man im Prozess steht. */
+  /* Scroll-gebunden (nur wo der Browser Scroll-Timelines kann; sonst statisch).
+     Zweck: Hero-Grafik tritt beim Weiterscrollen zurück, Regionskarte gleitet leicht gegen den Text. */
+  @supports (animation-timeline: view()) {
+    @keyframes mo-recede { to { opacity: 0.25; transform: translateY(6%) scale(0.96); } }
+    @keyframes mo-drift  { from { transform: translateY(var(--space-6)); } to { transform: translateY(calc(var(--space-6) * -1)); } }
+    .js .hero__figure { animation: mo-recede linear both; animation-timeline: view(); animation-range: exit 0% exit 90%; }
+    @media (min-width: 64em) {
+      .js .region__map { animation: mo-drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    }
+  }
+
+  /* ---------- 5. Zahlen und Vorgehen ----------
+     Mini-Streifen der Fakten wachsen gestaffelt nach dem Einblenden. Zweck: Zahl und Strichliste lesen sich zusammen. */
+  .js .fact[data-reveal] .fact__bars span { transform: scaleY(0); }
+  .js .fact[data-reveal].is-in .fact__bars span { animation: mo-grow var(--dur-slow) var(--ease-expo) both; }
+  .js .fact[data-reveal].is-in .fact__bars span:nth-child(2) { animation-delay: 80ms; }
+  .js .fact[data-reveal].is-in .fact__bars span:nth-child(3) { animation-delay: 160ms; }
+  .js .fact[data-reveal].is-in .fact__bars span:nth-child(4) { animation-delay: 240ms; }
+  .js .fact[data-reveal].is-in .fact__bars span:nth-child(5) { animation-delay: 320ms; }
+  .js .fact[data-reveal].is-in .fact__bars span:nth-child(6) { animation-delay: 400ms; }
+  .js .fact[data-reveal].is-in .fact__bars span:nth-child(7) { animation-delay: 480ms; }
+
+  /* Timeline: Linie füllt sich mit dem Scrollen; aktive Schritte rasten ein. Zweck: zeigt, wo man im Prozess steht. */
   .js [data-timeline] { --progress: 0; }
-  .js .timeline__step:not(.is-active) .timeline__num { background: var(--c-bg); color: var(--c-text); border-color: var(--c-line-strong); }
+  .js .timeline__step { transition: border-color var(--dur-base) var(--ease-out), opacity var(--dur-reveal) var(--ease-expo), transform var(--dur-reveal) var(--ease-expo); }
+  .js .timeline__step:not(.is-active) .timeline__num { background: var(--c-surface); color: var(--c-text); border-color: var(--c-line-strong); }
   .js .timeline__step.is-active .timeline__num { animation: mo-pop var(--dur-check) var(--ease-pop) both; }
+  .js .timeline__step.is-current { border-color: var(--c-accent); }
+  .js [data-step-fill] { transition: transform var(--dur-slow) var(--ease-expo); }
+  .js [data-step-now] { transition: opacity var(--dur-fast) linear; }
+  .js [data-step-now].is-changing { opacity: 0; }
 
   /* ---------- 6. Hover (nur echte Zeiger; „translate" statt „transform", damit Reveal nicht kollidiert) ---------- */
   @media (hover: hover) {
-    .btn { transition: translate var(--dur-fast) var(--ease-out); }
+    /* Buttons: Fläche wischt von links herein, beim Verlassen nach rechts hinaus. Zweck: klare, ruhige Rückmeldung. */
+    .btn { transition: translate var(--dur-fast) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+    .btn::before { transition: transform var(--dur-slow) var(--ease-expo); }
+    .btn:hover::before { transform: scaleX(1); transform-origin: left; }
+    .btn--primary:hover { background: var(--c-btn-bg); }
+    .btn--ghost:hover { background: transparent; }
     .btn:hover { translate: 0 var(--lift-sm); }
     .btn:active { translate: 0 0; }
-    .service, .industry { transition: translate var(--dur-base) var(--ease-out); }
-    .service:hover, .industry:hover { translate: 0 var(--lift); }
+    .btn--arrow::after { transition: translate var(--dur-base) var(--ease-expo); }
+    .btn--arrow:hover::after { translate: var(--space-1) 0; }
+
+    .link-arrow::after { transition: translate var(--dur-base) var(--ease-expo), background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+    .link-arrow:hover::after { translate: var(--space-1) 0; }
+
+    /* Navigation: Unterstrich wächst von links. */
+    .site-nav > ul > li > a::after, .nav-group__btn::after { transition: transform var(--dur-base) var(--ease-expo); }
+    .site-nav a, .nav-group__btn { transition: color var(--dur-fast) linear; }
+
+    /* Karten heben sich leicht, Lichtkegel folgt dem Zeiger. Zweck: zeigt, dass die Karte ein zusammenhängendes Angebot ist. */
+    .service, .industry, .tool, .fact, .direct { transition: translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+    .service:hover, .industry:hover, .tool:hover { translate: 0 var(--lift); }
+    .industry:hover, .tool:hover, .service--2:hover, .service--5:hover { border-color: var(--c-line-strong); }
+    [data-spot]::before { transition: opacity var(--dur-slow) var(--ease-out); }
+    [data-spot]:hover::before { opacity: 1; }
+    .service__art svg { transition: transform var(--dur-slow) var(--ease-expo); }
+    .service:hover .service__art svg { transform: scale(1.02); }
+    .industry__icon { transition: translate var(--dur-base) var(--ease-out); }
+    .industry:hover .industry__icon { translate: 0 var(--lift-sm); }
+    .direct:hover { translate: var(--space-1) 0; }
+    .timeline__step:hover { border-color: var(--c-line-strong); }
+
+    .fab { transition: translate var(--dur-fast) var(--ease-out), background-color var(--dur-fast) linear; }
+    .fab:hover { translate: 0 var(--lift-sm); }
+    .site-footer__top .icon { transition: translate var(--dur-base) var(--ease-expo); }
+    .site-footer__top:hover .icon { translate: 0 calc(var(--space-1) * -1); }
   }
 
-  /* ---------- 7. Formularmeldungen: sanftes Einblenden ---------- */
+  /* ---------- 7. FAQ ----------
+     Plus dreht sich zum „×". Antworten klappen weich auf, wo der Browser Höhen interpolieren kann. */
+  .faq-list summary::after { transition: transform var(--dur-base) var(--ease-expo), border-color var(--dur-base) var(--ease-out); }
+  .faq-list summary { transition: color var(--dur-fast) linear; }
+  @supports (interpolate-size: allow-keywords) {
+    .faq-list { interpolate-size: allow-keywords; }
+    .faq-list details::details-content {
+      block-size: 0;
+      overflow: clip;
+      opacity: 0;
+      transition: block-size var(--dur-slow) var(--ease-expo), opacity var(--dur-base) var(--ease-out), content-visibility var(--dur-slow) allow-discrete;
+    }
+    .faq-list details[open]::details-content { block-size: auto; opacity: 1; }
+  }
+
+  /* ---------- 8. Formularmeldungen: sanftes Einblenden ---------- */
   .form-status:target, .form-status.is-visible, .error-summary:not([hidden]) { animation: mo-rise-s var(--dur-base) var(--ease-out) both; }
-}
+  .field input, .field textarea { transition: border-color var(--dur-fast) linear, background-color var(--dur-fast) linear; }
 
-/* ==========================================================================
-   Ergänzungen der Zusammenführung (okapio + Landingpage): Dropdown, Werkzeug-Vorschauen, Hover
-   Gleiche Regeln wie oben: nur transform/opacity (Ausnahme: stroke-dashoffset), Ausgangszustände nur unter
-   .js UND prefers-reduced-motion: no-preference.
-   ========================================================================== */
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes mo-gauge-tool { from { stroke-dashoffset: 1; } }
-  @keyframes mo-bar        { from { transform: scaleX(0); } }
+  /* ---------- 9. Footer: Wortmarke steigt aus der Unterkante ---------- */
+  .js .site-footer__mark[data-reveal] { transform: translateY(35%); transition-duration: 1600ms; }
+  .js .site-footer__mark[data-reveal].is-in { transform: none; opacity: 0.07; }
 
-  /* Dropdown: sanftes Einblenden. Zweck: Das Popover wirkt als Antwort auf die Geste, nicht als Sprung. */
+  /* ---------- 10. Dropdown ----------
+     Zweck: Das Popover wirkt als Antwort auf die Geste, nicht als Sprung. */
   @media (min-width: 64em) {
     .js .site-nav .nav-group__list { transform: translateY(calc(var(--space-2) * -1)); transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s linear var(--dur-base); }
     .js .site-nav .nav-group.is-open .nav-group__list { transform: none; transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-out), visibility 0s; }
@@ -228,7 +332,10 @@
   .nav-group__chev { transition: transform var(--dur-base) var(--ease-out); }
   .nav-group.is-open .nav-group__chev { transform: rotate(180deg); }
 
-  /* Werkzeug-Vorschauen: Ring füllt sich, Balken wachsen gestaffelt. Zweck: zeigt, wie sich ein Stand aufbaut. */
+  /* ---------- 11. Werkzeug-Vorschauen ----------
+     Ring füllt sich, Balken wachsen gestaffelt, Findings laufen ein. Zweck: zeigt, wie sich ein Stand aufbaut. */
+  @keyframes mo-gauge-tool { from { stroke-dashoffset: 1; } }
+  @keyframes mo-bar        { from { transform: scaleX(0); } }
   .js .tool__panel[data-illustration]:not(.is-playing) .gauge__fill { stroke-dashoffset: 1; }
   .js .tool__panel[data-illustration].is-playing .gauge__fill { animation: mo-gauge-tool var(--dur-draw-s) var(--ease-out) 0.1s both; }
   .js .tool__panel[data-illustration]:not(.is-playing) .bar__fill { transform: scaleX(0); }
@@ -245,31 +352,14 @@
   .js .tool__panel[data-illustration].is-playing .findings li:nth-child(1) { animation-delay: 320ms; }
   .js .tool__panel[data-illustration].is-playing .findings li:nth-child(2) { animation-delay: 420ms; }
   .js .tool__panel[data-illustration].is-playing .findings li:nth-child(3) { animation-delay: 520ms; }
-  /* Status-Punkt „Im Aufbau": ruhiger Puls, lange Periode. Zweck: markiert „in Arbeit", ohne Dauer-Glow. */
+  /* Scan-Linie: fährt ruhig über die Vorschau, dann Pause. Zweck: „Monitor" als laufender Vorgang, ohne Dauer-Glow. */
+  .js .tool__panel--scan.is-playing .tool__scan { animation: mo-scan 7s var(--ease-in-out) 1.2s infinite; }
+  /* Status-Punkt „Im Aufbau": ruhiger Puls mit Ring, lange Periode. Zweck: markiert „in Arbeit". */
   .tool__dot { animation: mo-pulse var(--dur-loop) var(--ease-in-out) infinite; }
+  .tool__dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: var(--line-w) solid var(--c-accent); animation: mo-ring var(--dur-loop) var(--ease-out) infinite; }
 
-  /* --- Risiko-Matrix: Raster, Risiken, kritische Punkte poppen, Linie zur Liste, Reihenfolge --- */
-  #rc-stripes { --base: 0s;    --step: 68ms; }
-  #rc-grid    { --d: 0s; }
-  #rc-cells   { --d: 0.3s; }
-  #rc-lines   { --d: 0.25s; }
-  #rc-dots    { --base: 0.7s; --step: 130ms; }
-  #rc-risk-1  { --d: 1.7s; }
-  #rc-risk-2  { --d: 1.95s; }
-  #rc-link    { --d: 2.3s; --dur: var(--dur-el); }
-  #rc-list    { --base: 2.75s; --step: 220ms; }
-  #rc-labels  { --d: 1.2s; }
-  .js [data-illustration] :is(#rc-risk-1, #rc-risk-2) { transform-box: fill-box; transform-origin: center; }
-
-  /* ---------- Hover: Icons und Pfeile leben mit ---------- */
-  @media (hover: hover) {
-    .tool { transition: translate var(--dur-base) var(--ease-out); }
-    .tool:hover { translate: 0 var(--lift-sm); }
-    .link-arrow::after { display: inline-block; transition: translate var(--dur-base) var(--ease-out); }
-    .link-arrow:hover::after { translate: var(--space-1) 0; }
-    .industry__icon { transition: translate var(--dur-base) var(--ease-out); }
-    .industry:hover .industry__icon { translate: 0 var(--lift-sm); }
-    .fab { transition: translate var(--dur-fast) var(--ease-out), background-color var(--dur-fast) linear; }
-    .fab:hover { translate: 0 var(--lift-sm); }
-  }
+  /* ---------- 12. Darstellung wechseln (View Transitions, main.js) ----------
+     Zweck: Der neue Modus breitet sich kreisförmig vom Schalter aus, statt hart umzuspringen. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 }

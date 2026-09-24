@@ -9,8 +9,8 @@
   <meta name="description" content="Impressum von okapio, Cybersecurity-Beratung in Böblingen.">
   <meta name="robots" content="noindex, follow">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
@@ -23,9 +23,10 @@
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
   <header class="site-header" data-theme="dark" data-header>
     <div class="site-header__bar" aria-hidden="true" data-header-bar></div>
+    <div class="site-header__progress" aria-hidden="true" data-progress></div>
     <div class="container site-header__inner" data-header-inner>
       <a class="brand" href="index.html" aria-label="okapio, zur Startseite"><!-- @svg:logo-wordmark noid --></a>
-      <a class="btn btn--ghost btn--sm site-header__cta" href="index.html">Zur Startseite</a>
+      <a class="btn btn--ghost btn--sm site-header__cta" href="index.html"><span aria-hidden="true">&larr;</span> Zur Startseite</a>
     </div>
   </header>
   <main id="inhalt" tabindex="-1">
@@ -53,14 +54,18 @@
       </div>
     </div>
   </main>
-  <footer class="site-footer" data-theme="dark">
+  <footer class="site-footer site-footer--compact" data-theme="night">
     <div class="container">
-      <ul class="footer-list">
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
-      </ul>
-      <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+      <div class="site-footer__bottom">
+        <p class="site-footer__legal">© 2026 okapio. Inhaber: Taha Cevik</p>
+        <nav aria-label="Rechtliches und Kontakt">
+          <ul class="footer-list footer-list--inline">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </footer>
 
