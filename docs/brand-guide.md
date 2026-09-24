@@ -56,7 +56,7 @@ Das Okapi ist scheu, gut getarnt und aufmerksam. Genau diese drei Eigenschaften 
 | "ganzheitlich", "360-Grad", "Rundum-sorglos" | Buzzword, Versprechen |
 | "State of the art", "Next-Gen", "Best Practice" (ohne Bezug) | Buzzword |
 | "Hacker", "Cyberkriminelle lauern überall" | Angstmarketing |
-| "zertifiziert", "geprüft", "ausgezeichnet" (für okapio) | nicht belegt |
+| "zertifiziert", "geprüft", "ausgezeichnet" (für okapio als Firma) | nicht belegt. Ausnahme, belegt: Taha Cevik ist persönlich CCSK-zertifiziert (Cloud Security Alliance) und darf so genannt werden |
 | "führend", "bester", "Nr. 1" | Superlativ |
 | "Synergien", "Mehrwert schaffen" | Buzzword |
 | Ausrufezeichen | Tonalität |
