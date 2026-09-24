@@ -248,6 +248,43 @@
     }
   }
 
+  /* ---------- 4b. Leistungs-Kacheln ----------
+     Einblenden: Karte hebt sich leicht skaliert ins Bild, danach laufen Kopf, Text und Prüfpunkte gestaffelt ein.
+     Dauerhaft: eine Akzentlinie läuft in ruhigen Abständen über die Oberkante (je Karte versetzt).
+     Zweck: Die Kacheln wirken als lebendige Arbeitsbereiche, ohne vom Text abzulenken. */
+  @keyframes mo-sweep { 0% { background-position: -60% 0; } 30%, 100% { background-position: 160% 0; } }
+  .js .bento .service[data-reveal] { transform: translateY(var(--reveal-distance)) scale(0.97); }
+  .js .bento .service[data-reveal].is-in { transform: none; }
+  .js .bento .service[data-reveal] :is(.service__head, .service__body > p, .checks li, .link-arrow) { opacity: 0; transform: translateY(var(--space-3)); transition: opacity var(--dur-slow) var(--ease-expo), transform var(--dur-slow) var(--ease-expo); }
+  .js .bento .service[data-reveal].is-in :is(.service__head, .service__body > p, .checks li, .link-arrow) { opacity: 1; transform: none; }
+  .js .bento .service[data-reveal].is-in .service__head { transition-delay: 150ms; }
+  .js .bento .service[data-reveal].is-in .service__body > p { transition-delay: 250ms; }
+  .js .bento .service[data-reveal].is-in .checks li:nth-child(1) { transition-delay: 340ms; }
+  .js .bento .service[data-reveal].is-in .checks li:nth-child(2) { transition-delay: 410ms; }
+  .js .bento .service[data-reveal].is-in .checks li:nth-child(3) { transition-delay: 480ms; }
+  .js .bento .service[data-reveal].is-in .checks li:nth-child(4) { transition-delay: 550ms; }
+  .js .bento .service[data-reveal].is-in .checks li:nth-child(5) { transition-delay: 620ms; }
+  .js .bento .service[data-reveal].is-in .link-arrow { transition-delay: 700ms; }
+  .js .bento .service {
+    background-image: linear-gradient(90deg, transparent, var(--c-accent), transparent);
+    background-repeat: no-repeat;
+    background-size: 40% 2px;
+    background-position: -60% 0;
+  }
+  .js .bento .service.is-in { animation: mo-sweep 7s var(--ease-in-out) 1.2s infinite; }
+  .js .bento .service:nth-child(2).is-in { animation-delay: 2.2s; }
+  .js .bento .service:nth-child(3).is-in { animation-delay: 3.2s; }
+  .js .bento .service:nth-child(4).is-in { animation-delay: 4.2s; }
+  .js .bento .service:nth-child(5).is-in { animation-delay: 5.2s; }
+  .js .bento .service:nth-child(6).is-in { animation-delay: 6.2s; }
+  .js .bento .service:nth-child(7).is-in { animation-delay: 7.2s; }
+  /* Nummer „01 /07" leuchtet beim Überfahren der Linie nicht; beim Hover der Karte füllt sie sich. */
+  .service__no { transition: background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+  @media (hover: hover) {
+    .service:hover .service__no { background: var(--c-accent); color: var(--c-btn-text); }
+    .service:hover .service__no .service__total { color: inherit; }
+  }
+
   /* ---------- 5. Zahlen und Vorgehen ----------
      Mini-Streifen der Fakten wachsen gestaffelt nach dem Einblenden. Zweck: Zahl und Strichliste lesen sich zusammen. */
   .js .fact[data-reveal] .fact__bars span { transform: scaleY(0); }
