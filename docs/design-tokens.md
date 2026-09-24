@@ -111,6 +111,7 @@ Text: AA = 4,5:1 (normal), 3:1 (≥ 24 px oder ≥ 18,66 px fett). Grafik/UI: 3:
 - **Easing:** `--ease-expo` (Reveals, lange weiche Auslaufkurve), `--ease-out` (Zustände, Hover), `--ease-in-out` (Loops, Linien), `--ease-snap` (Flächen und Masken: Button-Wischer, Tarnstreifen), `--ease-pop` (kleine Einrast-Effekte, sparsam).
 - **Dauern:** fast 150 ms · base 320 ms · slow 700 ms · reveal 1100 ms · Illustrationen 0,7–3,4 s · loop 5200 ms · Staffel 90 ms.
 - **Bewegungskatalog (Zweck steht jeweils in `motion.css`):** Hero baut sich zeilenweise auf; über „sichtbar" fahren Tarnstreifen weg (Kernmetapher) · Reveal mit Staffel, Kicker-Linie zeichnet sich · Header wird kompakter, Lesefortschritt als Linie, Scrollspy markiert die aktuelle Sektion · Lichtkegel folgt dem Zeiger auf Karten · Hero-Graph folgt dem Zeiger um wenige Pixel · Hero-Grafik tritt beim Weiterscrollen zurück, Regionskarte gleitet (nur mit Scroll-Timelines) · Fakten-Strichliste wächst · Timeline füllt sich, Schrittanzeige zählt mit · Scan-Linie im Attack Surface Monitor (mit Pause) · FAQ klappt weich auf · Dunkelmodus breitet sich kreisförmig vom Schalter aus (View Transitions).
+- **Leistungs-Kacheln:** Karte hebt sich leicht skaliert ins Bild, Kopf, Text und Prüfpunkte laufen gestaffelt ein; danach läuft alle 7 s eine Akzentlinie über die Oberkante (je Karte um 1 s versetzt). Beim Hover füllt sich die Nummer.
 - **Dauerschleife:** Alle Illustrationen (außer der Hero-Streifentextur) spielen ihren Ablauf erneut, solange sie im Bild sind: kurzes Ausblenden (450 ms), dann Neustart. Zyklen: Hero 13 s, Awareness 11 s, Region 10 s, übrige 8–9 s. Außerhalb des Bildes oder in einem Hintergrund-Tab pausiert die Schleife. Die Tarnstreifen über „sichtbar" kehren alle 8 s zurück und lösen sich wieder auf.
 - **Reduzierte Bewegung / ohne JS:** alle Endzustände sofort sichtbar, keine Loops, keine Zeiger-Effekte. Lesefortschritt, Scrollspy und Schrittanzeige bleiben (sie zeigen Zustand, sie animieren nicht).
 - **Breakpoints** (in Media Queries als em, da `var()` dort nicht geht): **40em** (640 px, Tablet klein), **64em** (1024 px, Desktop), **80em** (1280 px, Breit). Mobile-first.
@@ -137,7 +138,7 @@ Raster: 12 Spalten ab 64 em, 4 ab 40 em, 1 darunter. Sektionen wechseln zwischen
 
 | # | Sektion | Thema | Raster & Rhythmus | Rasterbruch |
 |---|---|---|---|---|
-| 1 | Header | **night** | Sticky, 1 Zeile. Logo links, Nav mittig (Scrollspy), CTA rechts, Lesefortschritt an der Unterkante. Mobil: Menü-Button mit Icon | – |
+| 1 | Header | **night** | Sticky, 1 Zeile. Logo links, Nav mittig mit vier Punkten (Leistungen ▾, Vorgehen, Werkzeuge, Über okapio ▾ mit FAQ; Scrollspy), CTA rechts, Lesefortschritt an der Unterkante. Mobil: Menü-Button mit Icon | – |
 | 2 | Hero | **night** | 12 Sp.: Text 6 Sp. linksbündig, Illustration 6 Sp. Illustration ragt rechts aus dem Container. Streifen-Textur läuft nach unten aus | Illustration über Containerrand. H1 linksbündig statt zentriert |
 | 3 | Vertrauensleiste | hell | Schmale Zeile, Standards als Textmarken mit dünnen Trennlinien. Streifen-Trenner oben | – |
 | 4 | Leistungen | hell | Geteilter Kopf (H2 links, Lead rechts). **Bento** aus 12 Sp.: 7+5 / 5+7 / 7+5 / 12. Jede Karte hat eigene Fläche und Anordnung von Text und Illustration | Kartengrößen und Ausrichtung bewusst ungleich. Nummerierung `01 /07` in Mono als roter Faden |
