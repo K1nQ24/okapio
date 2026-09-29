@@ -2,14 +2,6 @@
   <title id="ill-roadmap-title">Roadmap mit Entscheidungspunkt</title>
   <desc id="ill-roadmap-desc">Roadmap mit vier nummerierten Meilensteinen und einer Weggabelung. Ein Zweig wird verfolgt, der andere verworfen.</desc>
 
-  <!-- Unklarheit links: dichte Streifen, die sich zum Ziel hin auflösen -->
-  <g id="rm-stripes" data-stagger="grow" fill="var(--ill-ink)" stroke="none" opacity="0.12">
-    <rect x="16" y="150" width="2" height="150"/><rect x="26" y="120" width="5" height="180"/><rect x="38" y="170" width="1" height="130"/>
-    <rect x="46" y="100" width="8" height="200"/><rect x="62" y="160" width="2" height="140"/><rect x="72" y="130" width="3" height="170"/>
-    <rect x="86" y="200" width="2" height="100"/><rect x="98" y="180" width="5" height="120"/><rect x="114" y="240" width="1" height="60"/>
-    <rect x="126" y="230" width="3" height="70"/><rect x="142" y="270" width="2" height="30"/>
-  </g>
-
   <path id="rm-route" pathLength="1" data-draw d="M60 250C110 250 120 200 170 200S230 130 280 130 330 150 370 150 410 70 440 70"/>
   <path id="rm-branch-rejected" data-fade stroke-dasharray="4 7" opacity="0.9" d="M170 200C210 200 210 268 252 268"/>
   <g id="rm-rejected-mark" data-fade stroke="var(--ill-muted)"><path d="M262 260l12 16M274 260l-12 16"/></g>
