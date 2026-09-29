@@ -12,6 +12,8 @@ html {
   text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + var(--space-4));
+  /* Fläche hinter der Seite (iOS-Overscroll beim Herunterziehen): dunkel wie der Header */
+  background-color: var(--night-950);
 }
 
 body {
@@ -84,9 +86,14 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-weight: var(--fw-bold);
   border-radius: var(--r-pill);
   box-shadow: var(--shadow-2);
-  transform: translateY(-200%);
 }
-.skip-link:focus { transform: none; outline: var(--focus-w) solid var(--blue-500); outline-offset: var(--line-w-strong); }
+/* Nur bei Tastaturfokus sichtbar; sonst komplett ausgeblendet (auch im iOS-Overscroll-Bereich) */
+.skip-link:not(:focus) {
+  inline-size: var(--line-w); block-size: var(--line-w);
+  padding: 0; overflow: hidden; clip-path: inset(50%);
+  white-space: nowrap; box-shadow: none;
+}
+.skip-link:focus { outline: var(--focus-w) solid var(--blue-500); outline-offset: var(--line-w-strong); }
 
 /* ---------- Utilities ---------- */
 .visually-hidden {
