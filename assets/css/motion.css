@@ -81,6 +81,11 @@
   .js [data-header].is-scrolled [data-header-bar] { transform: scaleY(0.79); }
   .js [data-header].is-scrolled [data-header-inner] { translate: 0 calc(var(--space-2) * -1); }
   .js [data-header].is-scrolled [data-progress] { translate: 0 calc(var(--header-h-shrunk) - var(--header-h)); }
+  /* Mobiles Menü hängt an der geschrumpften Kopfzeile, sonst entsteht ein Spalt (inner ist bereits um space-2 verschoben). */
+  .js .site-nav { transition: translate var(--dur-base) var(--ease-out); }
+  @media (max-width: 63.99em) {
+    .js [data-header].is-scrolled .site-nav { translate: 0 calc(var(--header-h-shrunk) - var(--header-h) + var(--space-2)); }
+  }
 
   /* Menü (mobil): klappt weich auf. Zweck: Antwort auf die Geste statt Sprung. */
   .js .site-nav.is-open { animation: mo-menu var(--dur-base) var(--ease-expo) both; }
