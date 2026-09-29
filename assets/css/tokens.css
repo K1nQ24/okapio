@@ -142,6 +142,9 @@
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
   --c-stripe: var(--ink-900);
+  --c-grad-tint: #b9c9e2;
+  --c-grad-start: #ffffff;
+  --c-glow: 5%;
 
   /* Illustrationen (SVGs verwenden ausschließlich diese Variablen) */
   --ill-line: var(--slate-500);       /* Kanten, Konturen */
@@ -309,6 +312,11 @@
   --c-text-tint: color-mix(in srgb, var(--c-text) 6%, transparent);
   --c-grid: color-mix(in srgb, var(--c-text) 7%, transparent);
   --c-glass: color-mix(in srgb, var(--c-bg) 93%, transparent);
+  /* Hintergrund-Verlauf je Sektion: von der Grundfarbe zu einem Tönungston, dazu weiches Leuchten oben rechts.
+     --c-grad-tint und --c-glow setzt jedes Thema; Text-Kontraste bleiben, weil der Verlauf eng um --c-bg liegt. */
+  --c-bg-image:
+    radial-gradient(70rem 45rem at 92% -8%, color-mix(in srgb, var(--blue-500) var(--c-glow), transparent), transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--c-bg) 90%, var(--c-grad-start)) 0%, var(--c-bg) 40%, color-mix(in srgb, var(--c-bg) 72%, var(--c-grad-tint)) 100%);
   --stripe-color: var(--c-stripe);
   --stripes: repeating-linear-gradient(
     90deg,
@@ -351,6 +359,9 @@
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
   --c-stripe: var(--ink-900);
+  --c-grad-tint: #b9c9e2;
+  --c-grad-start: #ffffff;
+  --c-glow: 5%;
   --ill-line: var(--slate-500);
   --ill-line-soft: var(--frost-300);
   --ill-ink: var(--ink-900);
@@ -388,6 +399,9 @@
   --c-error: var(--state-error-text-dark);
   --c-ok: var(--state-ok-text-dark);
   --c-stripe: var(--frost-50);
+  --c-grad-tint: #3d5288;
+  --c-grad-start: #000000;
+  --c-glow: 18%;
 
   --ill-line: var(--slate-400);
   --ill-line-soft: var(--night-600);
@@ -426,6 +440,9 @@
   --c-error: var(--state-error-text);
   --c-ok: var(--state-ok-text);
   --c-stripe: var(--ink-900);
+  --c-grad-tint: #b9c9e2;
+  --c-grad-start: #ffffff;
+  --c-glow: 5%;
 
   --ill-line: var(--slate-500);
   --ill-line-soft: var(--haze-300);
@@ -474,6 +491,9 @@
   --c-error: var(--state-error-text-dark);
   --c-ok: var(--state-ok-text-dark);
   --c-stripe: var(--frost-50);
+  --c-grad-tint: #3d5288;
+  --c-grad-start: #000000;
+  --c-glow: 16%;
 
   --ill-line: var(--mist-400);
   --ill-line-soft: var(--dusk-600);
