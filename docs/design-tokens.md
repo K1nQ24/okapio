@@ -4,7 +4,7 @@ Besitzer: Agent DESIGN-SYSTEM · Quelle der Wahrheit: `/assets/css/tokens.css`
 
 ## 1. Konzept in sechs Sätzen
 
-1. **Logo-Tiefblau und Frost.** Das Tiefblau des Logos (`--night-900` = `#001842`) trägt Header, Hero, Werkzeuge, Kontakt und Footer. Ein kühles Off-White (`--frost-100`) trägt die Inhaltsbereiche. Gemischter Grundton: dunkle Bänder geben Rhythmus, gelesen wird auf Hell.
+1. **Nachtblau und Frost.** Ein fast schwarzes Nachtblau (`--night-900` = `#0e1522`, Verlauf zu Schieferblau `#1c2237`) trägt Header, Hero, Werkzeuge, Kontakt und Footer. Ein kühles Off-White (`--frost-100`) trägt die Inhaltsbereiche. Gemischter Grundton: dunkle Bänder geben Rhythmus, gelesen wird auf Hell.
 2. **Logo-Blau = Handlung und Risiko.** `--blue-*` (Basis `#0A6CFF`) steht für Buttons, Links, Angriffspfade und Findings. Orange/Terrakotta kommt nicht mehr vor.
 3. **Logo-Cyan = erkannt / geschützt.** `--cyan-*` (Basis `#00DAF2`) erscheint dort, wo etwas geschützt oder erkannt wurde (Schild, Häkchen, Fortschritt), sowie als Hervorhebung „sichtbar" im Hero und am i-Punkt des Logos.
 4. **Raster und Leuchten statt Streifen.** Technische Flächen (Hero, Werkzeuge, Kontakt) tragen ein feines Raster mit weichem Blau-/Cyan-Leuchten. Karten haben feine Kanten und beim Hover einen Glow-Rahmen. Keine Streifen (wirken wie ein Barcode), keine farbigen Seitenkanten an Karten.
@@ -15,17 +15,17 @@ Besitzer: Agent DESIGN-SYSTEM · Quelle der Wahrheit: `/assets/css/tokens.css`
 
 | Token | Wert | Rolle |
 |---|---|---|
-| `--night-950` | `#000f2b` | tiefster Grund (Footer, „night" im Dunkelmodus) |
-| `--night-900` | `#001842` (Logo) | dunkler Hintergrund (Header, Hero, Werkzeuge, Kontakt); Text auf Hell |
-| `--night-800` | `#082453` | Karten auf Dunkel |
-| `--night-700` | `#113065` | erhöhte Flächen auf Dunkel |
-| `--night-600` | `#1d3f7a` | Linien auf Dunkel (dekorativ) |
+| `--night-950` | `#0a101b` | tiefster Grund (Footer, „night" im Dunkelmodus) |
+| `--night-900` | `#0e1522` | dunkler Hintergrund (Header, Hero, Werkzeuge, Kontakt); Text auf Hell |
+| `--night-800` | `#1a202b` | Karten auf Dunkel |
+| `--night-700` | `#2b3043` | erhöhte Flächen auf Dunkel |
+| `--night-600` | `#3a4058` | Linien auf Dunkel (dekorativ) |
 | `--frost-50` | `#fcfdfe` | Karten auf Hell, Text auf Dunkel |
 | `--frost-100` | `#f3f5f8` | Standard heller Hintergrund |
 | `--frost-200` | `#e7ebf1` | zweite helle Fläche (Thema „sand") |
 | `--frost-300` | `#d3dae4` | Linien auf Hell (dekorativ) |
 | `--haze-50/100` | `#f7f9fc` / `#e8eef6` | kühle Tönung („dark" im hellen Modus) |
-| `--dusk-950 … 700` | `#000c24` … `#132f60` | Flächen im Dunkelmodus |
+| `--dusk-950 … 700` | `#0a101b` … `#1a202b` | Flächen im Dunkelmodus |
 | `--ink-700/600` | `#3b4a5e` / `#4b5b70` | gedämpfter Text auf Hell |
 | `--mist-300/400` | `#a6b4c7` / `#8a9bb2` | gedämpfter Text / starke Linien auf Dunkel |
 | `--blue-300/400/500/600` | `#6aa8ff` / `#4d94ff` / `#0a6cff` (Logo) / `#005be6` | Akzent: Text auf Dunkel / Grafik auf Dunkel / Buttons, Grafik auf Hell / Text auf Hell, Hover |
