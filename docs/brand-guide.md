@@ -71,6 +71,8 @@ Das Okapi ist scheu, gut getarnt und aufmerksam. Genau diese drei Eigenschaften 
 
 ## 5. Umgang mit dem Okapi-Motiv
 
+> **Stand Redesign:** Auf Wunsch des Inhabers wird das Streifenmuster auf der Website nicht mehr verwendet, weil es wie ein Barcode wirkt. Keine Streifen in Kacheln, Trennern, Hintergründen oder Illustrationen. An ihre Stelle treten ein feines Raster mit weichem Blau-/Cyan-Leuchten (Hero, Kontakt, Werkzeuge) und Glow-Kanten an Karten. Die Regeln unten gelten nur noch für Print oder Sonderfälle nach Absprache.
+
 **Leitmotiv: das Streifenmuster.** Vertikale Linien unterschiedlicher Stärke, wie an Beinen und Hinterteil des Okapis.
 
 Regeln:

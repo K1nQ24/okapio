@@ -30,7 +30,6 @@
   @keyframes mo-pulse  { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.25; transform: scale(1.12); } }
   @keyframes mo-hero-in { from { opacity: 0; transform: translateY(0.45em); } to { opacity: 1; transform: none; } }
   @keyframes mo-hero-fade { from { opacity: 0; transform: translateY(var(--space-4)); } to { opacity: 1; transform: none; } }
-  @keyframes mo-camo-out { from { transform: scaleY(1); } to { transform: scaleY(0); } }
   @keyframes mo-scan   { 0% { opacity: 0; transform: translateY(-100%); } 8% { opacity: 1; } 55% { opacity: 1; transform: translateY(260%); } 62%, 100% { opacity: 0; transform: translateY(260%); } }
   @keyframes mo-menu   { from { opacity: 0; transform: translateY(calc(var(--space-2) * -1)); } to { opacity: 1; transform: none; } }
   @keyframes mo-mark   { from { opacity: 0; transform: translateY(35%); } to { opacity: 1; transform: none; } }
@@ -41,7 +40,7 @@
   .js [data-reveal] {
     opacity: 0;
     transform: translateY(var(--reveal-distance));
-    transition: opacity var(--dur-reveal) var(--ease-expo), transform var(--dur-reveal) var(--ease-expo), translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+    transition: opacity var(--dur-reveal) var(--ease-expo), transform var(--dur-reveal) var(--ease-expo), translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out);
   }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
   .js [data-reveal-delay="1"] { transition-delay: calc(var(--stagger) * 1); }
@@ -53,7 +52,7 @@
   .js [data-reveal].is-done { transition-delay: 0s; }
 
   /* Kicker-Linie zeichnet sich, nachdem der Text steht. Zweck: führt den Blick zur Überschrift. */
-  .js .kicker[data-reveal]::before { transform: scaleX(0); transition: transform var(--dur-reveal) var(--ease-expo) 240ms; }
+  .js .kicker[data-reveal]::before { transform: scale(0); transition: transform var(--dur-slow) var(--ease-pop) 240ms; }
   .js .kicker[data-reveal].is-in::before { transform: none; }
 
   /* Hero: rein CSS, ohne auf JS/IntersectionObserver zu warten (schneller LCP).
@@ -69,11 +68,9 @@
   .js .hero [data-reveal-delay="4"] { animation-delay: 540ms; }
   .js .hero [data-reveal-delay="5"] { animation-delay: 660ms; }
   .js .hero [data-reveal-delay="6"] { animation-delay: 780ms; }
-  /* „sichtbar": Tarnstreifen fahren ein, das Wort wird klar. Zweck: die Markenidee in einer Sekunde. */
-  /* Dauerschleife: Streifen fahren ein, das Wort wird klar, nach einer Pause kehrt die Tarnung zurück. */
-  @keyframes mo-camo-loop { 0% { transform: scaleY(1); } 14% { transform: scaleY(0); } 84% { transform: scaleY(0); } 94%, 100% { transform: scaleY(1); } }
-  .js .hero__camo::after { animation: mo-camo-loop 8s var(--ease-snap) 900ms infinite both; }
-  .js .hero__camo::before { animation: mo-camo-loop 8s var(--ease-snap) 1250ms infinite both; }
+  /* „sichtbar": Verlauf schimmert ruhig durch. Zweck: der Blick landet auf der Kernaussage. */
+  @keyframes mo-shimmer { to { background-position: -200% 0; } }
+  .js .hero__highlight { animation: mo-shimmer 6s linear infinite; }
 
   /* ---------- 2. Header ----------
      Zweck: Beim Scrollen wird der Kopf kompakter, bekommt Milchglas und eine Haarlinie; die Fortschrittslinie wandert mit. */
@@ -118,7 +115,6 @@
   }
 
   /* --- Hero-Graph: Kanten → Knoten → Angriffspfad → Schild blockiert --- */
-  #hg-stripes  { --base: 0s;    --step: 51ms; }
   #hg-edges    { --base: 0.26s; --step: 136ms; }
   #hg-nodes    { --base: 0.59s; --step: 153ms; }
   #hg-node-rings { --base: 9.2s; --step: 765ms; }
@@ -134,7 +130,6 @@
   #hg-blocked-tag   { --d: 8s; }
 
   /* --- Roadmap: Route zeichnet sich, Meilensteine rasten ein, verworfener Zweig blasst ein --- */
-  #rm-stripes     { --base: 0s;   --step: 68ms; }
   #rm-route       { --d: 0.34s; --dur: var(--dur-draw); }
   #rm-milestones  { --base: 0.68s; --step: 0.48s; }
   #rm-branch-rejected { --d: 2.04s; }
@@ -206,7 +201,6 @@
   .js [data-illustration].is-playing #rg-pin-pulse { animation: mo-pulse var(--dur-loop) var(--ease-in-out) 3.4s infinite; }
 
   /* --- Risiko-Matrix: Raster, Risiken, kritische Punkte poppen, Linie zur Liste, Reihenfolge --- */
-  #rc-stripes { --base: 0s;    --step: 68ms; }
   #rc-grid    { --d: 0s; }
   #rc-cells   { --d: 0.3s; }
   #rc-lines   { --d: 0.25s; }
@@ -237,12 +231,6 @@
     animation: mo-fade var(--dur-el) var(--ease-out) var(--d, 0s) both, mo-march 1.4s linear var(--d, 0s) infinite;
   }
 
-  /* --- Streifen-Trenner und Hero-Textur: Streifen wachsen aus der Kante ---
-     Zweck: das Markenmotiv „baut sich auf", statt statisch zu liegen. */
-  .js .divider [data-stagger="grow"] > * { transform: scaleY(0); transform-box: fill-box; transform-origin: top; }
-  .js .divider.is-in [data-stagger="grow"] > * { animation: mo-grow var(--dur-slow) var(--ease-out) calc(var(--i, 0) * 8ms) both; }
-  .js .divider--flip [data-stagger="grow"] > * { transform-origin: top; }
-  #hs-stripes { --base: 0.34s; --step: 42ms; }
 
   /* ---------- 4. Tiefe ----------
      Parallax (rAF in main.js setzt --py): Streifenmuster bewegt sich langsamer als der Inhalt.
@@ -304,16 +292,7 @@
     .service:hover .service__no .service__total { color: inherit; }
   }
 
-  /* ---------- 5. Zahlen und Vorgehen ----------
-     Mini-Streifen der Fakten wachsen gestaffelt nach dem Einblenden. Zweck: Zahl und Strichliste lesen sich zusammen. */
-  .js .fact[data-reveal] .fact__bars span { transform: scaleY(0); }
-  .js .fact[data-reveal].is-in .fact__bars span { animation: mo-grow var(--dur-slow) var(--ease-expo) both; }
-  .js .fact[data-reveal].is-in .fact__bars span:nth-child(2) { animation-delay: 80ms; }
-  .js .fact[data-reveal].is-in .fact__bars span:nth-child(3) { animation-delay: 160ms; }
-  .js .fact[data-reveal].is-in .fact__bars span:nth-child(4) { animation-delay: 240ms; }
-  .js .fact[data-reveal].is-in .fact__bars span:nth-child(5) { animation-delay: 320ms; }
-  .js .fact[data-reveal].is-in .fact__bars span:nth-child(6) { animation-delay: 400ms; }
-  .js .fact[data-reveal].is-in .fact__bars span:nth-child(7) { animation-delay: 480ms; }
+  /* ---------- 5. Vorgehen ---------- */
 
   /* Timeline: Linie füllt sich mit dem Scrollen; aktive Schritte rasten ein. Zweck: zeigt, wo man im Prozess steht. */
   .js [data-timeline] { --progress: 0; }
@@ -348,6 +327,13 @@
     /* Karten heben sich leicht, Lichtkegel folgt dem Zeiger. Zweck: zeigt, dass die Karte ein zusammenhängendes Angebot ist. */
     .service, .tool, .fact, .direct { transition: translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
     .service:hover, .tool:hover { translate: 0 var(--lift); }
+    /* Glow-Rahmen beim Hover: Kante in Logo-Blau, weiches Leuchten darunter */
+    .service, .tool, .fact, .timeline__step, .direct { transition: translate var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out); }
+    :is(.service, .tool, .fact, .timeline__step, .direct):hover {
+      border-color: color-mix(in srgb, var(--c-accent) 55%, transparent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--c-accent) 30%, transparent), 0 24px 60px -28px color-mix(in srgb, var(--c-accent) 55%, transparent);
+    }
+    .btn--primary:hover { box-shadow: 0 14px 38px -12px color-mix(in srgb, var(--blue-500) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.22); }
     .tool:hover, .service--2:hover, .service--5:hover { border-color: var(--c-line-strong); }
     [data-spot]::before { transition: opacity var(--dur-slow) var(--ease-out); }
     [data-spot]:hover::before { opacity: 1; }

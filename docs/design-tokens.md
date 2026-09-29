@@ -7,8 +7,8 @@ Besitzer: Agent DESIGN-SYSTEM · Quelle der Wahrheit: `/assets/css/tokens.css`
 1. **Logo-Tiefblau und Frost.** Das Tiefblau des Logos (`--night-900` = `#001842`) trägt Header, Hero, Werkzeuge, Kontakt und Footer. Ein kühles Off-White (`--frost-100`) trägt die Inhaltsbereiche. Gemischter Grundton: dunkle Bänder geben Rhythmus, gelesen wird auf Hell.
 2. **Logo-Blau = Handlung und Risiko.** `--blue-*` (Basis `#0A6CFF`) steht für Buttons, Links, Angriffspfade und Findings. Orange/Terrakotta kommt nicht mehr vor.
 3. **Logo-Cyan = erkannt / geschützt.** `--cyan-*` (Basis `#00DAF2`) erscheint dort, wo etwas geschützt oder erkannt wurde (Schild, Häkchen, Fortschritt), sowie als Hervorhebung „sichtbar" im Hero und am i-Punkt des Logos.
-4. **Streifen als Tarnung.** Vertikale Streifen verdichten sich, wo etwas verborgen ist, und lösen sich per Maske auf, wo Klarheit entsteht.
-5. **Keine Lila-Blau-Verläufe, kein Neon, kein Glassmorphism.** Verläufe nur als weiche Tonwertübergänge innerhalb der Palette. Einzige Ausnahme: der Header bekommt beim Scrollen eine fast deckende Fläche mit leichter Unschärfe.
+4. **Raster und Leuchten statt Streifen.** Technische Flächen (Hero, Werkzeuge, Kontakt) tragen ein feines Raster mit weichem Blau-/Cyan-Leuchten. Karten haben feine Kanten und beim Hover einen Glow-Rahmen. Keine Streifen (wirken wie ein Barcode), keine farbigen Seitenkanten an Karten.
+5. **Leuchten nur in Logo-Farben, dezent.** Verläufe nur als weiche Tonwertübergänge innerhalb der Palette. Einzige Ausnahme: der Header bekommt beim Scrollen eine fast deckende Fläche mit leichter Unschärfe.
 6. **Technische Typografie.** Überschriften in Space Grotesk, Text in Inter, Labels und Nummern in JetBrains Mono. Der zweite Teil jeder Sektionsüberschrift steht in der gedämpften Textfarbe (`.h-accent`); nur „sichtbar" im Hero ist Logo-Cyan.
 
 ## 2. Palette
