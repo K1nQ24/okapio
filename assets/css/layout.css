@@ -254,3 +254,22 @@
 /* ---------- Rechtstexte ---------- */
 .legal { padding-block: var(--space-8) var(--section-y); }
 .legal__body { display: grid; gap: var(--space-5); max-inline-size: var(--container-narrow); }
+
+/* Mobil/Tablet: Hero-Grafik liegt als Hintergrund hinter dem Text statt als eigener Block darunter. */
+@media (max-width: 63.99em) {
+  .hero__grid { isolation: isolate; }
+  .hero__figure {
+    position: absolute;
+    inset: 0 calc(var(--gutter) * -1);
+    z-index: -1;
+    margin: 0;
+    display: grid;
+    place-items: center end;
+    opacity: 0.28;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+  }
+  .hero__figure > svg { inline-size: 120%; max-inline-size: none; translate: 25% 0; }
+  .hero__figure::before { display: none; }
+}
