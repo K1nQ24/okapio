@@ -3,7 +3,7 @@ const lin = c => { c/=255; return c<=0.03928 ? c/12.92 : ((c+0.055)/1.055)**2.4;
 const L = h => { const n=parseInt(h.slice(1),16); return 0.2126*lin(n>>16&255)+0.7152*lin(n>>8&255)+0.0722*lin(n&255); };
 export const cr = (a,b) => { const [x,y]=[L(a),L(b)].sort((p,q)=>q-p); return (x+0.05)/(y+0.05); };
 const T = {
- night950:'#000F2B', night900:'#001842', night800:'#082453', night700:'#113065', night600:'#1D3F7A',
+ night950:'#0A101B', night900:'#0E1522', night800:'#1A202B', night700:'#2B3043', night600:'#3A4058',
  white:'#FFFFFF', frost50:'#FCFDFE', frost100:'#F3F5F8', frost200:'#E7EBF1', frost300:'#D3DAE4',
  ink900:'#001842', ink700:'#3B4A5E', ink600:'#4B5B70',
  blue300:'#6AA8FF', blue400:'#4D94FF', blue500:'#0A6CFF', blue600:'#005BE6',
@@ -11,7 +11,7 @@ const T = {
  error300:'#FF9AA6', error600:'#C01F36',
  mist300:'#A6B4C7', mist400:'#8A9BB2', slate400:'#6F86A0', slate500:'#66758A',
  haze50:'#F7F9FC', haze100:'#E8EEF6',
- dusk950:'#000C24', dusk900:'#04183D', dusk800:'#0B234D', dusk700:'#132F60',
+ dusk950:'#0A101B', dusk900:'#0E1522', dusk800:'#151B27', dusk700:'#1A202B',
 };
 // [Vordergrund, Grund, Beschreibung, Mindestwert]
 const pairs = [
