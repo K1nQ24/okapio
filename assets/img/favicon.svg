@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-149 -80 1300 1300">
-  <!-- Favicon: Bildmarke des Logos mit festen Farbwerten (Browser rendert sie außerhalb der Seite, Tokens stehen nicht zur Verfügung). Heller Grund frost-50, damit das Navy-Quadrat sichtbar bleibt. -->
-  <rect x="-149" y="-80" width="1300" height="1300" rx="290" fill="#fcfdfe"/>
-  <rect x="334.071" y="403.255" width="334.071" height="334.071" fill="#001842"/>
-  <path fill="#00daf2" d="M0,737.543l0,-334.288l334.071,0l0,334.288l334.31,0l0,334.071l-334.31,0l0,-334.071l-334.071,0Z"/>
-  <path fill="#0a6cff" d="M334.071,403.255l0,-334.071l668.381,0l0,668.359l-334.071,0l0,-334.288l-334.31,0Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1003 1003">
+  <!-- Favicon: Bildmarke des Logos (vom Inhaber geliefert, Dark- und White-Mode identisch), transparenter Grund. Feste Farbwerte, da der Browser die Datei außerhalb der Seite rendert. -->
+  <rect x="334.071" y="334.071" width="334.071" height="334.071" fill="#001842"/>
+  <path fill="#00daf2" d="M0,668.359l0,-334.288l334.071,0l0,334.288l334.31,0l0,334.071l-334.31,0l0,-334.071l-334.071,0Z"/>
+  <path fill="#0a6cff" d="M334.071,334.071l0,-334.071l668.381,0l0,668.359l-334.071,0l0,-334.288l-334.31,0Z"/>
 </svg>
