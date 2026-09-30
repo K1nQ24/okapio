@@ -152,6 +152,7 @@
   --ill-surface: var(--frost-50);      /* Knoten-/Kartenfüllung */
   --ill-surface-2: var(--frost-200);
   --ill-risk: var(--blue-500);
+  --logo-dot: var(--cyan-300);   /* Logo i-Punkt: auf Hell Cyan (White-Mode-Logo) */
   --ill-safe: var(--cyan-700);
   --ill-muted: var(--ink-600);
 
@@ -367,6 +368,7 @@
   --ill-surface: var(--frost-50);
   --ill-surface-2: var(--frost-200);
   --ill-risk: var(--blue-500);
+  --logo-dot: var(--cyan-300);   /* Logo i-Punkt: auf Hell Cyan (White-Mode-Logo) */
   --ill-safe: var(--cyan-700);
   --ill-muted: var(--ink-600);
   --shadow-1: 0 1px 2px rgb(0 24 66 / 0.06), 0 6px 16px -8px rgb(0 24 66 / 0.16);
@@ -408,6 +410,7 @@
   --ill-surface: var(--night-800);
   --ill-surface-2: var(--night-700);
   --ill-risk: var(--blue-400);
+  --logo-dot: var(--blue-500);   /* Logo i-Punkt: auf Dunkel Blau (Darkmode-Logo) */
   --ill-safe: var(--cyan-300);
   --ill-muted: var(--mist-300);
 
@@ -449,6 +452,7 @@
   --ill-surface: var(--haze-50);
   --ill-surface-2: var(--haze-200);
   --ill-risk: var(--blue-500);
+  --logo-dot: var(--cyan-300);   /* Logo i-Punkt: auf Hell Cyan (White-Mode-Logo) */
   --ill-safe: var(--cyan-700);
   --ill-muted: var(--ink-600);
 
@@ -500,6 +504,7 @@
   --ill-surface: var(--dusk-800);
   --ill-surface-2: var(--dusk-700);
   --ill-risk: var(--blue-400);
+  --logo-dot: var(--blue-500);   /* Logo i-Punkt: auf Dunkel Blau (Darkmode-Logo) */
   --ill-safe: var(--cyan-300);
   --ill-muted: var(--mist-300);
 

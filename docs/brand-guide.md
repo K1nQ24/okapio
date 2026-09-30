@@ -87,8 +87,8 @@ Regeln:
 ## 6. Logo-Regeln
 
 - **Logo:** Bildmarke links (drei Blöcke: Blau `#0A6CFF`, Cyan `#00DAF2`, Navy-Quadrat `#001842`) plus Wortmarke "okapio", durchgehend klein. Als Pfade gezeichnet (`assets/svg/logo-wordmark.svg`), vom Inhaber geliefert.
-- **Detail:** Der i-Punkt ist Logo-Blau (`#0A6CFF`). Die Bildmarke allein liegt als `assets/svg/logo-symbol.svg` vor und dient als Favicon (auf hellem Grund, damit das Navy-Quadrat sichtbar bleibt).
-- **Farbvarianten:** Wortmarke in `currentColor`: Darkmode-Logo mit Off-White `#FCFDFE`, White-Mode-Logo mit Navy `#001842`. Bildmarke und i-Punkt behalten ihre festen Farben. Im Footer-Schriftzug (7 % Deckkraft) ist alles einfarbig.
+- **Detail:** Der i-Punkt ist im Darkmode-Logo Blau (`#0A6CFF`), im White-Mode-Logo Cyan (`#00DAF2`); gesteuert über `--logo-dot` je Theme. Die Bildmarke allein liegt als `assets/svg/logo-symbol.svg` vor und dient als Favicon (auf hellem Grund, damit das Navy-Quadrat sichtbar bleibt).
+- **Farbvarianten:** Wortmarke in `currentColor`: Darkmode-Logo mit Off-White `#FCFDFE`, White-Mode-Logo mit Navy `#001842` (Vorlage: Schwarz; Navy passt zur Seitentypografie). Die Bildmarke behält ihre festen Farben. Header und Footer sind in beiden Modi dunkel, dort steht immer das Darkmode-Logo. Im Footer-Schriftzug (7 % Deckkraft) ist alles einfarbig.
 - **Schutzraum:** Mindestens die Höhe des "o" (x-Höhe) rundum frei.
 - **Mindestgröße:** Wortmarke 88 px Breite (digital), Symbol 20 px.
 - **Nicht erlaubt:** Verzerren, Drehen, Schatten, Verläufe, Großschreibung ("OKAPIO"), Streifen hinter der Wortmarke.
