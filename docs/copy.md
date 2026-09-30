@@ -14,7 +14,7 @@ Besitzer: Agent BRAND · Alle `[PLATZHALTER: …]` sind vom Inhaber zu füllen.
 2. Lücken finden. Priorisieren. Schließen.
 3. Security, die Ihr Team versteht und umsetzt.
 
-Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile, natürlich formuliert: **Cybersecurity-Beratung aus Böblingen** (Stuttgart steht in Title, Description und Region-Abschnitt)
+Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile, als Markenversprechen: **Cybersecurity – aus einer Hand** (Böblingen/Stuttgart stehen in Title, Description, Subline-Umfeld, Region-Abschnitt und JSON-LD)
 
 ---
 
@@ -25,7 +25,7 @@ Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile, natürlich formuliert
 - Menü-Button (mobil): Menü öffnen / Menü schließen
 
 ## 2. Hero
-- Vorzeile (Teil des H1): Cybersecurity-Beratung aus Böblingen
+- Vorzeile (Teil des H1): Cybersecurity – aus einer Hand
 - H1: **Risiken sichtbar machen, bevor andere sie finden.**
 - Subline: okapio berät Unternehmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. Mit festen Ansprechpartnern statt Ticketsystem.
 - CTA primär: **Erstgespräch vereinbaren**
