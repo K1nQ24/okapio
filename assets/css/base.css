@@ -18,7 +18,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--c-bg);
+  /* Dunkel wie Header/Hero: Lücken beim iOS-Bounce oder Neuladen zeigen keinen hellen Streifen.
+     Alle Sektionen setzen ihren eigenen Hintergrund. */
+  background: var(--night-950);
   color: var(--c-text);
   font-family: var(--font-text);
   font-size: var(--fs-base);
