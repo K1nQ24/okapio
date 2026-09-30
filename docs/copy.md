@@ -4,9 +4,9 @@ Besitzer: Agent BRAND · Alle `[PLATZHALTER: …]` sind vom Inhaber zu füllen.
 
 ## 0. Meta
 
-- **Title:** Cybersecurity Böblingen & Stuttgart | okapio Beratung
-- **Meta-Description:** Cybersecurity-Beratung in Böblingen und Stuttgart für Mittelstand, Automotive und SaaS. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.
-- **OG-Title:** okapio – Cybersecurity-Beratung Böblingen & Stuttgart
+- **Title:** Cybersecurity aus einer Hand | okapio · Böblingen & Stuttgart (58 Zeichen; Slogan vorn, Orte für Local SEO)
+- **Meta-Description:** Cybersecurity-Beratung in Böblingen und Stuttgart für Unternehmen jeder Branche. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.
+- **OG-Title:** Cybersecurity aus einer Hand | okapio · Böblingen & Stuttgart
 - **OG-Description:** Risiken sichtbar machen, bevor andere sie finden. Infrastruktur, Cloud, Audits und Awareness.
 
 ### Hero-Headline-Varianten
@@ -14,7 +14,7 @@ Besitzer: Agent BRAND · Alle `[PLATZHALTER: …]` sind vom Inhaber zu füllen.
 2. Lücken finden. Priorisieren. Schließen.
 3. Security, die Ihr Team versteht und umsetzt.
 
-Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile, natürlich formuliert: **Cybersecurity-Beratung aus Böblingen** (Stuttgart steht in Title, Description und Region-Abschnitt)
+Der H1 enthält als kleine Vorzeile das Markenversprechen: **Cybersecurity – aus einer Hand** (Böblingen/Stuttgart stehen in Title, Description, Subline-Umfeld, Region-Abschnitt und JSON-LD)
 
 ---
 
@@ -25,7 +25,7 @@ Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile, natürlich formuliert
 - Menü-Button (mobil): Menü öffnen / Menü schließen
 
 ## 2. Hero
-- Vorzeile (Teil des H1): Cybersecurity-Beratung aus Böblingen
+- Vorzeile (Teil des H1): Cybersecurity – aus einer Hand
 - H1: **Risiken sichtbar machen, bevor andere sie finden.**
 - Subline: okapio berät Unternehmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. Mit festen Ansprechpartnern statt Ticketsystem.
 - CTA primär: **Erstgespräch vereinbaren**
