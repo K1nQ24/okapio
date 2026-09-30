@@ -86,9 +86,9 @@ Regeln:
 
 ## 6. Logo-Regeln
 
-- **Wortmarke:** "okapio", durchgehend klein, in Bricolage Grotesque Bold. Als Pfade gezeichnet, nicht als Text (die Schriftdatei liegt dafür in `tools/fonts/`, die Website lädt sie nicht).
-- **Detail:** Der i-Punkt ist Logo-Cyan (`#00DAF2`). Zusätzlich gibt es ein **Symbol**: ein Kreis (das "o"), dessen untere Hälfte in Streifen unterschiedlicher Stärke übergeht.
-- **Farbvarianten:** Wortmarke in `currentColor` (auf Hell: Nachtblau, auf Dunkel: Off-White). Der i-Punkt bleibt Cyan. Einfarbig ist erlaubt (dann i-Punkt in Textfarbe).
+- **Logo:** Bildmarke links (drei Blöcke: Blau `#0A6CFF`, Cyan `#00DAF2`, Navy-Quadrat `#001842`) plus Wortmarke "okapio", durchgehend klein. Als Pfade gezeichnet (`assets/svg/logo-wordmark.svg`), vom Inhaber geliefert.
+- **Detail:** Der i-Punkt ist Logo-Blau (`#0A6CFF`). Die Bildmarke allein liegt als `assets/svg/logo-symbol.svg` vor und dient als Favicon (auf hellem Grund, damit das Navy-Quadrat sichtbar bleibt).
+- **Farbvarianten:** Wortmarke in `currentColor`: Darkmode-Logo mit Off-White `#FCFDFE`, White-Mode-Logo mit Navy `#001842`. Bildmarke und i-Punkt behalten ihre festen Farben. Im Footer-Schriftzug (7 % Deckkraft) ist alles einfarbig.
 - **Schutzraum:** Mindestens die Höhe des "o" (x-Höhe) rundum frei.
 - **Mindestgröße:** Wortmarke 88 px Breite (digital), Symbol 20 px.
 - **Nicht erlaubt:** Verzerren, Drehen, Schatten, Verläufe, Großschreibung ("OKAPIO"), Streifen hinter der Wortmarke.

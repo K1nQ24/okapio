@@ -19,10 +19,10 @@ Flag `noid` am Marker (`<!-- @svg:logo-wordmark noid -->`) entfernt `id`-Attribu
 ## Dateien und IDs
 
 ### `logo-wordmark.svg` – `#ill-logo` (informativ, Text „okapio")
-`#wordmark` (Pfade, `currentColor`) · `#dot` (i-Punkt, `--ill-risk`). **Animation:** keine (statisch).
+`#wm-symbol` (Bildmarke, feste Logo-Farben) · `#wm-wordmark` (Pfade, `currentColor`) · `#wm-dot` (i-Punkt, `#0A6CFF`). Farben als Präsentationsattribute, nicht als `style` (CSP). **Animation:** keine (statisch).
 
 ### `logo-symbol.svg` – `#ill-logo-symbol` (dekorativ)
-`#ring` · `#stripes` (neun Streifen im unteren Halbkreis) · `#dot`. **Animation:** optional Streifen beim Laden aufbauen (nicht genutzt).
+Bildmarke aus drei Blöcken (Blau, Cyan, Navy). Derzeit nur als Vorlage für das Favicon genutzt. **Animation:** keine.
 
 ### `hero-graph.svg` – `#ill-hero-graph` (informativ)
 | ID | Inhalt | Animation |

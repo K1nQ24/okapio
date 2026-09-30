@@ -120,7 +120,6 @@
   --state-ok-text-dark: var(--cyan-300);
   --placeholder-bg: var(--cyan-100);
   --placeholder-fg: var(--night-900);       /* 14:1 */
-  --logo-dot: var(--cyan-300);              /* i-Punkt der Wortmarke (Logo steht immer auf Dunkel) */
 
   /* ---------- Semantik: HELLES Thema (Standard) ---------- */
   --c-bg: var(--frost-100);
@@ -255,8 +254,8 @@
   --size-row: 3.5rem;
   --size-icon: 3.5rem;
   --size-divider: 3.5rem;
-  --size-brand: 6.75rem;
-  --size-brand-footer: 6.25rem;
+  --size-brand: 8.5rem;
+  --size-brand-footer: 8.25rem;
   --size-marker: 0.6rem;
   --size-edge: 5rem;
   --pad-card: clamp(1.5rem, 3vw, 2.75rem);

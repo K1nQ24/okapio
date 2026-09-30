@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="ill-logo-symbol" viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="currentColor">
-  <path id="ls-ring" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" d="M5.5 24a18.5 18.5 0 1 1 37 0a18.5 18.5 0 1 1-37 0z"/>
-  <path id="ls-stripes" d="M10 25h1.2v6.6h-1.2zM13 25h2.6v11h-2.6zM17 25h1v13h-1zM19.6 25h3.6v14.2h-3.6zM24.4 25h1.2v14.4h-1.2zM27.1 25h2.2v13.8h-2.2zM30.6 25h1v12.7h-1zM32.6 25h2.8v10.7h-2.8zM36.8 25h1.2v6.6h-1.2z"/>
-  <circle id="ls-dot" cx="24" cy="16" r="2.4" fill="var(--ill-risk)"/>
+<svg xmlns="http://www.w3.org/2000/svg" id="ill-logo-symbol" viewBox="0 69 1003 1003" aria-hidden="true" focusable="false">
+  <rect x="334.071" y="403.255" width="334.071" height="334.071" fill="#001842"/>
+  <path fill="#00daf2" d="M0,737.543l0,-334.288l334.071,0l0,334.288l334.31,0l0,334.071l-334.31,0l0,-334.071l-334.071,0Z"/>
+  <path fill="#0a6cff" d="M334.071,403.255l0,-334.071l668.381,0l0,668.359l-334.071,0l0,-334.288l-334.31,0Z"/>
 </svg>
