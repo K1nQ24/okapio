@@ -4,9 +4,9 @@ Besitzer: Agent BRAND · Alle `[PLATZHALTER: …]` sind vom Inhaber zu füllen.
 
 ## 0. Meta
 
-- **Title:** Cybersecurity Böblingen & Stuttgart | okapio Beratung
+- **Title:** Cybersecurity aus einer Hand | okapio · Böblingen & Stuttgart (58 Zeichen; Slogan vorn, Orte für Local SEO)
 - **Meta-Description:** Cybersecurity-Beratung in Böblingen und Stuttgart für Mittelstand, Automotive und SaaS. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.
-- **OG-Title:** okapio – Cybersecurity-Beratung Böblingen & Stuttgart
+- **OG-Title:** Cybersecurity aus einer Hand | okapio · Böblingen & Stuttgart
 - **OG-Description:** Risiken sichtbar machen, bevor andere sie finden. Infrastruktur, Cloud, Audits und Awareness.
 
 ### Hero-Headline-Varianten
@@ -14,7 +14,7 @@ Besitzer: Agent BRAND · Alle `[PLATZHALTER: …]` sind vom Inhaber zu füllen.
 2. Lücken finden. Priorisieren. Schließen.
 3. Security, die Ihr Team versteht und umsetzt.
 
-Der H1 enthält den Local-SEO-Begriff als kleine Vorzeile, als Markenversprechen: **Cybersecurity – aus einer Hand** (Böblingen/Stuttgart stehen in Title, Description, Subline-Umfeld, Region-Abschnitt und JSON-LD)
+Der H1 enthält als kleine Vorzeile das Markenversprechen: **Cybersecurity – aus einer Hand** (Böblingen/Stuttgart stehen in Title, Description, Subline-Umfeld, Region-Abschnitt und JSON-LD)
 
 ---
 
