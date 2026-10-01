@@ -33,6 +33,18 @@ PHP-Version in konsoleH: 8.2 oder neuer.
 
 Bei jeder Anfrage gehen zwei HTML-Mails raus (Vorlagen: `assets/php/mail-template.php`, Logo: `assets/php/mail/okapio-logo.png`, beides liegt in `assets/php/` und wird mit hochgeladen): eine **Benachrichtigung an okapio** mit allen Angaben und Antworten-Schaltfläche, eine **Bestätigung an die anfragende Person** im selben Design. Die Bestätigung enthält bewusst nicht den Nachrichtentext der Person, damit das Formular nicht als Absender für fremde Texte missbraucht werden kann.
 
+### Diagnose-Seite (nur zum Testen)
+`assets/php/diagnose.php` hochladen, `https://okapio.de/assets/php/diagnose.php` im Browser öffnen: Sie prüft PHP-Version, Konfigurationsdatei, Schreibrechte und die Anmeldung am Mailserver (ohne Mail zu versenden, ohne Passwort anzuzeigen). **Danach vom Server löschen.**
+
+### Formular zeigt „Das hat leider nicht geklappt“?
+`kontakt.php` schreibt den Grund (ohne Formulareingaben) in die Datei **`okapio-kontakt.log` eine Ebene über dem Web-Ordner** (neben `okapio-config.php`) und ins PHP-Fehlerlog. Typische Gründe:
+- „Konfigurationsdatei nicht gefunden“: `okapio-config.php` liegt nicht eine Ebene über `public_html` (oder fehlt `assets/php/config.php`).
+- „Konfiguration unvollständig (…)“: ein Eintrag fehlt oder ist leer, z. B. `smtp_pass`.
+- „SMTP Error: Could not connect to SMTP host“: Server, Port oder `smtp_secure` stimmen nicht, oder Hetzner lässt die ausgehende Verbindung nicht zu.
+- „SMTP Error: Could not authenticate“: Benutzername (volle Mail-Adresse) oder Passwort falsch.
+- „Rate-Limit erreicht“: mehr als 5 Anfragen pro Stunde von derselben IP (beim Testen).
+- „Herkunftsprüfung fehlgeschlagen“: das Formular wurde von einer anderen Adresse abgeschickt als der Server (z. B. `www` und ohne `www` gemischt).
+
 ## 4. Cookiebot (Einwilligungsverwaltung)
 Aktiv. Die Domain-Gruppen-ID steht in `site.config.json` (`cookiebotId`); sie ist keine geheime Angabe, sie steht ohnehin im Quelltext der Seite. Ohne ID (leerer Wert) lässt `node tools/build.mjs` Cookiebot weg. Mit ID
 - wird das Cookiebot-Skript in alle Seiten eingebunden (`data-blockingmode="auto"`, Sprache Deutsch),
