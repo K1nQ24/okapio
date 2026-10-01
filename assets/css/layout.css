@@ -202,11 +202,10 @@
 
 /* ---------- Team: Foto links, Person rechts ---------- */
 .team { display: grid; gap: var(--space-7); align-items: center; }
-.team__photo { max-inline-size: 26rem; }
+.team__photo { inline-size: 100%; max-inline-size: var(--size-team-photo); }
 .team__copy { display: grid; gap: var(--space-5); justify-items: start; }
 @media (min-width: 64em) {
-  .team { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-9); }
-  .team__photo { max-inline-size: none; }
+  .team { grid-template-columns: var(--size-team-photo) minmax(0, 1fr); gap: var(--space-9); }
 }
 
 /* ---------- FAQ ---------- */

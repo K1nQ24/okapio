@@ -257,6 +257,7 @@
   --size-divider: 3.5rem;
   --size-brand: 8.5rem;
   --size-brand-footer: 8.25rem;
+  --size-team-photo: 16rem;         /* Breite des Team-Porträts */
   --size-sovereign-icon: 3.25rem;   /* Schild im Hosted-in-Germany-Band */
   --size-host-icon: 1rem;           /* Schild im Hosted-in-Germany-Etikett */
   --size-marker: 0.6rem;
