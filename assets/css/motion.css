@@ -369,7 +369,7 @@
   }
 
   /* ---------- 8. Formularmeldungen: sanftes Einblenden ---------- */
-  .form-status:target, .form-status.is-visible, .error-summary:not([hidden]) { animation: mo-rise-s var(--dur-base) var(--ease-out) both; }
+  .form-status:target, .form-status.is-visible, .form-live:not([hidden]), .error-summary:not([hidden]) { animation: mo-rise-s var(--dur-base) var(--ease-out) both; }
   .field input, .field textarea { transition: border-color var(--dur-fast) linear, background-color var(--dur-fast) linear; }
 
   /* ---------- 9. Footer: Wortmarke steigt aus der Unterkante ---------- */

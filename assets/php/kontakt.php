@@ -63,6 +63,13 @@ function respond(string $target): never
     header('Cache-Control: no-store');
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: no-referrer');
+    // Mit JS sendet die Seite per fetch und erwartet JSON (kein Neuladen, kein Springen). Sonst: Weiterleitung wie bisher.
+    if (str_contains((string)($_SERVER['HTTP_ACCEPT'] ?? ''), 'application/json')) {
+        $status = str_ends_with($target, '#kontakt-gesendet') ? 'ok' : (str_ends_with($target, '#kontakt-eingabe') ? 'invalid' : 'error');
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['status' => $status]);
+        exit;
+    }
     header('Location: ' . $target, true, 303);
     exit;
 }

@@ -131,7 +131,9 @@
 
   /* ---------- Formular ----------
      Zweck: verständliche Fehlermeldungen direkt am Feld. Ohne JS greift die native Validierung und die
-     serverseitige Prüfung in kontakt.php. Das Formular wird immer normal gesendet (kein fetch). */
+     serverseitige Prüfung in kontakt.php. Mit JS wird per fetch gesendet: Die Rückmeldung erscheint direkt unter dem
+     Senden-Knopf, die Seite lädt nicht neu und springt nicht. Ohne JS (oder wenn fetch scheitert) greift der normale
+     Versand mit Weiterleitung auf #kontakt-gesendet / -fehler / -eingabe. */
   function initForm() {
     var form = document.querySelector('[data-form]');
     if (!form) { return; }
@@ -172,6 +174,37 @@
       } else if (summary) {
         summary.hidden = true;
       }
+      if (firstInvalid || !window.fetch || !window.FormData) { return; }
+
+      e.preventDefault();
+      var button = form.querySelector('[type="submit"]');
+      var live = form.querySelector('[data-form-live]');
+      function show(kind) {
+        var source = document.getElementById({ ok: 'kontakt-gesendet', invalid: 'kontakt-eingabe', error: 'kontakt-fehler' }[kind]);
+        if (!live || !source) { return; }
+        live.textContent = source.textContent;
+        live.className = 'form-live form-live--' + (kind === 'ok' ? 'ok' : 'error');
+        live.hidden = false;
+        // Nur wenn die Meldung unter dem Bildschirmrand läge, minimal nachrücken (kein Sprung zum Formularanfang)
+        var rect = live.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight) { live.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+      }
+      if (button) { button.disabled = true; button.setAttribute('aria-busy', 'true'); }
+      if (live) { live.hidden = true; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }, credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var kind = data && (data.status === 'ok' || data.status === 'invalid') ? data.status : 'error';
+          show(kind);
+          if (kind === 'ok') {
+            form.reset();
+            inputs.forEach(function (input) { setError(input, false); });
+          }
+        })
+        .catch(function () { show('error'); })
+        .then(function () {
+          if (button) { button.disabled = false; button.removeAttribute('aria-busy'); }
+        });
     });
 
     /* Statusmeldung nach dem Redirect von kontakt.php (#kontakt-gesendet / -fehler / -eingabe):
@@ -188,6 +221,43 @@
   function showEverything() {
     $all('[data-reveal]').forEach(function (el) { el.classList.add('is-in'); });
     $all('[data-illustration]').forEach(function (el) { el.classList.add('is-playing'); });
+  }
+
+  /* ---------- Darstellungsschalter bündig zum Cookiebot-Symbol ----------
+     Zweck: Der Cookiebot-Widget-Knopf erscheint (nach der ersten Entscheidung) unten links. Der Darstellungsschalter
+     sitzt direkt darüber, mittig zum Symbol. Wir messen das Symbol und setzen --fab-mode-x / --fab-mode-y;
+     ohne Cookiebot oder wenn es rechts sitzt, gelten die Standardwerte aus dem CSS. */
+  function initCookiebotAlign() {
+    var root = document.documentElement, queued = false;
+    function reset() { root.style.removeProperty('--fab-mode-x'); root.style.removeProperty('--fab-mode-y'); }
+    function iconOf(widget) {
+      var el = widget.querySelector('.CookiebotWidget-logo, [class*="Widget-logo"], [class*="widget-logo"]');
+      var candidates = el ? [el] : [].slice.call(widget.querySelectorAll('*')).concat([widget]);
+      for (var i = 0; i < candidates.length; i += 1) {
+        var r = candidates[i].getBoundingClientRect();
+        if (r.width >= 24 && r.width <= 90 && r.height >= 24 && r.height <= 90) { return r; }
+      }
+      return null;
+    }
+    function align() {
+      queued = false;
+      try {
+        var fab = document.querySelector('.fab--mode'), widget = document.getElementById('CookiebotWidget');
+        if (!fab || !widget) { reset(); return; }
+        var r = iconOf(widget);
+        if (!r || r.left + r.width / 2 > window.innerWidth / 2) { reset(); return; }
+        var size = fab.offsetWidth, viewH = root.clientHeight;
+        root.style.setProperty('--fab-mode-x', Math.round(r.left + r.width / 2 - size / 2) + 'px');
+        root.style.setProperty('--fab-mode-y', Math.round(viewH - r.top + 12) + 'px');
+      } catch (err) { reset(); }
+    }
+    function schedule() { if (!queued) { queued = true; window.requestAnimationFrame(align); } }
+    window.addEventListener('resize', schedule);
+    window.addEventListener('load', function () { schedule(); window.setTimeout(schedule, 800); window.setTimeout(schedule, 2500); });
+    if (window.MutationObserver) {
+      new MutationObserver(function () { schedule(); window.setTimeout(schedule, 500); }).observe(document.body, { childList: true, subtree: true });
+    }
+    schedule();
   }
 
   /* ---------- Staffel-Indizes ----------
@@ -412,6 +482,7 @@
     initNavGroups();
     initModeToggle();
     initForm();
+    initCookiebotAlign();
     if (reduce || !hasIO) {
       showEverything();
       initScroll();            /* nur Header-Zustand; Parallax/Timeline sind bei reduce deaktiviert */

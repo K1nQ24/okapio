@@ -569,6 +569,10 @@
 .form-status:target { position: static; inline-size: auto; block-size: auto; overflow: visible; clip-path: none; padding: var(--space-4) var(--space-5); margin-block-end: var(--space-5); border-radius: var(--r-md); border-inline-start: var(--line-w-accent) solid; font-weight: var(--fw-semibold); background: var(--c-bg); max-inline-size: none; }
 .form-status--ok:target { color: var(--c-ok); border-color: var(--c-ok); }
 .form-status--error:target { color: var(--c-error); border-color: var(--c-error); }
+/* Rückmeldung direkt unter dem Senden-Knopf (JS-Versand ohne Neuladen und ohne Scrollen) */
+.form-live { padding: var(--space-4) var(--space-5); border-radius: var(--r-md); border-inline-start: var(--line-w-accent) solid; font-weight: var(--fw-semibold); background: var(--c-bg); max-inline-size: none; }
+.form-live--ok { color: var(--c-ok); border-color: var(--c-ok); }
+.form-live--error { color: var(--c-error); border-color: var(--c-error); }
 .error-summary { padding: var(--space-4) var(--space-5); border-radius: var(--r-md); border-inline-start: var(--line-w-accent) solid var(--c-error); background: var(--c-bg); color: var(--c-error); font-weight: var(--fw-semibold); max-inline-size: none; }
 .error-summary[hidden] { display: none; }
 
@@ -666,7 +670,7 @@
   text-decoration: none;
 }
 /* Darstellungs-Schalter eine Position höher: unten links sitzt das Cookie-Banner-Symbol (Cookiebot). */
-.fab--mode { inset-inline-start: var(--space-5); inset-block-end: calc(var(--space-5) + var(--size-fab) + var(--space-4)); background: var(--c-surface); color: var(--c-text); }
+.fab--mode { inset-inline-start: var(--fab-mode-x, var(--space-5)); inset-block-end: var(--fab-mode-y, calc(var(--space-5) + var(--size-fab) + var(--space-4))); background: var(--c-surface); color: var(--c-text); }
 .fab--mode:hover { border-color: var(--c-line-strong); }
 .fab--whatsapp { inset-inline-end: var(--space-5); background: var(--wa-green); color: var(--frost-50); border-color: var(--wa-green); }
 .fab--whatsapp:hover { background: var(--wa-green-hover); border-color: var(--wa-green-hover); }
@@ -678,7 +682,7 @@
 :root[data-mode="dark"] .fab--mode .fab__icon--moon { display: none; }
 @media (max-width: 30em) {
   .fab { inset-block-end: var(--space-4); }
-  .fab--mode { inset-inline-start: var(--space-4); inset-block-end: calc(var(--space-4) + var(--size-fab) + var(--space-3)); }
+  .fab--mode { inset-inline-start: var(--fab-mode-x, var(--space-4)); inset-block-end: var(--fab-mode-y, calc(var(--space-4) + var(--size-fab) + var(--space-3))); }
   .fab--whatsapp { inset-inline-end: var(--space-4); }
 }
 @media print { .fab { display: none !important; } }
