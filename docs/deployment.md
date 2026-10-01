@@ -31,12 +31,12 @@ Die Datei und das Passwort gehören nie ins Repository (`.gitignore`) und werden
 PHP-Version in konsoleH: 8.2 oder neuer.
 
 ## 4. Cookiebot (Einwilligungsverwaltung)
-Standardmäßig **aus**. Aktivieren: die Domain-Gruppen-ID (UUID) aus dem Cookiebot-Konto in `site.config.json` bei `cookiebotId` eintragen und `node tools/build.mjs` ausführen. Dann
-- wird das Cookiebot-Skript in alle Seiten eingebunden,
+Aktiv. Die Domain-Gruppen-ID steht in `site.config.json` (`cookiebotId`); sie ist keine geheime Angabe, sie steht ohnehin im Quelltext der Seite. Ohne ID (leerer Wert) lässt `node tools/build.mjs` Cookiebot weg. Mit ID
+- wird das Cookiebot-Skript in alle Seiten eingebunden (`data-blockingmode="auto"`, Sprache Deutsch),
 - erlaubt die Content-Security-Policy die Cookiebot-Hosts (und `style-src 'unsafe-inline'`, das der Banner braucht),
 - erscheint im Abschnitt 6 der Datenschutzerklärung der Cookiebot-Absatz.
 
-Banner nach dem Livegang im Browser prüfen (Konsole auf blockierte Quellen). In der Cookiebot-Konfiguration die Domain `okapio.de` eintragen.
+Im Cookiebot-Konto muss die Domain `okapio.de` (und `www.okapio.de`) für diese ID eingetragen sein, sonst erscheint der Banner nicht. Nach dem Livegang im Browser prüfen: Banner erscheint, Konsole zeigt keine blockierten Quellen (CSP), Auswahl bleibt nach dem Neuladen erhalten.
 
 ## 5. Nach dem Livegang
 1. `https://okapio.de` aufrufen: Schloss-Symbol, `www.okapio.de` und `http://` leiten auf `https://okapio.de/` um.

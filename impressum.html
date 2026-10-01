@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a101b">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://consent.cookiebot.com https://consentcdn.cookiebot.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://imgsct.cookiebot.com data:; font-src 'self'; connect-src 'self' https://consent.cookiebot.com https://consentcdn.cookiebot.com; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
   <title>Impressum | okapio</title>
   <meta name="description" content="Impressum von okapio, Cybersecurity-Beratung in Böblingen.">
   <meta name="robots" content="noindex, follow">
@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/motion.css">
+  
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c35c3787-4aa6-4fac-8ee2-52ac2036a0c1" data-blockingmode="auto" data-culture="DE"></script>
   
   <script src="assets/js/init.js"></script>
   <script src="assets/js/main.js" defer></script>
