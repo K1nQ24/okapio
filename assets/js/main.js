@@ -225,17 +225,16 @@
 
   /* ---------- Darstellungsschalter bündig zum Cookiebot-Symbol ----------
      Zweck: Der Cookiebot-Widget-Knopf erscheint (nach der ersten Entscheidung) unten links. Der Darstellungsschalter
-     sitzt direkt darüber, mittig zum Symbol. Wir messen das Symbol und setzen --fab-mode-x / --fab-mode-y;
-     ohne Cookiebot oder wenn es rechts sitzt, gelten die Standardwerte aus dem CSS. */
+     sitzt direkt darüber, mittig zum Symbol, ohne es zu überdecken. Wir lesen die feste Position (CSS-Abstände) des
+     Widgets und setzen --fab-mode-x / --fab-mode-y. Bewusst keine Messung relativ zur Fensterhöhe: Auf dem iPhone ändert
+     sich diese beim Scrollen (Adressleiste), der Schalter würde sonst hin und her springen.
+     Ohne Cookiebot oder wenn es rechts sitzt, gelten die Standardwerte aus dem CSS. */
   function initCookiebotAlign() {
-    var root = document.documentElement, queued = false;
+    var root = document.documentElement, queued = false, GAP = 12;
     function reset() { root.style.removeProperty('--fab-mode-x'); root.style.removeProperty('--fab-mode-y'); }
-    function iconOf(widget) {
-      var el = widget.querySelector('.CookiebotWidget-logo, [class*="Widget-logo"], [class*="widget-logo"]');
-      var candidates = el ? [el] : [].slice.call(widget.querySelectorAll('*')).concat([widget]);
-      for (var i = 0; i < candidates.length; i += 1) {
-        var r = candidates[i].getBoundingClientRect();
-        if (r.width >= 24 && r.width <= 90 && r.height >= 24 && r.height <= 90) { return r; }
+    function fixedAncestor(el) {
+      for (var n = el; n && n !== document.documentElement; n = n.parentElement) {
+        if (window.getComputedStyle(n).position === 'fixed') { return n; }
       }
       return null;
     }
@@ -244,11 +243,24 @@
       try {
         var fab = document.querySelector('.fab--mode'), widget = document.getElementById('CookiebotWidget');
         if (!fab || !widget) { reset(); return; }
-        var r = iconOf(widget);
-        if (!r || r.left + r.width / 2 > window.innerWidth / 2) { reset(); return; }
-        var size = fab.offsetWidth, viewH = root.clientHeight;
-        root.style.setProperty('--fab-mode-x', Math.round(r.left + r.width / 2 - size / 2) + 'px');
-        root.style.setProperty('--fab-mode-y', Math.round(viewH - r.top + 12) + 'px');
+        var logo = widget.querySelector('.CookiebotWidget-logo, [class*="Widget-logo"], [class*="widget-logo"]') || widget;
+        var anchor = fixedAncestor(logo) || fixedAncestor(widget);
+        var base = anchor ? anchor.getBoundingClientRect() : null;
+        var all = [widget].concat([].slice.call(widget.querySelectorAll('*'))), top = Infinity, icon = null, i, r;
+        for (i = 0; i < all.length; i += 1) {
+          r = all[i].getBoundingClientRect();
+          if (r.width < 1 || r.height < 1) { continue; }
+          top = Math.min(top, r.top);
+          if (!icon && r.width >= 24 && r.width <= 120 && r.height >= 24 && r.height <= 120) { icon = r; }
+        }
+        if (!base || !icon || top === Infinity) { reset(); return; }
+        var cs = window.getComputedStyle(anchor), b = parseFloat(cs.bottom), l = parseFloat(cs.left);
+        if (!isFinite(b) || !isFinite(l)) { reset(); return; }
+        var iconLeft = l + (icon.left - base.left);            // Abstand des Symbols vom linken Rand (CSS-Pixel)
+        if (iconLeft + icon.width / 2 > window.innerWidth / 2) { reset(); return; }
+        var above = base.bottom - top;                          // Höhe des Widgets über seiner Unterkante
+        root.style.setProperty('--fab-mode-x', Math.round(iconLeft + icon.width / 2 - fab.offsetWidth / 2) + 'px');
+        root.style.setProperty('--fab-mode-y', Math.round(b + above + GAP) + 'px');
       } catch (err) { reset(); }
     }
     function schedule() { if (!queued) { queued = true; window.requestAnimationFrame(align); } }
