@@ -416,3 +416,8 @@
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 }
+
+/* Darstellungsschalter: wandert er (neben dem Cookiebot-Symbol) an seine Stelle, geschieht das sanft statt als Sprung */
+@media (prefers-reduced-motion: no-preference) {
+  .js .fab--mode { transition: translate var(--dur-fast) var(--ease-out), background-color var(--dur-fast) linear, inset-inline-start var(--dur-base) var(--ease-out), inset-block-end var(--dur-base) var(--ease-out); }
+}

@@ -230,8 +230,11 @@
      sich diese beim Scrollen (Adressleiste), der Schalter würde sonst hin und her springen.
      Ohne Cookiebot oder wenn es rechts sitzt, gelten die Standardwerte aus dem CSS. */
   function initCookiebotAlign() {
-    var root = document.documentElement, queued = false, GAP = 12;
+    var root = document.documentElement, queued = false, GAP = 12, started = Date.now();
+    var bucket = window.innerWidth <= 480 ? 'm' : 'd';
     function reset() { root.style.removeProperty('--fab-mode-x'); root.style.removeProperty('--fab-mode-y'); }
+    function remember(x, y) { try { window.localStorage.setItem('okapio-fab-' + bucket, x + '|' + y); } catch (err) { /* ignorieren */ } }
+    function forget() { try { window.localStorage.removeItem('okapio-fab-' + bucket); } catch (err) { /* ignorieren */ } }
     function fixedAncestor(el) {
       for (var n = el; n && n !== document.documentElement; n = n.parentElement) {
         if (window.getComputedStyle(n).position === 'fixed') { return n; }
@@ -242,7 +245,8 @@
       queued = false;
       try {
         var fab = document.querySelector('.fab--mode'), widget = document.getElementById('CookiebotWidget');
-        if (!fab || !widget) { reset(); return; }
+        // Widget (noch) nicht da: gemerkte oder Standardposition behalten, nichts verschieben
+        if (!fab || !widget) { return; }
         var logo = widget.querySelector('.CookiebotWidget-logo, [class*="Widget-logo"], [class*="widget-logo"]') || widget;
         var anchor = fixedAncestor(logo) || fixedAncestor(widget);
         var base = anchor ? anchor.getBoundingClientRect() : null;
@@ -253,22 +257,30 @@
           top = Math.min(top, r.top);
           if (!icon && r.width >= 24 && r.width <= 120 && r.height >= 24 && r.height <= 120) { icon = r; }
         }
-        if (!base || !icon || top === Infinity) { reset(); return; }
+        if (!base || !icon || top === Infinity) { return; }
         var cs = window.getComputedStyle(anchor), b = parseFloat(cs.bottom), l = parseFloat(cs.left);
-        if (!isFinite(b) || !isFinite(l)) { reset(); return; }
+        if (!isFinite(b) || !isFinite(l)) { return; }
         var iconLeft = l + (icon.left - base.left);            // Abstand des Symbols vom linken Rand (CSS-Pixel)
-        if (iconLeft + icon.width / 2 > window.innerWidth / 2) { reset(); return; }
+        if (iconLeft + icon.width / 2 > window.innerWidth / 2) { reset(); forget(); return; }
         var above = base.bottom - top;                          // Höhe des Widgets über seiner Unterkante
-        root.style.setProperty('--fab-mode-x', Math.round(iconLeft + icon.width / 2 - fab.offsetWidth / 2) + 'px');
-        root.style.setProperty('--fab-mode-y', Math.round(b + above + GAP) + 'px');
-      } catch (err) { reset(); }
+        var x = Math.round(iconLeft + icon.width / 2 - fab.offsetWidth / 2), y = Math.round(b + above + GAP);
+        root.style.setProperty('--fab-mode-x', x + 'px');
+        root.style.setProperty('--fab-mode-y', y + 'px');
+        remember(x, y);
+      } catch (err) { /* Standardposition bleibt */ }
     }
     function schedule() { if (!queued) { queued = true; window.requestAnimationFrame(align); } }
     window.addEventListener('resize', schedule);
-    window.addEventListener('load', function () { schedule(); window.setTimeout(schedule, 800); window.setTimeout(schedule, 2500); });
+    ['CookiebotOnLoad', 'CookiebotOnDialogInit', 'CookiebotOnDialogDisplay', 'CookiebotOnAccept', 'CookiebotOnDecline', 'CookiebotOnConsentReady']
+      .forEach(function (name) { window.addEventListener(name, function () { schedule(); window.setTimeout(schedule, 400); }); });
     if (window.MutationObserver) {
-      new MutationObserver(function () { schedule(); window.setTimeout(schedule, 500); }).observe(document.body, { childList: true, subtree: true });
+      new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
     }
+    // Zusätzlich in den ersten 20 Sekunden regelmäßig prüfen (Cookiebot erscheint je nach Netz verzögert)
+    var timer = window.setInterval(function () {
+      schedule();
+      if (Date.now() - started > 20000) { window.clearInterval(timer); }
+    }, 400);
     schedule();
   }
 

@@ -9,6 +9,11 @@
   <meta name="description" content="Datenschutzerklärung von okapio.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="{{SITE_URL}}/datenschutz.html">
+  <!-- @if cookiebot -->
+  <link rel="preconnect" href="https://consent.cookiebot.com">
+  <link rel="preconnect" href="https://consentcdn.cookiebot.com">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="{{COOKIEBOT_ID}}" data-blockingmode="auto" data-culture="DE"></script>
+  <!-- @endif -->
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -19,9 +24,6 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/motion.css">
-  <!-- @if cookiebot -->
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="{{COOKIEBOT_ID}}" data-blockingmode="auto" data-culture="DE"></script>
-  <!-- @endif -->
   <script src="assets/js/init.js"></script>
   <script src="assets/js/main.js" defer></script>
 </head>
@@ -62,7 +64,7 @@
           <p>Auf dieser Website gibt es einen Button, über den Sie uns direkt per WhatsApp schreiben können. Es handelt sich um einen einfachen Link. Beim bloßen Aufruf der Website werden dadurch keine Daten an WhatsApp übertragen.</p>
           <p>Erst wenn Sie den Button anklicken, werden Sie zu WhatsApp weitergeleitet. Anbieter ist die WhatsApp Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland (Konzern: Meta Platforms, Inc., USA). Ab diesem Zeitpunkt gilt die Datenschutzerklärung von WhatsApp, auf die wir keinen Einfluss haben. Dabei kann es zu einer Datenübermittlung in die USA kommen. Rechtsgrundlage für die Bereitstellung des Buttons ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer unkomplizierten Kontaktaufnahme).</p>
           <h2>6. Browser-Speicher und Einwilligungsverwaltung</h2>
-          <p>Wenn Sie den Schalter für die dunkle Darstellung betätigen, speichert Ihr Browser diese Auswahl lokal (localStorage, Schlüssel „okapio-mode"). Die Auswahl wird nicht an uns übertragen und nur benötigt, um Ihre Einstellung beim nächsten Besuch beizubehalten. Sie erfolgt auf Ihren ausdrücklichen Wunsch (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
+          <p>Wenn Sie den Schalter für die dunkle Darstellung betätigen, speichert Ihr Browser diese Auswahl lokal (localStorage, Schlüssel „okapio-mode"). Die Auswahl wird nicht an uns übertragen und nur benötigt, um Ihre Einstellung beim nächsten Besuch beizubehalten. Sie erfolgt auf Ihren ausdrücklichen Wunsch (§ 25 Abs. 2 Nr. 2 TDDDG).<!-- @if cookiebot --> Ebenfalls lokal gespeichert wird die Position des Schalters (zwei Zahlen, Schlüssel „okapio-fab-…"), damit er neben dem Cookiebot-Symbol nicht springt. Sie enthält keine personenbezogenen Daten und wird nicht an uns übertragen.<!-- @endif --></p>
           <!-- @if cookiebot -->
           <p>Zur Verwaltung Ihrer Einwilligungen nutzen wir den Dienst Cookiebot der Usercentrics A/S, Dänemark. Beim Aufruf der Website wird dafür ein Skript von den Servern von Cookiebot geladen. Dabei erhält Cookiebot technisch bedingt Ihre IP-Adresse. Ihre Auswahl im Banner wird in einem Cookie („CookieConsent“) auf Ihrem Gerät gespeichert, damit wir Ihre Entscheidung beim nächsten Besuch berücksichtigen und nachweisen können. Das Cookie ist bis zu zwölf Monate gültig.</p>
           <ul>
