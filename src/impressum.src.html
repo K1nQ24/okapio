@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a101b">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="{{CSP}}">
   <title>Impressum | okapio</title>
   <meta name="description" content="Impressum von okapio, Cybersecurity-Beratung in Böblingen.">
   <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{{SITE_URL}}/impressum.html">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -18,6 +19,9 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/motion.css">
+  <!-- @if cookiebot -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="{{COOKIEBOT_ID}}" data-blockingmode="auto" data-culture="DE"></script>
+  <!-- @endif -->
   <script src="assets/js/init.js"></script>
   <script src="assets/js/main.js" defer></script>
 </head>
@@ -27,8 +31,8 @@
     <div class="site-header__bar" aria-hidden="true" data-header-bar></div>
     <div class="site-header__progress" aria-hidden="true" data-progress></div>
     <div class="container site-header__inner" data-header-inner>
-      <a class="brand" href="index.html" aria-label="okapio, zur Startseite"><!-- @svg:logo-wordmark noid --></a>
-      <a class="btn btn--ghost btn--sm site-header__cta" href="index.html"><span aria-hidden="true">&larr;</span> Zur Startseite</a>
+      <a class="brand" href="./" aria-label="okapio, zur Startseite"><!-- @svg:logo-wordmark noid --></a>
+      <a class="btn btn--ghost btn--sm site-header__cta" href="./"><span aria-hidden="true">&larr;</span> Zur Startseite</a>
     </div>
   </header>
   <main id="inhalt" tabindex="-1">
@@ -44,7 +48,7 @@
           <p>Taha Cevik</p>
           <h2>Kontakt</h2>
           <p>Telefon: <a href="tel:+491743292211">+49 174 329 22 11</a><br>
-          E-Mail: <a href="mailto:info@plussec.de">info@plussec.de</a></p>
+          E-Mail: <a href="mailto:info@okapio.de">info@okapio.de</a></p>
           <h2>Verantwortlich für den Inhalt</h2>
           <p>Taha Cevik, Brühlweg 22, 71111 Waldenbuch</p>
           <h2>Haftung für Inhalte</h2>
@@ -64,7 +68,7 @@
           <ul class="footer-list footer-list--inline">
             <li><a href="impressum.html">Impressum</a></li>
             <li><a href="datenschutz.html">Datenschutz</a></li>
-            <li><a href="index.html#kontakt">Kontakt</a></li>
+            <li><a href="./#kontakt">Kontakt</a></li>
           </ul>
         </nav>
       </div>

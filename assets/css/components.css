@@ -440,6 +440,19 @@
 .sev--crit { background: var(--c-btn-bg); border-color: var(--c-btn-bg); color: var(--c-btn-text); }
 .sev--high { border-color: var(--c-accent); color: var(--c-accent-text); }
 .sev--mid { border-color: var(--c-line-strong); color: var(--c-text-muted); }
+/* Hosted in Germany / Datensouveränität: Band über den Werkzeugen und Etikett je Werkzeug */
+.sovereign { display: grid; gap: var(--space-5); align-items: center; margin-block-end: var(--space-7); padding: var(--space-6); border: var(--line-w) solid color-mix(in srgb, var(--c-accent) 40%, var(--c-line)); border-radius: var(--r-lg); background: linear-gradient(135deg, var(--c-accent-tint), transparent 70%), var(--c-surface); }
+.sovereign__icon { display: grid; place-items: center; inline-size: var(--size-sovereign-icon); block-size: var(--size-sovereign-icon); border-radius: 50%; background: var(--c-accent-tint); color: var(--c-accent-text); }
+.sovereign__icon svg { inline-size: 60%; block-size: 60%; }
+.sovereign svg, .tool__host svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.sovereign__body h3 { margin-block-end: var(--space-2); }
+.sovereign__body p { color: var(--c-text-muted); }
+.sovereign__points { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.sovereign__points li { padding: var(--space-1) var(--space-3); border: var(--line-w) solid var(--c-line-strong); border-radius: var(--r-pill); font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: var(--fw-medium); color: var(--c-text); }
+@media (min-width: 48em) { .sovereign { grid-template-columns: auto minmax(0, 1fr); } .sovereign__points { grid-column: 2; } }
+@media (min-width: 64em) { .sovereign { grid-template-columns: auto minmax(0, 1.5fr) minmax(0, 1fr); } .sovereign__points { grid-column: auto; justify-content: flex-end; } }
+.tool__host { display: inline-flex; align-items: center; gap: var(--space-2); justify-self: start; padding: var(--space-1) var(--space-3); border: var(--line-w) solid color-mix(in srgb, var(--c-accent) 35%, transparent); border-radius: var(--r-pill); background: var(--c-accent-tint); font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: var(--fw-medium); letter-spacing: var(--ls-mono); color: var(--c-accent-text); }
+.tool__host svg { inline-size: var(--size-host-icon); block-size: var(--size-host-icon); }
 .tools__note { margin-block-start: var(--space-7); font-size: var(--fs-sm); color: var(--c-text-muted); max-inline-size: var(--measure-note); }
 @media (max-width: 30em) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 

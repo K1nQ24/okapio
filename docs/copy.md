@@ -198,3 +198,10 @@ Auf Wunsch des Inhabers bleibt die Seite branchenneutral. Der Abschnitt „Branc
 - Hero-Lead: „okapio berät Unternehmen zu Risiko Check, Infrastruktur, Cloud, Awareness sowie KI und Automatisierung. …"
 - FAQ „Für welche Unternehmen arbeiten Sie?": „Für Unternehmen aus allen Branchen, vor Ort in der Region Stuttgart und remote in ganz Baden-Württemberg."
 - Praxis / Team: „Über 10 Jahre Erfahrung in der IT (für Unternehmen in der Region)."
+
+
+## Hosted in Germany / Datensouveränität (Oktober 2026)
+- Werkzeuge-Abschnitt: Band „Hosted in Germany.“ über den Karten (Text: Werkzeuge werden in Deutschland gehostet, Daten liegen auf Servern in Deutschland, unterliegen europäischem Datenschutzrecht, Datensouveränität: Kontrolle, wo die Daten liegen und wer sie verarbeitet), dazu Etikett „Hosted in Germany“ und erster Checkpunkt in beiden Werkzeug-Karten sowie ein Satz in der Fußnote.
+- Warum okapio: vierter Punkt „04 Datensouveränität.“
+- FAQ: neue Frage „Wo werden unsere Daten gespeichert?“ (jetzt 11 Fragen).
+- Bewusst nicht behauptet: „Daten verlassen Deutschland nie“ oder „kein Zugriff aus Drittstaaten“. Die Aussage bezieht sich nur auf das Hosting der Werkzeuge. Vor Livegang prüfen, ob sie auch für eingesetzte Dienste (z. B. KI-Anbieter der Nachweisprüfung) stimmt.

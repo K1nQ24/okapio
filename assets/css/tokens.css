@@ -257,6 +257,8 @@
   --size-divider: 3.5rem;
   --size-brand: 8.5rem;
   --size-brand-footer: 8.25rem;
+  --size-sovereign-icon: 3.25rem;   /* Schild im Hosted-in-Germany-Band */
+  --size-host-icon: 1rem;           /* Schild im Hosted-in-Germany-Etikett */
   --size-marker: 0.6rem;
   --size-edge: 5rem;
   --pad-card: clamp(1.5rem, 3vw, 2.75rem);

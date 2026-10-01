@@ -1,0 +1,52 @@
+# ==========================================================================
+# okapio – Apache-Konfiguration (Hetzner Webhosting)
+# Wirkt nur auf dem Server; lokal und auf GitHub Pages ohne Funktion.
+# ==========================================================================
+Options -Indexes
+DirectoryIndex index.html
+AddType font/woff2 .woff2
+AddType image/svg+xml .svg
+
+# Versteckte Dateien nicht ausliefern (außer .well-known für Zertifikate)
+RedirectMatch 404 /\.(?!well-known)
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) HTTPS erzwingen, dabei www auf die Hauptdomain vereinheitlichen
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\.okapio\.de$ [NC]
+  RewriteRule ^ https://okapio.de%{REQUEST_URI} [R=301,L,NE]
+
+  # 2) /index.html -> / (eine Adresse pro Seite, passend zum Canonical-Link)
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+  RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
+
+# Sicherheits-Header (die Content-Security-Policy steht als Meta-Tag in den Seiten; hier nur, was per Meta nicht geht)
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Content-Security-Policy "frame-ancestors 'none'"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
+
+# Kompression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/xml text/xml text/plain
+</IfModule>
+
+# Zwischenspeicher im Browser (Dateinamen enthalten keinen Hash, daher kurz für Code, lang für Schriften/Bilder)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType text/javascript "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+</IfModule>
