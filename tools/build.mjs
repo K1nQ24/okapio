@@ -22,7 +22,7 @@ const csp = [
   "default-src 'none'",
   `script-src 'self'${cookiebot ? ' ' + CB_HOSTS : ''}`,
   `style-src 'self'${cookiebot ? " 'unsafe-inline'" : ''}`,
-  `img-src 'self'${cookiebot ? ' https://imgsct.cookiebot.com data:' : ''}`,
+  `img-src 'self'${cookiebot ? ' https://imgsct.cookiebot.com https://consent.cookiebot.com data:' : ''}`,
   "font-src 'self'",
   `connect-src 'self'${cookiebot ? ' ' + CB_HOSTS : ''}`,
   "form-action 'self'",

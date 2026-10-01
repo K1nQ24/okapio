@@ -11,3 +11,15 @@ document.documentElement.classList.add('js');
     if (localStorage.getItem('okapio-mode') === 'dark') { document.documentElement.setAttribute('data-mode', 'dark'); }
   } catch (e) { /* Speicher gesperrt: Standard (hell) bleibt */ }
 })();
+/* Gemerkte Position des Darstellungsschalters (neben dem Cookiebot-Symbol) sofort setzen, damit er beim Laden nicht springt.
+   Wird von main.js (initCookiebotAlign) geschrieben; nur Zahlen, nicht an den Server übertragen. */
+(function () {
+  try {
+    var v = localStorage.getItem('okapio-fab-' + (window.innerWidth <= 480 ? 'm' : 'd'));
+    var m = /^(-?\d{1,4})\|(\d{1,4})$/.exec(v || '');
+    if (m) {
+      document.documentElement.style.setProperty('--fab-mode-x', m[1] + 'px');
+      document.documentElement.style.setProperty('--fab-mode-y', m[2] + 'px');
+    }
+  } catch (e) { /* Speicher gesperrt: Standardposition */ }
+})();

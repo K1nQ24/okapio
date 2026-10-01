@@ -9,6 +9,11 @@
   <meta name="description" content="Impressum von okapio, Cybersecurity-Beratung in Böblingen.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="{{SITE_URL}}/impressum.html">
+  <!-- @if cookiebot -->
+  <link rel="preconnect" href="https://consent.cookiebot.com">
+  <link rel="preconnect" href="https://consentcdn.cookiebot.com">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="{{COOKIEBOT_ID}}" data-blockingmode="auto" data-culture="DE"></script>
+  <!-- @endif -->
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -19,9 +24,6 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/motion.css">
-  <!-- @if cookiebot -->
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="{{COOKIEBOT_ID}}" data-blockingmode="auto" data-culture="DE"></script>
-  <!-- @endif -->
   <script src="assets/js/init.js"></script>
   <script src="assets/js/main.js" defer></script>
 </head>

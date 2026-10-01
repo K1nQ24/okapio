@@ -98,7 +98,12 @@ function log_reason(string $msg): void
         }
         $file = $dir . '/okapio-kontakt.log';
         if (is_file($file) && (@filesize($file) ?: 0) > 200000) {
-            @unlink($file); // einfache Begrenzung
+            // Begrenzung: nur die neuesten Zeilen behalten (die Datei wird nie komplett gelöscht)
+            $tail = @file_get_contents($file, false, null, -100000);
+            if (is_string($tail)) {
+                $nl = strpos($tail, "\n");
+                @file_put_contents($file, $nl === false ? '' : substr($tail, $nl + 1), LOCK_EX);
+            }
         }
         if (@file_put_contents($file, gmdate('Y-m-d H:i:s') . ' UTC ' . $msg . "\n", FILE_APPEND | LOCK_EX) !== false) {
             return;

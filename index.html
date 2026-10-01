@@ -7,7 +7,7 @@
     Strikte CSP als Meta-Tag (kein unsafe-eval, nur eigene Quellen; mit Cookiebot kommen dessen Hosts dazu, siehe tools/build.mjs).
     frame-ancestors, report-uri und sandbox wirken NICHT per Meta-Tag; frame-ancestors und die übrigen Sicherheits-Header setzt die .htaccess.
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://consent.cookiebot.com https://consentcdn.cookiebot.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://imgsct.cookiebot.com data:; font-src 'self'; connect-src 'self' https://consent.cookiebot.com https://consentcdn.cookiebot.com; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://consent.cookiebot.com https://consentcdn.cookiebot.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://imgsct.cookiebot.com https://consent.cookiebot.com data:; font-src 'self'; connect-src 'self' https://consent.cookiebot.com https://consentcdn.cookiebot.com; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
 
   <title>Cybersecurity aus einer Hand | okapio · Böblingen &amp; Stuttgart</title>
   <meta name="description" content="Cybersecurity-Beratung in Böblingen und Stuttgart für Unternehmen jeder Branche. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.">
@@ -27,6 +27,11 @@
   <meta property="og:image:alt" content="okapio: Cybersecurity aus einer Hand, Böblingen und Stuttgart">
   <meta name="twitter:card" content="summary_large_image">
 
+  
+  <link rel="preconnect" href="https://consent.cookiebot.com">
+  <link rel="preconnect" href="https://consentcdn.cookiebot.com">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c35c3787-4aa6-4fac-8ee2-52ac2036a0c1" data-blockingmode="auto" data-culture="DE"></script>
+  
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -37,9 +42,6 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/motion.css">
-  
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c35c3787-4aa6-4fac-8ee2-52ac2036a0c1" data-blockingmode="auto" data-culture="DE"></script>
-  
   <script src="assets/js/init.js"></script>
   <script src="assets/js/main.js" defer></script>
 
