@@ -29,11 +29,14 @@ ini_set('log_errors', '1');
 // ---------- Konfiguration ----------
 // Zugangsdaten: bevorzugt außerhalb des Web-Ordners (eine Ebene über public_html), sonst neben diesem Skript (per .htaccess gesperrt).
 $CONFIG = [];
-foreach ([dirname(__DIR__, 3) . '/okapio-config.php', __DIR__ . '/config.php'] as $candidate) {
+$CONFIG_PATHS = require __DIR__ . '/config-paths.php';
+$CONFIG_FILE  = '';
+foreach ($CONFIG_PATHS as $candidate) {
     if (is_file($candidate)) {
         $loaded = include $candidate;
         if (is_array($loaded)) {
-            $CONFIG = $loaded;
+            $CONFIG      = $loaded;
+            $CONFIG_FILE = $candidate;
             break;
         }
     }
@@ -63,6 +66,13 @@ function respond(string $target): never
     header('Cache-Control: no-store');
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: no-referrer');
+    // Mit JS sendet die Seite per fetch und erwartet JSON (kein Neuladen, kein Springen). Sonst: Weiterleitung wie bisher.
+    if (str_contains((string)($_SERVER['HTTP_ACCEPT'] ?? ''), 'application/json')) {
+        $status = str_ends_with($target, '#kontakt-gesendet') ? 'ok' : (str_ends_with($target, '#kontakt-eingabe') ? 'invalid' : 'error');
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['status' => $status]);
+        exit;
+    }
     header('Location: ' . $target, true, 303);
     exit;
 }
@@ -74,11 +84,25 @@ function respond(string $target): never
 function log_reason(string $msg): void
 {
     error_log('okapio kontakt: ' . $msg);
-    $file = dirname(__DIR__, 3) . '/okapio-kontakt.log';
-    if (is_file($file) && (@filesize($file) ?: 0) > 200000) {
-        @unlink($file); // einfache Begrenzung
+    $dirs = [];
+    if (!empty($GLOBALS['CONFIG_FILE'])) {
+        $dirs[] = dirname((string)$GLOBALS['CONFIG_FILE']);       // neben der Konfigurationsdatei
     }
-    @file_put_contents($file, gmdate('Y-m-d H:i:s') . ' UTC ' . $msg . "\n", FILE_APPEND | LOCK_EX);
+    foreach ((array)($GLOBALS['CONFIG_PATHS'] ?? []) as $path) {
+        $dirs[] = dirname((string)$path);
+    }
+    foreach (array_unique($dirs) as $dir) {
+        if (!is_dir($dir) || !is_writable($dir)) {
+            continue;
+        }
+        $file = $dir . '/okapio-kontakt.log';
+        if (is_file($file) && (@filesize($file) ?: 0) > 200000) {
+            @unlink($file); // einfache Begrenzung
+        }
+        if (@file_put_contents($file, gmdate('Y-m-d H:i:s') . ' UTC ' . $msg . "\n", FILE_APPEND | LOCK_EX) !== false) {
+            return;
+        }
+    }
 }
 
 /** Einzeiler: Steuerzeichen (inkl. CR/LF) entfernen, trimmen. */
@@ -179,7 +203,7 @@ if (!same_origin()) {
 
 // Konfiguration vollständig?
 if (!empty($configMissing)) {
-    log_reason('Konfigurationsdatei nicht gefunden (okapio-config.php eine Ebene über dem Web-Ordner oder assets/php/config.php)');
+    log_reason('Konfigurationsdatei nicht gefunden (okapio-config.php im SFTP-Stammordner neben public_html oder assets/php/config.php)');
     respond(REDIRECT_ERROR);
 }
 foreach (['smtp_host', 'smtp_user', 'smtp_pass'] as $key) {
