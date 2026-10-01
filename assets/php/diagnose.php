@@ -30,12 +30,12 @@ line('Erweiterung openssl (für TLS)', extension_loaded('openssl'));
 
 // 2) Dateien
 $base = __DIR__;
-foreach (['kontakt.php', 'mail-template.php', 'mail/okapio-logo.png', 'vendor/phpmailer/PHPMailer.php', 'vendor/phpmailer/SMTP.php', 'vendor/phpmailer/Exception.php'] as $f) {
+foreach (['kontakt.php', 'config-paths.php', 'mail-template.php', 'mail/okapio-logo.png', 'vendor/phpmailer/PHPMailer.php', 'vendor/phpmailer/SMTP.php', 'vendor/phpmailer/Exception.php'] as $f) {
     line('Datei assets/php/' . $f, is_file($base . '/' . $f));
 }
 
 // 3) Konfiguration
-$candidates = [dirname($base, 3) . '/okapio-config.php', $base . '/config.php'];
+$candidates = is_file($base . '/config-paths.php') ? require $base . '/config-paths.php' : [dirname($base, 3) . '/okapio-config.php', $base . '/config.php'];
 $CONFIG = [];
 $found = null;
 foreach ($candidates as $c) {
@@ -50,8 +50,9 @@ foreach ($candidates as $c) {
 }
 echo "\nGesucht wurde in:\n";
 foreach ($candidates as $c) {
-    echo '  - ' . str_replace(dirname($base, 3), '[Ordner über dem Web-Ordner]', $c) . (is_file($c) ? '  (vorhanden)' : '  (nicht vorhanden)') . "\n";
+    echo '  - ' . $c . (is_file($c) ? '  (vorhanden)' : '  (nicht vorhanden)') . "\n";
 }
+echo '  Web-Ordner: ' . dirname($base, 2) . "\n";
 line('Konfigurationsdatei gefunden und lesbar als PHP-Array', $CONFIG !== [], $found === null ? 'keine Datei gefunden' : ($CONFIG === [] ? 'Datei vorhanden, aber ungültig: fehlt "return [ ... ];" oder falsche Anführungszeichen?' : ''));
 foreach (['smtp_host', 'smtp_user', 'smtp_pass', 'mail_to', 'mail_from'] as $k) {
     $v = $CONFIG[$k] ?? '';
@@ -61,9 +62,14 @@ $port   = (int)($CONFIG['smtp_port'] ?? 587);
 $secure = (string)($CONFIG['smtp_secure'] ?? ($port === 465 ? 'ssl' : 'tls'));
 echo "  smtp_port: $port, smtp_secure: $secure\n";
 
-// 4) Schreibrechte für das Fehlerprotokoll
-$log = dirname($base, 3) . '/okapio-kontakt.log';
-line('Schreiben von okapio-kontakt.log über dem Web-Ordner', @file_put_contents($log, gmdate('Y-m-d H:i:s') . " UTC Diagnose-Test\n", FILE_APPEND | LOCK_EX) !== false);
+// 4) Schreibrechte für das Fehlerprotokoll (neben der Konfigurationsdatei bzw. an einem der Suchorte)
+$logOk = false; $logWhere = '';
+$dirs = $found !== null ? [dirname($found)] : [];
+foreach ($candidates as $c) { $dirs[] = dirname($c); }
+foreach (array_unique($dirs) as $d) {
+    if (is_dir($d) && is_writable($d) && @file_put_contents($d . '/okapio-kontakt.log', gmdate('Y-m-d H:i:s') . " UTC Diagnose-Test\n", FILE_APPEND | LOCK_EX) !== false) { $logOk = true; $logWhere = $d; break; }
+}
+line('Schreiben von okapio-kontakt.log', $logOk, $logOk ? $logWhere : 'kein beschreibbarer Ordner unter den Suchorten (unkritisch)');
 
 // 5) Verbindung zum Mailserver
 if (($CONFIG['smtp_host'] ?? '') !== '') {

@@ -21,7 +21,7 @@ Danach in konsoleH die Domain dem Webhosting zuordnen und das kostenlose HTTPS-Z
 **Nicht** hochladen: `src/`, `tools/`, `docs/`, `reviews/`, `.git`, `site.config.json`, `.gitignore`.
 
 ## 3. Zugangsdaten für das Kontaktformular (einmalig, nur auf dem Server)
-Die Datei `assets/php/config.example.php` als **`okapio-config.php`** kopieren und **eine Ebene über `public_html`** ablegen (neben den Ordner, nicht hinein). Dort eintragen:
+Die Datei `assets/php/config.example.php` als **`okapio-config.php`** kopieren und **eine Ebene über `public_html`** ablegen (neben den Ordner, nicht hinein). Bei Hetzner ist das der **SFTP-Stammordner** (dort, wo auch `public_html` und `www_logs` liegen). Das Formular sucht dort automatisch (`/usr/home/<Konto>/`, Liste in `assets/php/config-paths.php`); die Diagnose-Seite zeigt alle Suchorte. Dort eintragen:
 - `smtp_host` / `smtp_port` / `smtp_secure`: laut IONOS-Anleitung (Standard `smtp.ionos.de`, 587, `tls`)
 - `smtp_user`: volle Mail-Adresse des Postfachs, `smtp_pass`: dessen Passwort
 - `mail_to`: Empfänger der Anfragen, `mail_from`: Absender (muss das angemeldete Postfach oder ein Alias sein)
