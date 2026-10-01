@@ -25,10 +25,13 @@ Die Datei `assets/php/config.example.php` als **`okapio-config.php`** kopieren u
 - `smtp_host` / `smtp_port` / `smtp_secure`: laut IONOS-Anleitung (Standard `smtp.ionos.de`, 587, `tls`)
 - `smtp_user`: volle Mail-Adresse des Postfachs, `smtp_pass`: dessen Passwort
 - `mail_to`: Empfänger der Anfragen, `mail_from`: Absender (muss das angemeldete Postfach oder ein Alias sein)
+- `site_url`: Adresse der Seite (für Links und Webschriften in den Mails, Standard `https://okapio.de`)
 
 Die Datei und das Passwort gehören nie ins Repository (`.gitignore`) und werden nie per Chat verschickt. Empfehlung: ein eigenes Postfach nur für das Formular verwenden.
 
 PHP-Version in konsoleH: 8.2 oder neuer.
+
+Bei jeder Anfrage gehen zwei HTML-Mails raus (Vorlagen: `assets/php/mail-template.php`, Logo: `assets/php/mail/okapio-logo.png`, beides liegt in `assets/php/` und wird mit hochgeladen): eine **Benachrichtigung an okapio** mit allen Angaben und Antworten-Schaltfläche, eine **Bestätigung an die anfragende Person** im selben Design. Die Bestätigung enthält bewusst nicht den Nachrichtentext der Person, damit das Formular nicht als Absender für fremde Texte missbraucht werden kann.
 
 ## 4. Cookiebot (Einwilligungsverwaltung)
 Aktiv. Die Domain-Gruppen-ID steht in `site.config.json` (`cookiebotId`); sie ist keine geheime Angabe, sie steht ohnehin im Quelltext der Seite. Ohne ID (leerer Wert) lässt `node tools/build.mjs` Cookiebot weg. Mit ID

@@ -18,4 +18,5 @@ return [
     'smtp_pass'   => '',                    // Passwort des Postfachs (hier eintragen, nie weitergeben)
     'mail_to'     => 'info@okapio.de',
     'mail_from'   => 'info@okapio.de',
+    'site_url'    => 'https://okapio.de',   // für Links und Webschriften in den Mails
 ];
