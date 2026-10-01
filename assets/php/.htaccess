@@ -1,0 +1,8 @@
+# Konfiguration und Bibliotheken nicht direkt abrufbar machen
+<FilesMatch "^(config(\.example)?\.php|\.htaccess)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^vendor/ - [F,L]
+</IfModule>

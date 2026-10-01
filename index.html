@@ -4,28 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--
-    Strikte CSP als Meta-Tag (kein unsafe-inline, kein unsafe-eval, keine externen Quellen).
-    Hinweis: frame-ancestors, report-uri und sandbox wirken NICHT per Meta-Tag. Bitte zusätzlich als Server-Header setzen, z. B. (Apache, .htaccess):
-      Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
-      Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-      Header always set X-Content-Type-Options "nosniff"
-      Header always set Referrer-Policy "strict-origin-when-cross-origin"
-      Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
-      Header always set Cross-Origin-Opener-Policy "same-origin"
+    Strikte CSP als Meta-Tag (kein unsafe-eval, nur eigene Quellen; mit Cookiebot kommen dessen Hosts dazu, siehe tools/build.mjs).
+    frame-ancestors, report-uri und sandbox wirken NICHT per Meta-Tag; frame-ancestors und die übrigen Sicherheits-Header setzt die .htaccess.
   -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
 
   <title>Cybersecurity aus einer Hand | okapio · Böblingen &amp; Stuttgart</title>
   <meta name="description" content="Cybersecurity-Beratung in Böblingen und Stuttgart für Unternehmen jeder Branche. Feste Ansprechpartner statt Ticketsystem. Erstgespräch anfragen.">
-  <!-- VORSCHAU (GitHub Pages): für Suchmaschinen gesperrt. Beim Umzug auf die eigene Domain wieder auf "index, follow" setzen. -->
-  <meta name="robots" content="noindex, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://okapio.de/">
   <meta name="theme-color" content="#0a101b">
 
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://okapio.de/">
   <meta property="og:locale" content="de_DE">
   <meta property="og:site_name" content="okapio">
   <meta property="og:title" content="Cybersecurity aus einer Hand | okapio · Böblingen &amp; Stuttgart">
   <meta property="og:description" content="Risiken sichtbar machen, bevor andere sie finden. Risiko Check, Infrastruktur, Cloud, Audits, Awareness sowie KI und Automatisierung.">
+  <meta property="og:image" content="https://okapio.de/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="okapio: Cybersecurity aus einer Hand, Böblingen und Stuttgart">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/motion.css">
+  
   <script src="assets/js/init.js"></script>
   <script src="assets/js/main.js" defer></script>
 
@@ -46,8 +47,11 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "okapio",
+    "url": "https://okapio.de/",
+    "logo": "https://okapio.de/assets/img/logo-512.png",
+    "image": "https://okapio.de/assets/img/og-image.png",
     "telephone": "+491743292211",
-    "email": "info@plussec.de",
+    "email": "info@okapio.de",
     "founder": { "@type": "Person", "name": "Taha Cevik" },
     "description": "Cybersecurity-Beratung für Unternehmen in der Region Stuttgart: Risiko Check, Infrastruktur-Security, Cloud- und SaaS-Security, Audits und Awareness-Trainings.",
     "address": {
@@ -1058,7 +1062,7 @@
           </div>
           <ul class="person__links" aria-label="Direkt Kontakt aufnehmen" data-reveal data-reveal-delay="4">
             <li><a class="btn btn--ghost btn--sm btn--icon" href="tel:+491743292211"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3.5l1.8 4.4-2.2 1.4a11 11 0 0 0 6.1 6.1l1.4-2.2L20 15.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>Anrufen</a></li>
-            <li><a class="btn btn--ghost btn--sm btn--icon" href="mailto:info@plussec.de"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>E-Mail schreiben</a></li>
+            <li><a class="btn btn--ghost btn--sm btn--icon" href="mailto:info@okapio.de"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>E-Mail schreiben</a></li>
           </ul>
         </div>
       </div>
@@ -1129,7 +1133,7 @@
           <ul class="contact__direct" data-reveal data-reveal-delay="3">
             <li><a class="direct" href="tel:+491743292211"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h3.5l1.8 4.4-2.2 1.4a11 11 0 0 0 6.1 6.1l1.4-2.2L20 15.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg><span class="direct__label">Telefon</span><span class="direct__value">+49 174 329 22 11</span></a></li>
             <li><a class="direct" href="https://wa.me/491743292211" target="_blank" rel="noopener"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1.3-3.9A8.5 8.5 0 1 1 8 18.8z"/><path d="M9.2 9.3c.3 1.9 2.4 4.3 4.8 4.8l1.1-1.2 1.7.8c-.2 1-1 1.7-2 1.7-3.4-.2-6.6-3.4-6.8-6.8 0-1 .7-1.8 1.7-2l.8 1.7z"/></svg><span class="direct__label">WhatsApp</span><span class="direct__value">Nachricht schreiben<span class="visually-hidden"> (öffnet WhatsApp in einem neuen Tab)</span></span></a></li>
-            <li><a class="direct" href="mailto:info@plussec.de"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg><span class="direct__label">E-Mail</span><span class="direct__value">info@plussec.de</span></a></li>
+            <li><a class="direct" href="mailto:info@okapio.de"><svg class="icon direct__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg><span class="direct__label">E-Mail</span><span class="direct__value">info@okapio.de</span></a></li>
           </ul>
         </div>
 
@@ -1178,7 +1182,7 @@
 
             <button class="btn btn--primary btn--block btn--arrow" type="submit">Anfrage senden</button>
             <p class="form__note">Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Keine Weitergabe, kein Newsletter.</p>
-            <p class="form__fallback">Klappt das Formular nicht? <a href="mailto:info@plussec.de?subject=Anfrage%20%C3%BCber%20die%20Website">Per E-Mail schreiben</a></p>
+            <p class="form__fallback">Klappt das Formular nicht? <a href="mailto:info@okapio.de?subject=Anfrage%20%C3%BCber%20die%20Website">Per E-Mail schreiben</a></p>
           </form>
         </div>
       </div>
@@ -1223,7 +1227,7 @@
           <h2 class="footer-title">Kontakt</h2>
           <ul class="footer-list">
             <li><a href="tel:+491743292211">+49 174 329 22 11</a></li>
-            <li><a href="mailto:info@plussec.de">info@plussec.de</a></li>
+            <li><a href="mailto:info@okapio.de">info@okapio.de</a></li>
             <li><a href="#kontakt">Kontaktformular</a></li>
           </ul>
         </div>

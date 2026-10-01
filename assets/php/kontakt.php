@@ -12,22 +12,38 @@
  *  - antwortet ausschließlich mit Redirect (303). Keine Fehlerdetails an den Client, Details nur ins Server-Log
  *
  * Ausgabe-Escaping: Es wird kein HTML ausgegeben. Die Mail ist reiner Text (text/plain, UTF-8).
- * Secrets: keine im Code. Empfänger und Absender unten eintragen (oder per Umgebungsvariable setzen).
+ * Versand: per SMTP über das Postfach beim E-Mail-Anbieter (IONOS) mit PHPMailer (assets/php/vendor/phpmailer).
+ * Secrets: keine im Code und nicht im Repository. Zugangsdaten stehen in einer Konfigurationsdatei auf dem Server
+ * (Vorlage: config.example.php, Beschreibung: docs/deployment.md).
  */
 
 declare(strict_types=1);
+
+use PHPMailer\PHPMailer\Exception as MailException;
+use PHPMailer\PHPMailer\PHPMailer;
 
 ini_set('display_errors', '0');
 ini_set('log_errors', '1');
 
 // ---------- Konfiguration ----------
-// Empfänger und Absender. Der Absender muss zur sendenden Domain passen (SPF/DKIM/DMARC); bei Domainwechsel per Umgebungsvariable anpassen.
-$MAIL_TO   = getenv('OKAPIO_MAIL_TO')   ?: 'info@plussec.de';
-$MAIL_FROM = getenv('OKAPIO_MAIL_FROM') ?: 'info@plussec.de';
+// Zugangsdaten: bevorzugt außerhalb des Web-Ordners (eine Ebene über public_html), sonst neben diesem Skript (per .htaccess gesperrt).
+$CONFIG = [];
+foreach ([dirname(__DIR__, 3) . '/okapio-config.php', __DIR__ . '/config.php'] as $candidate) {
+    if (is_file($candidate)) {
+        $loaded = include $candidate;
+        if (is_array($loaded)) {
+            $CONFIG = $loaded;
+            break;
+        }
+    }
+}
+$MAIL_TO   = (string)($CONFIG['mail_to']   ?? '');
+$MAIL_FROM = (string)($CONFIG['mail_from'] ?? '');
 
-const REDIRECT_OK      = '../../index.html#kontakt-gesendet';
-const REDIRECT_ERROR   = '../../index.html#kontakt-fehler';
-const REDIRECT_INVALID = '../../index.html#kontakt-eingabe';
+// Relative Ziele: von /assets/php/kontakt.php aus ist ../../ der Seitenanfang (auch in einem Unterordner).
+const REDIRECT_OK      = '../../#kontakt-gesendet';
+const REDIRECT_ERROR   = '../../#kontakt-fehler';
+const REDIRECT_INVALID = '../../#kontakt-eingabe';
 
 const MAX_NAME    = 120;
 const MAX_FIRMA   = 160;
@@ -94,9 +110,16 @@ function same_origin(): bool
     return true;
 }
 
-/** Sehr einfaches Rate-Limit. Die IP wird nur gehasht und nur für das Zeitfenster gespeichert. */
+/** Sehr einfaches Rate-Limit. Die IP wird nur gehasht gespeichert; abgelaufene Dateien werden bei jedem Aufruf gelöscht. */
 function rate_limited(): bool
 {
+    // Aufräumen: Dateien, deren letzter Eintrag älter als das Zeitfenster ist, enthalten nichts Relevantes mehr.
+    foreach (glob(sys_get_temp_dir() . '/okapio_rl_*.json') ?: [] as $old) {
+        $mtime = @filemtime($old);
+        if ($mtime !== false && $mtime < time() - RATE_WINDOW) {
+            @unlink($old);
+        }
+    }
     $ip   = (string)($_SERVER['REMOTE_ADDR'] ?? 'unknown');
     $file = sys_get_temp_dir() . '/okapio_rl_' . hash('sha256', $ip . '|okapio-rl') . '.json';
     $now  = time();
@@ -136,9 +159,14 @@ if (!same_origin()) {
     respond(REDIRECT_ERROR);
 }
 
-// Konfiguration vollständig? (Platzhalter dürfen nicht live gehen)
-if (str_contains($MAIL_TO, 'PLATZHALTER') || str_contains($MAIL_FROM, 'PLATZHALTER')
-    || !filter_var($MAIL_TO, FILTER_VALIDATE_EMAIL) || !filter_var($MAIL_FROM, FILTER_VALIDATE_EMAIL)) {
+// Konfiguration vollständig?
+foreach (['smtp_host', 'smtp_user', 'smtp_pass'] as $key) {
+    if (!isset($CONFIG[$key]) || !is_string($CONFIG[$key]) || $CONFIG[$key] === '') {
+        error_log('okapio kontakt: Konfiguration unvollständig (' . $key . ')');
+        respond(REDIRECT_ERROR);
+    }
+}
+if (!filter_var($MAIL_TO, FILTER_VALIDATE_EMAIL) || !filter_var($MAIL_FROM, FILTER_VALIDATE_EMAIL)) {
     error_log('okapio kontakt: Empfänger/Absender nicht konfiguriert');
     respond(REDIRECT_ERROR);
 }
@@ -177,18 +205,38 @@ $body = "Neue Anfrage über das Kontaktformular\n"
       . "Nachricht:\n$message\n\n"
       . "Einwilligung zur Datenschutzerklärung: ja\n";
 
-$headers = [
-    'From'                      => $MAIL_FROM,
-    'Reply-To'                  => $email,
-    'MIME-Version'              => '1.0',
-    'Content-Type'              => 'text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding' => '8bit',
-];
+$port   = (int)($CONFIG['smtp_port'] ?? 587);
+$secure = (string)($CONFIG['smtp_secure'] ?? ($port === 465 ? 'ssl' : 'tls'));
 
-$sent = mail($MAIL_TO, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers);
+try {
+    require_once __DIR__ . '/vendor/phpmailer/Exception.php';
+    require_once __DIR__ . '/vendor/phpmailer/PHPMailer.php';
+    require_once __DIR__ . '/vendor/phpmailer/SMTP.php';
 
-if (!$sent) {
-    error_log('okapio kontakt: mail() fehlgeschlagen'); // bewusst ohne Nutzerdaten
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host       = $CONFIG['smtp_host'];
+    $mail->Port       = $port;
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $CONFIG['smtp_user'];
+    $mail->Password   = $CONFIG['smtp_pass'];
+    $mail->SMTPSecure = $secure === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : ($secure === 'tls' ? PHPMailer::ENCRYPTION_STARTTLS : '');
+    $mail->SMTPAutoTLS = $secure === 'tls';
+    $mail->Timeout    = 15;
+    $mail->CharSet    = 'UTF-8';
+    $mail->Encoding   = '8bit';
+    $mail->isHTML(false);
+    $mail->setFrom($MAIL_FROM, 'okapio Website');
+    $mail->addAddress($MAIL_TO);
+    $mail->addReplyTo($email);          // validiert; Header-Injection ausgeschlossen
+    $mail->Subject    = $subject;
+    $mail->Body       = $body;
+    $mail->send();
+} catch (MailException $e) {
+    error_log('okapio kontakt: SMTP-Versand fehlgeschlagen: ' . $e->getMessage()); // bewusst ohne Formulareingaben
+    respond(REDIRECT_ERROR);
+} catch (Throwable $e) {
+    error_log('okapio kontakt: Fehler beim Versand: ' . get_class($e));
     respond(REDIRECT_ERROR);
 }
 
