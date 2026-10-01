@@ -8,7 +8,7 @@
  *
  * Jede Funktion liefert ['subject' => …, 'html' => …, 'text' => …]. Alle Eingaben werden maskiert.
  * E-Mail-Programme laden keine Webschriften zuverlässig: Apple Mail und Thunderbird zeigen Space Grotesk bzw. Inter,
- * alle anderen die Ersatzschriften (Segoe UI, Helvetica, Arial). Das Logo ist als PNG eingebettet (cid:okapio-logo).
+ * alle anderen die Ersatzschriften (Segoe UI, Helvetica, Arial). Der Kopf (dunkler Streifen mit Logo) ist ein einziges eingebettetes PNG mit festem Hintergrund (cid:okapio-logo), damit der Dunkelmodus von Mail-Apps (z. B. Gmail iOS) ihn nicht umfärbt.
  */
 
 declare(strict_types=1);
@@ -46,8 +46,8 @@ function mail_layout(string $siteUrl, string $title, string $preheader, string $
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent">' . mail_h($preheader) . '</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#e7ebf1"><tr><td align="center" style="padding:28px 12px">
 <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:#fcfdfe;border-radius:18px;overflow:hidden">
-<tr><td class="pad" style="background:#0a101b;padding:30px 40px 26px;border-bottom:3px solid #0a6cff">
-<a href="' . mail_h($siteUrl) . '/" style="text-decoration:none"><img src="cid:okapio-logo" width="168" alt="okapio" style="display:block;width:168px;height:auto;border:0"></a>
+<tr><td bgcolor="#0a101b" style="padding:0;background:#0a101b;line-height:0;font-size:0">
+<a href="' . mail_h($siteUrl) . '/" style="text-decoration:none"><img src="cid:okapio-logo" width="600" alt="okapio" style="display:block;width:100%;height:auto;border:0;background:#0a101b;color:#fcfdfe;font:700 22px/60px \'Space Grotesk\',Helvetica,Arial,sans-serif"></a>
 </td></tr>
 <tr><td class="pad" style="padding:38px 40px 34px;font:400 16px/1.6 ' . $font . ';color:#3b4a5e">
 <h1 style="margin:0 0 18px;font:700 28px/1.2 ' . $display . ';color:#001842;letter-spacing:-0.01em">' . mail_h($title) . '</h1>
