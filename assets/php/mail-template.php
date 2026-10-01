@@ -113,14 +113,14 @@ function mail_notification(string $siteUrl, string $name, string $firma, string 
 {
     $rows = mail_row('Name', mail_h($name))
         . mail_row('Firma', mail_h($firma))
-        . mail_row('E-Mail', '<a href="mailto:' . mail_h($email) . '" style="color:#005be6;text-decoration:none">' . mail_h($email) . '</a>')
+        . mail_row('E-Mail', '<a href="mailto:' . mail_h(rawurlencode($email)) . '" style="color:#005be6;text-decoration:none">' . mail_h($email) . '</a>')
         . mail_row('Zeitpunkt', mail_h($when));
     $body = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;border-top:1px solid #e7ebf1;border-bottom:1px solid #e7ebf1">' . $rows . '</table>'
         . '<p style="margin:0 0 8px;font:500 13px/1.5 \'Inter\',\'Segoe UI\',Helvetica,Arial,sans-serif;color:#4b5b70">Nachricht</p>'
         . '<div style="padding:16px 18px;background:#f3f5f8;border-radius:12px;color:#001842;white-space:pre-wrap">' . mail_h($message) . '</div>'
         . '<p style="margin:22px 0 0;font-size:13px;color:#4b5b70">Die anfragende Person hat eine Bestätigung im selben Design erhalten.</p>';
     $subjectName = mb_substr($name, 0, 60, 'UTF-8');
-    $reply = 'mailto:' . $email . '?subject=' . rawurlencode('Ihre Anfrage bei okapio');
+    $reply = 'mailto:' . rawurlencode($email) . '?subject=' . rawurlencode('Ihre Anfrage bei okapio');
 
     $text = "Neue Anfrage über die Website\n\n"
         . "Name:      $name\nFirma:     $firma\nE-Mail:    $email\nZeitpunkt: $when\n\n"

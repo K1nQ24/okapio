@@ -1,5 +1,5 @@
 # Konfiguration und Bibliotheken nicht direkt abrufbar machen
-<FilesMatch "^(config(\.example|-paths)?\.php|mail-template\.php|\.htaccess)$">
+<FilesMatch "^(config(\.example|-paths)?\.php|mail-template\.php|.*\.log|\.htaccess)$">
   Require all denied
 </FilesMatch>
 <IfModule mod_rewrite.c>

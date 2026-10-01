@@ -58,6 +58,7 @@ const MAX_EMAIL   = 200;
 const MAX_MESSAGE = 4000;
 
 const RATE_MAX    = 5;     // Anfragen pro Fenster und (gehashter) IP
+const RATE_MAX_TO = 2;     // Bestätigungs-Mails pro Fenster und (gehashter) Empfänger-Adresse (gegen Mail-Bombing Dritter)
 const RATE_WINDOW = 3600;  // Sekunden
 
 // ---------- Hilfsfunktionen ----------
@@ -153,7 +154,7 @@ function same_origin(): bool
 }
 
 /** Sehr einfaches Rate-Limit. Die IP wird nur gehasht gespeichert; abgelaufene Dateien werden bei jedem Aufruf gelöscht. */
-function rate_limited(): bool
+function rate_limited(string $scope, string $id, int $max): bool
 {
     // Aufräumen: Dateien, deren letzter Eintrag älter als das Zeitfenster ist, enthalten nichts Relevantes mehr.
     foreach (glob(sys_get_temp_dir() . '/okapio_rl_*.json') ?: [] as $old) {
@@ -162,8 +163,7 @@ function rate_limited(): bool
             @unlink($old);
         }
     }
-    $ip   = (string)($_SERVER['REMOTE_ADDR'] ?? 'unknown');
-    $file = sys_get_temp_dir() . '/okapio_rl_' . hash('sha256', $ip . '|okapio-rl') . '.json';
+    $file = sys_get_temp_dir() . '/okapio_rl_' . hash('sha256', $scope . '|' . $id . '|okapio-rl') . '.json';
     $now  = time();
     $fh   = @fopen($file, 'c+');
     if ($fh === false) {
@@ -174,7 +174,7 @@ function rate_limited(): bool
         $raw   = stream_get_contents($fh);
         $times = json_decode($raw ?: '[]', true);
         $times = is_array($times) ? array_filter($times, static fn($t) => is_int($t) && $t > $now - RATE_WINDOW) : [];
-        if (count($times) >= RATE_MAX) {
+        if (count($times) >= $max) {
             $limited = true;
         } else {
             $times[] = $now;
@@ -222,7 +222,7 @@ if (isset($_POST['website']) && $_POST['website'] !== '') {
     respond(REDIRECT_OK);
 }
 
-if (rate_limited()) {
+if (rate_limited('ip', (string)($_SERVER['REMOTE_ADDR'] ?? 'unknown'), RATE_MAX)) {
     log_reason('Rate-Limit erreicht');
     respond(REDIRECT_ERROR);
 }
@@ -296,6 +296,10 @@ try {
 
 // 2) Bestätigung an die Person. Scheitert sie, ist die Anfrage trotzdem angekommen: nur loggen.
 try {
+    if (rate_limited('to', strtolower($email), RATE_MAX_TO)) {
+        log_reason('Bestätigung übersprungen (Limit je Empfänger-Adresse)');
+        respond(REDIRECT_OK);
+    }
     $reply = $build($confirm);
     $reply->addAddress($email);
     $reply->addReplyTo($MAIL_TO, 'okapio');
