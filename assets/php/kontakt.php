@@ -38,6 +38,9 @@ foreach ([dirname(__DIR__, 3) . '/okapio-config.php', __DIR__ . '/config.php'] a
         }
     }
 }
+if ($CONFIG === []) {
+    $configMissing = true;
+}
 $MAIL_TO   = (string)($CONFIG['mail_to']   ?? '');
 $MAIL_FROM = (string)($CONFIG['mail_from'] ?? '');
 
@@ -62,6 +65,20 @@ function respond(string $target): never
     header('Referrer-Policy: no-referrer');
     header('Location: ' . $target, true, 303);
     exit;
+}
+
+/**
+ * Grund eines Fehlers protokollieren (nie Formulareingaben). Ins PHP-Fehlerlog und, wenn möglich, in
+ * okapio-kontakt.log eine Ebene über dem Web-Ordner (per SFTP abrufbar, nicht im Internet erreichbar).
+ */
+function log_reason(string $msg): void
+{
+    error_log('okapio kontakt: ' . $msg);
+    $file = dirname(__DIR__, 3) . '/okapio-kontakt.log';
+    if (is_file($file) && (@filesize($file) ?: 0) > 200000) {
+        @unlink($file); // einfache Begrenzung
+    }
+    @file_put_contents($file, gmdate('Y-m-d H:i:s') . ' UTC ' . $msg . "\n", FILE_APPEND | LOCK_EX);
 }
 
 /** Einzeiler: Steuerzeichen (inkl. CR/LF) entfernen, trimmen. */
@@ -156,19 +173,23 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 }
 
 if (!same_origin()) {
-    error_log('okapio kontakt: Herkunftsprüfung fehlgeschlagen');
+    log_reason('Herkunftsprüfung fehlgeschlagen');
     respond(REDIRECT_ERROR);
 }
 
 // Konfiguration vollständig?
+if (!empty($configMissing)) {
+    log_reason('Konfigurationsdatei nicht gefunden (okapio-config.php eine Ebene über dem Web-Ordner oder assets/php/config.php)');
+    respond(REDIRECT_ERROR);
+}
 foreach (['smtp_host', 'smtp_user', 'smtp_pass'] as $key) {
     if (!isset($CONFIG[$key]) || !is_string($CONFIG[$key]) || $CONFIG[$key] === '') {
-        error_log('okapio kontakt: Konfiguration unvollständig (' . $key . ')');
+        log_reason('Konfiguration unvollständig (' . $key . ')');
         respond(REDIRECT_ERROR);
     }
 }
 if (!filter_var($MAIL_TO, FILTER_VALIDATE_EMAIL) || !filter_var($MAIL_FROM, FILTER_VALIDATE_EMAIL)) {
-    error_log('okapio kontakt: Empfänger/Absender nicht konfiguriert');
+    log_reason('Empfänger/Absender nicht konfiguriert');
     respond(REDIRECT_ERROR);
 }
 
@@ -178,7 +199,7 @@ if (isset($_POST['website']) && $_POST['website'] !== '') {
 }
 
 if (rate_limited()) {
-    error_log('okapio kontakt: Rate-Limit erreicht');
+    log_reason('Rate-Limit erreicht');
     respond(REDIRECT_ERROR);
 }
 
@@ -242,10 +263,10 @@ try {
     $mail->addReplyTo($email);          // validiert; Header-Injection ausgeschlossen
     $mail->send();
 } catch (MailException $e) {
-    error_log('okapio kontakt: SMTP-Versand fehlgeschlagen: ' . $e->getMessage()); // bewusst ohne Formulareingaben
+    log_reason('SMTP-Versand fehlgeschlagen: ' . $e->getMessage()); // bewusst ohne Formulareingaben
     respond(REDIRECT_ERROR);
 } catch (Throwable $e) {
-    error_log('okapio kontakt: Fehler beim Versand: ' . get_class($e));
+    log_reason('Fehler beim Versand: ' . get_class($e));
     respond(REDIRECT_ERROR);
 }
 
@@ -258,7 +279,7 @@ try {
     $reply->addCustomHeader('X-Auto-Response-Suppress', 'All');
     $reply->send();
 } catch (Throwable $e) {
-    error_log('okapio kontakt: Bestätigung nicht versendet: ' . get_class($e));
+    log_reason('Bestätigung nicht versendet: ' . get_class($e));
 }
 
 respond(REDIRECT_OK);
