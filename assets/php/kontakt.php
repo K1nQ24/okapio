@@ -13,6 +13,7 @@
  *
  * Ausgabe-Escaping: Es wird kein HTML ausgegeben. Die Mail ist reiner Text (text/plain, UTF-8).
  * Versand: per SMTP über das Postfach beim E-Mail-Anbieter (IONOS) mit PHPMailer (assets/php/vendor/phpmailer).
+ * Zwei HTML-Mails (mit Textfassung und eingebettetem Logo): Benachrichtigung an uns, Bestätigung an die anfragende Person.
  * Secrets: keine im Code und nicht im Repository. Zugangsdaten stehen in einer Konfigurationsdatei auf dem Server
  * (Vorlage: config.example.php, Beschreibung: docs/deployment.md).
  */
@@ -195,42 +196,50 @@ if ($name === null || $name === ''
     respond(REDIRECT_INVALID);
 }
 
-// Mail bauen: Betreff und Header enthalten keine Nutzereingaben (außer der validierten Reply-To-Adresse).
-$subject = 'Anfrage über die Website';
-$body = "Neue Anfrage über das Kontaktformular\n"
-      . "Zeitpunkt: " . gmdate('Y-m-d H:i') . " UTC\n\n"
-      . "Name:  $name\n"
-      . "Firma: $firma\n"
-      . "E-Mail: $email\n\n"
-      . "Nachricht:\n$message\n\n"
-      . "Einwilligung zur Datenschutzerklärung: ja\n";
+// Zwei Mails im selben Design (assets/php/mail-template.php): Benachrichtigung an uns, Bestätigung an die anfragende Person.
+// Die Bestätigung enthält bewusst nicht den Nachrichtentext, damit das Formular nicht als Absender für fremde Texte missbraucht werden kann.
+require_once __DIR__ . '/mail-template.php';
+$siteUrl = rtrim((string)($CONFIG['site_url'] ?? 'https://okapio.de'), '/');
+$when    = (new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin')))->format('d.m.Y, H:i') . ' Uhr';
+$notify  = mail_notification($siteUrl, $name, $firma, $email, $message, $when);
+$confirm = mail_confirmation($siteUrl, $name);
 
 $port   = (int)($CONFIG['smtp_port'] ?? 587);
 $secure = (string)($CONFIG['smtp_secure'] ?? ($port === 465 ? 'ssl' : 'tls'));
+
+/** Gemeinsame SMTP-Einstellungen; liefert eine frische Mail mit Absender, Logo und beiden Textfassungen. */
+$build = static function (array $content) use ($CONFIG, $port, $secure, $MAIL_FROM): PHPMailer {
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host        = $CONFIG['smtp_host'];
+    $mail->Port        = $port;
+    $mail->SMTPAuth    = true;
+    $mail->Username    = $CONFIG['smtp_user'];
+    $mail->Password    = $CONFIG['smtp_pass'];
+    $mail->SMTPSecure  = $secure === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : ($secure === 'tls' ? PHPMailer::ENCRYPTION_STARTTLS : '');
+    $mail->SMTPAutoTLS = $secure === 'tls';
+    $mail->SMTPKeepAlive = true;
+    $mail->Timeout     = 15;
+    $mail->CharSet     = 'UTF-8';
+    $mail->Encoding    = PHPMailer::ENCODING_QUOTED_PRINTABLE; // sicher auch für Server ohne 8BITMIME
+    $mail->setFrom($MAIL_FROM, 'okapio');
+    $mail->isHTML(true);
+    $mail->Subject = $content['subject'];
+    $mail->Body    = $content['html'];
+    $mail->AltBody = $content['text'];
+    $mail->addEmbeddedImage(__DIR__ . '/mail/okapio-logo.png', 'okapio-logo', 'okapio-logo.png', 'base64', 'image/png');
+    return $mail;
+};
 
 try {
     require_once __DIR__ . '/vendor/phpmailer/Exception.php';
     require_once __DIR__ . '/vendor/phpmailer/PHPMailer.php';
     require_once __DIR__ . '/vendor/phpmailer/SMTP.php';
 
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host       = $CONFIG['smtp_host'];
-    $mail->Port       = $port;
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $CONFIG['smtp_user'];
-    $mail->Password   = $CONFIG['smtp_pass'];
-    $mail->SMTPSecure = $secure === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : ($secure === 'tls' ? PHPMailer::ENCRYPTION_STARTTLS : '');
-    $mail->SMTPAutoTLS = $secure === 'tls';
-    $mail->Timeout    = 15;
-    $mail->CharSet    = 'UTF-8';
-    $mail->Encoding   = '8bit';
-    $mail->isHTML(false);
-    $mail->setFrom($MAIL_FROM, 'okapio Website');
+    // 1) Benachrichtigung an uns. Scheitert sie, bekommt die Person eine Fehlermeldung (die Anfrage ist nicht angekommen).
+    $mail = $build($notify);
     $mail->addAddress($MAIL_TO);
     $mail->addReplyTo($email);          // validiert; Header-Injection ausgeschlossen
-    $mail->Subject    = $subject;
-    $mail->Body       = $body;
     $mail->send();
 } catch (MailException $e) {
     error_log('okapio kontakt: SMTP-Versand fehlgeschlagen: ' . $e->getMessage()); // bewusst ohne Formulareingaben
@@ -238,6 +247,18 @@ try {
 } catch (Throwable $e) {
     error_log('okapio kontakt: Fehler beim Versand: ' . get_class($e));
     respond(REDIRECT_ERROR);
+}
+
+// 2) Bestätigung an die Person. Scheitert sie, ist die Anfrage trotzdem angekommen: nur loggen.
+try {
+    $reply = $build($confirm);
+    $reply->addAddress($email);
+    $reply->addReplyTo($MAIL_TO, 'okapio');
+    $reply->addCustomHeader('Auto-Submitted', 'auto-replied');
+    $reply->addCustomHeader('X-Auto-Response-Suppress', 'All');
+    $reply->send();
+} catch (Throwable $e) {
+    error_log('okapio kontakt: Bestätigung nicht versendet: ' . get_class($e));
 }
 
 respond(REDIRECT_OK);
