@@ -1,7 +1,7 @@
 <?php
 /**
  * okapio – Orte, an denen die Konfigurationsdatei gesucht wird (in dieser Reihenfolge).
- * Gemeinsam genutzt von kontakt.php und diagnose.php. Enthält keine Zugangsdaten.
+ * Gemeinsam genutzt von kontakt.php. Enthält keine Zugangsdaten.
  */
 
 declare(strict_types=1);

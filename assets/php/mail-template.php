@@ -70,8 +70,11 @@ function mail_row(string $label, string $valueHtml): string
         . '</td><td style="padding:9px 0;vertical-align:top;color:#001842">' . $valueHtml . '</td></tr>';
 }
 
-/** Bestätigung an die Person, die das Formular abgeschickt hat. Enthält bewusst nicht ihren Nachrichtentext (Missbrauchsschutz). */
-function mail_confirmation(string $siteUrl, string $name): array
+/**
+ * Bestätigung an die Person, die das Formular abgeschickt hat. Enthält bewusst weder Nachrichtentext noch Namen:
+ * Die Adresse ist nicht verifiziert, jeder Text aus dem Formular käme sonst als Mail von okapio.de bei einem Dritten an.
+ */
+function mail_confirmation(string $siteUrl): array
 {
     $steps = [
         ['1', 'Wir lesen Ihre Anfrage', 'Wer sie liest, ist auch die Person, die später mit Ihnen spricht.'],
@@ -83,13 +86,13 @@ function mail_confirmation(string $siteUrl, string $name): array
         $stepsHtml .= '<tr><td style="padding:10px 14px 10px 0;vertical-align:top;width:34px"><div style="width:30px;height:30px;line-height:30px;text-align:center;border-radius:50%;background:#e8f0ff;color:#005be6;font:700 14px/30px \'Space Grotesk\',\'Inter\',Helvetica,Arial,sans-serif">' . $n . '</div></td>'
             . '<td style="padding:10px 0;vertical-align:top"><strong style="color:#001842">' . mail_h($head) . '</strong><br><span style="font-size:15px">' . mail_h($text) . '</span></td></tr>';
     }
-    $body = '<p style="margin:0 0 14px">Guten Tag ' . mail_h($name) . ',</p>'
+    $body = '<p style="margin:0 0 14px">Guten Tag,</p>'
         . '<p style="margin:0 0 22px">vielen Dank für Ihre Nachricht. Sie ist bei uns angekommen.</p>'
         . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 22px">' . $stepsHtml . '</table>'
         . '<p style="margin:0 0 14px">Es eilt? Rufen Sie uns gern an: <a href="tel:' . MAIL_PHONE_LINK . '" style="color:#005be6;font-weight:600;text-decoration:none">' . mail_h(MAIL_PHONE_DISPLAY) . '</a>.</p>'
         . '<p style="margin:22px 0 0;padding-top:18px;border-top:1px solid #e7ebf1;font-size:13px;color:#4b5b70">Sie erhalten diese automatische Nachricht, weil Ihre E-Mail-Adresse über das Kontaktformular auf okapio.de angegeben wurde. Haben Sie keine Anfrage gestellt, können Sie diese E-Mail ignorieren.</p>';
 
-    $text = "Guten Tag $name,\n\n"
+    $text = "Guten Tag,\n\n"
         . "vielen Dank für Ihre Nachricht. Sie ist bei uns angekommen.\n\n"
         . "So geht es weiter:\n"
         . "1. Wir lesen Ihre Anfrage.\n"

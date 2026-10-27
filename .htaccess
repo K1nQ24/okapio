@@ -10,6 +10,12 @@ AddType image/svg+xml .svg
 # Versteckte Dateien nicht ausliefern (außer .well-known für Zertifikate)
 RedirectMatch 404 /\.(?!well-known)
 
+# Entwicklungs- und Konfigurationsdateien sowie -ordner nie ausliefern (falls sie versehentlich hochgeladen werden)
+RedirectMatch 404 ^/(src|tools|docs|reviews|node_modules)(/|$)
+<FilesMatch "\.(md|mjs|py|sh|json|log|bak|sql|example)$">
+  Require all denied
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
