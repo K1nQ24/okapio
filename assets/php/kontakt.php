@@ -252,7 +252,7 @@ require_once __DIR__ . '/mail-template.php';
 $siteUrl = rtrim((string)($CONFIG['site_url'] ?? 'https://okapio.de'), '/');
 $when    = (new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin')))->format('d.m.Y, H:i') . ' Uhr';
 $notify  = mail_notification($siteUrl, $name, $firma, $email, $message, $when);
-$confirm = mail_confirmation($siteUrl, $name);
+$confirm = mail_confirmation($siteUrl);
 
 $port   = (int)($CONFIG['smtp_port'] ?? 587);
 $secure = (string)($CONFIG['smtp_secure'] ?? ($port === 465 ? 'ssl' : 'tls'));

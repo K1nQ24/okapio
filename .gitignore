@@ -2,3 +2,5 @@
 okapio-config.php
 assets/php/config.php
 node_modules/
+.DS_Store
+assets/php/diagnose.php

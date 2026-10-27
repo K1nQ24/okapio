@@ -33,8 +33,8 @@ PHP-Version in konsoleH: 8.2 oder neuer.
 
 Bei jeder Anfrage gehen zwei HTML-Mails raus (Vorlagen: `assets/php/mail-template.php`, Logo: `assets/php/mail/okapio-logo.png`, beides liegt in `assets/php/` und wird mit hochgeladen): eine **Benachrichtigung an okapio** mit allen Angaben und Antworten-Schaltfläche, eine **Bestätigung an die anfragende Person** im selben Design. Die Bestätigung enthält bewusst nicht den Nachrichtentext der Person, damit das Formular nicht als Absender für fremde Texte missbraucht werden kann.
 
-### Diagnose-Seite (nur zum Testen)
-`assets/php/diagnose.php` hochladen, `https://okapio.de/assets/php/diagnose.php` im Browser öffnen: Sie prüft PHP-Version, Konfigurationsdatei, Schreibrechte und die Anmeldung am Mailserver (ohne Mail zu versenden, ohne Passwort anzuzeigen). **Danach vom Server löschen.**
+### Diagnose-Seite
+Die frühere `diagnose.php` ist aus Sicherheitsgründen nicht mehr im Projekt (sie war ohne Anmeldung aufrufbar, zeigte Serverpfade und meldete sich bei jedem Aufruf am Mailserver an). Wird sie noch einmal gebraucht: aus dem Verlauf von PR #28 holen, nur kurz hochladen und sofort wieder löschen. Sie gehört nie dauerhaft auf den Server.
 
 ### Formular zeigt „Das hat leider nicht geklappt“?
 `kontakt.php` schreibt den Grund (ohne Formulareingaben) in die Datei **`okapio-kontakt.log` eine Ebene über dem Web-Ordner** (neben `okapio-config.php`) und ins PHP-Fehlerlog. Typische Gründe:
